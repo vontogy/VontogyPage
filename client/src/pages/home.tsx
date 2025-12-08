@@ -123,7 +123,7 @@ export default function Home() {
               <div className="bg-white text-accent p-1 rounded-full"><Check strokeWidth={4} className="w-4 h-4 md:w-4 md:h-4" /></div>
               <span className="leading-tight">Urinary Microbiome Balance</span>
             </div>
-            <div className="col-span-2 md:col-span-1 flex flex-col md:flex-row md:items-center md:gap-3 items-center gap-2 font-bold text-sm md:text-lg md:text-xl">
+            <div className="col-span-2 md:col-span-1 flex flex-col items-center gap-2 font-bold text-sm md:text-lg md:text-xl">
               <div className="bg-white text-accent p-1 rounded-full"><Check strokeWidth={4} className="w-4 h-4 md:w-4 md:h-4" /></div>
               <span className="leading-tight md:leading-normal">Healthy Urinary System Restoration</span>
             </div>
