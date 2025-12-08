@@ -470,7 +470,7 @@ function IngredientCard({ image, name, description }: { image: string, name: str
   return (
     <div className="flex flex-col items-center gap-4 text-center">
       <div className="bg-white rounded-full w-32 h-32 md:w-40 md:h-40 flex items-center justify-center mb-2 shadow-lg border-2 border-secondary/20 overflow-hidden">
-        <img src={image} alt={name} className="w-full h-full object-cover drop-shadow-md" />
+        <img src={image} alt={name} className="w-full h-full object-cover" />
       </div>
       <div>
         <h3 className="font-bold text-gray-900 text-lg mb-1">{name}</h3>
