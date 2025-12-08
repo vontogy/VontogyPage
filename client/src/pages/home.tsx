@@ -72,11 +72,10 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-4xl md:text-6xl font-black leading-tight tracking-tight text-gray-900"
+              className="text-3xl md:text-5xl font-black leading-tight tracking-tight text-gray-900"
             >
-              The Natural <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">Bladder-Rebalancing</span> <br/>
-              Breakthrough
+              Finally: A Natural Way To <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">Regain Total Bladder Control</span>
             </motion.h1>
             
             <motion.p 
@@ -85,7 +84,7 @@ export default function Home() {
               transition={{ delay: 0.2 }}
               className="text-lg md:text-xl text-gray-600 max-w-lg leading-relaxed mx-auto md:mx-0"
             >
-              Stop leaks, regain confidence, and sleep through the night with the first microbiome-targeted formula.
+              Target the root cause of leaks, strengthen your pelvic floor, and sleep peacefully through the night without drugs.
             </motion.p>
             
             <motion.div 
