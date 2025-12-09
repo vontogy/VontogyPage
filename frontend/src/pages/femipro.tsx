@@ -341,11 +341,8 @@ export default function FemiPro() {
                 bottles="2 Bottles" 
                 supply="60 Day Supply"
                 price="79"
-                perBottle="79"
-                originalPrice="129"
                 shipping="Small Shipping Fee"
                 image={basicImage}
-                imgCount={2}
                 youSave="200"
                 totalPrice={{ original: "358", final: "158" }}
                 buyNowUrl="https://www.checkout-ds24.com/product/609911?aff=techlf"
@@ -359,14 +356,10 @@ export default function FemiPro() {
                 bottles="6 Bottles + 3 Free Ebooks" 
                 supply="180 Day Supply"
                 price="49"
-                perBottle="49"
-                originalPrice="780"
                 shipping="FREE SHIPPING"
                 isPopular={true}
                 image={bestValueImage}
-                imgCount={6}
                 youSave="780"
-                biggestDiscount={false}
                 totalPrice={{ original: "1074", final: "294" }}
                 buyNowUrl="https://www.checkout-ds24.com/product/567227?aff=techlf"
               />
@@ -379,11 +372,8 @@ export default function FemiPro() {
                 bottles="2 + 1 Bottles" 
                 supply="90 Day Supply"
                 price="69"
-                perBottle="59"
-                originalPrice="537"
                 shipping="FREE SHIPPING"
                 image={mostPopularImage}
-                imgCount={3}
                 youSave="330"
                 totalPrice={{ original: "537", final: "207" }}
                 buyNowUrl="https://www.checkout-ds24.com/product/567225?aff=techlf"
@@ -616,16 +606,11 @@ function PricingCard({
   bottles, 
   supply, 
   price, 
-  perBottle, 
-  originalPrice, 
   shipping, 
   isPopular = false,
   image,
-  imgCount,
-  badge,
   youSave,
   totalPrice,
-  biggestDiscount = false,
   buyNowUrl
 }: any) {
   return (
