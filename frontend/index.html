@@ -6,6 +6,8 @@
     <meta name="google" content="notranslate" />
     <title>Vontogy - Affiliate Marketing</title>
     <meta name="description" content="Vontogy is an affiliate marketing website. Discover our curated selection of quality products." />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Vontogy" />
 
     <meta property="og:title" content="Vontogy - Affiliate Marketing" />
     <meta property="og:description" content="Vontogy is an affiliate marketing website. Discover our curated selection of quality products." />
@@ -17,7 +19,23 @@
     <link rel="preload" href="/fonts/GTWalsheimMedium.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Static content for search engines and bots -->
+      <noscript>
+        <div style="padding: 20px; font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto;">
+          <h1>Vontogy - Affiliate Marketing</h1>
+          <p>Vontogy is an affiliate marketing website. Discover our curated selection of quality products.</p>
+          <p>This website requires JavaScript to function properly. Please enable JavaScript in your browser.</p>
+        </div>
+      </noscript>
+      <!-- Fallback content visible before React loads -->
+      <div style="display: none;" id="static-content">
+        <h1>Vontogy - Affiliate Marketing</h1>
+        <p>Vontogy is an affiliate marketing website. Discover our curated selection of quality products.</p>
+        <p>Website Owner: Vontogy</p>
+        <p>This is an affiliate marketing website. For product inquiries, please contact the vendor directly.</p>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

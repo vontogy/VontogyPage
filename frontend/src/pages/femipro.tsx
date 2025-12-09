@@ -95,19 +95,13 @@ export default function FemiPro() {
             {/* Powered by DigiStore24 */}
             <div className="flex items-center gap-2 shrink-0">
               <span className="text-gray-600 hidden sm:inline">Powered by</span>
-              <a 
-                href="https://www.digistore24.com" 
-                target="_blank" 
-                rel="sponsored nofollow noopener noreferrer"
-                className="flex items-center hover:opacity-80 transition-opacity"
-                title="DigiStore24 - Secure Payment Processing"
-              >
+              <div className="flex items-center" title="DigiStore24 - Secure Payment Processing">
                 <img 
                   src="/images/femipro/digistore.svg" 
                   alt="DigiStore24" 
                   className="h-7 md:h-8 max-w-[200px] md:max-w-[240px]"
                 />
-              </a>
+              </div>
             </div>
           </div>
         </div>
@@ -355,6 +349,14 @@ export default function FemiPro() {
           </div>
           
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-end mb-12">
+            {/* TESTE TEMPORÁRIO: Links de afiliado substituídos por link neutro para teste de isolamento do Google Ads */}
+            {/* Se o anúncio for aprovado com estes links, o problema está nos links de destino (checkout-ds24.com) */}
+            {/* Links originais:
+              Basic: https://www.checkout-ds24.com/product/609911?aff=techlf
+              Best Value: https://www.checkout-ds24.com/product/567227?aff=techlf
+              Most Popular: https://www.checkout-ds24.com/product/567225?aff=techlf
+            */}
+            
             {/* Basic Package */}
             <div className="order-3 md:order-1">
               <PricingCard 
@@ -366,7 +368,7 @@ export default function FemiPro() {
                 image={basicImage}
                 youSave="200"
                 totalPrice={{ original: "358", final: "158" }}
-                buyNowUrl="https://www.checkout-ds24.com/product/609911?aff=techlf"
+                buyNowUrl="https://google.com"
               />
             </div>
 
@@ -382,7 +384,7 @@ export default function FemiPro() {
                 image={bestValueImage}
                 youSave="780"
                 totalPrice={{ original: "1074", final: "294" }}
-                buyNowUrl="https://www.checkout-ds24.com/product/567227?aff=techlf"
+                buyNowUrl="https://google.com"
               />
             </div>
 
@@ -397,7 +399,7 @@ export default function FemiPro() {
                 image={mostPopularImage}
                 youSave="330"
                 totalPrice={{ original: "537", final: "207" }}
-                buyNowUrl="https://www.checkout-ds24.com/product/567225?aff=techlf"
+                buyNowUrl="https://google.com"
               />
             </div>
           </div>
@@ -523,22 +525,13 @@ export default function FemiPro() {
                 This is an affiliate marketing website. For product inquiries, please contact the vendor directly.
               </p>
             </div>
-            <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-4 text-sm">
-              <a href="https://myfemipro24.com/help/contact-us.php" target="_blank" rel="sponsored nofollow noopener noreferrer" className="hover:text-white transition-colors underline">Contact Vendor</a>
-              <a href="https://myfemipro24.com/help/references.php" target="_blank" rel="sponsored nofollow noopener noreferrer" className="hover:text-white transition-colors underline">References</a>
-              <a href="https://myfemipro24.com/help/terms.php" target="_blank" rel="sponsored nofollow noopener noreferrer" className="hover:text-white transition-colors underline">Terms Of Use</a>
-              <a href="https://myfemipro24.com/help/disclaimer.php" target="_blank" rel="sponsored nofollow noopener noreferrer" className="hover:text-white transition-colors underline">Disclaimer</a>
-              <a href="https://myfemipro24.com/help/privacy.php" target="_blank" rel="sponsored nofollow noopener noreferrer" className="hover:text-white transition-colors underline">Privacy Policy</a>
-              <a href="https://myfemipro24.com/help/shipping.php" target="_blank" rel="sponsored nofollow noopener noreferrer" className="hover:text-white transition-colors underline">Shipping Policy</a>
-              <a href="https://myfemipro24.com/help/refunds.php" target="_blank" rel="sponsored nofollow noopener noreferrer" className="hover:text-white transition-colors underline">Refund Policy</a>
-            </div>
           </div>
           <div className="text-xs max-w-2xl mx-auto leading-relaxed opacity-60 space-y-3">
             <p>
-              For Product Support, please contact the vendor <a href="https://myfemipro24.com/help/contact-us.php" target="_blank" rel="sponsored nofollow noopener noreferrer" className="text-white hover:underline">here</a>.
+              For Product Support, please contact the vendor directly through their official website.
             </p>
             <p>
-              For Order Support, please contact DigiStore24 <a href="https://www.digistore24.com/info/contact/2?lang=en&aff=techlf" target="_blank" rel="nofollow sponsored noopener noreferrer" className="text-white hover:underline">here</a>.
+              For Order Support, please contact the payment processor directly.
             </p>
             <div className="disclaimer mt-6 space-y-3 bg-gray-800 p-4 rounded-lg">
               <p className="font-semibold text-white mb-3 text-base">Important Disclaimers & Legal Information:</p>
@@ -562,7 +555,7 @@ export default function FemiPro() {
               Statements on this website have not been evaluated by the Food and Drug Administration. Products are not intended to diagnose, treat, cure or prevent any disease. If you are pregnant, nursing, taking medication, or have a medical condition, consult your physician before using our products.
             </p>
             <p>
-              *For international shipping (outside of the United States), shipping fees will apply. Read more <a href="https://myfemipro24.com/help/shipping.php" target="_blank" rel="sponsored nofollow noopener noreferrer" className="text-white hover:underline">here</a>.
+              *For international shipping (outside of the United States), shipping fees will apply.
             </p>
           </div>
             <p className="mt-8 text-sm">
