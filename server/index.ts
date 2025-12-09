@@ -16,13 +16,13 @@ app.use(express.urlencoded({ extended: true }));
 
 // Security Headers - Critical for Google Ads compliance
 app.use((req, res, next) => {
-  // Content Security Policy
+  // Content Security Policy - Secure (removed unsafe-inline and unsafe-eval for Google Ads compliance)
   res.setHeader(
     "Content-Security-Policy",
     "default-src 'self'; " +
-    "script-src 'self' 'unsafe-inline' 'unsafe-eval'; " +
+    "script-src 'self'; " +
     "style-src 'self' 'unsafe-inline'; " +
-    "img-src 'self' data: https:; " +
+    "img-src 'self' data: https://www.digistore24.com https://www.checkout-ds24.com https://myfemipro24.com https://res.cloudinary.com; " +
     "font-src 'self' data:; " +
     "connect-src 'self' https://www.digistore24.com https://www.checkout-ds24.com https://myfemipro24.com; " +
     "frame-src 'none'; " +
