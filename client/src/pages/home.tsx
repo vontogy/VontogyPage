@@ -488,18 +488,18 @@ export default function Home() {
               </p>
             </div>
             <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-4 text-sm">
-              <a href="https://myfemipro24.com//help/contact-us.php" target="_blank" rel="nofollow noopener noreferrer" className="hover:text-white transition-colors underline">Contact Vendor</a>
-              <a href="https://myfemipro24.com//help/references.php" target="_blank" rel="nofollow noopener noreferrer" className="hover:text-white transition-colors underline">References</a>
-              <a href="https://myfemipro24.com//help/terms.php" target="_blank" rel="nofollow noopener noreferrer" className="hover:text-white transition-colors underline">Terms Of Use</a>
-              <a href="https://myfemipro24.com//help/disclaimer.php" target="_blank" rel="nofollow noopener noreferrer" className="hover:text-white transition-colors underline">Disclaimer</a>
-              <a href="https://myfemipro24.com//help/privacy.php" target="_blank" rel="nofollow noopener noreferrer" className="hover:text-white transition-colors underline">Privacy Policy</a>
-              <a href="https://myfemipro24.com//help/shipping.php" target="_blank" rel="nofollow noopener noreferrer" className="hover:text-white transition-colors underline">Shipping Policy</a>
-              <a href="https://myfemipro24.com//help/refunds.php" target="_blank" rel="nofollow noopener noreferrer" className="hover:text-white transition-colors underline">Refund Policy</a>
+              <a href="https://myfemipro24.com/help/contact-us.php" target="_blank" rel="nofollow noopener noreferrer" className="hover:text-white transition-colors underline">Contact Vendor</a>
+              <a href="https://myfemipro24.com/help/references.php" target="_blank" rel="nofollow noopener noreferrer" className="hover:text-white transition-colors underline">References</a>
+              <a href="https://myfemipro24.com/help/terms.php" target="_blank" rel="nofollow noopener noreferrer" className="hover:text-white transition-colors underline">Terms Of Use</a>
+              <a href="https://myfemipro24.com/help/disclaimer.php" target="_blank" rel="nofollow noopener noreferrer" className="hover:text-white transition-colors underline">Disclaimer</a>
+              <a href="https://myfemipro24.com/help/privacy.php" target="_blank" rel="nofollow noopener noreferrer" className="hover:text-white transition-colors underline">Privacy Policy</a>
+              <a href="https://myfemipro24.com/help/shipping.php" target="_blank" rel="nofollow noopener noreferrer" className="hover:text-white transition-colors underline">Shipping Policy</a>
+              <a href="https://myfemipro24.com/help/refunds.php" target="_blank" rel="nofollow noopener noreferrer" className="hover:text-white transition-colors underline">Refund Policy</a>
             </div>
           </div>
           <div className="text-xs max-w-2xl mx-auto leading-relaxed opacity-60 space-y-3">
             <p>
-              For Product Support, please contact the vendor <a href="https://myfemipro24.com//help/contact-us.php" target="_blank" rel="nofollow noopener noreferrer" className="text-white hover:underline">here</a>.
+              For Product Support, please contact the vendor <a href="https://myfemipro24.com/help/contact-us.php" target="_blank" rel="nofollow noopener noreferrer" className="text-white hover:underline">here</a>.
             </p>
             <p>
               For Order Support, please contact DigiStore24 <a href="https://www.digistore24.com/info/contact/2?lang=en&aff=techlf" target="_blank" rel="nofollow sponsored noopener noreferrer" className="text-white hover:underline">here</a>.
@@ -526,7 +526,7 @@ export default function Home() {
               Statements on this website have not been evaluated by the Food and Drug Administration. Products are not intended to diagnose, treat, cure or prevent any disease. If you are pregnant, nursing, taking medication, or have a medical condition, consult your physician before using our products.
             </p>
             <p>
-              *For international shipping (outside of the United States), shipping fees will apply. Read more <a href="https://myfemipro24.com//help/shipping.php" target="_blank" rel="nofollow noopener noreferrer" className="text-white hover:underline">here</a>.
+              *For international shipping (outside of the United States), shipping fees will apply. Read more <a href="https://myfemipro24.com/help/shipping.php" target="_blank" rel="nofollow noopener noreferrer" className="text-white hover:underline">here</a>.
             </p>
           </div>
             <p className="mt-8 text-sm">

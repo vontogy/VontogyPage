@@ -7,11 +7,37 @@ async function throwIfResNotOk(res: Response) {
   }
 }
 
+/**
+ * Validates that a URL is safe to request (same-origin only)
+ * This prevents SSRF attacks and unauthorized external requests
+ */
+function isValidUrl(url: string): boolean {
+  try {
+    // If it's a relative URL, it's valid (same-origin)
+    if (url.startsWith("/")) {
+      return true;
+    }
+    
+    // Parse the URL relative to current origin
+    const urlObj = new URL(url, window.location.origin);
+    
+    // Only allow requests to the same origin
+    return urlObj.origin === window.location.origin;
+  } catch {
+    return false;
+  }
+}
+
 export async function apiRequest(
   method: string,
   url: string,
   data?: unknown | undefined,
 ): Promise<Response> {
+  // Validate URL before making request
+  if (!isValidUrl(url)) {
+    throw new Error(`Invalid URL: ${url}. Only same-origin requests are allowed.`);
+  }
+  
   const res = await fetch(url, {
     method,
     headers: data ? { "Content-Type": "application/json" } : {},

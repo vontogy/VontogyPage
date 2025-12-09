@@ -14,11 +14,69 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// CORS configuration
+// Security Headers - Critical for Google Ads compliance
+app.use((req, res, next) => {
+  // Content Security Policy
+  res.setHeader(
+    "Content-Security-Policy",
+    "default-src 'self'; " +
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval'; " +
+    "style-src 'self' 'unsafe-inline'; " +
+    "img-src 'self' data: https:; " +
+    "font-src 'self' data:; " +
+    "connect-src 'self' https://www.digistore24.com https://www.checkout-ds24.com https://myfemipro24.com; " +
+    "frame-src 'none'; " +
+    "object-src 'none'; " +
+    "base-uri 'self'; " +
+    "form-action 'self' https://www.checkout-ds24.com; " +
+    "upgrade-insecure-requests;"
+  );
+  
+  // X-Frame-Options - Prevent clickjacking
+  res.setHeader("X-Frame-Options", "DENY");
+  
+  // X-Content-Type-Options - Prevent MIME type sniffing
+  res.setHeader("X-Content-Type-Options", "nosniff");
+  
+  // Strict-Transport-Security - Force HTTPS (only on HTTPS connections)
+  if (req.secure || req.headers['x-forwarded-proto'] === 'https') {
+    res.setHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains; preload");
+  }
+  
+  // Referrer-Policy - Control referrer information
+  res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+  
+  // Permissions-Policy - Restrict browser features
+  res.setHeader("Permissions-Policy", "geolocation=(), microphone=(), camera=()");
+  
+  next();
+});
+
+// CORS configuration - Restrictive (fixed security vulnerability)
+const allowedOrigins = [
+  process.env.ALLOWED_ORIGIN,
+  // Add trusted domains here
+].filter(Boolean) as string[];
+
 app.use((req, res, next) => {
   const origin = req.headers.origin;
-  res.setHeader("Access-Control-Allow-Origin", origin || "*");
-  res.setHeader("Access-Control-Allow-Credentials", "true");
+  
+  // Allow only whitelisted origins
+  if (origin && allowedOrigins.length > 0 && allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+  } else if (process.env.NODE_ENV === "development") {
+    // In development, allow localhost
+    if (origin && (origin.includes("localhost") || origin.includes("127.0.0.1"))) {
+      res.setHeader("Access-Control-Allow-Origin", origin);
+      res.setHeader("Access-Control-Allow-Credentials", "true");
+    }
+  } else {
+    // In production, deny unauthorized origins
+    res.setHeader("Access-Control-Allow-Origin", "null");
+    res.setHeader("Access-Control-Allow-Credentials", "false");
+  }
+  
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   
