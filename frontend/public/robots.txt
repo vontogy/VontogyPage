@@ -1,3 +1,51 @@
-User-agent: *
+# Google Ads Bots - Full Access Required for Ad Approval
+User-agent: AdsBot-Google
 Allow: /
 Disallow: /api/
+
+User-agent: AdsBot-Google-Mobile
+Allow: /
+Disallow: /api/
+
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+
+# Standard Google Bot
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /
+
+# Allow all static resources (CSS, JS, images) for proper page rendering
+User-agent: *
+Allow: /css/
+Allow: /js/
+Allow: /images/
+Allow: /assets/
+Allow: /static/
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.webp$
+Allow: /*.woff$
+Allow: /*.woff2$
+Allow: /*.ttf$
+Allow: /*.eot$
+
+# Allow main pages
+Allow: /
+
+# Block only sensitive/admin routes
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /.well-known/
+
+# Sitemap
+Sitemap: https://vontogy.com/sitemap.xml
