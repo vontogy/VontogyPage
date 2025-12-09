@@ -1,6 +1,60 @@
-node_modules
-dist
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env*.local
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
 .DS_Store
-server/public
-vite.config.ts.*
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage/
+.nyc_output/
+
+# Temporary files
+*.tmp
+*.temp
+*.cache
+.cache/
+
+# Build artifacts
 *.tar.gz
+*.zip
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Vite
+vite.config.ts.*
+
+# Vercel (local CLI cache only - vercel.json is NOT ignored)
+.vercel/
