@@ -27,7 +27,7 @@ import referencesImage from "@assets/images/references.png";
 
 export default function FemiPro() {
   useEffect(() => {
-    // Restore FemiPro page metadata
+    // Set FemiPro page metadata
     document.title = "FemiPro™ - Dietary Supplement with Botanical Extracts & Probiotics";
     
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -45,11 +45,32 @@ export default function FemiPro() {
       ogDescription.setAttribute("content", "FemiPro™ is a dietary supplement with botanical extracts and probiotic cultures. 60-Day Money-Back Guarantee. Free Shipping Available on Select Packages.");
     }
     
-    // Restore FemiPro favicon
+    // Set FemiPro favicon
     const favicon = document.querySelector('link[rel="icon"]') as HTMLLinkElement;
     if (favicon) {
       favicon.href = "/images/femipro/favicon.png";
     }
+
+    // Cleanup: restore Vontogy (Home) values when leaving the page
+    return () => {
+      document.title = "Vontogy - Affiliate Marketing";
+      
+      if (metaDescription) {
+        metaDescription.setAttribute("content", "Vontogy is an affiliate marketing website. Discover our curated selection of quality products.");
+      }
+      
+      if (ogTitle) {
+        ogTitle.setAttribute("content", "Vontogy - Affiliate Marketing");
+      }
+      
+      if (ogDescription) {
+        ogDescription.setAttribute("content", "Vontogy is an affiliate marketing website. Discover our curated selection of quality products.");
+      }
+      
+      if (favicon) {
+        favicon.href = "https://res.cloudinary.com/dopp0v9eq/image/upload/v1763574787/monfily-black-nobg_risk6t.png";
+      }
+    };
   }, []);
 
   const scrollToPricing = () => {
