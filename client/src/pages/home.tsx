@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Check, Star, Truck, Leaf, Beaker, Award, ChevronDown, BookOpen } from "lucide-react";
+import { Check, Star, Truck, Leaf, Beaker, Award, ChevronDown, BookOpen, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { motion } from "framer-motion";
@@ -33,6 +33,40 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900 overflow-x-hidden">
+      {/* Secure Payment Banner */}
+      <div className="bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200 py-2.5 px-4">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="flex items-center justify-center gap-3 text-xs sm:text-sm whitespace-nowrap overflow-x-auto">
+            {/* Secure Payment Icon & Text */}
+            <div className="flex items-center gap-1.5 shrink-0">
+              <Shield className="w-4 h-4 text-green-600 shrink-0" />
+              <span className="text-gray-700 font-medium">Secure Payment</span>
+            </div>
+            
+            {/* Separator */}
+            <span className="text-gray-300 hidden sm:inline">•</span>
+            
+            {/* Powered by DigiStore24 */}
+            <div className="flex items-center gap-2 shrink-0">
+              <span className="text-gray-600 hidden sm:inline">Powered by</span>
+              <a 
+                href="https://www.digistore24.com" 
+                target="_blank" 
+                rel="nofollow noopener noreferrer"
+                className="flex items-center hover:opacity-80 transition-opacity"
+                title="DigiStore24 - Secure Payment Processing"
+              >
+                <img 
+                  src="/images/femipro/digistore.svg" 
+                  alt="DigiStore24" 
+                  className="h-7 md:h-8 max-w-[200px] md:max-w-[240px]"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 py-4">
         <div className="container mx-auto px-4 max-w-6xl flex justify-between items-center">
@@ -74,8 +108,8 @@ export default function Home() {
               transition={{ delay: 0.1 }}
               className="text-3xl md:text-5xl font-black leading-tight tracking-tight text-gray-900"
             >
-              Finally: A Natural Way To <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">Regain Total Bladder Control</span>
+              A Natural Approach To <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">Support Urinary Health</span>
             </motion.h1>
             
             <motion.p 
@@ -84,7 +118,7 @@ export default function Home() {
               transition={{ delay: 0.2 }}
               className="text-lg md:text-xl text-gray-600 max-w-lg leading-relaxed mx-auto md:mx-0"
             >
-              Target the root cause of leaks, strengthen your pelvic floor, and sleep peacefully through the night without drugs.
+              A dietary supplement designed to support urinary microbiome balance with natural ingredients.
             </motion.p>
             
             <motion.div 
@@ -94,7 +128,7 @@ export default function Home() {
               className="flex flex-col sm:flex-row gap-4 pt-4 justify-center md:justify-start"
             >
               <Button onClick={scrollToPricing} className="h-14 px-8 text-lg bg-gradient-to-r from-primary to-orange-500 hover:from-primary/90 hover:to-orange-600 text-white font-bold rounded-xl shadow-xl shadow-primary/25 transition-all hover:scale-105">
-                ORDER NOW & SAVE UP TO $780
+                VIEW PRICING & OFFERS
               </Button>
             </motion.div>
             
@@ -116,15 +150,15 @@ export default function Home() {
           <div className="grid grid-cols-2 md:flex md:flex-row justify-center md:justify-around gap-4 md:gap-6 text-center">
             <div className="flex flex-col items-center gap-2 font-bold text-sm md:text-lg md:text-xl">
               <div className="bg-white text-accent p-1 rounded-full"><Check strokeWidth={4} className="w-4 h-4 md:w-4 md:h-4" /></div>
-              <span className="leading-tight">Total Bladder Control Support</span>
+              <span className="leading-tight">Urinary Health Support</span>
             </div>
             <div className="flex flex-col items-center gap-2 font-bold text-sm md:text-lg md:text-xl">
               <div className="bg-white text-accent p-1 rounded-full"><Check strokeWidth={4} className="w-4 h-4 md:w-4 md:h-4" /></div>
-              <span className="leading-tight">Urinary Microbiome Balance</span>
+              <span className="leading-tight">Natural Ingredients</span>
             </div>
             <div className="col-span-2 md:col-span-1 flex flex-col items-center gap-2 font-bold text-sm md:text-lg md:text-xl">
               <div className="bg-white text-accent p-1 rounded-full"><Check strokeWidth={4} className="w-4 h-4 md:w-4 md:h-4" /></div>
-              <span className="leading-tight md:leading-normal">Healthy Urinary System Restoration</span>
+              <span className="leading-tight md:leading-normal">Dietary Supplement Formula</span>
             </div>
           </div>
         </div>
@@ -142,24 +176,24 @@ export default function Home() {
             
             <div className="space-y-6 text-center md:text-left">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-                Why FemiPro Works Where Others Fail:
+                About FemiPro:
               </h2>
               
               <div className="flex flex-col items-center md:items-start">
                 <p className="text-lg text-gray-700 leading-relaxed text-center md:text-left max-w-full">
-                  FemiPro leverages unique, clinically researched ingredients designed to restore the delicate bacterial balance in your urinary microbiome. Unlike generic solutions, FemiPro targets the root cause of sudden leaks: harmful bacteria that overstimulate bladder muscles.
+                  FemiPro is a dietary supplement that contains a blend of natural ingredients, including probiotics and botanical extracts, which have been researched for their potential role in supporting urinary microbiome balance.
                 </p>
               </div>
               
               <div className="flex flex-col items-center md:items-start">
                 <p className="text-lg text-gray-700 leading-relaxed text-center md:text-left max-w-full">
-                  By repopulating your system with beneficial bacteria, our formula calms the bladder, reduces involuntary leaks, and fortifies your entire urinary tract health.
+                  This supplement is designed to provide nutritional support for urinary health as part of a healthy lifestyle. Individual results may vary.
                 </p>
               </div>
               
               <div className="flex justify-center md:justify-start">
-                <Button onClick={scrollToPricing} className="h-12 px-8 text-base bg-gradient-to-r from-primary to-orange-500 hover:from-primary/90 hover:to-orange-600 text-white font-bold rounded-xl shadow-lg">
-                  SECURE YOUR SUPPLY TODAY
+                <Button onClick={scrollToPricing} className="h-12 px-8 text-base bg-primary hover:bg-primary/90 text-white font-semibold rounded-xl shadow-md">
+                  View Pricing Options
                 </Button>
               </div>
             </div>
@@ -183,37 +217,37 @@ export default function Home() {
             <IngredientCard 
               image={mimosa} 
               name="Mimosa Pudica" 
-              description="Supports anti-inflammatory response"
+              description="Botanical extract included in the formula"
             />
             <IngredientCard 
               image={bearberry} 
               name="Bearberry" 
-              description="Natural antiseptic for urinary tract"
+              description="Natural botanical ingredient"
             />
             <IngredientCard 
               image={cranberry} 
               name="Cranberry Extract" 
-              description="Prevents bacteria adherence"
+              description="Cranberry extract included in the blend"
             />
             <IngredientCard 
               image={probiotic} 
               name="Probiotic Blend" 
-              description="Restores healthy flora"
+              description="Probiotic cultures included in the formula"
             />
             <IngredientCard 
               image={berberine} 
               name="Granular Berberine" 
-              description="Balances blood sugar & microbiome"
+              description="Berberine extract included in the blend"
             />
           </div>
         </div>
       </section>
 
       {/* Bonuses Section */}
-      <section className="bg-[#BF4080]">
-        <div className="bg-purple-600 w-full text-center py-4">
-          <h2 className="text-3xl md:text-5xl font-black text-white px-4">
-            Order 6 Bottles and Get 3 FREE Exclusive Bonuses!
+      <section className="bg-gradient-to-b from-primary/10 to-primary/5">
+        <div className="bg-primary/20 w-full text-center py-6">
+          <h2 className="text-2xl md:text-4xl font-bold text-gray-900 px-4">
+            Order 6 Bottles and Receive 3 Bonus Ebooks
           </h2>
         </div>
         <div className="py-8">
@@ -222,25 +256,25 @@ export default function Home() {
             <BonusCard
               number="1"
               title="The Passion Prescription"
-              description="Reawaken intimacy with this 7-day guide. Discover secrets to removing inflammatory foods and healing your gut for a slimmer body and a happier marriage."
+              description="A 7-day guide with information about nutrition and lifestyle. Includes educational content about dietary choices and wellness."
               image={bonus1}
             />
             <BonusCard
               number="2"
               title="The Effortless Guide To Perfect Digestion"
-              description="Reset your gut health instantly. This eye-opening ebook reveals the step-by-step plan to reignite passion and optimize digestion, making you feel lighter and more energetic."
+              description="An educational ebook with information about digestive health. Includes general wellness tips and dietary guidance."
               image={bonus2}
             />
             <BonusCard
               number="3"
               title="The 21-Day Red Carpet Body Plan"
-              description="Look slimmer using stylist secrets. Learn the essential clothing tricks and the ONE spice you must avoid to lose weight and keep it off."
+              description="A style guide with fashion tips and clothing advice. Includes general information about styling and appearance."
               image={bonus3}
             />
           </div>
           <div className="text-center mt-12">
-            <p className="text-xl text-white font-bold">
-              Total Value: $162 - Yours FREE
+            <p className="text-lg text-gray-700 font-medium">
+              Bonus ebooks included with 6-bottle purchase
             </p>
           </div>
           </div>
@@ -255,11 +289,11 @@ export default function Home() {
             <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
               <img src={freeShippingImage} alt="Fast & Free Shipping" className="w-44 h-44 md:w-32 md:h-32 shrink-0" />
               <div className="flex-1 text-center">
-                <p className="text-2xl md:text-3xl font-bold text-gray-900">
-                  Every Order Comes With <span className="text-primary">FREE Shipping!</span>
+                <p className="text-xl md:text-2xl font-semibold text-gray-900">
+                  Free Shipping Available
                 </p>
-                <p className="text-gray-600 mt-2 text-base md:text-lg">
-                  96% Of Savvy Customers Choose The 6-Bottle Option
+                <p className="text-gray-600 mt-2 text-sm md:text-base">
+                  Free shipping on select packages
                 </p>
               </div>
             </div>
@@ -267,8 +301,11 @@ export default function Home() {
 
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-black mb-4 text-gray-900">
-              Claim Your Discounted FemiPro Below While Stocks Last!
+              Choose Your FemiPro Package
             </h2>
+            <p className="text-lg text-gray-600 mt-4">
+              Select the package that works best for you
+            </p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-end mb-12">
@@ -293,7 +330,7 @@ export default function Home() {
             {/* Best Value */}
             <div className="order-1 md:order-2">
               <PricingCard 
-                title="BEST VALUE!" 
+                title="Best Value" 
                 bottles="6 Bottles + 3 Free Ebooks" 
                 supply="180 Day Supply"
                 price="49"
@@ -304,7 +341,7 @@ export default function Home() {
                 image={bestValueImage}
                 imgCount={6}
                 youSave="780"
-                biggestDiscount={true}
+                biggestDiscount={false}
                 totalPrice={{ original: "1074", final: "294" }}
                 buyNowUrl="https://www.checkout-ds24.com/product/567227?_ga=1048192037.1765190178&_b=NDkwMzM1O215ZmVtaXBybzI0LmNvbS90ZXh0LnBocDt1bmRlZmluZWQ7dGV4dDszOzI5NDtmZTt1bmRlZmluZWQ%3D&aff=techlf"
               />
@@ -331,16 +368,16 @@ export default function Home() {
         </div>
 
         {/* Guarantee Badge */}
-        <div className="w-full py-8 px-4" style={{ backgroundColor: '#BF4080' }}>
-          <div className="bg-white rounded-2xl p-6 max-w-2xl mx-auto">
+        <div className="w-full py-8 px-4 bg-gray-50">
+          <div className="bg-white rounded-2xl p-6 max-w-2xl mx-auto border border-gray-200 shadow-sm">
             <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
-              <img src={moneyBackImage} alt="Money Back Guarantee" className="w-44 h-44 md:w-32 md:h-32 shrink-0" />
+              <img src={moneyBackImage} alt="Money Back Guarantee" className="w-32 h-32 md:w-24 md:h-24 shrink-0" />
               <div className="flex-1 text-center">
-                <p className="text-2xl md:text-3xl font-bold text-gray-900">
-                  60-DAY MONEY BACK <span className="text-primary">GUARANTEE</span>
+                <p className="text-xl md:text-2xl font-semibold text-gray-900">
+                  60-Day Money-Back Guarantee
                 </p>
-                <p className="text-gray-600 mt-2 text-base md:text-lg">
-                  100% Satisfaction or your money back.
+                <p className="text-gray-600 mt-2 text-sm md:text-base">
+                  If you're not satisfied, contact us within 60 days for a refund.
                 </p>
               </div>
             </div>
@@ -356,23 +393,23 @@ export default function Home() {
           <Accordion type="single" collapsible className="w-full space-y-4">
             <FAQItem 
               question="How does FemiPro work?" 
-              answer="FemiPro targets the root cause of urinary incontinence: an imbalanced microbiome. By introducing specific probiotics and herbs, it strengthens the bladder muscles and urinary tract walls naturally." 
+              answer="FemiPro is a dietary supplement that contains probiotics and botanical ingredients that may support urinary microbiome balance. It is designed to provide nutritional support as part of a healthy lifestyle. This product is not intended to diagnose, treat, cure, or prevent any disease." 
             />
             <FAQItem 
               question="Are there any side effects?" 
-              answer="FemiPro is made in an FDA-registered facility using natural ingredients. It is designed to be safe for women of all ages and medical conditions. However, we always recommend consulting your doctor if you have specific concerns." 
+              answer="FemiPro is manufactured in an FDA-registered facility using natural ingredients. As with any dietary supplement, individual reactions may vary. If you are pregnant, nursing, taking medication, or have a medical condition, please consult your healthcare provider before use. Discontinue use and consult a healthcare professional if you experience any adverse reactions." 
             />
             <FAQItem 
               question="What is your money back guarantee?" 
-              answer="You are protected by our iron-clad 60-day money-back guarantee. If you don't see results, simply contact us for a full refund. No questions asked." 
+              answer="We offer a 60-day money-back guarantee. If you are not satisfied with your purchase, you may contact customer support for a refund within 60 days of purchase. Please see our refund policy for complete terms and conditions." 
             />
             <FAQItem 
               question="How do I use FemiPro?" 
-              answer="Simply take one easy-to-swallow capsule every day with a glass of water. It starts working immediately to rebalance your system." 
+              answer="Take one capsule daily with a glass of water, or as directed by your healthcare provider. This supplement is designed for daily use as part of a healthy lifestyle. Individual results may vary." 
             />
             <FAQItem 
               question="Is this a one-off purchase?" 
-              answer="Yes. There are no hidden subscriptions or auto-shipping. You only pay for what you order today." 
+              answer="Yes. There are no hidden subscriptions or auto-shipping. You only pay for what you order. This is a one-time purchase with no recurring charges." 
             />
           </Accordion>
         </div>
@@ -389,9 +426,16 @@ export default function Home() {
           </div>
 
           {/* Title */}
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 text-gray-900">
             Scientific References
           </h2>
+
+          {/* Disclaimer */}
+          <div className="bg-white p-4 mb-8 w-full">
+            <p className="text-sm text-gray-700 text-center leading-relaxed">
+              <strong>Note:</strong> The following references are citations from peer-reviewed scientific publications and research studies. These citations are provided for educational and informational purposes only. The studies referenced may discuss research on ingredients or topics related to urinary health, but they do not constitute claims about this specific product. Individual results may vary, and this product is not intended to diagnose, treat, cure, or prevent any disease.
+            </p>
+          </div>
 
           {/* References List */}
           <div className="grid md:grid-cols-2 gap-6 text-sm text-gray-700 leading-relaxed">
@@ -433,14 +477,25 @@ export default function Home() {
           <div className="mb-8">
             <img src={logo} alt="FemiPro" className="h-8 mx-auto brightness-0 invert opacity-50" />
           </div>
-          <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-8 text-sm">
-            <a href="https://myfemipro24.com//help/contact-us.php" target="_blank" rel="nofollow noopener noreferrer" className="hover:text-white transition-colors">Contact</a>
-            <a href="https://myfemipro24.com//help/references.php" target="_blank" rel="nofollow noopener noreferrer" className="hover:text-white transition-colors">References</a>
-            <a href="https://myfemipro24.com//help/terms.php" target="_blank" rel="nofollow noopener noreferrer" className="hover:text-white transition-colors">Terms Of Use</a>
-            <a href="https://myfemipro24.com//help/disclaimer.php" target="_blank" rel="nofollow noopener noreferrer" className="hover:text-white transition-colors">Disclaimer</a>
-            <a href="https://myfemipro24.com//help/privacy.php" target="_blank" rel="nofollow noopener noreferrer" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="https://myfemipro24.com//help/shipping.php" target="_blank" rel="nofollow noopener noreferrer" className="hover:text-white transition-colors">Shipping Policy</a>
-            <a href="https://myfemipro24.com//help/refunds.php" target="_blank" rel="nofollow noopener noreferrer" className="hover:text-white transition-colors">Refund Policy</a>
+          <div className="mb-6">
+            <h3 className="text-white font-bold text-lg mb-4 text-center">Contact & Information</h3>
+            <div className="mb-4 text-center text-sm">
+              <p className="text-gray-300 mb-2">
+                <strong>Website Owner:</strong> Vontogy
+              </p>
+              <p className="text-gray-300 mb-4">
+                This is an affiliate marketing website. For product inquiries, please contact the vendor directly.
+              </p>
+            </div>
+            <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-4 text-sm">
+              <a href="https://myfemipro24.com//help/contact-us.php" target="_blank" rel="nofollow noopener noreferrer" className="hover:text-white transition-colors underline">Contact Vendor</a>
+              <a href="https://myfemipro24.com//help/references.php" target="_blank" rel="nofollow noopener noreferrer" className="hover:text-white transition-colors underline">References</a>
+              <a href="https://myfemipro24.com//help/terms.php" target="_blank" rel="nofollow noopener noreferrer" className="hover:text-white transition-colors underline">Terms Of Use</a>
+              <a href="https://myfemipro24.com//help/disclaimer.php" target="_blank" rel="nofollow noopener noreferrer" className="hover:text-white transition-colors underline">Disclaimer</a>
+              <a href="https://myfemipro24.com//help/privacy.php" target="_blank" rel="nofollow noopener noreferrer" className="hover:text-white transition-colors underline">Privacy Policy</a>
+              <a href="https://myfemipro24.com//help/shipping.php" target="_blank" rel="nofollow noopener noreferrer" className="hover:text-white transition-colors underline">Shipping Policy</a>
+              <a href="https://myfemipro24.com//help/refunds.php" target="_blank" rel="nofollow noopener noreferrer" className="hover:text-white transition-colors underline">Refund Policy</a>
+            </div>
           </div>
           <div className="text-xs max-w-2xl mx-auto leading-relaxed opacity-60 space-y-3">
             <p>
@@ -449,13 +504,22 @@ export default function Home() {
             <p>
               For Order Support, please contact DigiStore24 <a href="https://www.digistore24.com/info/contact/2?lang=en&aff=techlf" target="_blank" rel="nofollow sponsored noopener noreferrer" className="text-white hover:underline">here</a>.
             </p>
-            <div className="disclaimer mt-6 space-y-3">
-              <p className="font-semibold text-white mb-2">Important Disclaimers:</p>
-              <p>
-                This site is not a part of the Google website or Google Inc. Additionally, This site is NOT endorsed by Google in any way.
+            <div className="disclaimer mt-6 space-y-3 bg-gray-800 p-4 rounded-lg">
+              <p className="font-semibold text-white mb-3 text-base">Important Disclaimers & Legal Information:</p>
+              <p className="mb-2">
+                <strong>Affiliate Disclosure:</strong> This website is an affiliate marketing site. We may receive compensation when you purchase products through links on this site. This does not affect the price you pay.
+              </p>
+              <p className="mb-2">
+                <strong>FDA Disclaimer:</strong> The information on this website has not been evaluated by the Food & Drug Administration or any other medical body. This product is not intended to diagnose, treat, cure, or prevent any disease or medical condition. Information is provided for educational purposes only.
+              </p>
+              <p className="mb-2">
+                <strong>Medical Advice:</strong> Always consult your healthcare provider before starting any dietary supplement, especially if you are pregnant, nursing, taking medication, or have a medical condition. Do not discontinue any medical treatment without consulting your physician.
+              </p>
+              <p className="mb-2">
+                <strong>Individual Results:</strong> Results may vary from person to person. This product is not a substitute for professional medical advice, diagnosis, or treatment.
               </p>
               <p>
-                FDA Compliance: The information on this website has not been evaluated by the Food & Drug Administration or any other medical body. We do not aim to diagnose, treat, cure or prevent any illness or disease. Information is shared for educational purposes only. You should consult your healthcare professional before acting on any content on this website, especially if you are pregnant, nursing, taking medication, or have a medical condition.
+                This site is not affiliated with, endorsed by, or associated with Google Inc. or any other third-party company mentioned.
               </p>
             </div>
             <p className="mt-4">
@@ -465,9 +529,10 @@ export default function Home() {
               *For international shipping (outside of the United States), shipping fees will apply. Read more <a href="https://myfemipro24.com//help/shipping.php" target="_blank" rel="nofollow noopener noreferrer" className="text-white hover:underline">here</a>.
             </p>
           </div>
-          <p className="mt-8 text-sm">
-          Promoted by <strong>Vontogy</strong>.<br></br>Copyright © {new Date().getFullYear()} <strong>Vontogy</strong> | All Rights Reserved.
-          </p>
+            <p className="mt-8 text-sm">
+              Copyright © {new Date().getFullYear()} <strong>Vontogy</strong>. All Rights Reserved.<br />
+              This website is promoted by <strong>Vontogy</strong> as an affiliate marketing site.
+            </p>
         </div>
       </footer>
     </div>
@@ -510,8 +575,8 @@ function BonusCard({ number, title, description, image }: { number: string, titl
               <span className="font-bold text-gray-900 text-sm md:text-base whitespace-nowrap">
                 Retail Price - <span className="line-through text-red-600">$54</span>
               </span>
-              <span className="bg-white text-gray-900 font-bold px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-gray-200 text-xs md:text-sm whitespace-nowrap shrink-0">
-                Today: FREE
+              <span className="bg-gray-100 text-gray-700 font-medium px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-gray-300 text-xs md:text-sm whitespace-nowrap shrink-0">
+                Included
               </span>
             </div>
           </div>
@@ -539,10 +604,10 @@ function PricingCard({
   buyNowUrl
 }: any) {
   return (
-    <div className={`relative bg-white rounded-3xl overflow-hidden transition-all duration-300 hover:scale-[1.02] ${isPopular ? 'border-2 border-primary shadow-2xl z-10 scale-105 order-first md:order-none' : 'border border-gray-200 shadow-lg'}`}>
+    <div className={`relative bg-white rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-xl ${isPopular ? 'border-2 border-primary shadow-lg z-10 order-first md:order-none' : 'border border-gray-200 shadow-md'}`}>
       {isPopular && (
-        <div className="bg-primary text-white text-center py-2 font-bold uppercase tracking-wider text-sm">
-          Best Value
+        <div className="bg-primary text-white text-center py-2 font-semibold uppercase tracking-wide text-xs">
+          Recommended
         </div>
       )}
       
@@ -560,26 +625,17 @@ function PricingCard({
           />
         </div>
 
-        {/* You Save Indicator */}
+        {/* Savings Info - More Subtle */}
         {youSave && (
-          <div className="bg-gray-600 text-white font-bold py-2.5 px-4 rounded-lg mb-3 inline-flex items-center gap-2 text-sm md:text-base">
-            <Check className="w-5 h-5" />
-            <span>YOU SAVE ${youSave}!</span>
+          <div className="bg-gray-100 text-gray-700 font-medium py-2 px-4 rounded-lg mb-3 inline-flex items-center gap-2 text-sm">
+            <span>Save ${youSave}</span>
           </div>
         )}
 
-        {/* Biggest Discount Indicator */}
-        {biggestDiscount && (
-          <div className="bg-green-500 text-white font-bold py-2.5 px-4 rounded-lg mb-3 inline-flex items-center gap-2 text-sm md:text-base">
-            <Check className="w-5 h-5" />
-            <span>BIGGEST DISCOUNT</span>
-          </div>
-        )}
-
-        {/* 60 Days Guarantee Indicator */}
-        <div className="bg-green-500 text-white font-bold py-2.5 px-4 rounded-lg mb-4 inline-flex items-center gap-2 text-sm md:text-base">
-          <Check className="w-5 h-5" />
-          <span>60 DAYS GUARANTEE</span>
+        {/* Guarantee Indicator - Single, Subtle */}
+        <div className="bg-blue-50 text-blue-700 font-medium py-2 px-4 rounded-lg mb-4 inline-flex items-center gap-2 text-sm border border-blue-200">
+          <Check className="w-4 h-4" />
+          <span>60-Day Money-Back Guarantee</span>
         </div>
 
         <div className="mb-4">
@@ -591,9 +647,13 @@ function PricingCard({
           target="_blank"
           rel="nofollow sponsored noopener noreferrer"
           className={`w-full h-14 text-lg font-bold rounded-xl mb-4 flex items-center justify-center ${isPopular ? 'bg-primary hover:bg-primary/90' : 'bg-gray-900 hover:bg-gray-800'} text-white shadow-lg transition-all`}
+          aria-label="Buy now - external affiliate link"
         >
           BUY NOW
         </a>
+        <p className="text-xs text-gray-500 text-center mb-2">
+          External checkout link
+        </p>
 
         {/* Total Price */}
         {totalPrice && (
@@ -605,7 +665,7 @@ function PricingCard({
         )}
 
         <div className="flex items-center justify-center gap-2 text-sm font-medium text-gray-600 mb-2">
-          <img src="https://myfemipro24.com//statics/img/credit-cards.png" alt="Cards" className="h-4 opacity-60" onError={(e) => e.currentTarget.style.display='none'} />
+          <span className="text-xs text-gray-500">We accept major credit cards</span>
         </div>
         
         <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-center gap-2 text-sm text-gray-500">
