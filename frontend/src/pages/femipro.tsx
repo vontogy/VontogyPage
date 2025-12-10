@@ -12,7 +12,6 @@ import bestValueImage from "@assets/images/best_value.png";
 import mostPopularImage from "@assets/images/most_popular.png";
 import heroSectionImage from "@assets/images/femipro_herosection.png";
 import whySectionImage from "@assets/images/femipro_whysection.png";
-import certificationsImage from "@assets/images/certifications.png";
 import mimosa from "@assets/images/mimosa_pudica_plant.png";
 import bearberry from "@assets/images/bearberry_plant.png";
 import cranberry from "@assets/images/cranberry_extract.png";
@@ -23,7 +22,6 @@ import bonus2 from "@assets/images/bonus2.png";
 import bonus3 from "@assets/images/bonus3.png";
 import freeShippingImage from "@assets/images/freeshp.png";
 import moneyBackImage from "@assets/images/moneyback.png";
-import referencesImage from "@assets/images/references.png";
 
 export default function FemiPro() {
   useEffect(() => {
@@ -111,11 +109,6 @@ export default function FemiPro() {
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 py-4">
         <div className="container mx-auto px-4 max-w-6xl flex justify-between items-center">
           <img src={logo} alt="FemiPro Logo" className="h-8 md:h-10 w-auto" />
-          <div className="hidden md:flex gap-6 text-sm font-medium text-gray-600">
-            <a href="#ingredients" className="hover:text-primary transition-colors">Ingredients</a>
-            <a href="#pricing" className="hover:text-primary transition-colors">Pricing</a>
-            <a href="#faq" className="hover:text-primary transition-colors">FAQ</a>
-          </div>
           <Button onClick={scrollToPricing} className="bg-primary hover:bg-primary/90 text-white font-bold rounded-full px-6 shadow-lg shadow-primary/20 transition-all hover:scale-105">
             Order Now
           </Button>
@@ -136,7 +129,7 @@ export default function FemiPro() {
                className="relative z-10 w-full flex justify-center"
             >
                <div className="absolute inset-0 bg-accent/20 blur-[60px] rounded-full transform scale-75" />
-               <img src={heroSectionImage} alt="FemiPro" className="relative w-full max-w-[400px] drop-shadow-2xl mx-auto" />
+               <img src={heroSectionImage} alt="FemiPro" className="relative w-full max-w-[650px] md:max-w-[750px] drop-shadow-2xl mx-auto" />
             </motion.div>
           </div>
 
@@ -146,7 +139,7 @@ export default function FemiPro() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-3xl md:text-5xl font-black leading-tight tracking-tight text-gray-900"
+              className="text-4xl sm:text-5xl md:text-5xl font-black leading-tight tracking-tight text-gray-900"
             >
               Feel Confident <br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">Every Single Day</span>
@@ -170,15 +163,6 @@ export default function FemiPro() {
               <Button onClick={scrollToPricing} className="h-14 px-8 text-lg bg-gradient-to-r from-primary to-orange-500 hover:from-primary/90 hover:to-orange-600 text-white font-bold rounded-xl shadow-xl shadow-primary/25 transition-all hover:scale-105">
                 VIEW PRICING & OFFERS
               </Button>
-            </motion.div>
-            
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="flex justify-center md:justify-start pt-4"
-            >
-              <img src={certificationsImage} alt="Certifications" className="w-full max-w-md h-auto" />
             </motion.div>
           </div>
         </div>
@@ -453,62 +437,6 @@ export default function FemiPro() {
         </div>
       </section>
 
-      {/* Scientific References Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4 max-w-6xl">
-          {/* Logos Banner */}
-          <div className="bg-white py-10 px-8 rounded-lg mb-12">
-            <div className="flex items-center justify-center">
-              <img src={referencesImage} alt="Scientific References" className="w-full max-w-4xl h-auto" />
-            </div>
-          </div>
-
-          {/* Title */}
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 text-gray-900">
-            Scientific References
-          </h2>
-
-          {/* Disclaimer */}
-          <div className="bg-white p-4 mb-8 w-full">
-            <p className="text-sm text-gray-700 text-center leading-relaxed">
-              <strong>Disclaimer:</strong> The following references are citations from scientific publications provided for educational purposes only. These citations do not constitute claims about this product. This product is not intended to diagnose, treat, cure, or prevent any disease. Consult your healthcare provider before starting any dietary supplement.
-            </p>
-          </div>
-
-          {/* References List */}
-          <div className="grid md:grid-cols-2 gap-6 text-sm text-gray-700 leading-relaxed">
-            <div className="space-y-6">
-              <ReferenceItem number={1} text="Carnes MU, Siddiqui NY, Karstens L, Gantz MG, Dinwiddie DL, Sung VW, Bradley M, Brubaker L, Ferrando CA, Mazloomdoost D, Richter HE. Urinary microbiome community types associated with urinary incontinence severity in women. American Journal of Obstetrics and Gynecology. 2024 Mar 1;230(3):344-e1. doi:10.1016/j.ajog.2023.10.036." />
-              <ReferenceItem number={2} text='Diaz A. "Call a F–king lawyer": TikTokers issue dire warning over common tampon ingredient [Internet]. New York Post; 2022 [cited 2024 Apr 9].' />
-              <ReferenceItem number={3} text="Govender Y, Gabriel I, Minassian V, Fichorova R. The Current Evidence on the Association Between the Urinary Microbiome and Urinary Incontinence in Women. Frontiers in Cellular and Infection Microbiology. 2019 May 1;9:133. doi:10.3389/fcimb.2019.00133." />
-              <ReferenceItem number={4} text="Heid M. The Truth About Your Tampons [Internet]. Time; 2016 [cited 2024 Apr 9]." />
-              <ReferenceItem number={5} text="Komesu YM, Richter HE, Carper B, Dinwiddie DL, Lukacz ES, Siddiqui NY, Sung VW, Zyczynski HM, Ridgeway B, Rogers RG, Arya LA, Mazloomdoost D, Gantz MG; Pelvic Floor Disorders Network. The urinary microbiome in women with mixed urinary incontinence compared to similarly aged controls. International Urogynecology Journal. 2018 Dec;29(12):1785-1795. doi:10.1007/s00192-018-3683-6." />
-              <ReferenceItem number={6} text="Mandal AK, Pandey A, Sah RK, Baral A, Sah P. In Vitro Antioxidant and Antimicrobial Potency of Mimosa pudica of Nepalese Terai Region: Insight into L-Mimosine as an Antibacterial Agent. Evidence-Based Complementary and Alternative Medicine. 2022 Oct 7;2022:6790314. doi:10.1155/2022/6790314." />
-              <ReferenceItem number={7} text="Mei Z, Li D. The role of probiotics in vaginal health. Frontiers in Cellular and Infection Microbiology. 2022 Jul 28;12:963868. doi:10.3389/fcimb.2022.963868." />
-              <ReferenceItem number={8} text="Meštrović Popovič K, Povalej Bržan P, Langerholc T, Marčun Varda N. The Impact of Lactobacillus Plantarum PCS26 Supplementation on the Treatment and Recurrence of Urinary Tract Infections in Children-A Pilot Study. Journal of Clinical Medicine. 2022 Nov 27;11(23):7008. doi:10.3390/jcm11237008." />
-              <ReferenceItem number={9} text="Molina MA, Melchers WJ, Núñez-Samudio V, Landires I. The emerging role of Lactobacillus acidophilus in the cervicovaginal microenvironment. The Lancet Microbe. 2024 Jan 1;5(1):e6-7. doi:10.1016/S2666-5247(23)00315-4." />
-              <ReferenceItem number={10} text="Paniágua AL, Correia AF, Pereira LC, de Alencar BM, Silva FBA, Almeida RM, de Medeiros Nóbrega YK. Inhibitory effects of Lactobacillus casei Shirota against both Candida auris and Candida spp. isolates that cause vulvovaginal candidiasis and are resistant to antifungals. BMC Complementary Medicine and Therapies. 2021 Sep 23;21(1):237. doi:10.1186/s12906-021-03405-z." />
-              <ReferenceItem number={11} text="Tóth B, Jávorházy A, Nyirády P, Csupor-Löffler B, Birinyi P, Zhanel G, Naber K, Länger R, Vörhendi N, Gede N, Váncsa S, Hegyi P, Csupor D. Bearberry in the treatment of acute uncomplicated cystitis (BRUMI): protocol of a multicentre, randomised double-blind clinical trial. BMJ Open. 2022 Jun 24;12(6):e057982. doi:10.1136/bmjopen-2021-057982." />
-              <ReferenceItem number={12} text="Pino A, Rapisarda AM, Vitale SG, Cianci S, Caggia C, Randazzo CL, Cianci A. A clinical pilot study on the effect of the probiotic Lacticaseibacillus rhamnosus TOM 22.8 strain in women with vaginal dysbiosis. Scientific Reports. 2021 Jan 28;11(1):2592. doi:10.1038/s41598-021-81931-z." />
-            </div>
-            <div className="space-y-6">
-              <ReferenceItem number={13} text="Price TK, Lin H, Gao X, Thomas-White KJ, Hilt EE, Mueller ER, Wolfe AJ, Dong Q, Brubaker L. Bladder bacterial diversity differs in continent and incontinent women: a cross-sectional study. American Journal of Obstetrics and Gynecology. 2020 Nov;223(5):729.e1-729.e10. doi:10.1016/j.ajog.2020.04.033." />
-              <ReferenceItem number={14} text="Redondo-Lopez V, Cook RL, Sobel JD. Emerging role of lactobacilli in the control and maintenance of the vaginal bacterial microflora. Reviews of infectious diseases. 1990 Sep-Oct;12(5):856-872. doi:10.1093/clinids/12.5.856." />
-              <ReferenceItem number={15} text="Ren LM, Zhuo YJ, Hao ZS, He HM, Lu HG, Zhao D. Berberine improves neurogenic contractile response of bladder detrusor muscle in streptozotocin-induced diabetic rats. Journal of Ethnopharmacology. 2013 Dec 12;150(3):1128-1136. doi:10.1016/j.jep.2013.10.039." />
-              <ReferenceItem number={16} text="Reuters. FDA warns J&J unit about tampon complaints [Internet]. Reuters; 2012 [cited 2024 Apr 9]." />
-              <ReferenceItem number={17} text="Sousa LGV, Pereira SA, Cerca N. Fighting polymicrobial biofilms in bacterial vaginosis. Microbial Biotechnology. 2023 Jul;16(7):1423-1437. doi:10.1111/1751-7915.14261." />
-              <ReferenceItem number={18} text="Sobota AE. Inhibition of bacterial adherence by cranberry juice: potential use for the treatment of urinary tract infections. The Journal of Urology. 1984 May 1;131(5):1013-1016. doi:10.1016/S0022-5347(17)50751-X." />
-              <ReferenceItem number={19} text="Thomas-White K, Vo C. How Lactobacillus Gasseri Can Support Your Vaginal Health [Internet]. Evvy. 2024 [cited 2024 Apr 9]." />
-              <ReferenceItem number={20} text="Petriello MC, Hoffman JB, Vsevolozhskaya O, Morris AJ, Hennig B. Dioxin-like PCB 126 increases intestinal inflammation and disrupts gut microbiota and metabolic homeostasis. Environmental Pollution. 2018 Nov;242(Pt A):1022-1032. doi:10.1016/j.envpol.2018.07.039." />
-              <ReferenceItem number={21} text="Tsiaoussis J, Antoniou MN, Koliarakis I, Mesnage R, Vardavas CI, Izotov BN, Psaroulaki A, Tsatsakis A. Effects of single and combined toxic exposures on the gut microbiome: Current knowledge and future directions. Toxicology letters. 2019 Sep 15;312:72-97. doi:10.1016/j.toxlet.2019.04.014." />
-              <ReferenceItem number={22} text="Wolfe AJ, Brubaker L. Urobiome updates: advances in urinary microbiome research. Nature Reviews Urology. 2019 Feb;16(2):73-74. doi:10.1038/s41585-018-0127-5." />
-              <ReferenceItem number={23} text="World Health Organization. Dioxins [Internet]. World Health Organization; 2023 [cited 2024 Apr 9]." />
-              <ReferenceItem number={24} text="Wu P, Chen Y, Zhao J, Zhang G, Chen J, Wang J, Zhang H. Urinary microbiome and psychological factors in women with overactive bladder. Frontiers in cellular and infection microbiology. 2017 Nov 27;7:488. doi:10.3389/fcimb.2017.00488." />
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Footer */}
       <footer className="bg-gray-900 text-gray-400 py-12">
         <div className="container mx-auto px-4 text-center">
@@ -526,6 +454,25 @@ export default function FemiPro() {
               </p>
             </div>
           </div>
+
+          {/* Payment Platforms Section */}
+          <div className="mb-6">
+            <h3 className="text-white font-bold text-lg mb-4 text-center">Payment & Affiliate Platforms</h3>
+            <div className="mb-4 text-center text-sm">
+              <p className="text-gray-300 mb-3">
+                This website may use various third-party payment processing and affiliate platforms to facilitate transactions, including but not limited to:
+              </p>
+              <div className="flex flex-wrap justify-center gap-3 mb-4">
+                <span className="bg-gray-800 px-3 py-1 rounded text-xs text-gray-300">DigiStore24</span>
+                <span className="bg-gray-800 px-3 py-1 rounded text-xs text-gray-300">BuyGoods</span>
+                <span className="bg-gray-800 px-3 py-1 rounded text-xs text-gray-300">ClickBank</span>
+                <span className="bg-gray-800 px-3 py-1 rounded text-xs text-gray-300">Hotmart</span>
+              </div>
+              <p className="text-gray-400 text-xs leading-relaxed max-w-2xl mx-auto">
+                <strong className="text-gray-300">Platform Disclaimer:</strong> This website is not owned, operated, or endorsed by DigiStore24, BuyGoods, ClickBank, Hotmart, or any other third-party payment processing platform. These platforms are independent service providers used solely for transaction processing. We are not responsible for the policies, practices, or terms of service of these third-party platforms. All transactions are subject to the terms and conditions of the respective platform and product vendor.
+              </p>
+            </div>
+          </div>
           <div className="text-xs max-w-2xl mx-auto leading-relaxed opacity-60 space-y-3">
             <p>
               For Product Support, please contact the vendor directly through their official website.
@@ -535,27 +482,75 @@ export default function FemiPro() {
             </p>
             <div className="disclaimer mt-6 space-y-3 bg-gray-800 p-4 rounded-lg">
               <p className="font-semibold text-white mb-3 text-base">Important Disclaimers & Legal Information:</p>
+              
               <p className="mb-2">
                 <strong>Affiliate Disclosure:</strong> This website is an affiliate marketing site. We may receive compensation when you purchase products through links on this site. This does not affect the price you pay.
               </p>
+              
               <p className="mb-2">
-                <strong>FDA Disclaimer:</strong> The information on this website has not been evaluated by the Food & Drug Administration or any other medical body. This product is not intended to diagnose, treat, cure, or prevent any disease or medical condition. Information is provided for educational purposes only.
+                <strong>Third-Party Platform Disclaimer:</strong> This website is not owned, operated, controlled, or endorsed by DigiStore24, BuyGoods, ClickBank, Hotmart, or any other third-party payment processing or affiliate platform. These platforms are independent service providers used solely for transaction processing and affiliate tracking. We have no control over their policies, practices, terms of service, or customer support. All transactions are subject to the terms and conditions of the respective platform and product vendor. Any issues with transactions, refunds, or customer service must be directed to the respective platform or product vendor, not to this website.
               </p>
+              
               <p className="mb-2">
-                <strong>Medical Advice:</strong> Always consult your healthcare provider before starting any dietary supplement, especially if you are pregnant, nursing, taking medication, or have a medical condition. Do not discontinue any medical treatment without consulting your physician.
+                <strong>No Endorsement:</strong> The mention of DigiStore24, BuyGoods, ClickBank, Hotmart, or any other platform on this website does not constitute an endorsement, recommendation, or affiliation. These platforms are mentioned solely for transparency regarding payment processing methods that may be used.
               </p>
+              
               <p className="mb-2">
-                <strong>Individual Results:</strong> Results may vary from person to person. This product is not a substitute for professional medical advice, diagnosis, or treatment.
+                <strong>FDA Disclaimer:</strong> The information on this website has not been evaluated by the Food & Drug Administration (FDA) or any other medical body. This product is not intended to diagnose, treat, cure, or prevent any disease or medical condition. Information is provided for educational purposes only. The FDA has not approved this product for any medical purpose.
               </p>
-              <p>
-                This site is not affiliated with, endorsed by, or associated with Google Inc. or any other third-party company mentioned.
+              
+              <p className="mb-2">
+                <strong>Medical Advice:</strong> Always consult your healthcare provider, physician, or qualified medical professional before starting any dietary supplement, especially if you are pregnant, nursing, taking medication, have a medical condition, or are under medical supervision. Do not discontinue any medical treatment without consulting your physician. This product is not a replacement for professional medical care.
+              </p>
+              
+              <p className="mb-2">
+                <strong>Health Conditions & Interactions:</strong> If you have any pre-existing health conditions, including but not limited to kidney disease, liver disease, heart conditions, diabetes, autoimmune disorders, or are taking prescription medications, consult your healthcare provider before using this product. Dietary supplements may interact with medications and other supplements.
+              </p>
+              
+              <p className="mb-2">
+                <strong>Pregnancy & Nursing:</strong> Do not use this product if you are pregnant, nursing, or trying to become pregnant unless specifically directed by your healthcare provider. The safety of this product during pregnancy and breastfeeding has not been established.
+              </p>
+              
+              <p className="mb-2">
+                <strong>Individual Results:</strong> Results may vary from person to person. This product is not a substitute for professional medical advice, diagnosis, or treatment. Individual experiences and outcomes may differ based on various factors including age, health status, lifestyle, and adherence to usage instructions.
+              </p>
+              
+              <p className="mb-2">
+                <strong>Product Information:</strong> Product descriptions, claims, and information are provided by the product vendor and manufacturer. We are not responsible for the accuracy, completeness, or reliability of product information. Always read product labels, packaging, and official product documentation before use.
+              </p>
+              
+              <p className="mb-2">
+                <strong>Side Effects & Adverse Reactions:</strong> If you experience any adverse reactions, side effects, or unusual symptoms while using this product, discontinue use immediately and consult your healthcare provider. Report any adverse events to your healthcare provider and the product manufacturer.
+              </p>
+              
+              <p className="mb-2">
+                <strong>Dosage & Usage:</strong> Follow the recommended dosage instructions provided on the product label. Do not exceed the recommended dosage unless directed by your healthcare provider. More is not necessarily better and may cause adverse effects.
+              </p>
+              
+              <p className="mb-2">
+                <strong>Storage & Handling:</strong> Store this product according to the manufacturer's instructions. Keep out of reach of children. Do not use if the product appears damaged, tampered with, or past its expiration date.
+              </p>
+              
+              <p className="mb-2">
+                <strong>Advertising Compliance:</strong> This website complies with advertising standards and regulations. All claims made on this website are based on available information and are not intended to mislead consumers. Product descriptions and claims are provided by product vendors and are subject to their own terms and conditions.
+              </p>
+              
+              <p className="mb-2">
+                <strong>Google & Third-Party Companies:</strong> This site is not affiliated with, endorsed by, or associated with Google Inc., Google Ads, or any other third-party company mentioned. All trademarks, service marks, and trade names are the property of their respective owners.
+              </p>
+              
+              <p className="mb-2">
+                <strong>No Medical Claims:</strong> This product is a dietary supplement, not a drug. It is not intended to treat, cure, or prevent any disease. Any statements made on this website have not been evaluated by the FDA. This product is not a substitute for professional medical diagnosis, treatment, or advice.
               </p>
             </div>
             <p className="mt-4">
-              Statements on this website have not been evaluated by the Food and Drug Administration. Products are not intended to diagnose, treat, cure or prevent any disease. If you are pregnant, nursing, taking medication, or have a medical condition, consult your physician before using our products.
+              <strong>FDA Evaluation:</strong> Statements on this website have not been evaluated by the Food and Drug Administration. Products are not intended to diagnose, treat, cure, or prevent any disease. If you are pregnant, nursing, taking medication, or have a medical condition, consult your physician before using our products.
             </p>
             <p>
-              *For international shipping (outside of the United States), shipping fees will apply.
+              <strong>Shipping Information:</strong> *For international shipping (outside of the United States), shipping fees will apply. Shipping terms and conditions are subject to the policies of the payment processor and product vendor.
+            </p>
+            <p>
+              <strong>Customer Support:</strong> For product support, please contact the vendor directly through their official website. For order support, please contact the payment processor directly. This website is not responsible for customer service, refunds, or order fulfillment.
             </p>
           </div>
             <p className="mt-8 text-sm">
@@ -714,11 +709,3 @@ function FAQItem({ question, answer }: { question: string, answer: string }) {
   );
 }
 
-function ReferenceItem({ number, text }: { number: number, text: string }) {
-  return (
-    <div className="flex gap-3">
-      <span className="font-bold text-gray-900 shrink-0">{number}.</span>
-      <p className="text-gray-700">{text}</p>
-    </div>
-  );
-}
