@@ -333,14 +333,6 @@ export default function FemiPro() {
           </div>
           
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-end mb-12">
-            {/* TESTE TEMPORÁRIO: Links de afiliado substituídos por link neutro para teste de isolamento do Google Ads */}
-            {/* Se o anúncio for aprovado com estes links, o problema está nos links de destino (checkout-ds24.com) */}
-            {/* Links originais:
-              Basic: https://www.checkout-ds24.com/product/609911?aff=techlf
-              Best Value: https://www.checkout-ds24.com/product/567227?aff=techlf
-              Most Popular: https://www.checkout-ds24.com/product/567225?aff=techlf
-            */}
-            
             {/* Basic Package */}
             <div className="order-3 md:order-1">
               <PricingCard 
@@ -352,7 +344,7 @@ export default function FemiPro() {
                 image={basicImage}
                 youSave="200"
                 totalPrice={{ original: "358", final: "158" }}
-                buyNowUrl="https://google.com"
+                buyNowUrl="https://www.checkout-ds24.com/product/609911?aff=techlf"
               />
             </div>
 
@@ -368,7 +360,7 @@ export default function FemiPro() {
                 image={bestValueImage}
                 youSave="780"
                 totalPrice={{ original: "1074", final: "294" }}
-                buyNowUrl="https://google.com"
+                buyNowUrl="https://www.checkout-ds24.com/product/567227?aff=techlf"
               />
             </div>
 
@@ -383,7 +375,7 @@ export default function FemiPro() {
                 image={mostPopularImage}
                 youSave="330"
                 totalPrice={{ original: "537", final: "207" }}
-                buyNowUrl="https://google.com"
+                buyNowUrl="https://www.checkout-ds24.com/product/567225?aff=techlf"
               />
             </div>
           </div>
