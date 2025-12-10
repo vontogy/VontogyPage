@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Check, Truck, Shield } from "lucide-react";
+import { Check, Truck, Shield, ShoppingCart, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { motion } from "framer-motion";
@@ -97,7 +97,7 @@ export default function FemiPro() {
                 <img 
                   src="/images/femipro/digistore.svg" 
                   alt="DigiStore24" 
-                  className="h-7 md:h-8 max-w-[200px] md:max-w-[240px]"
+                  className="h-8 md:h-9 max-w-[220px] md:max-w-[260px]"
                 />
               </div>
             </div>
@@ -157,12 +157,46 @@ export default function FemiPro() {
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4 pt-4 justify-center md:justify-start"
+              transition={{ delay: 0.25 }}
+              className="flex flex-col items-center md:items-start gap-1"
             >
-              <Button onClick={scrollToPricing} className="h-14 px-8 text-lg bg-gradient-to-r from-primary to-orange-500 hover:from-primary/90 hover:to-orange-600 text-white font-bold rounded-xl shadow-xl shadow-primary/25 transition-all hover:scale-105">
-                VIEW PRICING & OFFERS
-              </Button>
+              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                <span className="text-gray-700 font-semibold text-base md:text-lg">
+                  4.9
+                </span>
+              </div>
+              <span className="text-gray-600 text-sm md:text-base">
+                Based on 24,182+ Reviews!
+              </span>
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="flex flex-col sm:flex-row gap-4 pt-2 justify-center items-center md:justify-start md:items-start"
+            >
+              <motion.div
+                animate={{
+                  scale: [1, 1.02, 1],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="w-full flex justify-center md:w-auto"
+              >
+                <Button onClick={scrollToPricing} className="h-14 md:h-16 px-3 md:px-10 text-xs sm:text-sm md:text-lg lg:text-xl bg-gradient-to-r from-primary to-orange-500 hover:from-primary/90 hover:to-orange-600 text-white font-bold rounded-xl shadow-xl shadow-primary/25 transition-all hover:scale-105 flex items-center gap-1.5 md:gap-2 mx-auto md:mx-0 w-full md:w-auto">
+                  <ShoppingCart className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 shrink-0" />
+                  GET YOUR 62,31% DISCOUT NOW!
+                </Button>
+              </motion.div>
             </motion.div>
           </div>
         </div>
@@ -200,7 +234,7 @@ export default function FemiPro() {
             
             <div className="space-y-6 text-center md:text-left">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-                About FemiPro:
+                Why Choose FemiPro?
               </h2>
               
               <div className="flex flex-col items-center md:items-start">
@@ -217,7 +251,7 @@ export default function FemiPro() {
               
               <div className="flex justify-center md:justify-start">
                 <Button onClick={scrollToPricing} className="h-12 px-8 text-base bg-primary hover:bg-primary/90 text-white font-semibold rounded-xl shadow-md">
-                  View Pricing Options
+                  GET YOUR 62,31% DISCOUT NOW!
                 </Button>
               </div>
             </div>
@@ -308,28 +342,11 @@ export default function FemiPro() {
       {/* Pricing Section */}
       <section id="pricing" className="py-20 bg-gradient-to-b from-white to-secondary/20">
         <div className="container mx-auto px-4">
-          {/* Top Banner */}
-          <div className="bg-primary/10 border-2 border-primary/20 rounded-2xl p-6 mb-8 max-w-2xl mx-auto">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
-              <img src={freeShippingImage} alt="Fast & Free Shipping" className="w-44 h-44 md:w-32 md:h-32 shrink-0" />
-              <div className="flex-1 text-center">
-                <p className="text-xl md:text-2xl font-semibold text-gray-900">
-                  Free Shipping Available
-                </p>
-                <p className="text-gray-600 mt-2 text-sm md:text-base">
-                  Free shipping on select packages
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-black mb-4 text-gray-900">
-              FemiPro Pricing Options
+          <div className="text-center mb-12 max-w-4xl mx-auto">
+            <h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 leading-tight">
+              <span className="text-red-600">Urgent Action Required! Limited-Time Offer Available, Don't Miss Out! </span>
+              <span className="text-primary">Hurry Up - Secure Your FemiPro Before Stock Runs Out!</span>
             </h2>
-            <p className="text-lg text-gray-600 mt-4">
-              Select your preferred package
-            </p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-end mb-12">
@@ -379,20 +396,55 @@ export default function FemiPro() {
               />
             </div>
           </div>
+
+          {/* Reviews Section */}
+          <div className="flex flex-col items-center gap-1 mt-8 mb-8">
+            <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <span className="text-gray-700 font-semibold text-base md:text-lg">
+                4.9
+              </span>
+            </div>
+            <span className="text-gray-600 text-sm md:text-base">
+              Based on 24,182+ Reviews!
+            </span>
+          </div>
         </div>
 
-        {/* Guarantee Badge */}
-        <div className="w-full py-8 px-4 bg-gray-50">
-          <div className="bg-white rounded-2xl p-6 max-w-2xl mx-auto border border-gray-200 shadow-sm">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
-              <img src={moneyBackImage} alt="Money Back Guarantee" className="w-32 h-32 md:w-24 md:h-24 shrink-0" />
-              <div className="flex-1 text-center">
-                <p className="text-xl md:text-2xl font-semibold text-gray-900">
-                  60-Day Money-Back Guarantee
-                </p>
-                <p className="text-gray-600 mt-2 text-sm md:text-base">
-                  Contact customer support within 60 days for refund inquiries.
-                </p>
+        {/* Guarantee and Shipping Badges */}
+        <div className="w-full py-8 px-4 bg-transparent">
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {/* Free Shipping Card */}
+            <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
+              <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
+                <img src={freeShippingImage} alt="Fast & Free Shipping" className="w-32 h-32 md:w-24 md:h-24 shrink-0" />
+                <div className="flex-1 text-center">
+                  <p className="text-xl md:text-2xl font-semibold text-gray-900">
+                    Free Shipping Available
+                  </p>
+                  <p className="text-gray-600 mt-2 text-sm md:text-base">
+                    Free shipping on select packages
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Money Back Guarantee Card */}
+            <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
+              <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
+                <img src={moneyBackImage} alt="Money Back Guarantee" className="w-32 h-32 md:w-24 md:h-24 shrink-0" />
+                <div className="flex-1 text-center">
+                  <p className="text-xl md:text-2xl font-semibold text-gray-900">
+                    60-Day Money-Back Guarantee
+                  </p>
+                  <p className="text-gray-600 mt-2 text-sm md:text-base">
+                    Contact customer support within 60 days for refund inquiries.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -616,15 +668,18 @@ function PricingCard({
 }: any) {
   return (
     <div className={`relative bg-white rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-xl ${isPopular ? 'border-2 border-primary shadow-lg z-10 order-first md:order-none' : 'border border-gray-200 shadow-md'}`}>
-      {isPopular && (
+      {isPopular ? (
         <div className="bg-primary text-white text-center py-2 font-semibold uppercase tracking-wide text-xs">
-          Recommended
+          BEST VALUE
+        </div>
+      ) : (
+        <div className="bg-gray-500 text-white text-center py-2 font-semibold uppercase tracking-wide text-xs">
+          {title}
         </div>
       )}
       
       <div className="p-6 md:p-8 text-center">
-        <h3 className="text-3xl md:text-4xl font-bold text-gray-800 mb-1">{title}</h3>
-        <p className="text-lg md:text-xl text-gray-500 font-medium mb-2">{bottles}</p>
+        <p className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">{bottles}</p>
         <p className="text-sm text-gray-400 mb-6">({supply})</p>
         
         {/* Bottle Visual */}
@@ -662,6 +717,24 @@ function PricingCard({
         >
           BUY NOW
         </a>
+
+        {/* Secure Payment Info */}
+        <div className="flex items-center justify-center gap-2 text-xs mb-2">
+          <div className="flex items-center gap-1">
+            <Shield className="w-3 h-3 text-green-600 shrink-0" />
+            <span className="text-gray-700 font-medium">Secure Payment</span>
+          </div>
+          <span className="text-gray-300">•</span>
+          <div className="flex items-center gap-1">
+            <span className="text-gray-600">Powered by</span>
+            <img 
+              src="/images/femipro/digistore.svg" 
+              alt="DigiStore24" 
+              className="h-6 max-w-[140px]"
+            />
+          </div>
+        </div>
+
         <p className="text-xs text-gray-500 text-center mb-2">
           External checkout link
         </p>
