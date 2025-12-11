@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Check, Truck, Shield, ShoppingCart, Star } from "lucide-react";
+import { Check, Truck, Shield, ShoppingCart, Star, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { motion } from "framer-motion";
@@ -179,7 +179,7 @@ export default function FemiPro() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4 pt-2 justify-center items-center md:justify-start md:items-start"
+              className="flex flex-col gap-4 pt-2 justify-center items-center md:justify-start md:items-start"
             >
               <motion.div
                 animate={{
@@ -195,6 +195,17 @@ export default function FemiPro() {
                 <Button onClick={scrollToPricing} className="h-14 md:h-16 px-3 md:px-10 text-xs sm:text-sm md:text-lg lg:text-xl bg-gradient-to-r from-primary to-orange-500 hover:from-primary/90 hover:to-orange-600 text-white font-bold rounded-xl shadow-xl shadow-primary/25 transition-all hover:scale-105 flex items-center gap-1.5 md:gap-2 mx-auto md:mx-0 w-full md:w-auto">
                   <ShoppingCart className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 shrink-0" />
                   GET YOUR 62,31% DISCOUT NOW!
+                </Button>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35 }}
+                className="w-full flex justify-center md:w-auto"
+              >
+                <Button className="h-12 md:h-14 px-4 md:px-8 text-sm md:text-base lg:text-lg bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold rounded-xl shadow-lg shadow-blue-500/25 transition-all hover:scale-105 flex items-center gap-2 mx-auto md:mx-0 w-full md:w-auto">
+                Access The Official Website Now
+                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5 shrink-0" />
                 </Button>
               </motion.div>
             </motion.div>
