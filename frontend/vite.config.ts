@@ -16,7 +16,7 @@ export default defineConfig({
       "@/hooks": path.resolve(__dirname, "src/hooks"),
       "@/pages": path.resolve(__dirname, "src/pages"),
       "@/styles": path.resolve(__dirname, "src/styles"),
-      "@assets": path.resolve(__dirname, "public/images/femipro"),
+      "@assets": path.resolve(__dirname, "public/images/menovelle"),
       "@shared": path.resolve(__dirname, "..", "shared"),
     },
   },

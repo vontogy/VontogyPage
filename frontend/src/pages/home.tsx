@@ -32,10 +32,10 @@ export default function Home() {
             <div className="mt-8 pt-6 border-t border-gray-700">
               <h3 className="text-white font-semibold mb-4">Our Products</h3>
               <a 
-                href="/femipro" 
+                href="/menovelle" 
                 className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 rounded-lg transition-all hover:scale-105 shadow-lg"
               >
-                FemiPro™ - Dietary Supplement
+                Menovelle™ - Natural Menopause Relief & Weight Support
               </a>
             </div>
           </div>

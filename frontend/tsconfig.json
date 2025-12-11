@@ -24,7 +24,7 @@
       "@/hooks/*": ["./src/hooks/*"],
       "@/pages/*": ["./src/pages/*"],
       "@/styles/*": ["./src/styles/*"],
-      "@assets/*": ["./public/images/femipro/*"],
+      "@assets/*": ["./public/images/menovelle/*"],
       "@shared/*": ["../shared/*"]
     }
   },
