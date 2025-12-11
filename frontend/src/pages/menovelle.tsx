@@ -92,7 +92,7 @@ export default function Menovelle() {
       {/* Secure Payment Banner */}
       <div className="bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200 py-2.5 px-4">
         <div className="container mx-auto px-4 max-w-6xl">
-          <div className="flex items-center justify-center gap-3 text-xs sm:text-sm whitespace-nowrap overflow-x-auto">
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm">
             {/* Secure Payment Icon & Text */}
             <div className="flex items-center gap-1.5 shrink-0">
               <Shield className="w-4 h-4 text-green-600 shrink-0" />
@@ -120,7 +120,15 @@ export default function Menovelle() {
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 py-4">
         <div className="container mx-auto px-4 max-w-6xl flex justify-between items-center">
-          <img src={logo} alt="Menovelle Logo" className="h-8 md:h-10 w-auto" />
+          <img 
+            src={logo} 
+            alt="Menovelle Logo" 
+            className="h-8 md:h-10 w-auto" 
+            width="453"
+            height="95"
+            loading="eager"
+            decoding="async"
+          />
           <Button onClick={scrollToPricing} className="bg-primary hover:bg-primary/90 text-white font-bold rounded-full px-6 shadow-lg shadow-primary/20 transition-all hover:scale-105">
             Order Now
           </Button>
@@ -141,7 +149,15 @@ export default function Menovelle() {
                className="relative z-10 w-full flex justify-center scale-110 md:scale-125"
             >
                <div className="absolute inset-0 bg-accent/20 blur-[60px] rounded-full transform scale-75" />
-               <img src={heroSectionImage} alt="Menovelle" className="relative w-full max-w-[900px] md:max-w-[1200px] drop-shadow-2xl mx-auto" />
+               <img 
+                 src={heroSectionImage} 
+                 alt="Menovelle" 
+                 className="relative w-full max-w-[900px] md:max-w-[1200px] drop-shadow-2xl mx-auto" 
+                 width="1200"
+                 height="1080"
+                 fetchPriority="high"
+                 decoding="async"
+               />
             </motion.div>
           </div>
 
@@ -237,6 +253,10 @@ export default function Menovelle() {
                 src={certificationsImage} 
                 alt="Certifications: GMP Certified, 100% Natural Ingredients, FDA Registered Facility, Manufactured in USA, Non-GMO" 
                 className="w-full max-w-full md:max-w-md h-auto object-contain"
+                width="1193"
+                height="206"
+                loading="lazy"
+                decoding="async"
               />
             </motion.div>
           </div>
@@ -338,7 +358,15 @@ export default function Menovelle() {
               {/* Image - Second on mobile, first on desktop */}
               <div className="relative order-2 md:order-1">
                 <div className="flex items-center justify-center">
-                  <img src={whySectionImage} alt="Menovelle Bottles" className="w-full max-w-md drop-shadow-2xl" />
+                  <img 
+                    src={whySectionImage} 
+                    alt="Menovelle Bottles" 
+                    className="w-full max-w-md drop-shadow-2xl" 
+                    width="1888"
+                    height="1359"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
               </div>
               
@@ -357,19 +385,51 @@ export default function Menovelle() {
               {/* Features Icons */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3">
                 <div className="flex flex-col items-center gap-1">
-                  <img src={naturalImage} alt="Natural Formula" className="w-16 h-16 md:w-16 md:h-16 object-contain" />
+                  <img 
+                  src={naturalImage} 
+                  alt="Natural Formula" 
+                  className="w-16 h-16 md:w-16 md:h-16 object-contain" 
+                  width="405"
+                  height="402"
+                  loading="lazy"
+                  decoding="async"
+                />
                   <span className="text-xs md:text-sm font-medium text-gray-700 text-center">Natural Formula</span>
                 </div>
                 <div className="flex flex-col items-center gap-1">
-                  <img src={noStimImage} alt="No Stimulants" className="w-16 h-16 md:w-16 md:h-16 object-contain" />
+                  <img 
+                  src={noStimImage} 
+                  alt="No Stimulants" 
+                  className="w-16 h-16 md:w-16 md:h-16 object-contain" 
+                  width="429"
+                  height="426"
+                  loading="lazy"
+                  decoding="async"
+                />
                   <span className="text-xs md:text-sm font-medium text-gray-700 text-center">No Stimulants</span>
                 </div>
                 <div className="flex flex-col items-center gap-1">
-                  <img src={easyImage} alt="Easy to use" className="w-16 h-16 md:w-16 md:h-16 object-contain" />
+                  <img 
+                  src={easyImage} 
+                  alt="Easy to use" 
+                  className="w-16 h-16 md:w-16 md:h-16 object-contain" 
+                  width="405"
+                  height="402"
+                  loading="lazy"
+                  decoding="async"
+                />
                   <span className="text-xs md:text-sm font-medium text-gray-700 text-center">Easy to use</span>
                 </div>
                 <div className="flex flex-col items-center gap-1">
-                  <img src={gmoImage} alt="Non GMO" className="w-16 h-16 md:w-16 md:h-16 object-contain" />
+                  <img 
+                  src={gmoImage} 
+                  alt="Non GMO" 
+                  className="w-16 h-16 md:w-16 md:h-16 object-contain" 
+                  width="405"
+                  height="402"
+                  loading="lazy"
+                  decoding="async"
+                />
                   <span className="text-xs md:text-sm font-medium text-gray-700 text-center">Non GMO</span>
                 </div>
               </div>
@@ -390,7 +450,15 @@ export default function Menovelle() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 max-w-6xl mx-auto">
             <div className="flex-shrink-0">
-              <img src={freeShippingImage} alt="Fast & Free Shipping" className="w-24 h-24 md:w-32 md:h-32 object-contain" />
+              <img 
+                src={freeShippingImage} 
+                alt="Fast & Free Shipping" 
+                className="w-24 h-24 md:w-32 md:h-32 object-contain" 
+                width="592"
+                height="593"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <div className="text-center md:text-left">
               <p className="font-bold text-2xl md:text-2xl md:text-3xl mb-1">
@@ -525,7 +593,13 @@ export default function Menovelle() {
             {/* Money Back Guarantee Card */}
             <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm max-w-2xl">
               <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
-                <img src={moneyBackImage} alt="Money Back Guarantee" className="w-32 h-32 md:w-24 md:h-24 shrink-0" />
+                <img 
+                  src={moneyBackImage} 
+                  alt="Money Back Guarantee" 
+                  className="w-32 h-32 md:w-24 md:h-24 shrink-0" 
+                  loading="lazy"
+                  decoding="async"
+                />
                 <div className="flex-1 text-center">
                   <p className="text-xl md:text-2xl font-semibold text-gray-900 mb-2">
                     100% Satisfaction
@@ -547,7 +621,15 @@ export default function Menovelle() {
       <div className="bg-gray-100 py-6 shadow-lg relative z-20">
         <div className="container mx-auto px-4">
           <div className="flex justify-center items-center max-w-6xl mx-auto">
-            <img src={certificationsImage} alt="Certifications: GMP Certified, 100% Natural Ingredients, FDA Registered Facility, Manufactured in USA, Non-GMO" className="w-full max-w-2xl h-auto object-contain" />
+            <img 
+              src={certificationsImage} 
+              alt="Certifications: GMP Certified, 100% Natural Ingredients, FDA Registered Facility, Manufactured in USA, Non-GMO" 
+              className="w-full max-w-2xl h-auto object-contain" 
+              width="1193"
+              height="206"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         </div>
       </div>
@@ -615,7 +697,13 @@ If, for any reason, you aren't fully satisfied with the results, you can just re
                   In every single Menovelle capsule there is a proprietary formula of scientifically proven, extra-strong ingredients, carefully combined to support a normal hormonal balance.
                 </p>
                 <div className="flex justify-center mt-6">
-                  <img src={labelImage} alt="Menovelle Product Label" className="w-full max-w-2xl h-auto rounded-lg shadow-md" />
+                  <img 
+                    src={labelImage} 
+                    alt="Menovelle Product Label" 
+                    className="w-full max-w-2xl h-auto rounded-lg shadow-md" 
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
               </AccordionContent>
             </AccordionItem>
@@ -669,7 +757,13 @@ If, for any reason, you aren't fully satisfied with the results, you can just re
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 text-gray-900">Scientific References:</h2>
           
           <div className="flex justify-center mb-8">
-            <img src={refsLogosImage} alt="Scientific References Logos: healthline, ScienceDirect, nature, frontiers Science News" className="w-full max-w-4xl h-auto object-contain" />
+            <img 
+              src={refsLogosImage} 
+              alt="Scientific References Logos: healthline, ScienceDirect, nature, frontiers Science News" 
+              className="w-full max-w-4xl h-auto object-contain" 
+              loading="lazy"
+              decoding="async"
+            />
           </div>
           
           <div className="p-6 md:p-8">
@@ -722,8 +816,14 @@ If, for any reason, you aren't fully satisfied with the results, you can just re
       {/* Footer */}
       <footer className="bg-gray-900 text-gray-400 py-12">
         <div className="container mx-auto px-4 text-center">
-          <div className="mb-8">
-            <img src={logo} alt="Menovelle" className="h-8 mx-auto brightness-0 invert opacity-50" />
+          <div className="mb-8 flex justify-center">
+            <img 
+              src={logo} 
+              alt="Menovelle" 
+              className="h-8 w-auto brightness-0 invert opacity-50" 
+              loading="lazy"
+              decoding="async"
+            />
           </div>
           <div className="mb-6">
             <h3 className="text-white font-bold text-lg mb-4 text-center">Contact & Information</h3>
@@ -849,7 +949,15 @@ function IngredientCard({ image, name }: { image: string, name: string }) {
   return (
     <div className="flex flex-col items-center gap-4 text-center">
       <div className="bg-white rounded-full w-32 h-32 md:w-40 md:h-40 flex items-center justify-center mb-2 shadow-lg border-2 border-secondary/20 overflow-hidden">
-        <img src={image} alt={name} className="w-full h-full object-cover" />
+        <img 
+          src={image} 
+          alt={name} 
+          className="w-full h-full object-cover" 
+          width="170"
+          height="170"
+          loading="lazy"
+          decoding="async"
+        />
       </div>
       <div>
         <h3 className="font-bold text-gray-900 text-lg">{name}</h3>
@@ -863,7 +971,15 @@ function BonusCard({ number, title, description, image, retailPrice = 55 }: { nu
     <Card className="h-full hover:shadow-xl transition-shadow overflow-hidden">
       {image && (
         <div className="w-full overflow-hidden">
-          <img src={image} alt={title} className="w-full h-auto object-contain" />
+          <img 
+            src={image} 
+            alt={title} 
+            className="w-full h-auto object-contain" 
+            width="1338"
+            height="1170"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
       )}
       <CardContent className="p-6">
@@ -925,6 +1041,10 @@ function PricingCard({
             src={image} 
             alt="bottle" 
             className={`object-contain rounded-lg ${isPopular ? 'h-80 md:h-96' : 'h-64 md:h-80'}`}
+            width="1020"
+            height="797"
+            loading="lazy"
+            decoding="async"
           />
         </div>
 
