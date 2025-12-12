@@ -34,6 +34,7 @@ import easyImage from "@assets/images/easy.webp";
 import gmoImage from "@assets/images/gmo.webp";
 import labelImage from "@assets/images/label-1.webp";
 import refsLogosImage from "@assets/images/refs-logos.webp";
+import creditCardsImage from "@assets/images/credit-cards.webp";
 
 export default function Menovelle() {
   useEffect(() => {
@@ -521,7 +522,7 @@ export default function Menovelle() {
             </h2>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-end mb-12">
+          <div className="grid md:grid-cols-3 gap-4 max-w-6xl mx-auto items-end mb-12">
             {/* Basic Package */}
             <div className="order-3 md:order-1">
               <PricingCard 
@@ -1147,7 +1148,7 @@ function PricingCard({
         )}
 
         <div className="flex items-center justify-center gap-2 text-sm font-medium text-gray-600 mb-2">
-          <span className="text-xs text-gray-500">We accept major credit cards</span>
+          <img src={creditCardsImage} alt="We accept major credit cards" className="h-6" />
         </div>
         
         <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-center gap-2 text-sm text-gray-500">
