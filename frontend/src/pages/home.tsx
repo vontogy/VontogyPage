@@ -38,12 +38,6 @@ export default function Home() {
                 >
                   Menovelle™ - Natural Menopause Relief & Weight Support
                 </a>
-                <a 
-                  href="/audifort" 
-                  className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 rounded-lg transition-all hover:scale-105 shadow-lg"
-                >
-                  Audifort™ - Natural Hearing Support
-                </a>
               </div>
             </div>
           </div>

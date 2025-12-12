@@ -18,10 +18,6 @@ const ingredient3 = "/images/audifort/images/ingredient3.webp";
 const ingredient4 = "/images/audifort/images/ingredient4.webp";
 const ingredient5 = "/images/audifort/images/ingredient5.webp";
 const ingredient6 = "/images/audifort/images/ingredient6.webp";
-const ingredient7 = "/images/audifort/images/ingredient7.webp";
-const ingredient8 = "/images/audifort/images/ingredient8.webp";
-const ingredient9 = "/images/audifort/images/ingredient9.webp";
-const ingredient10 = "/images/audifort/images/ingredient10.webp";
 const bonus1 = "/images/audifort/images/bonus1.webp";
 const bonus2 = "/images/audifort/images/bonus2.webp";
 const bonus3 = "/images/audifort/images/bonus3.webp";
@@ -130,7 +126,7 @@ export default function Audifort() {
             loading="eager"
             decoding="async"
           />
-          <Button onClick={scrollToPricing} className="bg-primary hover:bg-primary/90 text-white font-bold rounded-full px-6 shadow-lg shadow-primary/20 transition-all hover:scale-105">
+          <Button onClick={scrollToPricing} className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded-full px-6 shadow-lg shadow-yellow-500/20 transition-all hover:scale-105">
             Order Now
           </Button>
         </div>
@@ -220,7 +216,7 @@ export default function Audifort() {
                 }}
                 className="w-full flex justify-center md:w-auto"
               >
-                <Button onClick={scrollToPricing} className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-gradient-to-r from-primary to-orange-500 hover:from-primary/90 hover:to-orange-600 text-white font-bold rounded-xl shadow-xl shadow-primary/25 transition-all hover:scale-105 flex items-center gap-1.5 md:gap-2 mx-auto md:mx-0 w-full md:w-auto">
+                <Button onClick={scrollToPricing} className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-white font-bold rounded-xl shadow-xl shadow-yellow-500/25 transition-all hover:scale-105 flex items-center gap-1.5 md:gap-2 mx-auto md:mx-0 w-full md:w-auto">
                   <ShoppingCart className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 shrink-0" />
                   GET YOUR 62,31% DISCOUT NOW!
                 </Button>
@@ -296,46 +292,30 @@ export default function Audifort() {
             </p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
             <IngredientCard 
               image={ingredient1} 
-              name="Cordyceps Sinensis" 
+              name="Maca Root" 
             />
             <IngredientCard 
               image={ingredient2} 
-              name="Reishi Mushroom" 
+              name="Grape Seed" 
             />
             <IngredientCard 
               image={ingredient3} 
-              name="Shiitake Mushroom" 
+              name="Green Tea" 
             />
             <IngredientCard 
               image={ingredient4} 
-              name="Lions Mane" 
+              name="Capsicum Annuum" 
             />
             <IngredientCard 
               image={ingredient5} 
-              name="Maitake Mushroom" 
+              name="Gymnema Sylvestre" 
             />
             <IngredientCard 
               image={ingredient6} 
-              name="Turkey Tail" 
-            />
-            <IngredientCard 
-              image={ingredient7} 
-              name="Chaga Mushroom" 
-            />
-            <IngredientCard 
-              image={ingredient8} 
-              name="Royal Sun Agaricus" 
-            />
-            <IngredientCard 
-              image={ingredient9} 
-              name="White Button Mushroom" 
-            />
-            <IngredientCard 
-              image={ingredient10} 
-              name="Black Fungus" 
+              name="Gaba" 
             />
           </div>
         </div>
@@ -436,7 +416,7 @@ export default function Audifort() {
               </div>
               
               <div className="flex justify-center md:justify-start">
-                <Button onClick={scrollToPricing} className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-gradient-to-r from-primary to-orange-500 hover:from-primary/90 hover:to-orange-600 text-white font-bold rounded-xl shadow-xl shadow-primary/25 transition-all hover:scale-105 flex items-center gap-1.5 md:gap-2 mx-auto md:mx-0 w-full md:w-auto">
+                <Button onClick={scrollToPricing} className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-white font-bold rounded-xl shadow-xl shadow-yellow-500/25 transition-all hover:scale-105 flex items-center gap-1.5 md:gap-2 mx-auto md:mx-0 w-full md:w-auto">
                   Reclaim My Body Now
                 </Button>
               </div>
@@ -1021,9 +1001,9 @@ function PricingCard({
   buyNowUrl
 }: any) {
   return (
-    <div className={`relative bg-white rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-xl ${isPopular ? 'border-2 border-primary shadow-lg z-10 order-first md:order-none' : 'border border-gray-200 shadow-md'}`}>
+    <div className={`relative bg-white rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-xl ${isPopular ? 'border-2 border-yellow-500 shadow-lg z-10 order-first md:order-none' : 'border border-gray-200 shadow-md'}`}>
       {isPopular ? (
-        <div className="bg-primary text-white text-center py-2 font-semibold uppercase tracking-wide text-xs">
+        <div className="bg-yellow-500 text-white text-center py-2 font-semibold uppercase tracking-wide text-xs">
           BEST VALUE
         </div>
       ) : (
@@ -1099,7 +1079,7 @@ function PricingCard({
               href={buyNowUrl}
               target="_blank"
               rel="nofollow sponsored noopener noreferrer"
-              className="w-full h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-gradient-to-r from-primary to-orange-500 hover:from-primary/90 hover:to-orange-600 text-white font-bold rounded-xl shadow-xl shadow-primary/25 transition-all hover:scale-105 flex items-center justify-center"
+              className="w-full h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-white font-bold rounded-xl shadow-xl shadow-yellow-500/25 transition-all hover:scale-105 flex items-center justify-center"
               aria-label="Buy now - external affiliate link"
             >
               BUY NOW
