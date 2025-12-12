@@ -249,7 +249,7 @@ export default function Audifort() {
               <img 
                 src={certificationsImage} 
                 alt="Certifications: GMP Certified, 100% Natural Ingredients, FDA Registered Facility, Manufactured in USA, Non-GMO" 
-                className="w-full max-w-full md:max-w-md h-auto object-contain"
+                className="w-full max-w-xs md:max-w-sm h-auto object-contain"
                 width="1193"
                 height="206"
                 loading="lazy"
@@ -748,46 +748,34 @@ If, for any reason, you aren't fully satisfied with the results, you can just re
           </div>
           
           <div className="p-6 md:p-8">
+            {/* Disclaimer */}
+            <div className="text-center mb-8">
+              <p className="text-yellow-500 font-semibold text-base md:text-lg">
+                The company is not endorsed by, sponsored by, or affiliated with any of these organizations
+              </p>
+            </div>
+            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-              {/* Left Column - References 1-16 */}
+              {/* Left Column - References 1-7 */}
               <div className="text-sm md:text-base text-gray-700 leading-relaxed space-y-3 font-serif">
-                <p><strong>1.</strong> An, Y., Li, Y., Wang, X., Chen, Z., Xu, H., Wu, L., Li, S., Wang, C., Luan, W., Wang, X., Liu, M., Tang, X., & Yu, L. (2018). Cordycepin reduces weight through regulating gut microbiota in high-fat diet-induced obese rats. Lipids in Health and Disease, 17(1), 276. https://doi.org/10.1186/s12944-018-0910-6</p>
-                <p><strong>2.</strong> Babal, K. (2018). Combination for improved weight control with medicinal mushrooms and other compounds: Bioupdate research-health benefits of medicinal mushroom. BioResearch Update.</p>
-                <p><strong>3.</strong> Balch, B. (2024, March 26). Why we know so little about women's health. Association of American Medical Colleges.</p>
-                <p><strong>4.</strong> Bartosch, J. (2023, April 24). Why am I gaining weight so fast during menopause? And will hormone therapy help? University of Chicago Medicine.</p>
-                <p><strong>5.</strong> Blundell, R., & Camilleri, E. (2024, May 12). Chaga mushroom: A natural wonder with far-reaching health benefits. Lifestyle & Culture.</p>
-                <p><strong>6.</strong> Bonafide Health. (2021, July 7). Bonafide releases "state of menopause" study to understand symptoms, treatments & dispositions of menopausal women in 2021. PR News Wire.</p>
-                <p><strong>7.</strong> Chodosh, S. (2018, January 18). When you lose weight, your fat cells don't just let go of fat. Popular Science.</p>
-                <p><strong>8.</strong> Christiansen, S. (2023, April 20). Low estrogen: Symptoms, causes, and treatments. Verywell Health.</p>
-                <p><strong>9.</strong> Cunningham, M. (2023, December 15). Endocrine-disrupting chemicals found in menstrual products including tampons, pads, and liners. George Mason University.</p>
-                <p><strong>10.</strong> Das, G., Shin, H.-S., Leyva-Gómez, G., Prado-Audelo, M. L. D., Cortes, H., Singh, Y. D., Panda, M. K., Mishra, A. P., Nigam, M., Saklani, S., Chaturi, P. K., Martorell, M., Cruz-Martins, N., Sharma, V., Garg, N., Sharma, R., & Patra, J. K. (2021). Cordyceps spp.: A review on its immune-stimulatory and other biological potentials. Frontiers in Pharmacology, 11, 602364. https://doi.org/10.3389/fphar.2020.602364</p>
-                <p><strong>11.</strong> Extance, A., & Chemistry World. (2015, February 4). Common chemicals linked to early menopause. Scientific American.</p>
-                <p><strong>12.</strong> Fox, M. (2023, November 20). Despite decades of promises, health research still overlooks women. The Guardian.</p>
-                <p><strong>13.</strong> Gordon, D. (2021, July 13). 73% of women don't treat their menopause symptoms, new survey shows. Forbes.</p>
-                <p><strong>14.</strong> Hampton, T. (2020). How targeting fat cells' estrogen receptors could fight obesity. JAMA Network, 324(21), 2146. https://doi.org/10.1001/jama.2020.22148</p>
-                <p><strong>15.</strong> Harvard T.H. Chan School of Public Health. (2024, July 23). Toxins in tampons suggest need for FDA testing, says expert.</p>
-                <p><strong>16.</strong> Hetemäki, N., Mikkola, T. S., Tikkanen, M. J., Wang, F., Hämäläinen, E., Turpeinen, U., Haanpää, M., Vihma, V., & Savolainen-Peltonen, H. (2021). Adipose tissue estrogen production and metabolism in premenopausal women. The Journal of Steroid Biochemistry and Molecular Biology, 209, 105849. https://doi.org/10.1016/j.jsbmb.2021.105849</p>
+                <p><strong>1.</strong> Rebooting the brain helps stop the ring of tinnitus in rats - National Institute on Deafness and Other Communication Disorders (NIDCD)</p>
+                <p><strong>2.</strong> The link between hearing loss and Alzheimer's disease</p>
+                <p><strong>3.</strong> White, P. M., Doetzlhofer, A., Lee, Y. S., Groves, A. K., and Segil, N. (2006). Mammalian cochlear supporting cells can divide and trans-differentiate into hair cells. Nature 441, 984-987.</p>
+                <p><strong>4.</strong> Tinnitus Epidemiology: Prevalence, Severity, Exposures And Treatment Patterns In The United States</p>
+                <p><strong>5.</strong> What Herbs are Good for Hearing Loss?</p>
+                <p><strong>6.</strong> Neuroprotective potential of phytochemicals - G. Phani Kumar and Farhath Khanum</p>
+                <p><strong>7.</strong> A Course in Miracles by Helen Schucman</p>
               </div>
               
-              {/* Right Column - References 17-33 */}
+              {/* Right Column - References 8-14 */}
               <div className="text-sm md:text-base text-gray-700 leading-relaxed space-y-3 font-serif">
-                <p><strong>17.</strong> Hochwalt, A. E., Abbinante-Nissen, J. M., Bohman, L., Hattersley, A. M., Hu, P., Streicher-Scott, J. L., Teufel, A. G., & Woeller, K. E. (2023). The safety assessment of tampons: Illustration of a comprehensive approach for four different products. Frontiers in Reproductive Health, 5, 1167868. https://doi.org/10.3389/frph.2023.1167868</p>
-                <p><strong>18.</strong> Jang, D., Lee, E., Lee, S., Kwon, Y., Kang, K. S., Kim, C.-E., & Kim, D. (2022). System-level investigation of anti-obesity effects and the potential pathways of Cordyceps militaris in ovariectomized rats. BMC Complementary Medicine and Therapies, 22(1), 132. https://doi.org/10.1186/s12906-022-03608-y</p>
-                <p><strong>19.</strong> Joi, P. (2023, May 22). Women's health is massively underfunded and is one of the biggest missed opportunities in health . Gavi, the Vaccine Alliance.</p>
-                <p><strong>20.</strong> Kodoth, V., Scaccia, S., & Aggarwal, B. (2022). Adverse changes in body composition during the menopausal transition and relation to cardiovascular risk: A contemporary review. Women's Health Reports, 3(1), 573–581. https://doi.org/10.1089/whr.2021.0119</p>
-                <p><strong>21.</strong> Kyles-Stewart, M., & Shyam, V. (2019). MycoMaterials: Metal-Fungi hybrids (pp. 1–14). NASA.</p>
-                <p><strong>22.</strong> LaMotte, S. (2024a, July 11). Tampons contain lead, arsenic and potentially toxic chemicals, studies say. Here's what to know. CNN.</p>
-                <p><strong>23.</strong> LaMotte, S. (2024b, September 10). Lead, arsenic and other heavy metals in tampons prompt FDA investigation. CNN Health.</p>
-                <p><strong>24.</strong> NASA Science. (2023, July 23). Why is NASA studying fungi?</p>
-                <p><strong>25.</strong> Nature. (2025). Menopause research is globally underfunded. It's time to change that. The International Journal of Science, 637(8047), 763–763. https://doi.org/10.1038/d41586-025-00150-y</p>
-                <p><strong>26.</strong> Sidharthan, D. C. (2024, July 8). Are your tampons poisoning you? Study findings 16 metals in widely available tampon brands. News-Medical.</p>
-                <p><strong>27.</strong> Smith, K. (2023, May 3). Women's health research lacks funding – these charts show how. Nature.</p>
-                <p><strong>28.</strong> Sweet, W. (2020). My menopause transformation. MyMT.</p>
-                <p><strong>29.</strong> UCSF Institutional Review Board. (2010, July 12). Weight loss reduces hot flashes in overweight and obese women. UCSF.</p>
-                <p><strong>30.</strong> Windle, P. (2017). Why you should definitely ditch tampons and sanitary towels. Smarterchange.</p>
-                <p><strong>31.</strong> Woods, J. (2015, January 15). What does estrogen have to do with belly fat? Rochester.</p>
-                <p><strong>32.</strong> Yang, X., Chen, L., Zhao, L., Yang, Y., Wang, J., Yan, L., Tai, G., & Zhang, H. (2021). Cordyceps sinensis-derived fungus Isaria felina ameliorates experimental autoimmune thyroiditis in mice. Biomedicine & Pharmacotherapy, 140, 111733. https://doi.org/10.1016/j.biopha.2021.111733</p>
-                <p><strong>33.</strong> Zhang, D., Wang, Z., Qi, W., & Zhao, G. (2014). The effects of Cordyceps sinensis phytoestrogen on estrogen deficiency-induced osteoporosis in Ovariectomized rats. BMC Complementary and Alternative Medicine, 14(1), 484. https://doi.org/10.1186/1472-6882-14-484</p>
+                <p><strong>8.</strong> Identification of medicinal plants of Urmia for treatment of gastrointestinal disorders</p>
+                <p><strong>9.</strong> The Benefits of California Poppy (Eschscholzia californica)</p>
+                <p><strong>10.</strong> Tinnitus is the result of the brain trying, but failing, to repair itself - Georgetown University Medical Center - Jan 2011</p>
+                <p><strong>11.</strong> Free radical production and ischemic brain damage: influence of postischemic oxygen tension - Agardh CD and others</p>
+                <p><strong>12.</strong> B Vitamins and the Brain: Mechanisms, Dose and Efficacy-A Review - David O. Kennedy - Feb 2016</p>
+                <p><strong>13.</strong> Mapping cortical hubs in tinnitus. - Winfried Schlee and others - Nov 2009</p>
+                <p><strong>14.</strong> Intracranial Mapping of a Cortical Tinnitus System using Residual Inhibition - WilliamSedley and others - Apr 2015</p>
               </div>
             </div>
           </div>
