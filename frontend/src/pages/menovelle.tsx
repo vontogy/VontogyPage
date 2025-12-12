@@ -36,6 +36,115 @@ const labelImage = "/images/menovelle/images/label-1.webp";
 const refsLogosImage = "/images/menovelle/images/refs-logos.webp";
 const creditCardsImage = "/images/menovelle/images/credit-cards.webp";
 
+// Reusable Pricing Section Component
+function PricingSection({ title, sectionId }: { title: React.ReactNode | string, sectionId?: string }) {
+  return (
+    <section id={sectionId} className="py-20 bg-gradient-to-b from-white to-secondary/20">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12 max-w-4xl mx-auto">
+          <h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 leading-tight">
+            {title}
+          </h2>
+        </div>
+        
+        <div className="grid md:grid-cols-3 gap-4 max-w-6xl mx-auto items-end mb-12">
+          {/* Basic Package */}
+          <div className="order-3 md:order-1">
+            <PricingCard 
+              title="BASIC" 
+              bottles="2 Bottles" 
+              supply="60 Day Supply"
+              price="79"
+              shipping="+ 9.99 SHIPPING"
+              image={basicImage}
+              youSave="200"
+              totalPrice={{ original: "358", final: "158" }}
+              buyNowUrl="https://www.checkout-ds24.com/product/612225?_ga=1453512559.1765449364&_b=NDkwNDA3O21lbm92ZWxsZTI0LmNvbS90ZXh0LnBocDt1bmRlZmluZWQ7dGV4dDsxOzE1ODtmZTt1bmRlZmluZWQ%3D&aff=vontogy"
+            />
+          </div>
+
+          {/* Best Value */}
+          <div className="order-1 md:order-2">
+            <PricingCard 
+              title="Best Value" 
+              bottles="6 Bottles + 3 Free Ebooks" 
+              supply="180 Day Supply"
+              price="49"
+              shipping="FREE SHIPPING"
+              isPopular={true}
+              image={bestValueImage}
+              youSave="780"
+              totalPrice={{ original: "1074", final: "294" }}
+              buyNowUrl="https://www.checkout-ds24.com/product/612229?_ga=1453512559.1765449364&_b=NDkwNDA3O21lbm92ZWxsZTI0LmNvbS90ZXh0LnBocDt1bmRlZmluZWQ7dGV4dDszOzI5NDtmZTt1bmRlZmluZWQ%3D&aff=vontogy"
+            />
+          </div>
+
+          {/* Most Popular */}
+          <div className="order-2 md:order-3">
+            <PricingCard 
+              title="MOST POPULAR" 
+              bottles="3 Bottles" 
+              supply="90 Day Supply"
+              price="69"
+              shipping="FREE SHIPPING"
+              image={mostPopularImage}
+              youSave="330"
+              totalPrice={{ original: "537", final: "207" }}
+              buyNowUrl="https://www.checkout-ds24.com/product/612226?_ga=1453512559.1765449364&_b=NDkwNDA3O21lbm92ZWxsZTI0LmNvbS90ZXh0LnBocDt1bmRlZmluZWQ7dGV4dDsyOzIwNztmZTt1bmRlZmluZWQ%3D&aff=vontogy"
+            />
+          </div>
+        </div>
+
+        {/* Reviews Section */}
+        <div className="flex flex-col items-center gap-1 mt-8 mb-8">
+          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+              ))}
+            </div>
+            <span className="text-gray-700 font-semibold text-lg md:text-xl">
+              4.9
+            </span>
+          </div>
+          <span className="text-gray-600 text-base md:text-lg">
+            Based on 11,369+ Reviews!
+          </span>
+        </div>
+      </div>
+
+      {/* Guarantee Badge */}
+      <div className="w-full py-8 px-4 bg-transparent">
+        <div className="flex justify-center max-w-5xl mx-auto">
+          {/* Money Back Guarantee Card */}
+          <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm max-w-2xl">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
+              <img 
+                src={moneyBackImage} 
+                alt="Money Back Guarantee" 
+                className="w-32 h-32 md:w-24 md:h-24 shrink-0 select-none" 
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="flex-1 text-center">
+                <p className="text-xl md:text-2xl font-semibold text-gray-900 mb-2">
+                  100% Satisfaction
+                </p>
+                <p className="text-lg md:text-xl font-semibold text-gray-900 mb-2">
+                  60-Day Money Back Guarantee
+                </p>
+                <p className="text-gray-600 mt-2 text-sm md:text-base">
+                  Your order today is covered by our iron-clad 60-day 100% money-back guarantee. If you are not impressed with the results, then just write to us and we'll refund every single cent.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Menovelle() {
   useEffect(() => {
     // Set Menovelle page metadata
@@ -110,7 +219,7 @@ export default function Menovelle() {
                 <img 
                   src="/images/menovelle/digistore.svg" 
                   alt="DigiStore24" 
-                  className="h-8 md:h-9 max-w-[220px] md:max-w-[260px]"
+                  className="h-8 md:h-9 max-w-[220px] md:max-w-[260px] select-none"
                 />
               </div>
             </div>
@@ -124,7 +233,7 @@ export default function Menovelle() {
           <img 
             src={logo} 
             alt="Menovelle Logo" 
-            className="h-8 md:h-10 w-auto" 
+            className="h-8 md:h-10 w-auto select-none" 
             width="453"
             height="95"
             loading="eager"
@@ -153,7 +262,7 @@ export default function Menovelle() {
                <img 
                  src={heroSectionImage} 
                  alt="Menovelle" 
-                 className="relative w-full max-w-[900px] md:max-w-[1200px] drop-shadow-2xl mx-auto" 
+                 className="relative w-full max-w-[900px] md:max-w-[1200px] drop-shadow-2xl mx-auto select-none" 
                  width="1200"
                  height="1080"
                  fetchPriority="high"
@@ -222,7 +331,7 @@ export default function Menovelle() {
               >
                 <Button onClick={scrollToPricing} className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-gradient-to-r from-primary to-orange-500 hover:from-primary/90 hover:to-orange-600 text-white font-bold rounded-xl shadow-xl shadow-primary/25 transition-all hover:scale-105 flex items-center gap-1.5 md:gap-2 mx-auto md:mx-0 w-full md:w-auto">
                   <ShoppingCart className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 shrink-0" />
-                  GET YOUR 62,31% DISCOUT NOW!
+                  GET YOUR 62% DISCOUT NOW!
                 </Button>
               </motion.div>
               <motion.div
@@ -253,7 +362,7 @@ export default function Menovelle() {
               <img 
                 src={certificationsImage} 
                 alt="Certifications: GMP Certified, 100% Natural Ingredients, FDA Registered Facility, Manufactured in USA, Non-GMO" 
-                className="w-full max-w-full md:max-w-md h-auto object-contain"
+                className="w-full max-w-full md:max-w-md h-auto object-contain select-none"
                 width="1193"
                 height="206"
                 loading="lazy"
@@ -362,7 +471,7 @@ export default function Menovelle() {
                   <img 
                     src={whySectionImage} 
                     alt="Menovelle Bottles" 
-                    className="w-full max-w-md drop-shadow-2xl" 
+                    className="w-full max-w-md drop-shadow-2xl select-none" 
                     width="1888"
                     height="1359"
                     loading="lazy"
@@ -389,7 +498,7 @@ export default function Menovelle() {
                   <img 
                   src={naturalImage} 
                   alt="Natural Formula" 
-                  className="w-16 h-16 md:w-16 md:h-16 object-contain" 
+                  className="w-16 h-16 md:w-16 md:h-16 object-contain select-none" 
                   width="405"
                   height="402"
                   loading="lazy"
@@ -401,7 +510,7 @@ export default function Menovelle() {
                   <img 
                   src={noStimImage} 
                   alt="No Stimulants" 
-                  className="w-16 h-16 md:w-16 md:h-16 object-contain" 
+                  className="w-16 h-16 md:w-16 md:h-16 object-contain select-none" 
                   width="429"
                   height="426"
                   loading="lazy"
@@ -413,7 +522,7 @@ export default function Menovelle() {
                   <img 
                   src={easyImage} 
                   alt="Easy to use" 
-                  className="w-16 h-16 md:w-16 md:h-16 object-contain" 
+                  className="w-16 h-16 md:w-16 md:h-16 object-contain select-none" 
                   width="405"
                   height="402"
                   loading="lazy"
@@ -425,7 +534,7 @@ export default function Menovelle() {
                   <img 
                   src={gmoImage} 
                   alt="Non GMO" 
-                  className="w-16 h-16 md:w-16 md:h-16 object-contain" 
+                  className="w-16 h-16 md:w-16 md:h-16 object-contain select-none" 
                   width="405"
                   height="402"
                   loading="lazy"
@@ -454,7 +563,7 @@ export default function Menovelle() {
               <img 
                 src={freeShippingImage} 
                 alt="Fast & Free Shipping" 
-                className="w-24 h-24 md:w-32 md:h-32 object-contain" 
+                className="w-24 h-24 md:w-32 md:h-32 object-contain select-none" 
                 width="592"
                 height="593"
                 loading="lazy"
@@ -482,7 +591,7 @@ export default function Menovelle() {
         </div>
         <div className="py-8">
           <div className="container mx-auto px-4 max-w-6xl">
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-4">
             <BonusCard
               number="1"
               title="Perfect Shape in 21 Days: The Hollywood Blueprint for a Flat Belly & Toned Body"
@@ -513,110 +622,15 @@ export default function Menovelle() {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="py-20 bg-gradient-to-b from-white to-secondary/20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12 max-w-4xl mx-auto">
-            <h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 leading-tight">
-              <span className="text-red-600">Urgent Action Required! Limited-Time Offer Available, Don't Miss Out! </span>
-              <span className="text-primary">Hurry Up - Secure Your Menovelle Before Stock Runs Out!</span>
-            </h2>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-4 max-w-6xl mx-auto items-end mb-12">
-            {/* Basic Package */}
-            <div className="order-3 md:order-1">
-              <PricingCard 
-                title="BASIC" 
-                bottles="2 Bottles" 
-                supply="60 Day Supply"
-                price="79"
-                shipping="+ 9.99 SHIPPING"
-                image={basicImage}
-                youSave="200"
-                totalPrice={{ original: "358", final: "158" }}
-                buyNowUrl="https://www.checkout-ds24.com/product/612225?_ga=1453512559.1765449364&_b=NDkwNDA3O21lbm92ZWxsZTI0LmNvbS90ZXh0LnBocDt1bmRlZmluZWQ7dGV4dDsxOzE1ODtmZTt1bmRlZmluZWQ%3D&aff=vontogy"
-              />
-            </div>
-
-            {/* Best Value */}
-            <div className="order-1 md:order-2">
-              <PricingCard 
-                title="Best Value" 
-                bottles="6 Bottles + 3 Free Ebooks" 
-                supply="180 Day Supply"
-                price="49"
-                shipping="FREE SHIPPING"
-                isPopular={true}
-                image={bestValueImage}
-                youSave="780"
-                totalPrice={{ original: "1074", final: "294" }}
-                buyNowUrl="https://www.checkout-ds24.com/product/612229?_ga=1453512559.1765449364&_b=NDkwNDA3O21lbm92ZWxsZTI0LmNvbS90ZXh0LnBocDt1bmRlZmluZWQ7dGV4dDszOzI5NDtmZTt1bmRlZmluZWQ%3D&aff=vontogy"
-              />
-            </div>
-
-            {/* Most Popular */}
-            <div className="order-2 md:order-3">
-              <PricingCard 
-                title="MOST POPULAR" 
-                bottles="3 Bottles" 
-                supply="90 Day Supply"
-                price="69"
-                shipping="FREE SHIPPING"
-                image={mostPopularImage}
-                youSave="330"
-                totalPrice={{ original: "537", final: "207" }}
-                buyNowUrl="https://www.checkout-ds24.com/product/612226?_ga=1453512559.1765449364&_b=NDkwNDA3O21lbm92ZWxsZTI0LmNvbS90ZXh0LnBocDt1bmRlZmluZWQ7dGV4dDsyOzIwNztmZTt1bmRlZmluZWQ%3D&aff=vontogy"
-              />
-            </div>
-          </div>
-
-          {/* Reviews Section */}
-          <div className="flex flex-col items-center gap-1 mt-8 mb-8">
-            <div className="flex items-center gap-2">
-              <div className="flex items-center gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                ))}
-              </div>
-              <span className="text-gray-700 font-semibold text-lg md:text-xl">
-                4.9
-              </span>
-            </div>
-            <span className="text-gray-600 text-base md:text-lg">
-              Based on 11,369+ Reviews!
-            </span>
-          </div>
-        </div>
-
-        {/* Guarantee Badge */}
-        <div className="w-full py-8 px-4 bg-transparent">
-          <div className="flex justify-center max-w-5xl mx-auto">
-            {/* Money Back Guarantee Card */}
-            <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm max-w-2xl">
-              <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
-                <img 
-                  src={moneyBackImage} 
-                  alt="Money Back Guarantee" 
-                  className="w-32 h-32 md:w-24 md:h-24 shrink-0" 
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div className="flex-1 text-center">
-                  <p className="text-xl md:text-2xl font-semibold text-gray-900 mb-2">
-                    100% Satisfaction
-                  </p>
-                  <p className="text-lg md:text-xl font-semibold text-gray-900 mb-2">
-                    60-Day Money Back Guarantee
-                  </p>
-                  <p className="text-gray-600 mt-2 text-sm md:text-base">
-                    Your order today is covered by our iron-clad 60-day 100% money-back guarantee. If you are not impressed with the results, then just write to us and we'll refund every single cent.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PricingSection 
+        sectionId="pricing"
+        title={
+          <>
+            <span className="text-red-600">Urgent Action Required! Limited-Time Offer Available, Don't Miss Out! </span>
+            <span className="text-primary">Hurry Up - Secure Your Menovelle Before Stock Runs Out!</span>
+          </>
+        }
+      />
 
       {/* Certifications Strip */}
       <div className="bg-gray-100 py-6 shadow-lg relative z-20">
@@ -625,7 +639,7 @@ export default function Menovelle() {
             <img 
               src={certificationsImage} 
               alt="Certifications: GMP Certified, 100% Natural Ingredients, FDA Registered Facility, Manufactured in USA, Non-GMO" 
-              className="w-full max-w-2xl h-auto object-contain" 
+              className="w-full max-w-2xl h-auto object-contain select-none" 
               width="1193"
               height="206"
               loading="lazy"
@@ -701,7 +715,7 @@ If, for any reason, you aren't fully satisfied with the results, you can just re
                   <img 
                     src={labelImage} 
                     alt="Menovelle Product Label" 
-                    className="w-full max-w-2xl h-auto rounded-lg shadow-md" 
+                    className="w-full max-w-2xl h-auto rounded-lg shadow-md select-none" 
                     loading="lazy"
                     decoding="async"
                   />
@@ -752,6 +766,11 @@ If, for any reason, you aren't fully satisfied with the results, you can just re
         </div>
       </section>
 
+      {/* Pricing Section - Duplicate */}
+      <PricingSection 
+        title={<span className="text-primary">Claim your Discounted Menovelle Below While Stock Lasts</span>}
+      />
+
       {/* Scientific References Section */}
       <section className="py-20 bg-gray-100">
         <div className="container mx-auto px-4 max-w-6xl">
@@ -761,7 +780,7 @@ If, for any reason, you aren't fully satisfied with the results, you can just re
             <img 
               src={refsLogosImage} 
               alt="Scientific References Logos: healthline, ScienceDirect, nature, frontiers Science News" 
-              className="w-full max-w-4xl h-auto object-contain" 
+              className="w-full max-w-4xl h-auto object-contain select-none" 
               loading="lazy"
               decoding="async"
             />
@@ -821,7 +840,7 @@ If, for any reason, you aren't fully satisfied with the results, you can just re
             <img 
               src={logo} 
               alt="Menovelle" 
-              className="h-8 w-auto brightness-0 invert opacity-50" 
+              className="h-8 w-auto brightness-0 invert opacity-50 select-none" 
               loading="lazy"
               decoding="async"
             />
@@ -950,10 +969,10 @@ function IngredientCard({ image, name }: { image: string, name: string }) {
   return (
     <div className="flex flex-col items-center gap-4 text-center">
       <div className="bg-white rounded-full w-32 h-32 md:w-40 md:h-40 flex items-center justify-center mb-2 shadow-lg border-2 border-secondary/20 overflow-hidden">
-        <img 
-          src={image} 
-          alt={name} 
-          className="w-full h-full object-cover" 
+          <img 
+            src={image} 
+            alt={name} 
+            className="w-full h-full object-cover select-none"
           width="170"
           height="170"
           loading="lazy"
@@ -975,7 +994,7 @@ function BonusCard({ number, title, description, image, retailPrice = 55 }: { nu
           <img 
             src={image} 
             alt={title} 
-            className="w-full h-auto object-contain" 
+            className="w-full h-auto object-contain select-none" 
             width="1338"
             height="1170"
             loading="lazy"
@@ -1041,7 +1060,7 @@ function PricingCard({
           <img 
             src={image} 
             alt="bottle" 
-            className={`object-contain rounded-lg ${isPopular ? 'h-80 md:h-96' : 'h-64 md:h-80'}`}
+            className={`object-contain rounded-lg select-none ${isPopular ? 'h-80 md:h-96' : 'h-64 md:h-80'}`}
             width="1020"
             height="797"
             loading="lazy"
@@ -1129,7 +1148,7 @@ function PricingCard({
             <img 
               src="/images/menovelle/digistore.svg" 
               alt="DigiStore24" 
-              className="h-6 max-w-[140px]"
+              className="h-6 max-w-[140px] select-none"
             />
           </div>
         </div>
@@ -1148,7 +1167,7 @@ function PricingCard({
         )}
 
         <div className="flex items-center justify-center gap-2 text-sm font-medium text-gray-600 mb-2">
-          <img src={creditCardsImage} alt="We accept major credit cards" className="h-6" />
+          <img src={creditCardsImage} alt="We accept major credit cards" className="h-6 select-none" />
         </div>
         
         <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-center gap-2 text-sm text-gray-500">
