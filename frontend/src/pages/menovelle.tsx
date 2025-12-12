@@ -179,7 +179,7 @@ export default function Menovelle() {
               transition={{ delay: 0.2 }}
               className="text-lg md:text-xl text-gray-600 max-w-lg leading-relaxed mx-auto md:mx-0"
             >
-              Target the root cause of Hot Flashes, Night Sweats, and Hormonal Weight Gain with the only formula designed to activate your "Estro-Gene."
+              Target the root cause of Hot Flashes, Night Sweats, and Hormonal Weight Gain with the only formula designed to activate your "Estro-Gene".
             </motion.p>
             
             <motion.div 
@@ -645,7 +645,7 @@ export default function Menovelle() {
               question="How does Menovelle work?" 
               answer={`Scientists have discovered that menopausal women who deal with severe hot flashes are also those who gain the most belly fat. Upon closer look, experts discovered that this is caused by "estrogen-eating fat cells" that entrap this crucial hormone. This not only causes them to expand and cause weight gain but can also trigger all the menopausal side effects.
 
-Our solution reactivates and boosts the activity of the "estro-gene," the gene responsible for regulating estrogen and other essential feminine hormones. This will help your fat cells release the trapped estrogen for a blissful menopause and hormonal balance while helping you lose weight and enjoy a leaner body at the same time.`}
+Our solution reactivates and boosts the activity of the "estro-gene", the gene responsible for regulating estrogen and other essential feminine hormones. This will help your fat cells release the trapped estrogen for a blissful menopause and hormonal balance while helping you lose weight and enjoy a leaner body at the same time.`}
             />
             <FAQItem 
               question="What are the ingredients?" 
