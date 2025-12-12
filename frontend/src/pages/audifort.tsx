@@ -1,65 +1,65 @@
 import { useEffect } from "react";
 import { Check, Truck, Shield, ShoppingCart, Star, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/menovelle/button";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/menovelle/accordion";
+import { Button } from "@/components/ui/audifort/button";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/audifort/accordion";
 import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/menovelle/card";
+import { Card, CardContent } from "@/components/ui/audifort/card";
 
 // Assets
-const logo = "/images/menovelle/logo.webp";
-const basicImage = "/images/menovelle/images/basic.webp";
-const bestValueImage = "/images/menovelle/images/best_value.webp";
-const mostPopularImage = "/images/menovelle/images/most_popular.webp";
-const heroSectionImage = "/images/menovelle/images/herosection.webp";
-const whySectionImage = "/images/menovelle/images/whysection.webp";
-const ingredient1 = "/images/menovelle/images/ingredient1.webp";
-const ingredient2 = "/images/menovelle/images/ingredient2.webp";
-const ingredient3 = "/images/menovelle/images/ingredient3.webp";
-const ingredient4 = "/images/menovelle/images/ingredient4.webp";
-const ingredient5 = "/images/menovelle/images/ingredient5.webp";
-const ingredient6 = "/images/menovelle/images/ingredient6.webp";
-const ingredient7 = "/images/menovelle/images/ingredient7.webp";
-const ingredient8 = "/images/menovelle/images/ingredient8.webp";
-const ingredient9 = "/images/menovelle/images/ingredient9.webp";
-const ingredient10 = "/images/menovelle/images/ingredient10.webp";
-const bonus1 = "/images/menovelle/images/bonus1.webp";
-const bonus2 = "/images/menovelle/images/bonus2.webp";
-const bonus3 = "/images/menovelle/images/bonus3.webp";
-const freeShippingImage = "/images/menovelle/images/freeshp.webp";
-const moneyBackImage = "/images/menovelle/images/moneyback.webp";
-const certificationsImage = "/images/menovelle/images/certifications.webp";
-const naturalImage = "/images/menovelle/images/natural.webp";
-const noStimImage = "/images/menovelle/images/no-stim.webp";
-const easyImage = "/images/menovelle/images/easy.webp";
-const gmoImage = "/images/menovelle/images/gmo.webp";
-const labelImage = "/images/menovelle/images/label-1.webp";
-const refsLogosImage = "/images/menovelle/images/refs-logos.webp";
-const creditCardsImage = "/images/menovelle/images/credit-cards.webp";
+const logo = "/images/audifort/logo.webp";
+const basicImage = "/images/audifort/images/basic.webp";
+const bestValueImage = "/images/audifort/images/best_value.webp";
+const mostPopularImage = "/images/audifort/images/most_popular.webp";
+const heroSectionImage = "/images/audifort/images/herosection.webp";
+const whySectionImage = "/images/audifort/images/whysection.webp";
+const ingredient1 = "/images/audifort/images/ingredient1.webp";
+const ingredient2 = "/images/audifort/images/ingredient2.webp";
+const ingredient3 = "/images/audifort/images/ingredient3.webp";
+const ingredient4 = "/images/audifort/images/ingredient4.webp";
+const ingredient5 = "/images/audifort/images/ingredient5.webp";
+const ingredient6 = "/images/audifort/images/ingredient6.webp";
+const ingredient7 = "/images/audifort/images/ingredient7.webp";
+const ingredient8 = "/images/audifort/images/ingredient8.webp";
+const ingredient9 = "/images/audifort/images/ingredient9.webp";
+const ingredient10 = "/images/audifort/images/ingredient10.webp";
+const bonus1 = "/images/audifort/images/bonus1.webp";
+const bonus2 = "/images/audifort/images/bonus2.webp";
+const bonus3 = "/images/audifort/images/bonus3.webp";
+const freeShippingImage = "/images/audifort/images/freeshp.webp";
+const moneyBackImage = "/images/audifort/images/moneyback.webp";
+const certificationsImage = "/images/audifort/images/certifications.webp";
+const naturalImage = "/images/audifort/images/natural.webp";
+const noStimImage = "/images/audifort/images/no-stim.webp";
+const easyImage = "/images/audifort/images/easy.webp";
+const gmoImage = "/images/audifort/images/gmo.webp";
+const labelImage = "/images/audifort/images/label-1.webp";
+const refsLogosImage = "/images/audifort/images/refs-logos.webp";
+const creditCardsImage = "/images/audifort/images/credit-cards.webp";
 
-export default function Menovelle() {
+export default function Audifort() {
   useEffect(() => {
-    // Set Menovelle page metadata
-    document.title = "Menovelle™ Official | Natural Menopause Relief & Weight Support";
+    // Set Audifort page metadata
+    document.title = "Audifort™ Official | Natural Hearing Support";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute("content", "Stop hot flashes, night sweats & hormonal weight gain. The only formula targeting 'estrogen-eating' fat cells. 100% Natural. Order Risk-Free Today!");
+      metaDescription.setAttribute("content", "Support your hearing health naturally with Audifort™. 100% Natural. Order Risk-Free Today!");
     }
     
     const ogTitle = document.querySelector('meta[property="og:title"]');
     if (ogTitle) {
-      ogTitle.setAttribute("content", "Menovelle™ Official | Natural Menopause Relief & Weight Support");
+      ogTitle.setAttribute("content", "Audifort™ Official | Natural Hearing Support");
     }
     
     const ogDescription = document.querySelector('meta[property="og:description"]');
     if (ogDescription) {
-      ogDescription.setAttribute("content", "Stop hot flashes, night sweats & hormonal weight gain. The only formula targeting 'estrogen-eating' fat cells. 100% Natural. Order Risk-Free Today!");
+      ogDescription.setAttribute("content", "Support your hearing health naturally with Audifort™. 100% Natural. Order Risk-Free Today!");
     }
     
-    // Set Menovelle favicon
+    // Set Audifort favicon
     const favicon = document.querySelector('link[rel="icon"]') as HTMLLinkElement;
     if (favicon) {
-      favicon.href = "/images/menovelle/favicon.png";
+      favicon.href = "/images/audifort/favicon.png";
     }
 
     // Cleanup: restore Vontogy (Home) values when leaving the page
@@ -108,7 +108,7 @@ export default function Menovelle() {
               <span className="text-gray-600 hidden sm:inline">Powered by</span>
               <div className="flex items-center" title="DigiStore24 - Secure Payment Processing">
                 <img 
-                  src="/images/menovelle/digistore.svg" 
+                  src="/images/audifort/digistore.svg" 
                   alt="DigiStore24" 
                   className="h-8 md:h-9 max-w-[220px] md:max-w-[260px]"
                 />
@@ -123,7 +123,7 @@ export default function Menovelle() {
         <div className="container mx-auto px-4 max-w-6xl flex justify-between items-center">
           <img 
             src={logo} 
-            alt="Menovelle Logo" 
+            alt="Audifort Logo" 
             className="h-8 md:h-10 w-auto" 
             width="453"
             height="95"
@@ -152,7 +152,7 @@ export default function Menovelle() {
                <div className="absolute inset-0 bg-accent/20 blur-[60px] rounded-full transform scale-75" />
                <img 
                  src={heroSectionImage} 
-                 alt="Menovelle" 
+                 alt="Audifort" 
                  className="relative w-full max-w-[900px] md:max-w-[1200px] drop-shadow-2xl mx-auto" 
                  width="1200"
                  height="1080"
@@ -361,7 +361,7 @@ export default function Menovelle() {
                 <div className="flex items-center justify-center">
                   <img 
                     src={whySectionImage} 
-                    alt="Menovelle Bottles" 
+                    alt="Audifort Bottles" 
                     className="w-full max-w-md drop-shadow-2xl" 
                     width="1888"
                     height="1359"
@@ -700,7 +700,7 @@ If, for any reason, you aren't fully satisfied with the results, you can just re
                 <div className="flex justify-center mt-6">
                   <img 
                     src={labelImage} 
-                    alt="Menovelle Product Label" 
+                    alt="Audifort Product Label" 
                     className="w-full max-w-2xl h-auto rounded-lg shadow-md" 
                     loading="lazy"
                     decoding="async"
@@ -820,7 +820,7 @@ If, for any reason, you aren't fully satisfied with the results, you can just re
           <div className="mb-8 flex justify-center">
             <img 
               src={logo} 
-              alt="Menovelle" 
+              alt="Audifort" 
               className="h-8 w-auto brightness-0 invert opacity-50" 
               loading="lazy"
               decoding="async"
