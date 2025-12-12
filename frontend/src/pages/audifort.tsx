@@ -127,10 +127,10 @@ function PricingSection({ title, sectionId }: { title: React.ReactNode | string,
                   100% Satisfaction
                 </p>
                 <p className="text-lg md:text-xl font-semibold text-gray-900 mb-2">
-                  60-Day Money Back Guarantee
+                  90-Day Money Back Guarantee
                 </p>
                 <p className="text-gray-600 mt-2 text-sm md:text-base">
-                  Your order today is covered by our iron-clad 60-day 100% money-back guarantee. If you are not impressed with the results, then just write to us and we'll refund every single cent.
+                  Your order today is covered by our iron-clad 90-Day 100% money-back guarantee. If you are not impressed with the results, then just write to us and we'll refund every single cent.
                 </p>
               </div>
             </div>
@@ -675,7 +675,7 @@ That's a lot of value and savings, especially since our clients usually want to 
               question="What if Menovelle doesn't work for me? How do I get a refund?" 
               answer="The more results we see, the stronger we believe this menopause breakthrough solution has the power to transform the menopause transition into a breeze, help you reach your ideal weight, and be truly happy with the way you look and feel. It's true, though, that nothing works for 100% of the people who try it, as every woman's body works in its own way.
 
-That's why every bottle of this menopause breakthrough solution comes with an ironclad 60-day money-back guarantee.
+That's why every bottle of this menopause breakthrough solution comes with an ironclad 90-Day money-back guarantee.
 
 If, for any reason, you aren't fully satisfied with the results, you can just return what you haven't used for a prompt and full refund." 
             />
@@ -1056,13 +1056,13 @@ function PricingCard({
             </div>
             <div className="bg-blue-50 text-blue-700 font-medium py-2 px-4 rounded-lg inline-flex items-center gap-2 text-sm border border-blue-200">
               <Check className="w-4 h-4" />
-              <span>60-Day Money-Back Guarantee</span>
+              <span>90-Day Money-Back Guarantee</span>
             </div>
           </div>
         ) : (
           <div className="bg-blue-50 text-blue-700 font-medium py-2 px-4 rounded-lg mb-4 inline-flex items-center gap-2 text-sm border border-blue-200">
             <Check className="w-4 h-4" />
-            <span>60-Day Money-Back Guarantee</span>
+            <span>90-Day Money-Back Guarantee</span>
           </div>
         )}
 
