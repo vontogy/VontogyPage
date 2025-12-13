@@ -1026,7 +1026,7 @@ function PricingCard({
             </div>
             <div className="bg-blue-50 text-blue-700 font-medium py-2 px-4 rounded-lg inline-flex items-center gap-2 text-sm border border-blue-200">
               <Check className="w-4 h-4" />
-              <span>3 Free Ebooks</span>
+              <span>2 Free Ebooks</span>
             </div>
             <div className="bg-blue-50 text-blue-700 font-medium py-2 px-4 rounded-lg inline-flex items-center gap-2 text-sm border border-blue-200">
               <Check className="w-4 h-4" />
