@@ -5,14 +5,14 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Home from "@/pages/home";
 import Menovelle from "@/pages/menovelle";
-import Audifort from "@/pages/audifort";
+import Nervovive from "@/pages/nervovive";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/menovelle" component={Menovelle} />
-      <Route path="/audifort" component={Audifort} />
+      <Route path="/nervovive" component={Nervovive} />
       <Route component={Home} />
     </Switch>
   );

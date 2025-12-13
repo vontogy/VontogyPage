@@ -1,36 +1,36 @@
 import { useEffect } from "react";
 import { Check, Truck, Shield, ShoppingCart, Star, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/audifort/button";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/audifort/accordion";
+import { Button } from "@/components/ui/nervovive/button";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/nervovive/accordion";
 import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/audifort/card";
+import { Card, CardContent } from "@/components/ui/nervovive/card";
 
 // Assets
-const logo = "/images/audifort/logo.webp";
-const basicImage = "/images/audifort/images/basic.webp";
-const bestValueImage = "/images/audifort/images/best_value.webp";
-const mostPopularImage = "/images/audifort/images/most_popular.webp";
-const heroSectionImage = "/images/audifort/images/herosection.webp";
-const whySectionImage = "/images/audifort/images/whysection.webp";
-const ingredient1 = "/images/audifort/images/ingredient1.webp";
-const ingredient2 = "/images/audifort/images/ingredient2.webp";
-const ingredient3 = "/images/audifort/images/ingredient3.webp";
-const ingredient4 = "/images/audifort/images/ingredient4.webp";
-const ingredient5 = "/images/audifort/images/ingredient5.webp";
-const ingredient6 = "/images/audifort/images/ingredient6.webp";
-const bonus1 = "/images/audifort/images/bonus1.webp";
-const bonus2 = "/images/audifort/images/bonus2.webp";
-const bonus3 = "/images/audifort/images/bonus3.webp";
-const freeShippingImage = "/images/audifort/images/freeshp.webp";
-const moneyBackImage = "/images/audifort/images/moneyback.webp";
-const certificationsImage = "/images/audifort/images/certifications.webp";
-const naturalImage = "/images/audifort/images/natural.webp";
-const noStimImage = "/images/audifort/images/no-stim.webp";
-const easyImage = "/images/audifort/images/easy.webp";
-const gmoImage = "/images/audifort/images/gmo.webp";
-const labelImage = "/images/audifort/images/label-1.webp";
-const refsLogosImage = "/images/audifort/images/refs-logos.webp";
-const creditCardsImage = "/images/audifort/images/credit-cards.webp";
+const logo = "/images/nervovive/logo.webp";
+const basicImage = "/images/nervovive/images/basic.webp";
+const bestValueImage = "/images/nervovive/images/best_value.webp";
+const mostPopularImage = "/images/nervovive/images/most_popular.webp";
+const heroSectionImage = "/images/nervovive/images/herosection.webp";
+const whySectionImage = "/images/nervovive/images/whysection.webp";
+const ingredient1 = "/images/nervovive/images/ingredient1.webp";
+const ingredient2 = "/images/nervovive/images/ingredient2.webp";
+const ingredient3 = "/images/nervovive/images/ingredient3.webp";
+const ingredient4 = "/images/nervovive/images/ingredient4.webp";
+const ingredient5 = "/images/nervovive/images/ingredient5.webp";
+const ingredient6 = "/images/nervovive/images/ingredient6.webp";
+const bonus1 = "/images/nervovive/images/bonus1.webp";
+const bonus2 = "/images/nervovive/images/bonus2.webp";
+const bonus3 = "/images/nervovive/images/bonus3.webp";
+const freeShippingImage = "/images/nervovive/images/freeshp.webp";
+const moneyBackImage = "/images/nervovive/images/moneyback.webp";
+const certificationsImage = "/images/nervovive/images/certifications.webp";
+const naturalImage = "/images/nervovive/images/natural.webp";
+const noStimImage = "/images/nervovive/images/no-stim.webp";
+const easyImage = "/images/nervovive/images/easy.webp";
+const gmoImage = "/images/nervovive/images/gmo.webp";
+const labelImage = "/images/nervovive/images/label-1.webp";
+const refsLogosImage = "/images/nervovive/images/refs-logos.webp";
+const creditCardsImage = "/images/nervovive/images/credit-cards.webp";
 
 // Reusable Pricing Section Component
 function PricingSection({ title, sectionId }: { title: React.ReactNode | string, sectionId?: string }) {
@@ -48,14 +48,13 @@ function PricingSection({ title, sectionId }: { title: React.ReactNode | string,
           <div className="order-3 md:order-1">
             <PricingCard 
               title="BASIC" 
-              bottles="2 Bottles" 
-              supply="60 Day Supply"
-              price="79"
+              bottles="1 Bottle" 
+              supply="30 Day Supply"
+              price="69"
               shipping="+ 9.99 SHIPPING"
               image={basicImage}
-              youSave="200"
-              totalPrice={{ original: "358", final: "158" }}
-              buyNowUrl="https://www.checkout-ds24.com/product/627130?aff=vontogy&sid1=68f94a9fc577e376b8adc43c&utm_content=68f94a9fc577e376b8adc43c"
+              totalPrice={{ original: "99", final: "69" }}
+              buyNowUrl="https://www.checkout-ds24.com/product/558763?_ga=1469951698.1765446177&_b=NDkwNDU2O2dldG5lcnZvdml2ZTI0LmNvbS90ZXh0LnBocDt1bmRlZmluZWQ7dGV4dDsxOzY5O2ZlO3VuZGVmaW5lZA%3D%3D&aff=vontogy"
             />
           </div>
 
@@ -63,15 +62,14 @@ function PricingSection({ title, sectionId }: { title: React.ReactNode | string,
           <div className="order-1 md:order-2">
             <PricingCard 
               title="Best Value" 
-              bottles="6 Bottles + 3 Free Ebooks" 
+              bottles="6 Bottles + 2 Free Ebooks" 
               supply="180 Day Supply"
               price="49"
               shipping="FREE SHIPPING"
               isPopular={true}
               image={bestValueImage}
-              youSave="780"
-              totalPrice={{ original: "1074", final: "294" }}
-              buyNowUrl="https://www.checkout-ds24.com/product/627132?aff=vontogy&sid1=68f94a9fc577e376b8adc43c&utm_content=68f94a9fc577e376b8adc43c"
+              totalPrice={{ original: "594", final: "294" }}
+              buyNowUrl="https://www.checkout-ds24.com/product/558766?_ga=1469951698.1765446177&_b=NDkwNDU2O2dldG5lcnZvdml2ZTI0LmNvbS90ZXh0LnBocDt1bmRlZmluZWQ7dGV4dDszOzI5NDtmZTt1bmRlZmluZWQ%3D&aff=vontogy"
             />
           </div>
 
@@ -81,12 +79,11 @@ function PricingSection({ title, sectionId }: { title: React.ReactNode | string,
               title="MOST POPULAR" 
               bottles="3 Bottles" 
               supply="90 Day Supply"
-              price="69"
+              price="59"
               shipping="FREE SHIPPING"
               image={mostPopularImage}
-              youSave="330"
-              totalPrice={{ original: "537", final: "207" }}
-              buyNowUrl="https://www.checkout-ds24.com/product/627131?aff=vontogy&sid1=68f94a9fc577e376b8adc43c&utm_content=68f94a9fc577e376b8adc43c"
+              totalPrice={{ original: "537", final: "177" }}
+              buyNowUrl="https://www.checkout-ds24.com/product/558765?_ga=1469951698.1765446177&_b=NDkwNDU2O2dldG5lcnZvdml2ZTI0LmNvbS90ZXh0LnBocDt1bmRlZmluZWQ7dGV4dDsyOzE3NztmZTt1bmRlZmluZWQ%3D&aff=vontogy"
             />
           </div>
         </div>
@@ -104,7 +101,7 @@ function PricingSection({ title, sectionId }: { title: React.ReactNode | string,
             </span>
           </div>
           <span className="text-gray-600 text-base md:text-lg">
-            Based on 11,369+ Reviews!
+            Based on 10.369+ Reviews!
           </span>
         </div>
       </div>
@@ -127,10 +124,10 @@ function PricingSection({ title, sectionId }: { title: React.ReactNode | string,
                   100% Satisfaction
                 </p>
                 <p className="text-lg md:text-xl font-semibold text-gray-900 mb-2">
-                  90-Day Money Back Guarantee
+                  60-Day Money Back Guarantee
                 </p>
                 <p className="text-gray-600 mt-2 text-sm md:text-base">
-                  Your order today is covered by our iron-clad 90-Day 100% money-back guarantee. If you are not impressed with the results, then just write to us and we'll refund every single cent.
+                  Your order today is covered by our iron-clad 60-Day 100% money-back guarantee. If you are not impressed with the results, then just write to us and we'll refund every single cent.
                 </p>
               </div>
             </div>
@@ -141,30 +138,30 @@ function PricingSection({ title, sectionId }: { title: React.ReactNode | string,
   );
 }
 
-export default function Audifort() {
+export default function Nervovive() {
   useEffect(() => {
-    // Set Audifort page metadata
-    document.title = "Audifort™ Official | Natural Hearing Support";
+    // Set Nervovive page metadata
+    document.title = "Nervovive™ Official | Natural Hearing Support";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute("content", "Support your hearing health naturally with Audifort™. 100% Natural. Order Risk-Free Today!");
+      metaDescription.setAttribute("content", "Support your hearing health naturally with Nervovive™. 100% Natural. Order Risk-Free Today!");
     }
     
     const ogTitle = document.querySelector('meta[property="og:title"]');
     if (ogTitle) {
-      ogTitle.setAttribute("content", "Audifort™ Official | Natural Hearing Support");
+      ogTitle.setAttribute("content", "Nervovive™ Official | Natural Hearing Support");
     }
     
     const ogDescription = document.querySelector('meta[property="og:description"]');
     if (ogDescription) {
-      ogDescription.setAttribute("content", "Support your hearing health naturally with Audifort™. 100% Natural. Order Risk-Free Today!");
+      ogDescription.setAttribute("content", "Support your hearing health naturally with Nervovive™. 100% Natural. Order Risk-Free Today!");
     }
     
-    // Set Audifort favicon
+    // Set Nervovive favicon
     const favicon = document.querySelector('link[rel="icon"]') as HTMLLinkElement;
     if (favicon) {
-      favicon.href = "/images/audifort/favicon.png";
+      favicon.href = "/images/nervovive/favicon.png";
     }
 
     // Cleanup: restore Vontogy (Home) values when leaving the page
@@ -213,7 +210,7 @@ export default function Audifort() {
               <span className="text-gray-600 hidden sm:inline">Powered by</span>
               <div className="flex items-center" title="DigiStore24 - Secure Payment Processing">
             <img 
-              src="/images/audifort/digistore.svg" 
+              src="/images/nervovive/digistore.svg" 
               alt="DigiStore24" 
               className="h-8 md:h-9 max-w-[220px] md:max-w-[260px] select-none"
                 />
@@ -228,7 +225,7 @@ export default function Audifort() {
         <div className="container mx-auto px-4 max-w-6xl flex justify-between items-center">
               <img 
                 src={logo} 
-                alt="Audifort Logo" 
+                alt="Nervovive Logo" 
                 className="h-8 md:h-10 w-auto select-none"
             width="453"
             height="95"
@@ -257,7 +254,7 @@ export default function Audifort() {
                <div className="absolute inset-0 bg-[#00515F]/20 blur-[60px] rounded-full transform scale-75" />
               <img 
                 src={heroSectionImage} 
-                alt="Audifort" 
+                alt="Nervovive" 
                 className="relative w-full max-w-[900px] md:max-w-[1200px] drop-shadow-2xl mx-auto select-none"
                  width="1200"
                  height="1080"
@@ -304,7 +301,7 @@ export default function Audifort() {
                 </span>
               </div>
               <span className="text-gray-600 text-sm md:text-base">
-                Based on 11,369+ Reviews!
+                Based on 10.369+ Reviews!
               </span>
             </motion.div>
             
@@ -337,7 +334,7 @@ export default function Audifort() {
                 className="w-full flex justify-center md:w-auto"
               >
                 <a 
-                  href="https://audifort.com/d/order-now.php#aff=vontogy"
+                  href="https://getnervovive24.com/text.php?aff=vontogy"
                   target="_blank"
                   rel="nofollow sponsored noopener noreferrer"
                   className="h-12 md:h-14 px-4 md:px-8 text-lg md:text-base lg:text-lg bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold rounded-xl shadow-lg shadow-blue-500/25 transition-all hover:scale-105 flex items-center gap-2 mx-auto md:mx-0 w-full md:w-auto justify-center"
@@ -450,7 +447,7 @@ export default function Audifort() {
                 <div className="flex items-center justify-center">
                   <img 
                     src={whySectionImage} 
-                    alt="Audifort Bottles" 
+                    alt="Nervovive Bottles" 
                     className="w-full max-w-md drop-shadow-2xl select-none" 
                     width="1888"
                     height="1359"
@@ -675,7 +672,7 @@ That's a lot of value and savings, especially since our clients usually want to 
               question="What if Menovelle doesn't work for me? How do I get a refund?" 
               answer="The more results we see, the stronger we believe this menopause breakthrough solution has the power to transform the menopause transition into a breeze, help you reach your ideal weight, and be truly happy with the way you look and feel. It's true, though, that nothing works for 100% of the people who try it, as every woman's body works in its own way.
 
-That's why every bottle of this menopause breakthrough solution comes with an ironclad 90-Day money-back guarantee.
+That's why every bottle of this menopause breakthrough solution comes with an ironclad 60-Day money-back guarantee.
 
 If, for any reason, you aren't fully satisfied with the results, you can just return what you haven't used for a prompt and full refund." 
             />
@@ -694,7 +691,7 @@ If, for any reason, you aren't fully satisfied with the results, you can just re
                 <div className="flex justify-center mt-6">
                   <img 
                     src={labelImage} 
-                    alt="Audifort Product Label" 
+                    alt="Nervovive Product Label" 
                     className="w-full max-w-2xl h-auto rounded-lg shadow-md select-none" 
                     loading="lazy"
                     decoding="async"
@@ -748,7 +745,7 @@ If, for any reason, you aren't fully satisfied with the results, you can just re
 
       {/* Pricing Section - Duplicate */}
       <PricingSection 
-        title={<span className="text-primary">Claim your Discounted Audifort Below While Stock Lasts</span>}
+        title={<span className="text-primary">Claim your Discounted Nervovive Below While Stock Lasts</span>}
       />
 
       {/* Scientific References Section */}
@@ -807,7 +804,7 @@ If, for any reason, you aren't fully satisfied with the results, you can just re
           <div className="mb-8 flex justify-center">
             <img 
               src={logo} 
-              alt="Audifort" 
+              alt="Nervovive" 
               className="h-8 w-auto brightness-0 invert opacity-50 select-none" 
               loading="lazy"
               decoding="async"
@@ -1056,13 +1053,13 @@ function PricingCard({
             </div>
             <div className="bg-blue-50 text-blue-700 font-medium py-2 px-4 rounded-lg inline-flex items-center gap-2 text-sm border border-blue-200">
               <Check className="w-4 h-4" />
-              <span>90-Day Money-Back Guarantee</span>
+              <span>60-Day Money-Back Guarantee</span>
             </div>
           </div>
         ) : (
           <div className="bg-blue-50 text-blue-700 font-medium py-2 px-4 rounded-lg mb-4 inline-flex items-center gap-2 text-sm border border-blue-200">
             <Check className="w-4 h-4" />
-            <span>90-Day Money-Back Guarantee</span>
+            <span>60-Day Money-Back Guarantee</span>
           </div>
         )}
 
