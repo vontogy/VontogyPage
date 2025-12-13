@@ -271,7 +271,7 @@ export default function Nervovive() {
               transition={{ delay: 0.1 }}
               className="text-4xl sm:text-5xl md:text-5xl font-black leading-none tracking-tight text-gray-900"
             >
-              Finally. Natural Relief for Tingling, Burning, and Numbness in Your Hands & Feet.
+              Finally. Natural Relief for Tingling, Burning, and Numbness Throughout Your Entire Body.
             </motion.h1>
             
             <motion.p 
