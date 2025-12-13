@@ -38,6 +38,12 @@ export default function Home() {
                 >
                   Menovelle™ - Natural Menopause Relief & Weight Support
                 </a>
+                <a 
+                  href="/nervovive" 
+                  className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 rounded-lg transition-all hover:scale-105 shadow-lg"
+                >
+                  Nervovive™ - Natural Nerve Support for Tingling & Burning
+                </a>
               </div>
             </div>
           </div>

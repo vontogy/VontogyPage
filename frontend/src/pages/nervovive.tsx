@@ -77,13 +77,14 @@ function PricingSection({ title, sectionId }: { title: React.ReactNode | string,
           <div className="order-2 md:order-3">
             <PricingCard 
               title="MOST POPULAR" 
-              bottles="3 Bottles" 
+              bottles="3 Bottles + 2 Free Ebooks" 
               supply="90 Day Supply"
               price="59"
               shipping="FREE SHIPPING"
               image={mostPopularImage}
               totalPrice={{ original: "537", final: "177" }}
               buyNowUrl="https://www.checkout-ds24.com/product/558765?_ga=1469951698.1765446177&_b=NDkwNDU2O2dldG5lcnZvdml2ZTI0LmNvbS90ZXh0LnBocDt1bmRlZmluZWQ7dGV4dDsyOzE3NztmZTt1bmRlZmluZWQ%3D&aff=vontogy"
+              hasFreeEbooks={true}
             />
           </div>
         </div>
@@ -141,21 +142,21 @@ function PricingSection({ title, sectionId }: { title: React.ReactNode | string,
 export default function Nervovive() {
   useEffect(() => {
     // Set Nervovive page metadata
-    document.title = "Nervovive™ Official | Natural Hearing Support";
+    document.title = "Stop The Burning & Tingling | Nervovive™ Nerve Support";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute("content", "Support your hearing health naturally with Nervovive™. 100% Natural. Order Risk-Free Today!");
+      metaDescription.setAttribute("content", "Don't let nerve pain shrink your world. Discover the breakthrough natural ritual that soothes extremities fast. 60-Day Money Back Guarantee.");
     }
     
     const ogTitle = document.querySelector('meta[property="og:title"]');
     if (ogTitle) {
-      ogTitle.setAttribute("content", "Nervovive™ Official | Natural Hearing Support");
+      ogTitle.setAttribute("content", "Stop The Burning & Tingling | Nervovive™ Nerve Support");
     }
     
     const ogDescription = document.querySelector('meta[property="og:description"]');
     if (ogDescription) {
-      ogDescription.setAttribute("content", "Support your hearing health naturally with Nervovive™. 100% Natural. Order Risk-Free Today!");
+      ogDescription.setAttribute("content", "Don't let nerve pain shrink your world. Discover the breakthrough natural ritual that soothes extremities fast. 60-Day Money Back Guarantee.");
     }
     
     // Set Nervovive favicon
@@ -979,7 +980,8 @@ function PricingCard({
   image,
   youSave,
   totalPrice,
-  buyNowUrl
+  buyNowUrl,
+  hasFreeEbooks = false
 }: any) {
   return (
     <div className={`relative bg-white rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-xl ${isPopular ? 'border-2 border-yellow-500 shadow-lg z-10 order-first md:order-none' : 'border border-gray-200 shadow-md'}`}>
@@ -1024,6 +1026,17 @@ function PricingCard({
               <Check className="w-4 h-4" />
               <span>Biggest Discount</span>
             </div>
+            <div className="bg-blue-50 text-blue-700 font-medium py-2 px-4 rounded-lg inline-flex items-center gap-2 text-sm border border-blue-200">
+              <Check className="w-4 h-4" />
+              <span>2 Free Ebooks</span>
+            </div>
+            <div className="bg-blue-50 text-blue-700 font-medium py-2 px-4 rounded-lg inline-flex items-center gap-2 text-sm border border-blue-200">
+              <Check className="w-4 h-4" />
+              <span>60-Day Money-Back Guarantee</span>
+            </div>
+          </div>
+        ) : hasFreeEbooks ? (
+          <div className="space-y-2 mb-4">
             <div className="bg-blue-50 text-blue-700 font-medium py-2 px-4 rounded-lg inline-flex items-center gap-2 text-sm border border-blue-200">
               <Check className="w-4 h-4" />
               <span>2 Free Ebooks</span>
