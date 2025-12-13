@@ -563,12 +563,12 @@ export default function Nervovive() {
       <section className="bg-gradient-to-b from-primary/10 to-primary/5">
         <div className="bg-primary/20 w-full text-center py-6">
           <h2 className="text-2xl md:text-4xl font-bold text-gray-900 px-4">
-            Unlock 3 Premium Gifts FREE With Your 6-Bottle Bundle
+            Unlock 2 Premium Gifts FREE With Your 6-Bottle Bundle
           </h2>
         </div>
         <div className="py-8">
           <div className="container mx-auto px-4 max-w-6xl">
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-2 gap-4 justify-items-center max-w-4xl mx-auto">
             <BonusCard
               number="1"
               title="Perfect Shape in 21 Days: The Hollywood Blueprint for a Flat Belly & Toned Body"
@@ -582,16 +582,10 @@ export default function Nervovive() {
               image={bonus2}
               retailPrice={54}
             />
-            <BonusCard
-              number="3"
-              title="Bye-Bye Dark Spots: Easy Tricks for Glowing, Even Skin"
-              description="This e-book reveals the WORST thing you can do if you want to avoid more age spots (most women think this is healthy for their skin)."
-              image={bonus3}
-            />
           </div>
           <div className="text-center mt-12">
             <p className="text-lg text-gray-700 font-medium">
-              Accelerate your results with our exclusive digital guides for sleep, detox, and diet (Valued at $164).
+              Accelerate your results with our exclusive digital guides for sleep, detox, and diet (Valued at $109).
             </p>
           </div>
           </div>
@@ -633,48 +627,30 @@ export default function Nervovive() {
           
           <Accordion type="single" collapsible className="w-full space-y-4">
             <FAQItem 
-              question="How does Menovelle work?" 
-              answer={`Scientists have discovered that menopausal women who deal with severe hot flashes are also those who gain the most belly fat. Upon closer look, experts discovered that this is caused by "estrogen-eating fat cells" that entrap this crucial hormone. This not only causes them to expand and cause weight gain but can also trigger all the menopausal side effects.
-
-Our solution reactivates and boosts the activity of the "estro-gene", the gene responsible for regulating estrogen and other essential feminine hormones. This will help your fat cells release the trapped estrogen for a blissful menopause and hormonal balance while helping you lose weight and enjoy a leaner body at the same time.`}
+              question="How does Nervovive work?" 
+              answer="This formula mixes powerful ingredients meant to help your body absorb the necessary nutrients and manage neuropathy. What makes this product special is that it also naturally supports normal blood sugar levels while helping your organism properly absorb and regulate the amount of sugar it gets." 
             />
             <FAQItem 
-              question="What are the ingredients?" 
-              answer="Menovelle contains cranberry extract, bearberry, mimosa pudica, berberine, and a probiotic blend. Please refer to the product label for complete ingredient information and consult your healthcare provider if you have any questions." 
+              question="Are there any side effects?" 
+              answer="As always, if you currently have a medical condition or you’re taking other prescription medication, we advise you to show a bottle of NervoVive to your doctor before you use it, just to put your mind at ease." 
             />
             <FAQItem 
               question="What is your money-back guarantee?" 
-              answer="Our money-back guarantee is a risk-free option we are offering you because we believe in this formula so much.
+              answer="It is a risk-free option we are offering you because we believe in this formula so much.
 
-It means you can try Menovelle for a full 60 days.
+It means you can try Nervovive for a full 60 days.
 
-And if you are not completely convinced by the amazing results, then you just get your money back.
-
-All you have to do for a full refund is send us ALL the bottles, whether they are empty or not, and the packing slip." 
+And if you are not completely convinced by the amazing results, then just get in touch with us and we’ll refund your money." 
             />
             <FAQItem 
               question="How many bottles should I order?" 
-              answer="Most of our clients order six bottles at a time, and many double their orders because they want to enjoy the benefits of this amazing formula for as long as possible.
+              answer="Most of our clients order six bottles at a time, and many double their order because they want to enjoy the benefits of this amazing nerve-soothing formula for as long as possible.
 
-It is a smart choice because those who buy the 6-bottle pack get a massive discount, free shipping, and 2 free online guides.
-
-That's a lot of value and savings, especially since our clients usually want to reorder once they start seeing results." 
+It is a smart choice because those who buy the 6-bottle pack get a massive discount, free shipping, and 2 free online guides. That's a lot of value and savings, especially since our clients usually want to reorder once they start feeling results." 
             />
             <FAQItem 
-              question="How do I use Menovelle?" 
-              answer="We recommend you take two capsules per day in the morning with a warm drink for a seamless transition towards menopause and mental and physical well-being. It's also all you have to do to start saying goodbye to that menopausal belly and feel like yourself again." 
-            />
-            <FAQItem 
-              question="Am I enrolled in a subscription?" 
-              answer="You can rest assured that this is a one-time payment. There won't be any recurring shipments or charges to your card. Should you wish to purchase more bottles later, you can do so by placing another order on our website." 
-            />
-            <FAQItem 
-              question="What if Menovelle doesn't work for me? How do I get a refund?" 
-              answer="The more results we see, the stronger we believe this menopause breakthrough solution has the power to transform the menopause transition into a breeze, help you reach your ideal weight, and be truly happy with the way you look and feel. It's true, though, that nothing works for 100% of the people who try it, as every woman's body works in its own way.
-
-That's why every bottle of this menopause breakthrough solution comes with an ironclad 60-Day money-back guarantee.
-
-If, for any reason, you aren't fully satisfied with the results, you can just return what you haven't used for a prompt and full refund." 
+              question="How do I use Nervovive?" 
+              answer="Simply take 2 capsules per day, with plenty of water." 
             />
             <FAQItem 
               question="Is this a one-off purchase?" 
@@ -686,7 +662,7 @@ If, for any reason, you aren't fully satisfied with the results, you can just re
               </AccordionTrigger>
               <AccordionContent className="text-gray-600 leading-relaxed pb-4 text-base">
                 <p className="mb-4">
-                  In every single Menovelle capsule there is a proprietary formula of scientifically proven, extra-strong ingredients, carefully combined to support a normal hormonal balance.
+                Inside every single capsule of NervoVive is a proprietary formula of scientifically proven, extra-strong ingredients, custom-made to support the health of your nervous system and help you enjoy a normal, discomfort-free life.
                 </p>
                 <div className="flex justify-center mt-6">
                   <img 

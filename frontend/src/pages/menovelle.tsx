@@ -662,10 +662,6 @@ export default function Menovelle() {
 Our solution reactivates and boosts the activity of the "estro-gene", the gene responsible for regulating estrogen and other essential feminine hormones. This will help your fat cells release the trapped estrogen for a blissful menopause and hormonal balance while helping you lose weight and enjoy a leaner body at the same time.`}
             />
             <FAQItem 
-              question="What are the ingredients?" 
-              answer="Menovelle contains cranberry extract, bearberry, mimosa pudica, berberine, and a probiotic blend. Please refer to the product label for complete ingredient information and consult your healthcare provider if you have any questions." 
-            />
-            <FAQItem 
               question="What is your money-back guarantee?" 
               answer="Our money-back guarantee is a risk-free option we are offering you because we believe in this formula so much.
 
