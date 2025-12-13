@@ -1,36 +1,36 @@
 import { useEffect } from "react";
 import { Check, Truck, Shield, ShoppingCart, Star, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/audifort/button";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/audifort/accordion";
+import { Button } from "@/components/ui/nervovive/button";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/nervovive/accordion";
 import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/audifort/card";
+import { Card, CardContent } from "@/components/ui/nervovive/card";
 
 // Assets
-const logo = "/images/audifort/logo.webp";
-const basicImage = "/images/audifort/images/basic.webp";
-const bestValueImage = "/images/audifort/images/best_value.webp";
-const mostPopularImage = "/images/audifort/images/most_popular.webp";
-const heroSectionImage = "/images/audifort/images/herosection.webp";
-const whySectionImage = "/images/audifort/images/whysection.webp";
-const ingredient1 = "/images/audifort/images/ingredient1.webp";
-const ingredient2 = "/images/audifort/images/ingredient2.webp";
-const ingredient3 = "/images/audifort/images/ingredient3.webp";
-const ingredient4 = "/images/audifort/images/ingredient4.webp";
-const ingredient5 = "/images/audifort/images/ingredient5.webp";
-const ingredient6 = "/images/audifort/images/ingredient6.webp";
-const bonus1 = "/images/audifort/images/bonus1.webp";
-const bonus2 = "/images/audifort/images/bonus2.webp";
-const bonus3 = "/images/audifort/images/bonus3.webp";
-const freeShippingImage = "/images/audifort/images/freeshp.webp";
-const moneyBackImage = "/images/audifort/images/moneyback.webp";
-const certificationsImage = "/images/audifort/images/certifications.webp";
-const naturalImage = "/images/audifort/images/natural.webp";
-const noStimImage = "/images/audifort/images/no-stim.webp";
-const easyImage = "/images/audifort/images/easy.webp";
-const gmoImage = "/images/audifort/images/gmo.webp";
-const labelImage = "/images/audifort/images/label-1.webp";
-const refsLogosImage = "/images/audifort/images/refs-logos.webp";
-const creditCardsImage = "/images/audifort/images/credit-cards.webp";
+const logo = "/images/nervovive/logo.webp";
+const basicImage = "/images/nervovive/images/basic.webp";
+const bestValueImage = "/images/nervovive/images/best_value.webp";
+const mostPopularImage = "/images/nervovive/images/most_popular.webp";
+const heroSectionImage = "/images/nervovive/images/herosection.webp";
+const whySectionImage = "/images/nervovive/images/whysection.webp";
+const ingredient1 = "/images/nervovive/images/ingredient1.webp";
+const ingredient2 = "/images/nervovive/images/ingredient2.webp";
+const ingredient3 = "/images/nervovive/images/ingredient3.webp";
+const ingredient4 = "/images/nervovive/images/ingredient4.webp";
+const ingredient5 = "/images/nervovive/images/ingredient5.webp";
+const ingredient6 = "/images/nervovive/images/ingredient6.webp";
+const bonus1 = "/images/nervovive/images/bonus1.webp";
+const bonus2 = "/images/nervovive/images/bonus2.webp";
+const bonus3 = "/images/nervovive/images/bonus3.webp";
+const freeShippingImage = "/images/nervovive/images/freeshp.webp";
+const moneyBackImage = "/images/nervovive/images/moneyback.webp";
+const certificationsImage = "/images/nervovive/images/certifications.webp";
+const naturalImage = "/images/nervovive/images/natural.webp";
+const noStimImage = "/images/nervovive/images/no-stim.webp";
+const easyImage = "/images/nervovive/images/easy.webp";
+const gmoImage = "/images/nervovive/images/gmo.webp";
+const labelImage = "/images/nervovive/images/label-1.webp";
+const refsLogosImage = "/images/nervovive/images/refs-logos.webp";
+const creditCardsImage = "/images/nervovive/images/credit-cards.webp";
 
 // Reusable Pricing Section Component
 function PricingSection({ title, sectionId }: { title: React.ReactNode | string, sectionId?: string }) {
@@ -48,14 +48,13 @@ function PricingSection({ title, sectionId }: { title: React.ReactNode | string,
           <div className="order-3 md:order-1">
             <PricingCard 
               title="BASIC" 
-              bottles="2 Bottles" 
-              supply="60 Day Supply"
-              price="79"
+              bottles="1 Bottle" 
+              supply="30 Day Supply"
+              price="69"
               shipping="+ 9.99 SHIPPING"
               image={basicImage}
-              youSave="200"
-              totalPrice={{ original: "358", final: "158" }}
-              buyNowUrl="https://www.checkout-ds24.com/product/627130?aff=vontogy&sid1=68f94a9fc577e376b8adc43c&utm_content=68f94a9fc577e376b8adc43c"
+              totalPrice={{ original: "99", final: "69" }}
+              buyNowUrl="https://www.checkout-ds24.com/product/558763?_ga=1469951698.1765446177&_b=NDkwNDU2O2dldG5lcnZvdml2ZTI0LmNvbS90ZXh0LnBocDt1bmRlZmluZWQ7dGV4dDsxOzY5O2ZlO3VuZGVmaW5lZA%3D%3D&aff=vontogy"
             />
           </div>
 
@@ -63,15 +62,14 @@ function PricingSection({ title, sectionId }: { title: React.ReactNode | string,
           <div className="order-1 md:order-2">
             <PricingCard 
               title="Best Value" 
-              bottles="6 Bottles + 3 Free Ebooks" 
+              bottles="6 Bottles + 2 Free Ebooks" 
               supply="180 Day Supply"
               price="49"
               shipping="FREE SHIPPING"
               isPopular={true}
               image={bestValueImage}
-              youSave="780"
-              totalPrice={{ original: "1074", final: "294" }}
-              buyNowUrl="https://www.checkout-ds24.com/product/627132?aff=vontogy&sid1=68f94a9fc577e376b8adc43c&utm_content=68f94a9fc577e376b8adc43c"
+              totalPrice={{ original: "594", final: "294" }}
+              buyNowUrl="https://www.checkout-ds24.com/product/558766?_ga=1469951698.1765446177&_b=NDkwNDU2O2dldG5lcnZvdml2ZTI0LmNvbS90ZXh0LnBocDt1bmRlZmluZWQ7dGV4dDszOzI5NDtmZTt1bmRlZmluZWQ%3D&aff=vontogy"
             />
           </div>
 
@@ -79,14 +77,14 @@ function PricingSection({ title, sectionId }: { title: React.ReactNode | string,
           <div className="order-2 md:order-3">
             <PricingCard 
               title="MOST POPULAR" 
-              bottles="3 Bottles" 
+              bottles="3 Bottles + 2 Free Ebooks" 
               supply="90 Day Supply"
-              price="69"
+              price="59"
               shipping="FREE SHIPPING"
               image={mostPopularImage}
-              youSave="330"
-              totalPrice={{ original: "537", final: "207" }}
-              buyNowUrl="https://www.checkout-ds24.com/product/627131?aff=vontogy&sid1=68f94a9fc577e376b8adc43c&utm_content=68f94a9fc577e376b8adc43c"
+              totalPrice={{ original: "537", final: "177" }}
+              buyNowUrl="https://www.checkout-ds24.com/product/558765?_ga=1469951698.1765446177&_b=NDkwNDU2O2dldG5lcnZvdml2ZTI0LmNvbS90ZXh0LnBocDt1bmRlZmluZWQ7dGV4dDsyOzE3NztmZTt1bmRlZmluZWQ%3D&aff=vontogy"
+              hasFreeEbooks={true}
             />
           </div>
         </div>
@@ -104,7 +102,7 @@ function PricingSection({ title, sectionId }: { title: React.ReactNode | string,
             </span>
           </div>
           <span className="text-gray-600 text-base md:text-lg">
-            Based on 11,369+ Reviews!
+            Based on 10.369+ Reviews!
           </span>
         </div>
       </div>
@@ -127,10 +125,10 @@ function PricingSection({ title, sectionId }: { title: React.ReactNode | string,
                   100% Satisfaction
                 </p>
                 <p className="text-lg md:text-xl font-semibold text-gray-900 mb-2">
-                  90-Day Money Back Guarantee
+                  60-Day Money Back Guarantee
                 </p>
                 <p className="text-gray-600 mt-2 text-sm md:text-base">
-                  Your order today is covered by our iron-clad 90-Day 100% money-back guarantee. If you are not impressed with the results, then just write to us and we'll refund every single cent.
+                  Your order today is covered by our iron-clad 60-Day 100% money-back guarantee. If you are not impressed with the results, then just write to us and we'll refund every single cent.
                 </p>
               </div>
             </div>
@@ -141,30 +139,30 @@ function PricingSection({ title, sectionId }: { title: React.ReactNode | string,
   );
 }
 
-export default function Audifort() {
+export default function Nervovive() {
   useEffect(() => {
-    // Set Audifort page metadata
-    document.title = "Audifort™ Official | Natural Hearing Support";
+    // Set Nervovive page metadata
+    document.title = "Stop The Burning & Tingling | Nervovive™ Nerve Support";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute("content", "Support your hearing health naturally with Audifort™. 100% Natural. Order Risk-Free Today!");
+      metaDescription.setAttribute("content", "Don't let nerve pain shrink your world. Discover the breakthrough natural ritual that soothes extremities fast. 60-Day Money Back Guarantee.");
     }
     
     const ogTitle = document.querySelector('meta[property="og:title"]');
     if (ogTitle) {
-      ogTitle.setAttribute("content", "Audifort™ Official | Natural Hearing Support");
+      ogTitle.setAttribute("content", "Stop The Burning & Tingling | Nervovive™ Nerve Support");
     }
     
     const ogDescription = document.querySelector('meta[property="og:description"]');
     if (ogDescription) {
-      ogDescription.setAttribute("content", "Support your hearing health naturally with Audifort™. 100% Natural. Order Risk-Free Today!");
+      ogDescription.setAttribute("content", "Don't let nerve pain shrink your world. Discover the breakthrough natural ritual that soothes extremities fast. 60-Day Money Back Guarantee.");
     }
     
-    // Set Audifort favicon
+    // Set Nervovive favicon
     const favicon = document.querySelector('link[rel="icon"]') as HTMLLinkElement;
     if (favicon) {
-      favicon.href = "/images/audifort/favicon.png";
+      favicon.href = "/images/nervovive/favicon.png";
     }
 
     // Cleanup: restore Vontogy (Home) values when leaving the page
@@ -213,7 +211,7 @@ export default function Audifort() {
               <span className="text-gray-600 hidden sm:inline">Powered by</span>
               <div className="flex items-center" title="DigiStore24 - Secure Payment Processing">
             <img 
-              src="/images/audifort/digistore.svg" 
+              src="/images/nervovive/digistore.svg" 
               alt="DigiStore24" 
               className="h-8 md:h-9 max-w-[220px] md:max-w-[260px] select-none"
                 />
@@ -228,7 +226,7 @@ export default function Audifort() {
         <div className="container mx-auto px-4 max-w-6xl flex justify-between items-center">
               <img 
                 src={logo} 
-                alt="Audifort Logo" 
+                alt="Nervovive Logo" 
                 className="h-8 md:h-10 w-auto select-none"
             width="453"
             height="95"
@@ -257,7 +255,7 @@ export default function Audifort() {
                <div className="absolute inset-0 bg-[#00515F]/20 blur-[60px] rounded-full transform scale-75" />
               <img 
                 src={heroSectionImage} 
-                alt="Audifort" 
+                alt="Nervovive" 
                 className="relative w-full max-w-[900px] md:max-w-[1200px] drop-shadow-2xl mx-auto select-none"
                  width="1200"
                  height="1080"
@@ -275,7 +273,7 @@ export default function Audifort() {
               transition={{ delay: 0.1 }}
               className="text-4xl sm:text-5xl md:text-5xl font-black leading-none tracking-tight text-gray-900"
             >
-              Finally. The All-in-One Menopause Support You've Been Searching For.
+              Finally. Natural Relief for Tingling, Burning, and Numbness in Your Hands & Feet.
             </motion.h1>
             
             <motion.p 
@@ -284,7 +282,7 @@ export default function Audifort() {
               transition={{ delay: 0.2 }}
               className="text-lg md:text-xl text-gray-600 max-w-lg leading-relaxed mx-auto md:mx-0"
             >
-              Target the root cause of Hot Flashes, Night Sweats, and Hormonal Weight Gain with the only formula designed to activate your "Estro-Gene".
+              Don't let nerve discomfort shrink your world. This natural 'Nerve-Fuel' targets the root cause of the burning sensation so you can walk, sleep, and live freely again.
             </motion.p>
             
             <motion.div 
@@ -304,7 +302,7 @@ export default function Audifort() {
                 </span>
               </div>
               <span className="text-gray-600 text-sm md:text-base">
-                Based on 11,369+ Reviews!
+                Based on 10.369+ Reviews!
               </span>
             </motion.div>
             
@@ -337,7 +335,7 @@ export default function Audifort() {
                 className="w-full flex justify-center md:w-auto"
               >
                 <a 
-                  href="https://audifort.com/d/order-now.php#aff=vontogy"
+                  href="https://getnervovive24.com/text.php?aff=vontogy"
                   target="_blank"
                   rel="nofollow sponsored noopener noreferrer"
                   className="h-12 md:h-14 px-4 md:px-8 text-lg md:text-base lg:text-lg bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold rounded-xl shadow-lg shadow-blue-500/25 transition-all hover:scale-105 flex items-center gap-2 mx-auto md:mx-0 w-full md:w-auto justify-center"
@@ -375,15 +373,15 @@ export default function Audifort() {
           <div className="grid grid-cols-2 md:flex md:flex-row justify-center md:justify-around gap-4 md:gap-6 text-center">
             <div className="flex flex-col items-center gap-2 font-bold text-sm md:text-lg md:text-xl">
               <div className="bg-white text-[#00515E] p-1 rounded-full"><Check strokeWidth={4} className="w-4 h-4 md:w-4 md:h-4" /></div>
-              <span className="leading-tight">Stops Hot Flashes</span>
+              <span className="leading-tight">Soothes Burning & Tingling</span>
             </div>
             <div className="flex flex-col items-center gap-2 font-bold text-sm md:text-lg md:text-xl">
               <div className="bg-white text-[#00515E] p-1 rounded-full"><Check strokeWidth={4} className="w-4 h-4 md:w-4 md:h-4" /></div>
-              <span className="leading-tight">Targets Belly Fat</span>
+              <span className="leading-tight">Supports Deep Sleep</span>
             </div>
             <div className="col-span-2 md:col-span-1 flex flex-col items-center gap-2 font-bold text-sm md:text-lg md:text-xl">
               <div className="bg-white text-[#00515E] p-1 rounded-full"><Check strokeWidth={4} className="w-4 h-4 md:w-4 md:h-4" /></div>
-              <span className="leading-tight md:leading-normal">Boosts Energy</span>
+              <span className="leading-tight md:leading-normal">Fast-Acting Absorption</span>
             </div>
           </div>
         </div>
@@ -394,37 +392,38 @@ export default function Audifort() {
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
-              Alone, They Are Powerful. Together, They Are Unstoppable.
+            The 'Off-Switch' for Burning and Tingling.
             </h2>
             <p className="text-xl text-gray-600">
-              Why do standard vitamins fail? Because they ignore the root cause. This specific matrix of nutrients is designed to target "estrogen-eating fat cells" and flip your metabolic switch back to ON.
+            We combined nature’s most potent pain-fighters into one easy-to-swallow capsule. This formula targets the root of nerve dysfunction, helping to silence the 'electrical storms' in your legs and feet so you can finally relax.
             </p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
             <IngredientCard 
               image={ingredient1} 
-              name="Maca Root" 
+              name="Passion Flower"
+              className="md:col-span-2"
             />
             <IngredientCard 
               image={ingredient2} 
-              name="Grape Seed" 
+              name="Marshmallow Root"
+              className="md:col-span-2"
             />
             <IngredientCard 
               image={ingredient3} 
-              name="Green Tea" 
+              name="Corydalis"
+              className="md:col-span-2"
             />
             <IngredientCard 
               image={ingredient4} 
-              name="Capsicum Annuum" 
+              name="Prickly Pear"
+              className="md:col-span-2 md:col-start-2"
             />
             <IngredientCard 
               image={ingredient5} 
-              name="Gymnema Sylvestre" 
-            />
-            <IngredientCard 
-              image={ingredient6} 
-              name="Gaba" 
+              name="California Poppy Seed"
+              className="col-span-2 md:col-span-2"
             />
           </div>
         </div>
@@ -437,10 +436,10 @@ export default function Audifort() {
             {/* Title - First on mobile only */}
             <div className="text-center md:hidden mb-6">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Why Menovelle™ Works Where Others Have Failed
+                Why Nervovive™ Works Where Other Supplements Have Failed.
               </h2>
               <p className="text-lg text-gray-700 leading-relaxed">
-                Most drugstore supplements act like a "band-aid," merely masking symptoms for a few hours. Menovelle™ is the first formula engineered to target the root cause: the "Estrogen-Eating Fat Cells" that trap your hormones and drain your energy.
+              The secret isn't just the ingredients—it's the Absorption. Many natural remedies never reach your nerve endings because they are destroyed by stomach acid. Nervovive uses a proprietary "Rapid-Delivery" processing method. This ensures the potent alkaloids in our Corydalis and Passion Flower survive digestion and rush directly to the extremities—your hands and feet—where you need relief the most.
               </p>
             </div>
             
@@ -450,7 +449,7 @@ export default function Audifort() {
                 <div className="flex items-center justify-center">
                   <img 
                     src={whySectionImage} 
-                    alt="Audifort Bottles" 
+                    alt="Nervovive Bottles" 
                     className="w-full max-w-md drop-shadow-2xl select-none" 
                     width="1888"
                     height="1359"
@@ -465,10 +464,10 @@ export default function Audifort() {
                 {/* Title - Above description on desktop */}
                 <div className="hidden md:block">
                   <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                    Why Menovelle™ Works Where Others Have Failed
+                  Why Nervovive™ Works Where Other Supplements Have Failed.
                   </h2>
                   <p className="text-lg text-gray-700 leading-relaxed text-left mb-6">
-                    Most drugstore supplements act like a "band-aid," merely masking symptoms for a few hours. Menovelle™ is the first formula engineered to target the root cause: the "Estrogen-Eating Fat Cells" that trap your hormones and drain your energy.
+                  The secret isn't just the ingredients—it's the Absorption. Many natural remedies never reach your nerve endings because they are destroyed by stomach acid. Nervovive uses a proprietary "Rapid-Delivery" processing method. This ensures the potent alkaloids in our Corydalis and Passion Flower survive digestion and rush directly to the extremities—your hands and feet—where you need relief the most.
                   </p>
                 </div>
               
@@ -526,7 +525,7 @@ export default function Audifort() {
               
               <div className="flex justify-center md:justify-start">
                 <Button onClick={scrollToPricing} className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-white font-bold rounded-xl shadow-xl shadow-yellow-500/25 transition-all hover:scale-105 flex items-center gap-1.5 md:gap-2 mx-auto md:mx-0 w-full md:w-auto">
-                  Reclaim My Body Now
+                YES! I WANT TO RESTORE MY NERVES
                 </Button>
               </div>
               </div>
@@ -566,35 +565,29 @@ export default function Audifort() {
       <section className="bg-gradient-to-b from-primary/10 to-primary/5">
         <div className="bg-primary/20 w-full text-center py-6">
           <h2 className="text-2xl md:text-4xl font-bold text-gray-900 px-4">
-            Unlock 3 Premium Gifts FREE With Your 6-Bottle Bundle
+            Unlock 2 Premium Gifts FREE With Your 6-Bottle Bundle
           </h2>
         </div>
         <div className="py-8">
           <div className="container mx-auto px-4 max-w-6xl">
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-2 gap-4 justify-items-center max-w-4xl mx-auto">
             <BonusCard
               number="1"
-              title="Perfect Shape in 21 Days: The Hollywood Blueprint for a Flat Belly & Toned Body"
-              description="This e-book reveals simple yet powerful techniques used by celebrity nutritionists and trainers to help their VIP clients lose weight quickly and easily."
+              title="The Blood Sugar Blueprint: 1 Week To Type 2 Diabetes Relief"
+              description="Discover the 'One-Week Flush' method to stabilize your glucose levels naturally. This guide reveals how to enjoy your favorite meals without the guilt or the dangerous spikes, giving you total control over your numbers in just 7 days."
               image={bonus1}
             />
             <BonusCard
               number="2"
-              title="Bright Eyes: 1-Minute Tips To Get Rid of Dark Circles & Eye Bags At Any Age"
-              description="This e-book shares unique methods to reduce eye puffiness and bags in seconds, using only ingredients that you have in your home."
+              title="Ageless Health: Simple Tibetan Habits for Complete Body Rejuvenation"
+              description="Forget coffee or stimulants. Learn the simple 2-minute morning ritual used by Tibetan monks to maintain boundless energy and laser-sharp focus well into their 80s. Wake up feeling refreshed, not groggy."
               image={bonus2}
               retailPrice={54}
-            />
-            <BonusCard
-              number="3"
-              title="Bye-Bye Dark Spots: Easy Tricks for Glowing, Even Skin"
-              description="This e-book reveals the WORST thing you can do if you want to avoid more age spots (most women think this is healthy for their skin)."
-              image={bonus3}
             />
           </div>
           <div className="text-center mt-12">
             <p className="text-lg text-gray-700 font-medium">
-              Accelerate your results with our exclusive digital guides for sleep, detox, and diet (Valued at $164).
+            Accelerate your recovery with our exclusive digital protocols for deep sleep, detox, and diet (A $109 Value — Yours FREE).
             </p>
           </div>
           </div>
@@ -636,48 +629,30 @@ export default function Audifort() {
           
           <Accordion type="single" collapsible className="w-full space-y-4">
             <FAQItem 
-              question="How does Menovelle work?" 
-              answer={`Scientists have discovered that menopausal women who deal with severe hot flashes are also those who gain the most belly fat. Upon closer look, experts discovered that this is caused by "estrogen-eating fat cells" that entrap this crucial hormone. This not only causes them to expand and cause weight gain but can also trigger all the menopausal side effects.
-
-Our solution reactivates and boosts the activity of the "estro-gene", the gene responsible for regulating estrogen and other essential feminine hormones. This will help your fat cells release the trapped estrogen for a blissful menopause and hormonal balance while helping you lose weight and enjoy a leaner body at the same time.`}
+              question="How does Nervovive work?" 
+              answer="This formula mixes powerful ingredients meant to help your body absorb the necessary nutrients and manage neuropathy. What makes this product special is that it also naturally supports normal blood sugar levels while helping your organism properly absorb and regulate the amount of sugar it gets." 
             />
             <FAQItem 
-              question="What are the ingredients?" 
-              answer="Menovelle contains cranberry extract, bearberry, mimosa pudica, berberine, and a probiotic blend. Please refer to the product label for complete ingredient information and consult your healthcare provider if you have any questions." 
+              question="Are there any side effects?" 
+              answer="As always, if you currently have a medical condition or you’re taking other prescription medication, we advise you to show a bottle of NervoVive to your doctor before you use it, just to put your mind at ease." 
             />
             <FAQItem 
               question="What is your money-back guarantee?" 
-              answer="Our money-back guarantee is a risk-free option we are offering you because we believe in this formula so much.
+              answer="It is a risk-free option we are offering you because we believe in this formula so much.
 
-It means you can try Menovelle for a full 60 days.
+It means you can try Nervovive for a full 60 days.
 
-And if you are not completely convinced by the amazing results, then you just get your money back.
-
-All you have to do for a full refund is send us ALL the bottles, whether they are empty or not, and the packing slip." 
+And if you are not completely convinced by the amazing results, then just get in touch with us and we’ll refund your money." 
             />
             <FAQItem 
               question="How many bottles should I order?" 
-              answer="Most of our clients order six bottles at a time, and many double their orders because they want to enjoy the benefits of this amazing formula for as long as possible.
+              answer="Most of our clients order six bottles at a time, and many double their order because they want to enjoy the benefits of this amazing nerve-soothing formula for as long as possible.
 
-It is a smart choice because those who buy the 6-bottle pack get a massive discount, free shipping, and 2 free online guides.
-
-That's a lot of value and savings, especially since our clients usually want to reorder once they start seeing results." 
+It is a smart choice because those who buy the 6-bottle pack get a massive discount, free shipping, and 2 free online guides. That's a lot of value and savings, especially since our clients usually want to reorder once they start feeling results." 
             />
             <FAQItem 
-              question="How do I use Menovelle?" 
-              answer="We recommend you take two capsules per day in the morning with a warm drink for a seamless transition towards menopause and mental and physical well-being. It's also all you have to do to start saying goodbye to that menopausal belly and feel like yourself again." 
-            />
-            <FAQItem 
-              question="Am I enrolled in a subscription?" 
-              answer="You can rest assured that this is a one-time payment. There won't be any recurring shipments or charges to your card. Should you wish to purchase more bottles later, you can do so by placing another order on our website." 
-            />
-            <FAQItem 
-              question="What if Menovelle doesn't work for me? How do I get a refund?" 
-              answer="The more results we see, the stronger we believe this menopause breakthrough solution has the power to transform the menopause transition into a breeze, help you reach your ideal weight, and be truly happy with the way you look and feel. It's true, though, that nothing works for 100% of the people who try it, as every woman's body works in its own way.
-
-That's why every bottle of this menopause breakthrough solution comes with an ironclad 90-Day money-back guarantee.
-
-If, for any reason, you aren't fully satisfied with the results, you can just return what you haven't used for a prompt and full refund." 
+              question="How do I use Nervovive?" 
+              answer="Simply take 2 capsules per day, with plenty of water." 
             />
             <FAQItem 
               question="Is this a one-off purchase?" 
@@ -689,12 +664,12 @@ If, for any reason, you aren't fully satisfied with the results, you can just re
               </AccordionTrigger>
               <AccordionContent className="text-gray-600 leading-relaxed pb-4 text-base">
                 <p className="mb-4">
-                  In every single Menovelle capsule there is a proprietary formula of scientifically proven, extra-strong ingredients, carefully combined to support a normal hormonal balance.
+                Inside every single capsule of NervoVive is a proprietary formula of scientifically proven, extra-strong ingredients, custom-made to support the health of your nervous system and help you enjoy a normal, discomfort-free life.
                 </p>
                 <div className="flex justify-center mt-6">
                   <img 
                     src={labelImage} 
-                    alt="Audifort Product Label" 
+                    alt="Nervovive Product Label" 
                     className="w-full max-w-2xl h-auto rounded-lg shadow-md select-none" 
                     loading="lazy"
                     decoding="async"
@@ -748,7 +723,7 @@ If, for any reason, you aren't fully satisfied with the results, you can just re
 
       {/* Pricing Section - Duplicate */}
       <PricingSection 
-        title={<span className="text-primary">Claim your Discounted Audifort Below While Stock Lasts</span>}
+        title={<span className="text-primary">Claim your Discounted Nervovive Below While Stock Lasts</span>}
       />
 
       {/* Scientific References Section */}
@@ -807,7 +782,7 @@ If, for any reason, you aren't fully satisfied with the results, you can just re
           <div className="mb-8 flex justify-center">
             <img 
               src={logo} 
-              alt="Audifort" 
+              alt="Nervovive" 
               className="h-8 w-auto brightness-0 invert opacity-50 select-none" 
               loading="lazy"
               decoding="async"
@@ -933,9 +908,9 @@ If, for any reason, you aren't fully satisfied with the results, you can just re
   );
 }
 
-function IngredientCard({ image, name }: { image: string, name: string }) {
+function IngredientCard({ image, name, className }: { image: string, name: string, className?: string }) {
   return (
-    <div className="flex flex-col items-center gap-4 text-center">
+    <div className={`flex flex-col items-center gap-4 text-center ${className || ''}`}>
       <div className="bg-white rounded-full w-32 h-32 md:w-40 md:h-40 flex items-center justify-center mb-2 shadow-lg border-2 border-secondary/20 overflow-hidden">
           <img 
             src={image} 
@@ -1005,7 +980,8 @@ function PricingCard({
   image,
   youSave,
   totalPrice,
-  buyNowUrl
+  buyNowUrl,
+  hasFreeEbooks = false
 }: any) {
   return (
     <div className={`relative bg-white rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-xl ${isPopular ? 'border-2 border-yellow-500 shadow-lg z-10 order-first md:order-none' : 'border border-gray-200 shadow-md'}`}>
@@ -1052,17 +1028,28 @@ function PricingCard({
             </div>
             <div className="bg-blue-50 text-blue-700 font-medium py-2 px-4 rounded-lg inline-flex items-center gap-2 text-sm border border-blue-200">
               <Check className="w-4 h-4" />
-              <span>3 Free Ebooks</span>
+              <span>2 Free Ebooks</span>
             </div>
             <div className="bg-blue-50 text-blue-700 font-medium py-2 px-4 rounded-lg inline-flex items-center gap-2 text-sm border border-blue-200">
               <Check className="w-4 h-4" />
-              <span>90-Day Money-Back Guarantee</span>
+              <span>60-Day Money-Back Guarantee</span>
+            </div>
+          </div>
+        ) : hasFreeEbooks ? (
+          <div className="space-y-2 mb-4">
+            <div className="bg-blue-50 text-blue-700 font-medium py-2 px-4 rounded-lg inline-flex items-center gap-2 text-sm border border-blue-200">
+              <Check className="w-4 h-4" />
+              <span>2 Free Ebooks</span>
+            </div>
+            <div className="bg-blue-50 text-blue-700 font-medium py-2 px-4 rounded-lg inline-flex items-center gap-2 text-sm border border-blue-200">
+              <Check className="w-4 h-4" />
+              <span>60-Day Money-Back Guarantee</span>
             </div>
           </div>
         ) : (
           <div className="bg-blue-50 text-blue-700 font-medium py-2 px-4 rounded-lg mb-4 inline-flex items-center gap-2 text-sm border border-blue-200">
             <Check className="w-4 h-4" />
-            <span>90-Day Money-Back Guarantee</span>
+            <span>60-Day Money-Back Guarantee</span>
           </div>
         )}
 
