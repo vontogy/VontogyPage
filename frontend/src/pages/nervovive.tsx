@@ -272,7 +272,7 @@ export default function Nervovive() {
               transition={{ delay: 0.1 }}
               className="text-4xl sm:text-5xl md:text-5xl font-black leading-none tracking-tight text-gray-900"
             >
-              Finally. The All-in-One Menopause Support You've Been Searching For.
+              Finally. Natural Relief for Tingling, Burning, and Numbness in Your Hands & Feet.
             </motion.h1>
             
             <motion.p 
@@ -281,7 +281,7 @@ export default function Nervovive() {
               transition={{ delay: 0.2 }}
               className="text-lg md:text-xl text-gray-600 max-w-lg leading-relaxed mx-auto md:mx-0"
             >
-              Target the root cause of Hot Flashes, Night Sweats, and Hormonal Weight Gain with the only formula designed to activate your "Estro-Gene".
+              Don't let nerve discomfort shrink your world. This natural 'Nerve-Fuel' targets the root cause of the burning sensation so you can walk, sleep, and live freely again.
             </motion.p>
             
             <motion.div 
@@ -372,15 +372,15 @@ export default function Nervovive() {
           <div className="grid grid-cols-2 md:flex md:flex-row justify-center md:justify-around gap-4 md:gap-6 text-center">
             <div className="flex flex-col items-center gap-2 font-bold text-sm md:text-lg md:text-xl">
               <div className="bg-white text-[#00515E] p-1 rounded-full"><Check strokeWidth={4} className="w-4 h-4 md:w-4 md:h-4" /></div>
-              <span className="leading-tight">Stops Hot Flashes</span>
+              <span className="leading-tight">Soothes Burning & Tingling</span>
             </div>
             <div className="flex flex-col items-center gap-2 font-bold text-sm md:text-lg md:text-xl">
               <div className="bg-white text-[#00515E] p-1 rounded-full"><Check strokeWidth={4} className="w-4 h-4 md:w-4 md:h-4" /></div>
-              <span className="leading-tight">Targets Belly Fat</span>
+              <span className="leading-tight">Supports Deep Sleep</span>
             </div>
             <div className="col-span-2 md:col-span-1 flex flex-col items-center gap-2 font-bold text-sm md:text-lg md:text-xl">
               <div className="bg-white text-[#00515E] p-1 rounded-full"><Check strokeWidth={4} className="w-4 h-4 md:w-4 md:h-4" /></div>
-              <span className="leading-tight md:leading-normal">Boosts Energy</span>
+              <span className="leading-tight md:leading-normal">Fast-Acting Absorption</span>
             </div>
           </div>
         </div>
@@ -391,10 +391,10 @@ export default function Nervovive() {
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
-              Alone, They Are Powerful. Together, They Are Unstoppable.
+            The 'Off-Switch' for Burning and Tingling.
             </h2>
             <p className="text-xl text-gray-600">
-              Why do standard vitamins fail? Because they ignore the root cause. This specific matrix of nutrients is designed to target "estrogen-eating fat cells" and flip your metabolic switch back to ON.
+            We combined nature’s most potent pain-fighters into one easy-to-swallow capsule. This formula targets the root of nerve dysfunction, helping to silence the 'electrical storms' in your legs and feet so you can finally relax.
             </p>
           </div>
           
@@ -435,10 +435,10 @@ export default function Nervovive() {
             {/* Title - First on mobile only */}
             <div className="text-center md:hidden mb-6">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Why Menovelle™ Works Where Others Have Failed
+                Why Nervovive™ Works Where Other Supplements Have Failed.
               </h2>
               <p className="text-lg text-gray-700 leading-relaxed">
-                Most drugstore supplements act like a "band-aid," merely masking symptoms for a few hours. Menovelle™ is the first formula engineered to target the root cause: the "Estrogen-Eating Fat Cells" that trap your hormones and drain your energy.
+              The secret isn't just the ingredients—it's the Absorption. Many natural remedies never reach your nerve endings because they are destroyed by stomach acid. Nervovive uses a proprietary "Rapid-Delivery" processing method. This ensures the potent alkaloids in our Corydalis and Passion Flower survive digestion and rush directly to the extremities—your hands and feet—where you need relief the most.
               </p>
             </div>
             
@@ -463,10 +463,10 @@ export default function Nervovive() {
                 {/* Title - Above description on desktop */}
                 <div className="hidden md:block">
                   <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                    Why Menovelle™ Works Where Others Have Failed
+                  Why Nervovive™ Works Where Other Supplements Have Failed.
                   </h2>
                   <p className="text-lg text-gray-700 leading-relaxed text-left mb-6">
-                    Most drugstore supplements act like a "band-aid," merely masking symptoms for a few hours. Menovelle™ is the first formula engineered to target the root cause: the "Estrogen-Eating Fat Cells" that trap your hormones and drain your energy.
+                  The secret isn't just the ingredients—it's the Absorption. Many natural remedies never reach your nerve endings because they are destroyed by stomach acid. Nervovive uses a proprietary "Rapid-Delivery" processing method. This ensures the potent alkaloids in our Corydalis and Passion Flower survive digestion and rush directly to the extremities—your hands and feet—where you need relief the most.
                   </p>
                 </div>
               
@@ -524,7 +524,7 @@ export default function Nervovive() {
               
               <div className="flex justify-center md:justify-start">
                 <Button onClick={scrollToPricing} className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-white font-bold rounded-xl shadow-xl shadow-yellow-500/25 transition-all hover:scale-105 flex items-center gap-1.5 md:gap-2 mx-auto md:mx-0 w-full md:w-auto">
-                  Reclaim My Body Now
+                YES! I WANT TO RESTORE MY NERVES
                 </Button>
               </div>
               </div>
@@ -572,21 +572,21 @@ export default function Nervovive() {
           <div className="grid md:grid-cols-2 gap-4 justify-items-center max-w-4xl mx-auto">
             <BonusCard
               number="1"
-              title="Perfect Shape in 21 Days: The Hollywood Blueprint for a Flat Belly & Toned Body"
-              description="This e-book reveals simple yet powerful techniques used by celebrity nutritionists and trainers to help their VIP clients lose weight quickly and easily."
+              title="The Blood Sugar Blueprint: 1 Week To Type 2 Diabetes Relief"
+              description="Discover the 'One-Week Flush' method to stabilize your glucose levels naturally. This guide reveals how to enjoy your favorite meals without the guilt or the dangerous spikes, giving you total control over your numbers in just 7 days."
               image={bonus1}
             />
             <BonusCard
               number="2"
-              title="Bright Eyes: 1-Minute Tips To Get Rid of Dark Circles & Eye Bags At Any Age"
-              description="This e-book shares unique methods to reduce eye puffiness and bags in seconds, using only ingredients that you have in your home."
+              title="Ageless Health: Simple Tibetan Habits for Complete Body Rejuvenation"
+              description="Forget coffee or stimulants. Learn the simple 2-minute morning ritual used by Tibetan monks to maintain boundless energy and laser-sharp focus well into their 80s. Wake up feeling refreshed, not groggy."
               image={bonus2}
               retailPrice={54}
             />
           </div>
           <div className="text-center mt-12">
             <p className="text-lg text-gray-700 font-medium">
-              Accelerate your results with our exclusive digital guides for sleep, detox, and diet (Valued at $109).
+            Accelerate your recovery with our exclusive digital protocols for deep sleep, detox, and diet (A $109 Value — Yours FREE).
             </p>
           </div>
           </div>
