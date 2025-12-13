@@ -247,14 +247,14 @@ export default function Audifort() {
         
         <div className="container mx-auto px-4 max-w-6xl grid md:grid-cols-2 gap-12 items-center">
           {/* Image - First on mobile, second on desktop */}
-          <div className="relative flex justify-center md:justify-end order-1 md:order-2 md:-mt-48">
+          <div className="relative flex justify-center md:justify-end order-1 md:order-2 md:mt-8">
             <motion.div
                initial={{ opacity: 0, scale: 0.8 }}
                animate={{ opacity: 1, scale: 1 }}
                transition={{ duration: 0.6 }}
                className="relative z-10 w-full flex justify-center scale-110 md:scale-125"
             >
-               <div className="absolute inset-0 bg-accent/20 blur-[60px] rounded-full transform scale-75" />
+               <div className="absolute inset-0 bg-[#00515F]/20 blur-[60px] rounded-full transform scale-75" />
               <img 
                 src={heroSectionImage} 
                 alt="Audifort" 
@@ -327,7 +327,7 @@ export default function Audifort() {
               >
                 <Button onClick={scrollToPricing} className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-white font-bold rounded-xl shadow-xl shadow-yellow-500/25 transition-all hover:scale-105 flex items-center gap-1.5 md:gap-2 mx-auto md:mx-0 w-full md:w-auto">
                   <ShoppingCart className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 shrink-0" />
-                  GET YOUR 62% DISCOUT NOW!
+                  GET YOUR 77% DISCOUT NOW!
                 </Button>
               </motion.div>
               <motion.div
