@@ -398,30 +398,31 @@ export default function Nervovive() {
             </p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
             <IngredientCard 
               image={ingredient1} 
-              name="Maca Root" 
+              name="Passion Flower"
+              className="md:col-span-2"
             />
             <IngredientCard 
               image={ingredient2} 
-              name="Grape Seed" 
+              name="Marshmallow Root"
+              className="md:col-span-2"
             />
             <IngredientCard 
               image={ingredient3} 
-              name="Green Tea" 
+              name="Corydalis"
+              className="md:col-span-2"
             />
             <IngredientCard 
               image={ingredient4} 
-              name="Capsicum Annuum" 
+              name="Prickly Pear"
+              className="md:col-span-2 md:col-start-2"
             />
             <IngredientCard 
               image={ingredient5} 
-              name="Gymnema Sylvestre" 
-            />
-            <IngredientCard 
-              image={ingredient6} 
-              name="Gaba" 
+              name="California Poppy Seed"
+              className="col-span-2 md:col-span-2"
             />
           </div>
         </div>
@@ -906,9 +907,9 @@ It is a smart choice because those who buy the 6-bottle pack get a massive disco
   );
 }
 
-function IngredientCard({ image, name }: { image: string, name: string }) {
+function IngredientCard({ image, name, className }: { image: string, name: string, className?: string }) {
   return (
-    <div className="flex flex-col items-center gap-4 text-center">
+    <div className={`flex flex-col items-center gap-4 text-center ${className || ''}`}>
       <div className="bg-white rounded-full w-32 h-32 md:w-40 md:h-40 flex items-center justify-center mb-2 shadow-lg border-2 border-secondary/20 overflow-hidden">
           <img 
             src={image} 
