@@ -598,7 +598,7 @@ export default function Nervovive() {
         title={
           <>
             <span className="text-red-600">Urgent Action Required! Limited-Time Offer Available, Don't Miss Out! </span>
-            <span className="text-primary">Hurry Up - Secure Your Menovelle Before Stock Runs Out!</span>
+            <span className="text-primary">Hurry Up - Secure Your Nervovive Before Stock Runs Out!</span>
           </>
         }
       />
