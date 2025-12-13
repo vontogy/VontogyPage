@@ -32,6 +32,115 @@ const labelImage = "/images/audifort/images/label-1.webp";
 const refsLogosImage = "/images/audifort/images/refs-logos.webp";
 const creditCardsImage = "/images/audifort/images/credit-cards.webp";
 
+// Reusable Pricing Section Component
+function PricingSection({ title, sectionId }: { title: React.ReactNode | string, sectionId?: string }) {
+  return (
+    <section id={sectionId} className="py-20 bg-gradient-to-b from-white to-secondary/20">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12 max-w-4xl mx-auto">
+          <h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 leading-tight">
+            {title}
+          </h2>
+        </div>
+        
+        <div className="grid md:grid-cols-3 gap-4 max-w-6xl mx-auto items-end mb-12">
+          {/* Basic Package */}
+          <div className="order-3 md:order-1">
+            <PricingCard 
+              title="BASIC" 
+              bottles="2 Bottles" 
+              supply="60 Day Supply"
+              price="79"
+              shipping="+ 9.99 SHIPPING"
+              image={basicImage}
+              youSave="200"
+              totalPrice={{ original: "358", final: "158" }}
+              buyNowUrl="https://www.checkout-ds24.com/product/627130?aff=vontogy&sid1=68f94a9fc577e376b8adc43c&utm_content=68f94a9fc577e376b8adc43c"
+            />
+          </div>
+
+          {/* Best Value */}
+          <div className="order-1 md:order-2">
+            <PricingCard 
+              title="Best Value" 
+              bottles="6 Bottles + 3 Free Ebooks" 
+              supply="180 Day Supply"
+              price="49"
+              shipping="FREE SHIPPING"
+              isPopular={true}
+              image={bestValueImage}
+              youSave="780"
+              totalPrice={{ original: "1074", final: "294" }}
+              buyNowUrl="https://www.checkout-ds24.com/product/627132?aff=vontogy&sid1=68f94a9fc577e376b8adc43c&utm_content=68f94a9fc577e376b8adc43c"
+            />
+          </div>
+
+          {/* Most Popular */}
+          <div className="order-2 md:order-3">
+            <PricingCard 
+              title="MOST POPULAR" 
+              bottles="3 Bottles" 
+              supply="90 Day Supply"
+              price="69"
+              shipping="FREE SHIPPING"
+              image={mostPopularImage}
+              youSave="330"
+              totalPrice={{ original: "537", final: "207" }}
+              buyNowUrl="https://www.checkout-ds24.com/product/627131?aff=vontogy&sid1=68f94a9fc577e376b8adc43c&utm_content=68f94a9fc577e376b8adc43c"
+            />
+          </div>
+        </div>
+
+        {/* Reviews Section */}
+        <div className="flex flex-col items-center gap-1 mt-8 mb-8">
+          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+              ))}
+            </div>
+            <span className="text-gray-700 font-semibold text-lg md:text-xl">
+              4.9
+            </span>
+          </div>
+          <span className="text-gray-600 text-base md:text-lg">
+            Based on 11,369+ Reviews!
+          </span>
+        </div>
+      </div>
+
+      {/* Guarantee Badge */}
+      <div className="w-full py-8 px-4 bg-transparent">
+        <div className="flex justify-center max-w-5xl mx-auto">
+          {/* Money Back Guarantee Card */}
+          <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm max-w-2xl">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
+              <img 
+                src={moneyBackImage} 
+                alt="Money Back Guarantee" 
+                className="w-32 h-32 md:w-24 md:h-24 shrink-0 select-none" 
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="flex-1 text-center">
+                <p className="text-xl md:text-2xl font-semibold text-gray-900 mb-2">
+                  100% Satisfaction
+                </p>
+                <p className="text-lg md:text-xl font-semibold text-gray-900 mb-2">
+                  90-Day Money Back Guarantee
+                </p>
+                <p className="text-gray-600 mt-2 text-sm md:text-base">
+                  Your order today is covered by our iron-clad 90-Day 100% money-back guarantee. If you are not impressed with the results, then just write to us and we'll refund every single cent.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Audifort() {
   useEffect(() => {
     // Set Audifort page metadata
@@ -103,10 +212,10 @@ export default function Audifort() {
             <div className="flex items-center gap-2 shrink-0">
               <span className="text-gray-600 hidden sm:inline">Powered by</span>
               <div className="flex items-center" title="DigiStore24 - Secure Payment Processing">
-                <img 
-                  src="/images/audifort/digistore.svg" 
-                  alt="DigiStore24" 
-                  className="h-8 md:h-9 max-w-[220px] md:max-w-[260px]"
+            <img 
+              src="/images/audifort/digistore.svg" 
+              alt="DigiStore24" 
+              className="h-8 md:h-9 max-w-[220px] md:max-w-[260px] select-none"
                 />
               </div>
             </div>
@@ -117,10 +226,10 @@ export default function Audifort() {
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 py-4">
         <div className="container mx-auto px-4 max-w-6xl flex justify-between items-center">
-          <img 
-            src={logo} 
-            alt="Audifort Logo" 
-            className="h-8 md:h-10 w-auto" 
+              <img 
+                src={logo} 
+                alt="Audifort Logo" 
+                className="h-8 md:h-10 w-auto select-none"
             width="453"
             height="95"
             loading="eager"
@@ -138,18 +247,18 @@ export default function Audifort() {
         
         <div className="container mx-auto px-4 max-w-6xl grid md:grid-cols-2 gap-12 items-center">
           {/* Image - First on mobile, second on desktop */}
-          <div className="relative flex justify-center md:justify-end order-1 md:order-2 md:-mt-48">
+          <div className="relative flex justify-center md:justify-end order-1 md:order-2 md:mt-8">
             <motion.div
                initial={{ opacity: 0, scale: 0.8 }}
                animate={{ opacity: 1, scale: 1 }}
                transition={{ duration: 0.6 }}
                className="relative z-10 w-full flex justify-center scale-110 md:scale-125"
             >
-               <div className="absolute inset-0 bg-accent/20 blur-[60px] rounded-full transform scale-75" />
-               <img 
-                 src={heroSectionImage} 
-                 alt="Audifort" 
-                 className="relative w-full max-w-[900px] md:max-w-[1200px] drop-shadow-2xl mx-auto" 
+               <div className="absolute inset-0 bg-[#00515F]/20 blur-[60px] rounded-full transform scale-75" />
+              <img 
+                src={heroSectionImage} 
+                alt="Audifort" 
+                className="relative w-full max-w-[900px] md:max-w-[1200px] drop-shadow-2xl mx-auto select-none"
                  width="1200"
                  height="1080"
                  fetchPriority="high"
@@ -218,7 +327,7 @@ export default function Audifort() {
               >
                 <Button onClick={scrollToPricing} className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-white font-bold rounded-xl shadow-xl shadow-yellow-500/25 transition-all hover:scale-105 flex items-center gap-1.5 md:gap-2 mx-auto md:mx-0 w-full md:w-auto">
                   <ShoppingCart className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 shrink-0" />
-                  GET YOUR 62,31% DISCOUT NOW!
+                  GET YOUR 77% DISCOUT NOW!
                 </Button>
               </motion.div>
               <motion.div
@@ -228,7 +337,7 @@ export default function Audifort() {
                 className="w-full flex justify-center md:w-auto"
               >
                 <a 
-                  href="https://menovelle24.com/text.php#aff=vontogy"
+                  href="https://audifort.com/d/order-now.php#aff=vontogy"
                   target="_blank"
                   rel="nofollow sponsored noopener noreferrer"
                   className="h-12 md:h-14 px-4 md:px-8 text-lg md:text-base lg:text-lg bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold rounded-xl shadow-lg shadow-blue-500/25 transition-all hover:scale-105 flex items-center gap-2 mx-auto md:mx-0 w-full md:w-auto justify-center"
@@ -249,7 +358,7 @@ export default function Audifort() {
               <img 
                 src={certificationsImage} 
                 alt="Certifications: GMP Certified, 100% Natural Ingredients, FDA Registered Facility, Manufactured in USA, Non-GMO" 
-                className="w-full max-w-full md:max-w-md h-auto object-contain"
+                className="w-full max-w-xs md:max-w-sm h-auto object-contain select-none"
                 width="1193"
                 height="206"
                 loading="lazy"
@@ -261,19 +370,19 @@ export default function Audifort() {
       </section>
 
       {/* Feature Strip */}
-      <div className="bg-accent py-6 text-white shadow-lg relative z-20">
+      <div className="bg-[#00515E] py-6 text-white shadow-lg relative z-20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:flex md:flex-row justify-center md:justify-around gap-4 md:gap-6 text-center">
             <div className="flex flex-col items-center gap-2 font-bold text-sm md:text-lg md:text-xl">
-              <div className="bg-white text-accent p-1 rounded-full"><Check strokeWidth={4} className="w-4 h-4 md:w-4 md:h-4" /></div>
+              <div className="bg-white text-[#00515E] p-1 rounded-full"><Check strokeWidth={4} className="w-4 h-4 md:w-4 md:h-4" /></div>
               <span className="leading-tight">Stops Hot Flashes</span>
             </div>
             <div className="flex flex-col items-center gap-2 font-bold text-sm md:text-lg md:text-xl">
-              <div className="bg-white text-accent p-1 rounded-full"><Check strokeWidth={4} className="w-4 h-4 md:w-4 md:h-4" /></div>
+              <div className="bg-white text-[#00515E] p-1 rounded-full"><Check strokeWidth={4} className="w-4 h-4 md:w-4 md:h-4" /></div>
               <span className="leading-tight">Targets Belly Fat</span>
             </div>
             <div className="col-span-2 md:col-span-1 flex flex-col items-center gap-2 font-bold text-sm md:text-lg md:text-xl">
-              <div className="bg-white text-accent p-1 rounded-full"><Check strokeWidth={4} className="w-4 h-4 md:w-4 md:h-4" /></div>
+              <div className="bg-white text-[#00515E] p-1 rounded-full"><Check strokeWidth={4} className="w-4 h-4 md:w-4 md:h-4" /></div>
               <span className="leading-tight md:leading-normal">Boosts Energy</span>
             </div>
           </div>
@@ -342,7 +451,7 @@ export default function Audifort() {
                   <img 
                     src={whySectionImage} 
                     alt="Audifort Bottles" 
-                    className="w-full max-w-md drop-shadow-2xl" 
+                    className="w-full max-w-md drop-shadow-2xl select-none" 
                     width="1888"
                     height="1359"
                     loading="lazy"
@@ -369,7 +478,7 @@ export default function Audifort() {
                   <img 
                   src={naturalImage} 
                   alt="Natural Formula" 
-                  className="w-16 h-16 md:w-16 md:h-16 object-contain" 
+                  className="w-16 h-16 md:w-16 md:h-16 object-contain select-none" 
                   width="405"
                   height="402"
                   loading="lazy"
@@ -381,7 +490,7 @@ export default function Audifort() {
                   <img 
                   src={noStimImage} 
                   alt="No Stimulants" 
-                  className="w-16 h-16 md:w-16 md:h-16 object-contain" 
+                  className="w-16 h-16 md:w-16 md:h-16 object-contain select-none" 
                   width="429"
                   height="426"
                   loading="lazy"
@@ -393,7 +502,7 @@ export default function Audifort() {
                   <img 
                   src={easyImage} 
                   alt="Easy to use" 
-                  className="w-16 h-16 md:w-16 md:h-16 object-contain" 
+                  className="w-16 h-16 md:w-16 md:h-16 object-contain select-none" 
                   width="405"
                   height="402"
                   loading="lazy"
@@ -405,7 +514,7 @@ export default function Audifort() {
                   <img 
                   src={gmoImage} 
                   alt="Non GMO" 
-                  className="w-16 h-16 md:w-16 md:h-16 object-contain" 
+                  className="w-16 h-16 md:w-16 md:h-16 object-contain select-none" 
                   width="405"
                   height="402"
                   loading="lazy"
@@ -427,14 +536,14 @@ export default function Audifort() {
       </section>
 
       {/* Free Shipping Strip */}
-      <div className="bg-accent py-6 text-white shadow-lg relative z-20">
+      <div className="bg-[#00515E] py-6 text-white shadow-lg relative z-20">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 max-w-6xl mx-auto">
             <div className="flex-shrink-0">
               <img 
                 src={freeShippingImage} 
                 alt="Fast & Free Shipping" 
-                className="w-24 h-24 md:w-32 md:h-32 object-contain" 
+                className="w-24 h-24 md:w-32 md:h-32 object-contain select-none" 
                 width="592"
                 height="593"
                 loading="lazy"
@@ -462,7 +571,7 @@ export default function Audifort() {
         </div>
         <div className="py-8">
           <div className="container mx-auto px-4 max-w-6xl">
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-4">
             <BonusCard
               number="1"
               title="Perfect Shape in 21 Days: The Hollywood Blueprint for a Flat Belly & Toned Body"
@@ -493,110 +602,15 @@ export default function Audifort() {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="py-20 bg-gradient-to-b from-white to-secondary/20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12 max-w-4xl mx-auto">
-            <h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 leading-tight">
-              <span className="text-red-600">Urgent Action Required! Limited-Time Offer Available, Don't Miss Out! </span>
-              <span className="text-primary">Hurry Up - Secure Your Menovelle Before Stock Runs Out!</span>
-            </h2>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-4 max-w-6xl mx-auto items-end mb-12">
-            {/* Basic Package */}
-            <div className="order-3 md:order-1">
-              <PricingCard 
-                title="BASIC" 
-                bottles="2 Bottles" 
-                supply="60 Day Supply"
-                price="79"
-                shipping="+ 9.99 SHIPPING"
-                image={basicImage}
-                youSave="200"
-                totalPrice={{ original: "358", final: "158" }}
-                buyNowUrl="https://www.checkout-ds24.com/product/612225?_ga=1453512559.1765449364&_b=NDkwNDA3O21lbm92ZWxsZTI0LmNvbS90ZXh0LnBocDt1bmRlZmluZWQ7dGV4dDsxOzE1ODtmZTt1bmRlZmluZWQ%3D&aff=vontogy"
-              />
-            </div>
-
-            {/* Best Value */}
-            <div className="order-1 md:order-2">
-              <PricingCard 
-                title="Best Value" 
-                bottles="6 Bottles + 3 Free Ebooks" 
-                supply="180 Day Supply"
-                price="49"
-                shipping="FREE SHIPPING"
-                isPopular={true}
-                image={bestValueImage}
-                youSave="780"
-                totalPrice={{ original: "1074", final: "294" }}
-                buyNowUrl="https://www.checkout-ds24.com/product/612229?_ga=1453512559.1765449364&_b=NDkwNDA3O21lbm92ZWxsZTI0LmNvbS90ZXh0LnBocDt1bmRlZmluZWQ7dGV4dDszOzI5NDtmZTt1bmRlZmluZWQ%3D&aff=vontogy"
-              />
-            </div>
-
-            {/* Most Popular */}
-            <div className="order-2 md:order-3">
-              <PricingCard 
-                title="MOST POPULAR" 
-                bottles="3 Bottles" 
-                supply="90 Day Supply"
-                price="69"
-                shipping="FREE SHIPPING"
-                image={mostPopularImage}
-                youSave="330"
-                totalPrice={{ original: "537", final: "207" }}
-                buyNowUrl="https://www.checkout-ds24.com/product/612226?_ga=1453512559.1765449364&_b=NDkwNDA3O21lbm92ZWxsZTI0LmNvbS90ZXh0LnBocDt1bmRlZmluZWQ7dGV4dDsyOzIwNztmZTt1bmRlZmluZWQ%3D&aff=vontogy"
-              />
-            </div>
-          </div>
-
-          {/* Reviews Section */}
-          <div className="flex flex-col items-center gap-1 mt-8 mb-8">
-            <div className="flex items-center gap-2">
-              <div className="flex items-center gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                ))}
-              </div>
-              <span className="text-gray-700 font-semibold text-lg md:text-xl">
-                4.9
-              </span>
-            </div>
-            <span className="text-gray-600 text-base md:text-lg">
-              Based on 11,369+ Reviews!
-            </span>
-          </div>
-        </div>
-
-        {/* Guarantee Badge */}
-        <div className="w-full py-8 px-4 bg-transparent">
-          <div className="flex justify-center max-w-5xl mx-auto">
-            {/* Money Back Guarantee Card */}
-            <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm max-w-2xl">
-              <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
-                <img 
-                  src={moneyBackImage} 
-                  alt="Money Back Guarantee" 
-                  className="w-32 h-32 md:w-24 md:h-24 shrink-0" 
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div className="flex-1 text-center">
-                  <p className="text-xl md:text-2xl font-semibold text-gray-900 mb-2">
-                    100% Satisfaction
-                  </p>
-                  <p className="text-lg md:text-xl font-semibold text-gray-900 mb-2">
-                    60-Day Money Back Guarantee
-                  </p>
-                  <p className="text-gray-600 mt-2 text-sm md:text-base">
-                    Your order today is covered by our iron-clad 60-day 100% money-back guarantee. If you are not impressed with the results, then just write to us and we'll refund every single cent.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PricingSection 
+        sectionId="pricing"
+        title={
+          <>
+            <span className="text-red-600">Urgent Action Required! Limited-Time Offer Available, Don't Miss Out! </span>
+            <span className="text-primary">Hurry Up - Secure Your Menovelle Before Stock Runs Out!</span>
+          </>
+        }
+      />
 
       {/* Certifications Strip */}
       <div className="bg-gray-100 py-6 shadow-lg relative z-20">
@@ -605,7 +619,7 @@ export default function Audifort() {
             <img 
               src={certificationsImage} 
               alt="Certifications: GMP Certified, 100% Natural Ingredients, FDA Registered Facility, Manufactured in USA, Non-GMO" 
-              className="w-full max-w-2xl h-auto object-contain" 
+              className="w-full max-w-2xl h-auto object-contain select-none" 
               width="1193"
               height="206"
               loading="lazy"
@@ -661,7 +675,7 @@ That's a lot of value and savings, especially since our clients usually want to 
               question="What if Menovelle doesn't work for me? How do I get a refund?" 
               answer="The more results we see, the stronger we believe this menopause breakthrough solution has the power to transform the menopause transition into a breeze, help you reach your ideal weight, and be truly happy with the way you look and feel. It's true, though, that nothing works for 100% of the people who try it, as every woman's body works in its own way.
 
-That's why every bottle of this menopause breakthrough solution comes with an ironclad 60-day money-back guarantee.
+That's why every bottle of this menopause breakthrough solution comes with an ironclad 90-Day money-back guarantee.
 
 If, for any reason, you aren't fully satisfied with the results, you can just return what you haven't used for a prompt and full refund." 
             />
@@ -681,7 +695,7 @@ If, for any reason, you aren't fully satisfied with the results, you can just re
                   <img 
                     src={labelImage} 
                     alt="Audifort Product Label" 
-                    className="w-full max-w-2xl h-auto rounded-lg shadow-md" 
+                    className="w-full max-w-2xl h-auto rounded-lg shadow-md select-none" 
                     loading="lazy"
                     decoding="async"
                   />
@@ -732,6 +746,11 @@ If, for any reason, you aren't fully satisfied with the results, you can just re
         </div>
       </section>
 
+      {/* Pricing Section - Duplicate */}
+      <PricingSection 
+        title={<span className="text-primary">Claim your Discounted Audifort Below While Stock Lasts</span>}
+      />
+
       {/* Scientific References Section */}
       <section className="py-20 bg-gray-100">
         <div className="container mx-auto px-4 max-w-6xl">
@@ -741,53 +760,41 @@ If, for any reason, you aren't fully satisfied with the results, you can just re
             <img 
               src={refsLogosImage} 
               alt="Scientific References Logos: healthline, ScienceDirect, nature, frontiers Science News" 
-              className="w-full max-w-4xl h-auto object-contain" 
+              className="w-full max-w-4xl h-auto object-contain select-none" 
               loading="lazy"
               decoding="async"
             />
           </div>
           
           <div className="p-6 md:p-8">
+            {/* Disclaimer */}
+            <div className="text-center mb-8">
+              <p className="text-yellow-500 font-semibold text-base md:text-lg">
+                The company is not endorsed by, sponsored by, or affiliated with any of these organizations
+              </p>
+            </div>
+            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-              {/* Left Column - References 1-16 */}
+              {/* Left Column - References 1-7 */}
               <div className="text-sm md:text-base text-gray-700 leading-relaxed space-y-3 font-serif">
-                <p><strong>1.</strong> An, Y., Li, Y., Wang, X., Chen, Z., Xu, H., Wu, L., Li, S., Wang, C., Luan, W., Wang, X., Liu, M., Tang, X., & Yu, L. (2018). Cordycepin reduces weight through regulating gut microbiota in high-fat diet-induced obese rats. Lipids in Health and Disease, 17(1), 276. https://doi.org/10.1186/s12944-018-0910-6</p>
-                <p><strong>2.</strong> Babal, K. (2018). Combination for improved weight control with medicinal mushrooms and other compounds: Bioupdate research-health benefits of medicinal mushroom. BioResearch Update.</p>
-                <p><strong>3.</strong> Balch, B. (2024, March 26). Why we know so little about women's health. Association of American Medical Colleges.</p>
-                <p><strong>4.</strong> Bartosch, J. (2023, April 24). Why am I gaining weight so fast during menopause? And will hormone therapy help? University of Chicago Medicine.</p>
-                <p><strong>5.</strong> Blundell, R., & Camilleri, E. (2024, May 12). Chaga mushroom: A natural wonder with far-reaching health benefits. Lifestyle & Culture.</p>
-                <p><strong>6.</strong> Bonafide Health. (2021, July 7). Bonafide releases "state of menopause" study to understand symptoms, treatments & dispositions of menopausal women in 2021. PR News Wire.</p>
-                <p><strong>7.</strong> Chodosh, S. (2018, January 18). When you lose weight, your fat cells don't just let go of fat. Popular Science.</p>
-                <p><strong>8.</strong> Christiansen, S. (2023, April 20). Low estrogen: Symptoms, causes, and treatments. Verywell Health.</p>
-                <p><strong>9.</strong> Cunningham, M. (2023, December 15). Endocrine-disrupting chemicals found in menstrual products including tampons, pads, and liners. George Mason University.</p>
-                <p><strong>10.</strong> Das, G., Shin, H.-S., Leyva-Gómez, G., Prado-Audelo, M. L. D., Cortes, H., Singh, Y. D., Panda, M. K., Mishra, A. P., Nigam, M., Saklani, S., Chaturi, P. K., Martorell, M., Cruz-Martins, N., Sharma, V., Garg, N., Sharma, R., & Patra, J. K. (2021). Cordyceps spp.: A review on its immune-stimulatory and other biological potentials. Frontiers in Pharmacology, 11, 602364. https://doi.org/10.3389/fphar.2020.602364</p>
-                <p><strong>11.</strong> Extance, A., & Chemistry World. (2015, February 4). Common chemicals linked to early menopause. Scientific American.</p>
-                <p><strong>12.</strong> Fox, M. (2023, November 20). Despite decades of promises, health research still overlooks women. The Guardian.</p>
-                <p><strong>13.</strong> Gordon, D. (2021, July 13). 73% of women don't treat their menopause symptoms, new survey shows. Forbes.</p>
-                <p><strong>14.</strong> Hampton, T. (2020). How targeting fat cells' estrogen receptors could fight obesity. JAMA Network, 324(21), 2146. https://doi.org/10.1001/jama.2020.22148</p>
-                <p><strong>15.</strong> Harvard T.H. Chan School of Public Health. (2024, July 23). Toxins in tampons suggest need for FDA testing, says expert.</p>
-                <p><strong>16.</strong> Hetemäki, N., Mikkola, T. S., Tikkanen, M. J., Wang, F., Hämäläinen, E., Turpeinen, U., Haanpää, M., Vihma, V., & Savolainen-Peltonen, H. (2021). Adipose tissue estrogen production and metabolism in premenopausal women. The Journal of Steroid Biochemistry and Molecular Biology, 209, 105849. https://doi.org/10.1016/j.jsbmb.2021.105849</p>
+                <p><strong>1.</strong> Rebooting the brain helps stop the ring of tinnitus in rats - National Institute on Deafness and Other Communication Disorders (NIDCD)</p>
+                <p><strong>2.</strong> The link between hearing loss and Alzheimer's disease</p>
+                <p><strong>3.</strong> White, P. M., Doetzlhofer, A., Lee, Y. S., Groves, A. K., and Segil, N. (2006). Mammalian cochlear supporting cells can divide and trans-differentiate into hair cells. Nature 441, 984-987.</p>
+                <p><strong>4.</strong> Tinnitus Epidemiology: Prevalence, Severity, Exposures And Treatment Patterns In The United States</p>
+                <p><strong>5.</strong> What Herbs are Good for Hearing Loss?</p>
+                <p><strong>6.</strong> Neuroprotective potential of phytochemicals - G. Phani Kumar and Farhath Khanum</p>
+                <p><strong>7.</strong> A Course in Miracles by Helen Schucman</p>
               </div>
               
-              {/* Right Column - References 17-33 */}
+              {/* Right Column - References 8-14 */}
               <div className="text-sm md:text-base text-gray-700 leading-relaxed space-y-3 font-serif">
-                <p><strong>17.</strong> Hochwalt, A. E., Abbinante-Nissen, J. M., Bohman, L., Hattersley, A. M., Hu, P., Streicher-Scott, J. L., Teufel, A. G., & Woeller, K. E. (2023). The safety assessment of tampons: Illustration of a comprehensive approach for four different products. Frontiers in Reproductive Health, 5, 1167868. https://doi.org/10.3389/frph.2023.1167868</p>
-                <p><strong>18.</strong> Jang, D., Lee, E., Lee, S., Kwon, Y., Kang, K. S., Kim, C.-E., & Kim, D. (2022). System-level investigation of anti-obesity effects and the potential pathways of Cordyceps militaris in ovariectomized rats. BMC Complementary Medicine and Therapies, 22(1), 132. https://doi.org/10.1186/s12906-022-03608-y</p>
-                <p><strong>19.</strong> Joi, P. (2023, May 22). Women's health is massively underfunded and is one of the biggest missed opportunities in health . Gavi, the Vaccine Alliance.</p>
-                <p><strong>20.</strong> Kodoth, V., Scaccia, S., & Aggarwal, B. (2022). Adverse changes in body composition during the menopausal transition and relation to cardiovascular risk: A contemporary review. Women's Health Reports, 3(1), 573–581. https://doi.org/10.1089/whr.2021.0119</p>
-                <p><strong>21.</strong> Kyles-Stewart, M., & Shyam, V. (2019). MycoMaterials: Metal-Fungi hybrids (pp. 1–14). NASA.</p>
-                <p><strong>22.</strong> LaMotte, S. (2024a, July 11). Tampons contain lead, arsenic and potentially toxic chemicals, studies say. Here's what to know. CNN.</p>
-                <p><strong>23.</strong> LaMotte, S. (2024b, September 10). Lead, arsenic and other heavy metals in tampons prompt FDA investigation. CNN Health.</p>
-                <p><strong>24.</strong> NASA Science. (2023, July 23). Why is NASA studying fungi?</p>
-                <p><strong>25.</strong> Nature. (2025). Menopause research is globally underfunded. It's time to change that. The International Journal of Science, 637(8047), 763–763. https://doi.org/10.1038/d41586-025-00150-y</p>
-                <p><strong>26.</strong> Sidharthan, D. C. (2024, July 8). Are your tampons poisoning you? Study findings 16 metals in widely available tampon brands. News-Medical.</p>
-                <p><strong>27.</strong> Smith, K. (2023, May 3). Women's health research lacks funding – these charts show how. Nature.</p>
-                <p><strong>28.</strong> Sweet, W. (2020). My menopause transformation. MyMT.</p>
-                <p><strong>29.</strong> UCSF Institutional Review Board. (2010, July 12). Weight loss reduces hot flashes in overweight and obese women. UCSF.</p>
-                <p><strong>30.</strong> Windle, P. (2017). Why you should definitely ditch tampons and sanitary towels. Smarterchange.</p>
-                <p><strong>31.</strong> Woods, J. (2015, January 15). What does estrogen have to do with belly fat? Rochester.</p>
-                <p><strong>32.</strong> Yang, X., Chen, L., Zhao, L., Yang, Y., Wang, J., Yan, L., Tai, G., & Zhang, H. (2021). Cordyceps sinensis-derived fungus Isaria felina ameliorates experimental autoimmune thyroiditis in mice. Biomedicine & Pharmacotherapy, 140, 111733. https://doi.org/10.1016/j.biopha.2021.111733</p>
-                <p><strong>33.</strong> Zhang, D., Wang, Z., Qi, W., & Zhao, G. (2014). The effects of Cordyceps sinensis phytoestrogen on estrogen deficiency-induced osteoporosis in Ovariectomized rats. BMC Complementary and Alternative Medicine, 14(1), 484. https://doi.org/10.1186/1472-6882-14-484</p>
+                <p><strong>8.</strong> Identification of medicinal plants of Urmia for treatment of gastrointestinal disorders</p>
+                <p><strong>9.</strong> The Benefits of California Poppy (Eschscholzia californica)</p>
+                <p><strong>10.</strong> Tinnitus is the result of the brain trying, but failing, to repair itself - Georgetown University Medical Center - Jan 2011</p>
+                <p><strong>11.</strong> Free radical production and ischemic brain damage: influence of postischemic oxygen tension - Agardh CD and others</p>
+                <p><strong>12.</strong> B Vitamins and the Brain: Mechanisms, Dose and Efficacy-A Review - David O. Kennedy - Feb 2016</p>
+                <p><strong>13.</strong> Mapping cortical hubs in tinnitus. - Winfried Schlee and others - Nov 2009</p>
+                <p><strong>14.</strong> Intracranial Mapping of a Cortical Tinnitus System using Residual Inhibition - WilliamSedley and others - Apr 2015</p>
               </div>
             </div>
           </div>
@@ -801,7 +808,7 @@ If, for any reason, you aren't fully satisfied with the results, you can just re
             <img 
               src={logo} 
               alt="Audifort" 
-              className="h-8 w-auto brightness-0 invert opacity-50" 
+              className="h-8 w-auto brightness-0 invert opacity-50 select-none" 
               loading="lazy"
               decoding="async"
             />
@@ -930,10 +937,10 @@ function IngredientCard({ image, name }: { image: string, name: string }) {
   return (
     <div className="flex flex-col items-center gap-4 text-center">
       <div className="bg-white rounded-full w-32 h-32 md:w-40 md:h-40 flex items-center justify-center mb-2 shadow-lg border-2 border-secondary/20 overflow-hidden">
-        <img 
-          src={image} 
-          alt={name} 
-          className="w-full h-full object-cover" 
+          <img 
+            src={image} 
+            alt={name} 
+            className="w-full h-full object-cover select-none"
           width="170"
           height="170"
           loading="lazy"
@@ -955,7 +962,7 @@ function BonusCard({ number, title, description, image, retailPrice = 55 }: { nu
           <img 
             src={image} 
             alt={title} 
-            className="w-full h-auto object-contain" 
+            className="w-full h-auto object-contain select-none" 
             width="1338"
             height="1170"
             loading="lazy"
@@ -965,7 +972,7 @@ function BonusCard({ number, title, description, image, retailPrice = 55 }: { nu
       )}
       <CardContent className="p-6">
         <div className="flex items-start gap-4">
-          <div className="bg-accent text-white rounded-full w-12 h-12 flex items-center justify-center font-black text-xl shrink-0">
+          <div className="bg-[#00515E] text-white rounded-full w-12 h-12 flex items-center justify-center font-black text-xl shrink-0">
             {number}
           </div>
           <div className="flex-1">
@@ -1021,7 +1028,7 @@ function PricingCard({
           <img 
             src={image} 
             alt="bottle" 
-            className={`object-contain rounded-lg ${isPopular ? 'h-80 md:h-96' : 'h-64 md:h-80'}`}
+            className={`object-contain rounded-lg select-none ${isPopular ? 'h-80 md:h-96' : 'h-64 md:h-80'}`}
             width="1020"
             height="797"
             loading="lazy"
@@ -1049,13 +1056,13 @@ function PricingCard({
             </div>
             <div className="bg-blue-50 text-blue-700 font-medium py-2 px-4 rounded-lg inline-flex items-center gap-2 text-sm border border-blue-200">
               <Check className="w-4 h-4" />
-              <span>60-Day Money-Back Guarantee</span>
+              <span>90-Day Money-Back Guarantee</span>
             </div>
           </div>
         ) : (
           <div className="bg-blue-50 text-blue-700 font-medium py-2 px-4 rounded-lg mb-4 inline-flex items-center gap-2 text-sm border border-blue-200">
             <Check className="w-4 h-4" />
-            <span>60-Day Money-Back Guarantee</span>
+            <span>90-Day Money-Back Guarantee</span>
           </div>
         )}
 
@@ -1109,7 +1116,7 @@ function PricingCard({
             <img 
               src="/images/menovelle/digistore.svg" 
               alt="DigiStore24" 
-              className="h-6 max-w-[140px]"
+              className="h-6 max-w-[140px] select-none"
             />
           </div>
         </div>
@@ -1128,7 +1135,7 @@ function PricingCard({
         )}
 
         <div className="flex items-center justify-center gap-2 text-sm font-medium text-gray-600 mb-2">
-          <img src={creditCardsImage} alt="We accept major credit cards" className="h-6" />
+          <img src={creditCardsImage} alt="We accept major credit cards" className="h-6 select-none" />
         </div>
         
         <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-center gap-2 text-sm text-gray-500">
