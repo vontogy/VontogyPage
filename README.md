@@ -192,7 +192,6 @@ npm run start
     "@/lib/*": ["./src/lib/*"],
     "@/hooks/*": ["./src/hooks/*"],
     "@/pages/*": ["./src/pages/*"],
-    "@assets/*": ["./public/images/menovelle/*"],
     "@shared/*": ["../shared/*"]
   }
 }
