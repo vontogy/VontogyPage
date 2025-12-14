@@ -33,12 +33,6 @@ export default function Home() {
               <h3 className="text-white font-semibold mb-4">Our Products</h3>
               <div className="flex flex-col gap-4">
                 <a 
-                  href="/menovelle" 
-                  className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 rounded-lg transition-all hover:scale-105 shadow-lg"
-                >
-                  Menovelle™ - Natural Menopause Relief & Weight Support
-                </a>
-                <a 
                   href="/nervovive" 
                   className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 rounded-lg transition-all hover:scale-105 shadow-lg"
                 >

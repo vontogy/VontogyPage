@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Check, Truck, Shield, ShoppingCart, Star, ArrowRight } from "lucide-react";
+import { Check, Truck, Shield, ShoppingCart, Star } from "lucide-react";
 import { Button } from "@/components/ui/nervovive/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/nervovive/accordion";
 import { motion } from "framer-motion";
@@ -52,7 +52,7 @@ function PricingSection({ title, sectionId }: { title: React.ReactNode | string,
               shipping="+ 9.99 SHIPPING"
               image={basicImage}
               totalPrice={{ original: "99", final: "69" }}
-              buyNowUrl="https://www.checkout-ds24.com/product/558763?_ga=1469951698.1765446177&_b=NDkwNDU2O2dldG5lcnZvdml2ZTI0LmNvbS90ZXh0LnBocDt1bmRlZmluZWQ7dGV4dDsxOzY5O2ZlO3VuZGVmaW5lZA%3D%3D&aff=vontogy"
+              buyNowUrl="https://getnervovive24.com/text.php?aff=vontogy#order-now"
             />
           </div>
 
@@ -67,7 +67,7 @@ function PricingSection({ title, sectionId }: { title: React.ReactNode | string,
               isPopular={true}
               image={bestValueImage}
               totalPrice={{ original: "594", final: "294" }}
-              buyNowUrl="https://www.checkout-ds24.com/product/558766?_ga=1469951698.1765446177&_b=NDkwNDU2O2dldG5lcnZvdml2ZTI0LmNvbS90ZXh0LnBocDt1bmRlZmluZWQ7dGV4dDszOzI5NDtmZTt1bmRlZmluZWQ%3D&aff=vontogy"
+              buyNowUrl="https://getnervovive24.com/text.php?aff=vontogy#order-now"
             />
           </div>
 
@@ -81,7 +81,7 @@ function PricingSection({ title, sectionId }: { title: React.ReactNode | string,
               shipping="FREE SHIPPING"
               image={mostPopularImage}
               totalPrice={{ original: "537", final: "177" }}
-              buyNowUrl="https://www.checkout-ds24.com/product/558765?_ga=1469951698.1765446177&_b=NDkwNDU2O2dldG5lcnZvdml2ZTI0LmNvbS90ZXh0LnBocDt1bmRlZmluZWQ7dGV4dDsyOzE3NztmZTt1bmRlZmluZWQ%3D&aff=vontogy"
+              buyNowUrl="https://getnervovive24.com/text.php?aff=vontogy#order-now"
               hasFreeEbooks={true}
             />
           </div>
@@ -231,9 +231,14 @@ export default function Nervovive() {
             loading="eager"
             decoding="async"
           />
-          <Button onClick={scrollToPricing} className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded-full px-6 shadow-lg shadow-yellow-500/20 transition-all hover:scale-105">
-            Order Now
-          </Button>
+          <a 
+            href="https://getnervovive24.com/text.php?aff=vontogy#order-now"
+            target="_blank"
+            rel="nofollow sponsored noopener noreferrer"
+            className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded-full px-6 py-2 shadow-lg shadow-yellow-500/20 transition-all hover:scale-105 cursor-pointer inline-block"
+          >
+            ORDER NOW
+          </a>
         </div>
       </nav>
 
@@ -321,25 +326,14 @@ export default function Nervovive() {
                 }}
                 className="w-full flex justify-center md:w-auto"
               >
-                <Button onClick={scrollToPricing} className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-white font-bold rounded-xl shadow-xl shadow-yellow-500/25 transition-all hover:scale-105 flex items-center gap-1.5 md:gap-2 mx-auto md:mx-0 w-full md:w-auto">
-                  <ShoppingCart className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 shrink-0" />
-                  GET YOUR 77% DISCOUT NOW!
-                </Button>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.35 }}
-                className="w-full flex justify-center md:w-auto"
-              >
                 <a 
-                  href="https://getnervovive24.com/text.php?aff=vontogy"
+                  href="https://getnervovive24.com/text.php?aff=vontogy#order-now"
                   target="_blank"
                   rel="nofollow sponsored noopener noreferrer"
-                  className="h-12 md:h-14 px-4 md:px-8 text-lg md:text-base lg:text-lg bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold rounded-xl shadow-lg shadow-blue-500/25 transition-all hover:scale-105 flex items-center gap-2 mx-auto md:mx-0 w-full md:w-auto justify-center"
+                  className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-white font-bold rounded-xl shadow-xl shadow-yellow-500/25 transition-all hover:scale-105 flex items-center gap-1.5 md:gap-2 mx-auto md:mx-0 w-full md:w-auto cursor-pointer"
                 >
-                  Access The Official Website Now
-                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5 shrink-0" />
+                  <ShoppingCart className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 shrink-0" />
+                  SECURE ORDER ON OFFICIAL SITE
                 </a>
               </motion.div>
             </motion.div>
@@ -1053,6 +1047,7 @@ function PricingCard({
 
         <div className="mb-4">
            <div className="text-5xl font-black text-gray-900">${price}<span className="text-2xl font-bold text-gray-600">/Bottle</span></div>
+           <p className="text-xs text-gray-500 mt-2 text-center">Stocks are limited. Verify on official site.</p>
         </div>
 
         {isPopular ? (
@@ -1072,9 +1067,9 @@ function PricingCard({
               target="_blank"
               rel="nofollow sponsored noopener noreferrer"
               className="w-full h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-white font-bold rounded-xl shadow-xl shadow-yellow-500/25 transition-all hover:scale-105 flex items-center justify-center"
-              aria-label="Buy now - external affiliate link"
+              aria-label="Check availability - external affiliate link"
             >
-              BUY NOW
+              BUY ON OFFICIAL SITE
             </a>
           </motion.div>
         ) : (
@@ -1083,9 +1078,9 @@ function PricingCard({
             target="_blank"
             rel="nofollow sponsored noopener noreferrer"
             className="w-full h-14 text-lg font-bold rounded-xl mb-4 flex items-center justify-center bg-gray-900 hover:bg-gray-800 text-white shadow-lg transition-all"
-            aria-label="Buy now - external affiliate link"
+            aria-label="Check availability - external affiliate link"
           >
-            BUY NOW
+            BUY ON OFFICIAL SITE
           </a>
         )}
 
@@ -1099,7 +1094,7 @@ function PricingCard({
           <div className="flex items-center gap-1">
             <span className="text-gray-600">Powered by</span>
             <img 
-              src="/images/menovelle/digistore.svg" 
+              src="/images/nervovive/digistore.svg" 
               alt="DigiStore24" 
               className="h-6 max-w-[140px] select-none"
             />

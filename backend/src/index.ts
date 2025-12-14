@@ -20,9 +20,9 @@ app.use((req, res, next) => {
     "default-src 'self'; " +
     "script-src 'self'; " +
     "style-src 'self' 'unsafe-inline'; " +
-    "img-src 'self' data: https://www.digistore24.com https://www.checkout-ds24.com https://mymenovelle24.com https://res.cloudinary.com; " +
+    "img-src 'self' data: https://www.digistore24.com https://www.checkout-ds24.com https://res.cloudinary.com; " +
     "font-src 'self' data:; " +
-    "connect-src 'self' https://www.digistore24.com https://www.checkout-ds24.com https://mymenovelle24.com; " +
+    "connect-src 'self' https://www.digistore24.com https://www.checkout-ds24.com; " +
     "frame-src 'none'; " +
     "object-src 'none'; " +
     "base-uri 'self'; " +
