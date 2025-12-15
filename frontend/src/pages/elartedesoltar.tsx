@@ -60,7 +60,7 @@ function PricingSection({ sectionId }: { sectionId?: string }) {
                     De $19,90 por
                   </p>
                   <div className="text-8xl md:text-7xl lg:text-8xl font-black text-green-600 mb-2 tracking-tighter">
-                    $6.90
+                    $6,90
                   </div>
                 </div>
 
@@ -431,7 +431,7 @@ export default function Elartedesoltar() {
                 <img 
                   src="/images/elartedesoltar/images/promise1.webp" 
                   alt="Liberación" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover select-none"
                   loading="lazy"
                   decoding="async"
                 />
@@ -473,7 +473,7 @@ export default function Elartedesoltar() {
                 <img 
                   src="/images/elartedesoltar/images/promise2.webp" 
                   alt="Reconstrucción" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover select-none"
                   loading="lazy"
                   decoding="async"
                 />
@@ -515,7 +515,7 @@ export default function Elartedesoltar() {
                 <img 
                   src="/images/elartedesoltar/images/promise3.webp" 
                   alt="Renacimiento" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover select-none"
                   loading="lazy"
                   decoding="async"
                 />
