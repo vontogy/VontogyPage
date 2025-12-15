@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Check, Truck, Shield, Star, ArrowRight, Unlink, HeartOff, CheckCircle, Crown, Heart, ShieldCheck, Award, Zap, Infinity as InfinityIcon } from "lucide-react";
+import { Check, Shield, Star, ArrowRight, Unlink, HeartOff, CheckCircle, Crown, Heart, ShieldCheck, Award, Zap, Infinity as InfinityIcon } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/elartedesoltar/accordion";
 import { motion } from "framer-motion";
 
@@ -15,7 +15,6 @@ declare global {
 const bestValueImage = "/images/elartedesoltar/images/best_value.webp";
 const heroSectionImage = "/images/elartedesoltar/images/herosection.webp";
 const whySectionImage = "/images/elartedesoltar/images/whysection.webp";
-const creditCardsImage = "/images/elartedesoltar/images/credit-cards.webp";
 const hotmartImage = "/images/elartedesoltar/hotmart.webp";
 const moneyBackImage = "/images/elartedesoltar/images/moneyback.webp";
 
@@ -190,9 +189,9 @@ export default function Elartedesoltar() {
       favicon.href = "/images/elartedesoltar/icon.webp";
     }
 
-    // Meta Pixel Code
+    // Meta Pixel Code - Exact copy from Facebook to prevent failures
     if (!window.fbq) {
-      (function(f: any, b: any, e: string, v: string, n: any, t: any, s: any) {
+      (function(f: any, b: any, e: any, v: any, n?: any, t?: any, s?: any) {
         if (f.fbq) return;
         n = f.fbq = function() {
           n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
@@ -207,10 +206,10 @@ export default function Elartedesoltar() {
         t.src = v;
         s = b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t, s);
-      })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js', null, null, null);
+      })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
     }
     
-    // Initialize and track page view
+    // Initialize and track page view - must be called after script loads
     if (window.fbq) {
       window.fbq('init', '1826999544612219');
       window.fbq('track', 'PageView');
@@ -885,171 +884,6 @@ export default function Elartedesoltar() {
           </p>
         </div>
       </footer>
-    </div>
-  );
-}
-
-function PricingCard({ 
-  title, 
-  bottles, 
-  supply, 
-  price, 
-  shipping, 
-  isPopular = false,
-  image,
-  youSave,
-  totalPrice,
-  buyNowUrl,
-  hasFreeEbooks = false
-}: any) {
-  return (
-    <div className={`relative bg-white rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-xl ${isPopular ? 'border-2 border-yellow-500 shadow-lg z-10 order-first md:order-none' : 'border border-gray-200 shadow-md'}`}>
-      {isPopular ? (
-        <div className="bg-yellow-500 text-white text-center py-2 font-semibold uppercase tracking-wide text-xs">
-          BEST VALUE
-        </div>
-      ) : (
-        <div className="bg-gray-500 text-white text-center py-2 font-semibold uppercase tracking-wide text-xs">
-          {title}
-        </div>
-      )}
-      
-      <div className="p-6 md:p-8 text-center">
-        <p className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">{bottles}</p>
-        <p className="text-sm text-gray-400 mb-6">({supply})</p>
-        
-        {/* Bottle Visual */}
-        <div className="flex items-center justify-center mb-6">
-          <img 
-            src={image} 
-            alt="bottle" 
-            className={`object-contain rounded-lg select-none ${isPopular ? 'h-80 md:h-96' : 'h-64 md:h-80'}`}
-            width="1020"
-            height="797"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-
-        {/* Savings Info - More Subtle */}
-        {youSave && (
-          <div className={`${isPopular ? 'bg-green-500 text-white' : 'bg-gray-100 text-gray-700'} font-medium py-2 px-4 rounded-lg mb-3 inline-flex items-center gap-2 text-sm`}>
-            <span>Save ${youSave}</span>
-          </div>
-        )}
-
-        {/* Guarantee Indicator and Additional Badges for Best Value */}
-        {isPopular ? (
-          <div className="space-y-2 mb-4">
-            <div className="bg-blue-50 text-blue-700 font-medium py-2 px-4 rounded-lg inline-flex items-center gap-2 text-sm border border-blue-200">
-              <Check className="w-4 h-4" />
-              <span>Biggest Discount</span>
-            </div>
-            <div className="bg-blue-50 text-blue-700 font-medium py-2 px-4 rounded-lg inline-flex items-center gap-2 text-sm border border-blue-200">
-              <Check className="w-4 h-4" />
-              <span>2 Free Ebooks</span>
-            </div>
-            <div className="bg-blue-50 text-blue-700 font-medium py-2 px-4 rounded-lg inline-flex items-center gap-2 text-sm border border-blue-200">
-              <Check className="w-4 h-4" />
-              <span>60-Day Money-Back Guarantee</span>
-            </div>
-          </div>
-        ) : hasFreeEbooks ? (
-          <div className="space-y-2 mb-4">
-            <div className="bg-blue-50 text-blue-700 font-medium py-2 px-4 rounded-lg inline-flex items-center gap-2 text-sm border border-blue-200">
-              <Check className="w-4 h-4" />
-              <span>2 Free Ebooks</span>
-            </div>
-            <div className="bg-blue-50 text-blue-700 font-medium py-2 px-4 rounded-lg inline-flex items-center gap-2 text-sm border border-blue-200">
-              <Check className="w-4 h-4" />
-              <span>60-Day Money-Back Guarantee</span>
-            </div>
-          </div>
-        ) : (
-          <div className="bg-blue-50 text-blue-700 font-medium py-2 px-4 rounded-lg mb-4 inline-flex items-center gap-2 text-sm border border-blue-200">
-            <Check className="w-4 h-4" />
-            <span>60-Day Money-Back Guarantee</span>
-          </div>
-        )}
-
-        <div className="mb-4">
-           <div className="text-5xl font-black text-gray-900">${price}<span className="text-2xl font-bold text-gray-600">/Bottle</span></div>
-           <p className="text-xs text-gray-500 mt-2 text-center">Stocks are limited. Verify on official site.</p>
-        </div>
-
-        {isPopular ? (
-          <motion.div
-            animate={{
-              scale: [1, 1.02, 1],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="w-full mb-4"
-          >
-            <a 
-              href={buyNowUrl}
-              target="_blank"
-              rel="nofollow sponsored noopener noreferrer"
-              className="w-full h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-white font-bold rounded-xl shadow-xl shadow-yellow-500/25 transition-all hover:scale-105 flex items-center justify-center"
-              aria-label="Check availability - external affiliate link"
-            >
-              BUY ON OFFICIAL SITE
-            </a>
-          </motion.div>
-        ) : (
-          <a 
-            href={buyNowUrl}
-            target="_blank"
-            rel="nofollow sponsored noopener noreferrer"
-            className="w-full h-14 text-lg font-bold rounded-xl mb-4 flex items-center justify-center bg-gray-900 hover:bg-gray-800 text-white shadow-lg transition-all"
-            aria-label="Check availability - external affiliate link"
-          >
-            BUY ON OFFICIAL SITE
-          </a>
-        )}
-
-        {/* Secure Payment Info */}
-        <div className="flex items-center justify-center gap-2 text-xs mb-2">
-          <div className="flex items-center gap-1">
-            <Shield className="w-3 h-3 text-green-600 shrink-0" />
-            <span className="text-gray-700 font-medium">Secure Payment</span>
-          </div>
-          <span className="text-gray-300">•</span>
-          <div className="flex items-center gap-1">
-            <span className="text-gray-600">Powered by</span>
-            <img 
-              src="/images/elartedesoltar/digistore.svg" 
-              alt="DigiStore24" 
-              className="h-6 max-w-[140px] select-none"
-            />
-          </div>
-        </div>
-
-        <p className="text-xs text-gray-500 text-center mb-2">
-          External checkout link
-        </p>
-
-        {/* Total Price */}
-        {totalPrice && (
-          <div className="mb-4 text-base md:text-lg">
-            <span className="text-gray-700 font-bold">TOTAL: </span>
-            <span className="text-gray-400 line-through">${totalPrice.original}</span>
-            <span className="text-gray-900 font-bold ml-2">${totalPrice.final}</span>
-          </div>
-        )}
-
-        <div className="flex items-center justify-center gap-2 text-sm font-medium text-gray-600 mb-2">
-          <img src={creditCardsImage} alt="We accept major credit cards" className="h-6 select-none" />
-        </div>
-        
-        <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-center gap-2 text-sm text-gray-500">
-           {shipping === 'FREE SHIPPING' || shipping === 'FREE Shipping' ? <Truck className="w-4 h-4 text-primary" /> : null}
-           <span className={shipping === 'FREE SHIPPING' || shipping === 'FREE Shipping' ? 'text-primary font-bold' : ''}>{shipping}</span>
-        </div>
-      </div>
     </div>
   );
 }
