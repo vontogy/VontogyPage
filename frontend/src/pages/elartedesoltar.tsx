@@ -440,19 +440,19 @@ export default function Elartedesoltar() {
                 <h3 className="text-xl font-bold mb-4 text-center">Liberación</h3>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2">
-                    <span className="text-[#D4AF37] mt-1.5 shrink-0">▶</span>
+                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
                     <span className="text-sm leading-relaxed">
                       Lograrás el "Contacto Cero" mental: sacar a tu ex de tus pensamientos, no solo de tu teléfono.
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-[#D4AF37] mt-1.5 shrink-0">▶</span>
+                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
                     <span className="text-sm leading-relaxed">
                       Soltarás el peso del rencor y la rabia para sentirte ligero/a y en paz de nuevo.
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-[#D4AF37] mt-1.5 shrink-0">▶</span>
+                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
                     <span className="text-sm leading-relaxed">
                       Cerrarás el ciclo definitivamente, sin dejar puertas abiertas que te lastimen.
                     </span>
@@ -482,19 +482,19 @@ export default function Elartedesoltar() {
                 <h3 className="text-xl font-bold mb-4 text-center">Reconstrucción</h3>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2">
-                    <span className="text-[#D4AF37] mt-1.5 shrink-0">▶</span>
+                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
                     <span className="text-sm leading-relaxed">
                       Reconstruirás tu amor propio desde cero, mirándote al espejo con orgullo y seguridad.
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-[#D4AF37] mt-1.5 shrink-0">▶</span>
+                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
                     <span className="text-sm leading-relaxed">
                       Convertirás el dolor de la ruptura en el combustible para tus metas personales y profesionales.
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-[#D4AF37] mt-1.5 shrink-0">▶</span>
+                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
                     <span className="text-sm leading-relaxed">
                       Dejarás de buscar validación externa para sentirte suficiente.
                     </span>
@@ -524,19 +524,19 @@ export default function Elartedesoltar() {
                 <h3 className="text-xl font-bold mb-4 text-center">Renacimiento</h3>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2">
-                    <span className="text-[#D4AF37] mt-1.5 shrink-0">▶</span>
+                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
                     <span className="text-sm leading-relaxed">
                       Diseñarás una vida soltera emocionante, llena de planes, viajes y nuevas experiencias.
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-[#D4AF37] mt-1.5 shrink-0">▶</span>
+                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
                     <span className="text-sm leading-relaxed">
                       Te convertirás en una persona emocionalmente independiente, imposible de manipular.
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-[#D4AF37] mt-1.5 shrink-0">▶</span>
+                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
                     <span className="text-sm leading-relaxed">
                       Perderás el miedo a quedarte solo/a, descubriendo que tu felicidad depende 100% de ti.
                     </span>
