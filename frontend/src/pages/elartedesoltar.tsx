@@ -82,7 +82,7 @@ function PricingSection({ sectionId }: { sectionId?: string }) {
                   className="w-full"
                 >
                   <a 
-                    href="https://pay.hotmart.com/G103409382C?checkoutMode=10&bid=1765817997054"
+                    href="https://pay.hotmart.com/G103409382C?checkoutMode=10"
                     target="_blank"
                     rel="nofollow sponsored noopener noreferrer"
                     className="w-full h-14 md:h-16 px-4 md:px-6 text-base md:text-lg bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold rounded-xl shadow-xl shadow-green-500/25 transition-all hover:scale-105 flex items-center justify-center gap-2 cursor-pointer"
