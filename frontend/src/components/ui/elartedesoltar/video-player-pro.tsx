@@ -21,9 +21,9 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
   const [isEnded, setIsEnded] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [progress, setProgress] = useState(0);
-  const [isHovering, setIsHovering] = useState(false);
+  const [showControls, setShowControls] = useState(false);
   const [showUnmuteButton, setShowUnmuteButton] = useState(true);
-  const [blobUrl, setBlobUrl] = useState<string | null>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   // Detect mobile
   useEffect(() => {
@@ -33,42 +33,8 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Get the appropriate video source
+  // Get the appropriate video source (streaming directly - no blob conversion)
   const videoSrc = isMobile && srcMobile ? srcMobile : src;
-
-  // PROTECTION: Convert video to blob URL to hide original source
-  useEffect(() => {
-    let isCancelled = false;
-    
-    const loadVideoAsBlob = async () => {
-      try {
-        const response = await fetch(videoSrc, {
-          mode: 'cors',
-          credentials: 'omit'
-        });
-        const blob = await response.blob();
-        if (!isCancelled) {
-          const url = URL.createObjectURL(blob);
-          setBlobUrl(url);
-        }
-      } catch (error) {
-        // Fallback to direct URL if blob fails (CORS issues)
-        console.log("Blob loading failed, using direct URL");
-        if (!isCancelled) {
-          setBlobUrl(videoSrc);
-        }
-      }
-    };
-
-    loadVideoAsBlob();
-
-    return () => {
-      isCancelled = true;
-      if (blobUrl && blobUrl.startsWith('blob:')) {
-        URL.revokeObjectURL(blobUrl);
-      }
-    };
-  }, [videoSrc]);
 
   // PROTECTION: Disable right-click, keyboard shortcuts, and devtools
   useEffect(() => {
@@ -161,34 +127,41 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
   // Autoplay: video MUST start muted (browser policy)
   useEffect(() => {
     const video = videoRef.current;
-    if (!video || !blobUrl) return;
+    if (!video) return;
 
     // Ensure muted for autoplay to work
     video.muted = true;
     video.volume = 1;
 
-    // Play video
+    // Play video as soon as possible
     const playVideo = async () => {
       try {
         await video.play();
         setIsPlaying(true);
+        setIsLoaded(true);
       } catch (e) {
-        console.log("Autoplay failed, will retry");
+        console.log("Autoplay failed, will retry on interaction");
       }
     };
 
-    // Try to play
-    playVideo();
+    // Handle when video can start playing (doesn't need full download!)
+    const handleCanPlay = () => {
+      setIsLoaded(true);
+      playVideo();
+    };
 
-    // Retry on load events
-    video.addEventListener('loadeddata', playVideo);
-    video.addEventListener('canplay', playVideo);
+    // Try to play immediately if already loaded
+    if (video.readyState >= 3) {
+      handleCanPlay();
+    }
+
+    // Listen for when video is ready to play (streaming!)
+    video.addEventListener('canplay', handleCanPlay);
 
     return () => {
-      video.removeEventListener('loadeddata', playVideo);
-      video.removeEventListener('canplay', playVideo);
+      video.removeEventListener('canplay', handleCanPlay);
     };
-  }, [blobUrl]);
+  }, [videoSrc]);
 
   // Unmute - requires user interaction
   const handleUnmute = () => {
@@ -285,12 +258,15 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
     if (!video.muted) setShowUnmuteButton(false);
   };
 
+  // Toggle controls visibility on click
+  const toggleControls = () => {
+    setShowControls(prev => !prev);
+  };
+
   return (
     <div
       ref={containerRef}
       className="relative w-full max-w-5xl mx-auto overflow-hidden rounded-xl bg-black select-none"
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
       style={{ 
         WebkitUserSelect: 'none', 
         userSelect: 'none',
@@ -300,7 +276,7 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
       {/* PROTECTION: Invisible overlay to prevent direct video interaction */}
       <div 
         className="absolute inset-0 z-10"
-        onClick={togglePlay}
+        onClick={toggleControls}
         onContextMenu={(e) => { e.preventDefault(); return false; }}
         style={{ 
           background: 'transparent',
@@ -309,43 +285,41 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
         }}
       />
 
-      {blobUrl && (
-        <video
-          ref={videoRef}
-          className="w-full pointer-events-none"
-          src={blobUrl}
-          muted
-          playsInline
-          preload="auto"
-          onTimeUpdate={handleTimeUpdate}
-          onEnded={handleEnded}
-          onPlay={() => setIsPlaying(true)}
-          onPause={() => setIsPlaying(false)}
-          // PROTECTION: Disable native controls and download
-          controls={false}
-          controlsList="nodownload noplaybackrate"
-          disablePictureInPicture
-          disableRemotePlayback
-          crossOrigin="anonymous"
-          style={{
-            WebkitUserSelect: 'none',
-            userSelect: 'none',
-            pointerEvents: 'none'
-          }}
-          // @ts-ignore - These are valid HTML attributes
-          onDragStart={(e: React.DragEvent) => e.preventDefault()}
-        />
-      )}
+      <video
+        ref={videoRef}
+        className="w-full pointer-events-none"
+        src={videoSrc}
+        muted
+        playsInline
+        preload="metadata"
+        onTimeUpdate={handleTimeUpdate}
+        onEnded={handleEnded}
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
+        onLoadedData={() => setIsLoaded(true)}
+        // PROTECTION: Disable native controls and download
+        controls={false}
+        controlsList="nodownload noplaybackrate"
+        disablePictureInPicture
+        disableRemotePlayback
+        style={{
+          WebkitUserSelect: 'none',
+          userSelect: 'none',
+          pointerEvents: 'none'
+        }}
+        // @ts-ignore - These are valid HTML attributes
+        onDragStart={(e: React.DragEvent) => e.preventDefault()}
+      />
 
-      {/* Loading state while blob is being created */}
-      {!blobUrl && (
-        <div className="w-full aspect-video bg-black flex items-center justify-center">
-          <div className="w-8 h-8 border-4 border-white/30 border-t-white rounded-full animate-spin" />
+      {/* Loading overlay - shows while video is buffering */}
+      {!isLoaded && (
+        <div className="absolute inset-0 bg-black flex items-center justify-center z-5">
+          <div className="w-10 h-10 border-4 border-white/30 border-t-white rounded-full animate-spin" />
         </div>
       )}
 
       {/* UNMUTE BUTTON - Shows when video is muted */}
-      {showUnmuteButton && isMuted && blobUrl && (
+      {showUnmuteButton && isMuted && isLoaded && (
         <div className="absolute inset-0 flex items-center justify-center z-20">
           <button
             onClick={handleUnmute}
@@ -377,9 +351,9 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
         </div>
       </div>
 
-      {/* Controls - Show on hover */}
+      {/* Controls - Show on click */}
       <AnimatePresence>
-        {isHovering && (
+        {showControls && (
           <motion.div
             className="absolute bottom-6 left-1/2 -translate-x-1/2 w-[95%] backdrop-blur-md bg-black/50 rounded-xl p-3 z-30"
             initial={{ y: 20, opacity: 0 }}
