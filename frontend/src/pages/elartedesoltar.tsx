@@ -17,7 +17,7 @@ declare global {
 // ============================================
 // Tempo em SEGUNDOS para revelar as seções ocultas
 // Exemplo: 198 = seções aparecem após 198 segundos de vídeo
-const VSL_REVEAL_TIME_SECONDS = 0;
+const VSL_REVEAL_TIME_SECONDS = 198;
 // ============================================
 
 // Assets
