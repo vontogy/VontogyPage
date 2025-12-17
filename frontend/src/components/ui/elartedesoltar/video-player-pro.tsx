@@ -23,121 +23,24 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
   const [progress, setProgress] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
   const [showUnmuteButton, setShowUnmuteButton] = useState(true);
-  const [videoSrcUrl, setVideoSrcUrl] = useState<string | null>(null);
-  const [isVideoReady, setIsVideoReady] = useState(false);
-  const [showPlayButton, setShowPlayButton] = useState(false);
+  const [blobUrl, setBlobUrl] = useState<string | null>(null);
 
-  const [isIOS, setIsIOS] = useState(false);
-
-  // Detect mobile and iOS
+  // Detect mobile
   useEffect(() => {
-    const checkMobile = () => {
-      const isMobileByWidth = window.innerWidth < 768;
-      const isMobileByAgent = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      setIsMobile(isMobileByWidth || isMobileByAgent);
-      
-      // Detect iOS specifically (Safari doesn't support WebM)
-      const isIOSDevice = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
-        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-      setIsIOS(isIOSDevice);
-    };
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Convert Cloudinary WebM URL to MP4 for iOS/Safari compatibility
-  const convertToMP4 = (url: string): string => {
-    if (!url) return url;
-    
-    // Cloudinary URL format: .../upload/[optional transformations]/filename.ext
-    // We need to add f_mp4 transformation to convert format on-the-fly
-    if (url.includes('cloudinary.com')) {
-      // Check if URL already has transformations
-      const uploadIndex = url.indexOf('/upload/');
-      if (uploadIndex !== -1) {
-        const beforeUpload = url.substring(0, uploadIndex + 8); // includes '/upload/'
-        const afterUpload = url.substring(uploadIndex + 8);
-        
-        // Check if there are already transformations (starts with v followed by numbers for version)
-        if (afterUpload.startsWith('v') && /^v\d+\//.test(afterUpload)) {
-          // Has version, add transformation after version
-          const versionEnd = afterUpload.indexOf('/');
-          const version = afterUpload.substring(0, versionEnd + 1);
-          const rest = afterUpload.substring(versionEnd + 1);
-          // Replace extension and add format transformation
-          const newRest = rest.replace(/\.webm$/i, '.mp4');
-          return `${beforeUpload}${version}f_mp4/${newRest}`;
-        } else {
-          // No version, add transformation directly
-          const newAfterUpload = afterUpload.replace(/\.webm$/i, '.mp4');
-          return `${beforeUpload}f_mp4/${newAfterUpload}`;
-        }
-      }
-      // Fallback: just replace extension
-      return url.replace(/\.webm$/i, '.mp4');
-    }
-    return url;
-  };
+  // Get the appropriate video source
+  const videoSrc = isMobile && srcMobile ? srcMobile : src;
 
-  // Check if browser supports WebM (Safari/iOS don't)
-  const supportsWebM = (): boolean => {
-    if (typeof document === 'undefined') return true;
-    const video = document.createElement('video');
-    return video.canPlayType('video/webm; codecs="vp8, vorbis"') !== '' ||
-           video.canPlayType('video/webm; codecs="vp9"') !== '';
-  };
-
-  // Get the appropriate video source - use MP4 for iOS/Safari or browsers without WebM support
-  const getVideoSource = (): string => {
-    const baseSource = isMobile && srcMobile ? srcMobile : src;
-    // iOS Safari and some browsers don't support WebM, use MP4 instead
-    if (baseSource.endsWith('.webm')) {
-      // Check if it's iOS or if browser doesn't support WebM
-      if (isIOS || !supportsWebM()) {
-        console.log("Converting to MP4 for compatibility");
-        return convertToMP4(baseSource);
-      }
-    }
-    return baseSource;
-  };
-
-  const videoSrc = getVideoSource();
-
-  // Set mobile-specific video attributes (needed for iOS/Android)
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    
-    // These attributes help with iOS playback
-    video.setAttribute('webkit-playsinline', 'true');
-    video.setAttribute('x5-playsinline', 'true');
-    video.setAttribute('x5-video-player-type', 'h5');
-    video.setAttribute('x5-video-player-fullscreen', 'true');
-    video.setAttribute('x5-video-orientation', 'portraint');
-  }, []);
-
-  // On mobile/iOS: Use direct URL (faster, more reliable, required for iOS)
-  // On desktop: Try blob for protection, fallback to direct URL
+  // PROTECTION: Convert video to blob URL to hide original source
   useEffect(() => {
     let isCancelled = false;
     
-    // Reset states when source changes
-    setIsVideoReady(false);
-    setShowPlayButton(false);
-    
-    const loadVideo = async () => {
-      // On mobile or iOS, always use direct URL for better compatibility
-      // iOS requires direct URL for proper video playback
-      if (isMobile || isIOS) {
-        if (!isCancelled) {
-          console.log("Using direct URL for mobile/iOS:", videoSrc);
-          setVideoSrcUrl(videoSrc);
-        }
-        return;
-      }
-      
-      // On desktop, try blob loading for protection
+    const loadVideoAsBlob = async () => {
       try {
         const response = await fetch(videoSrc, {
           mode: 'cors',
@@ -146,26 +49,26 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
         const blob = await response.blob();
         if (!isCancelled) {
           const url = URL.createObjectURL(blob);
-          setVideoSrcUrl(url);
+          setBlobUrl(url);
         }
       } catch (error) {
         // Fallback to direct URL if blob fails (CORS issues)
         console.log("Blob loading failed, using direct URL");
         if (!isCancelled) {
-          setVideoSrcUrl(videoSrc);
+          setBlobUrl(videoSrc);
         }
       }
     };
 
-    loadVideo();
+    loadVideoAsBlob();
 
     return () => {
       isCancelled = true;
-      if (videoSrcUrl && videoSrcUrl.startsWith('blob:')) {
-        URL.revokeObjectURL(videoSrcUrl);
+      if (blobUrl && blobUrl.startsWith('blob:')) {
+        URL.revokeObjectURL(blobUrl);
       }
     };
-  }, [videoSrc, isMobile, isIOS]);
+  }, [videoSrc]);
 
   // PROTECTION: Disable right-click, keyboard shortcuts, and devtools
   useEffect(() => {
@@ -258,67 +161,37 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
   // Autoplay: video MUST start muted (browser policy)
   useEffect(() => {
     const video = videoRef.current;
-    if (!video || !videoSrcUrl) return;
+    if (!video || !blobUrl) return;
 
     // Ensure muted for autoplay to work
     video.muted = true;
     video.volume = 1;
 
-    // Play video with mobile-friendly approach
+    // Play video
     const playVideo = async () => {
       try {
-        // Set video ready state
-        setIsVideoReady(true);
-        
-        const playPromise = video.play();
-        if (playPromise !== undefined) {
-          playPromise
-            .then(() => {
-              setIsPlaying(true);
-              setShowPlayButton(false);
-            })
-            .catch((error) => {
-              // Autoplay was prevented - show play button for user interaction
-              console.log("Autoplay blocked, showing play button:", error.name);
-              setIsPlaying(false);
-              setShowPlayButton(true);
-            });
-        }
+        await video.play();
+        setIsPlaying(true);
       } catch (e) {
-        console.log("Autoplay failed, showing play button");
-        setShowPlayButton(true);
+        console.log("Autoplay failed, will retry");
       }
     };
 
-    // Try to play on various events for maximum compatibility
-    const handleCanPlay = () => {
-      setIsVideoReady(true);
-      playVideo();
-    };
+    // Try to play
+    playVideo();
 
-    video.addEventListener('loadeddata', handleCanPlay);
-    video.addEventListener('canplay', handleCanPlay);
-    video.addEventListener('canplaythrough', handleCanPlay);
-    
-    // Also try immediately if video is already loaded
-    if (video.readyState >= 3) {
-      handleCanPlay();
-    }
+    // Retry on load events
+    video.addEventListener('loadeddata', playVideo);
+    video.addEventListener('canplay', playVideo);
 
     return () => {
-      video.removeEventListener('loadeddata', handleCanPlay);
-      video.removeEventListener('canplay', handleCanPlay);
-      video.removeEventListener('canplaythrough', handleCanPlay);
+      video.removeEventListener('loadeddata', playVideo);
+      video.removeEventListener('canplay', playVideo);
     };
-  }, [videoSrcUrl]);
+  }, [blobUrl]);
 
   // Unmute - requires user interaction
-  const handleUnmute = useCallback((e?: React.MouseEvent) => {
-    if (e) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-    
+  const handleUnmute = () => {
     const video = videoRef.current;
     if (!video) return;
     
@@ -326,16 +199,11 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
     setIsMuted(false);
     setShowUnmuteButton(false);
     
-    // Also play if paused (important for mobile)
+    // Also play if paused
     if (video.paused) {
-      video.play()
-        .then(() => {
-          setIsPlaying(true);
-          setShowPlayButton(false);
-        })
-        .catch((err) => console.log("Play after unmute failed:", err));
+      video.play().then(() => setIsPlaying(true));
     }
-  }, []);
+  };
 
   // Toggle play/pause
   const togglePlay = useCallback(() => {
@@ -348,40 +216,12 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
     }
     
     if (video.paused) {
-      video.play()
-        .then(() => {
-          setIsPlaying(true);
-          setShowPlayButton(false);
-        })
-        .catch((err) => console.log("Play toggle failed:", err));
+      video.play().then(() => setIsPlaying(true));
     } else {
       video.pause();
       setIsPlaying(false);
     }
   }, [isEnded]);
-
-  // Handle container click - for play/pause
-  const handleContainerInteraction = useCallback((e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    
-    // If showing play button (autoplay was blocked), play the video
-    if (showPlayButton) {
-      const video = videoRef.current;
-      if (video) {
-        video.play()
-          .then(() => {
-            setIsPlaying(true);
-            setShowPlayButton(false);
-          })
-          .catch((err) => console.log("Play on tap failed:", err));
-      }
-      return;
-    }
-    
-    // Otherwise toggle play/pause
-    togglePlay();
-  }, [showPlayButton, togglePlay]);
 
   // VSL-style progress: starts VERY fast, then crawls
   const calculateVSLProgress = (realProgress: number): number => {
@@ -426,51 +266,15 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
     setProgress(percent);
   };
 
-  // Fullscreen - with mobile/iOS support
-  const toggleFullscreen = useCallback(() => {
-    const container = containerRef.current;
-    const video = videoRef.current;
-    
-    if (!container) return;
-    
-    // Check if already in fullscreen
-    const isFullscreen = document.fullscreenElement || 
-      (document as any).webkitFullscreenElement ||
-      (document as any).mozFullScreenElement ||
-      (document as any).msFullscreenElement;
-    
-    if (!isFullscreen) {
-      // Try standard fullscreen API first
-      if (container.requestFullscreen) {
-        container.requestFullscreen().catch(() => {
-          // Fallback: try video fullscreen for iOS
-          if (video && (video as any).webkitEnterFullscreen) {
-            (video as any).webkitEnterFullscreen();
-          }
-        });
-      } else if ((container as any).webkitRequestFullscreen) {
-        (container as any).webkitRequestFullscreen();
-      } else if ((container as any).mozRequestFullScreen) {
-        (container as any).mozRequestFullScreen();
-      } else if ((container as any).msRequestFullscreen) {
-        (container as any).msRequestFullscreen();
-      } else if (video && (video as any).webkitEnterFullscreen) {
-        // iOS Safari fallback - use native video fullscreen
-        (video as any).webkitEnterFullscreen();
-      }
+  // Fullscreen
+  const toggleFullscreen = () => {
+    if (!containerRef.current) return;
+    if (!document.fullscreenElement) {
+      containerRef.current.requestFullscreen();
     } else {
-      // Exit fullscreen
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      } else if ((document as any).webkitExitFullscreen) {
-        (document as any).webkitExitFullscreen();
-      } else if ((document as any).mozCancelFullScreen) {
-        (document as any).mozCancelFullScreen();
-      } else if ((document as any).msExitFullscreen) {
-        (document as any).msExitFullscreen();
-      }
+      document.exitFullscreen();
     }
-  }, []);
+  };
 
   // Toggle mute
   const toggleMute = () => {
@@ -485,8 +289,8 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
     <div
       ref={containerRef}
       className="relative w-full max-w-5xl mx-auto overflow-hidden rounded-xl bg-black select-none"
-      onMouseEnter={() => !isMobile && setIsHovering(true)}
-      onMouseLeave={() => !isMobile && setIsHovering(false)}
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
       style={{ 
         WebkitUserSelect: 'none', 
         userSelect: 'none',
@@ -496,43 +300,27 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
       {/* PROTECTION: Invisible overlay to prevent direct video interaction */}
       <div 
         className="absolute inset-0 z-10"
-        onClick={handleContainerInteraction}
+        onClick={togglePlay}
         onContextMenu={(e) => { e.preventDefault(); return false; }}
         style={{ 
           background: 'transparent',
           WebkitUserSelect: 'none',
-          userSelect: 'none',
-          touchAction: 'manipulation'
+          userSelect: 'none'
         }}
       />
 
-      {videoSrcUrl && (
+      {blobUrl && (
         <video
           ref={videoRef}
           className="w-full pointer-events-none"
-          src={videoSrcUrl}
+          src={blobUrl}
           muted
           playsInline
           preload="auto"
           onTimeUpdate={handleTimeUpdate}
           onEnded={handleEnded}
-          onPlay={() => {
-            setIsPlaying(true);
-            setShowPlayButton(false);
-          }}
+          onPlay={() => setIsPlaying(true)}
           onPause={() => setIsPlaying(false)}
-          onLoadedData={() => setIsVideoReady(true)}
-          onCanPlay={() => setIsVideoReady(true)}
-          onError={(e) => {
-            console.error("Video load error:", e);
-            // If MP4 conversion failed, try original source as last resort
-            const video = e.currentTarget;
-            if (video.src !== src && video.src !== srcMobile) {
-              console.log("Trying original source as fallback");
-              const fallbackSrc = isMobile && srcMobile ? srcMobile : src;
-              setVideoSrcUrl(fallbackSrc);
-            }
-          }}
           // PROTECTION: Disable native controls and download
           controls={false}
           controlsList="nodownload noplaybackrate"
@@ -549,33 +337,19 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
         />
       )}
 
-      {/* Loading state while video is loading */}
-      {!videoSrcUrl && (
+      {/* Loading state while blob is being created */}
+      {!blobUrl && (
         <div className="w-full aspect-video bg-black flex items-center justify-center">
           <div className="w-8 h-8 border-4 border-white/30 border-t-white rounded-full animate-spin" />
         </div>
       )}
 
-      {/* PLAY BUTTON - Shows when autoplay was blocked (common on mobile) */}
-      {showPlayButton && videoSrcUrl && !isPlaying && (
-        <div className="absolute inset-0 flex items-center justify-center z-20">
-          <button
-            onClick={handleContainerInteraction}
-            className="bg-red-600 hover:bg-red-700 active:bg-red-800 text-white w-20 h-20 md:w-24 md:h-24 rounded-full font-bold text-lg flex items-center justify-center shadow-lg transition-all hover:scale-105 active:scale-95"
-            style={{ touchAction: 'manipulation' }}
-          >
-            <Play className="w-10 h-10 md:w-12 md:h-12 ml-1" fill="white" />
-          </button>
-        </div>
-      )}
-
-      {/* UNMUTE BUTTON - Shows when video is playing but muted */}
-      {showUnmuteButton && isMuted && videoSrcUrl && isPlaying && !showPlayButton && (
+      {/* UNMUTE BUTTON - Shows when video is muted */}
+      {showUnmuteButton && isMuted && blobUrl && (
         <div className="absolute inset-0 flex items-center justify-center z-20">
           <button
             onClick={handleUnmute}
-            className="bg-red-600 hover:bg-red-700 active:bg-red-800 text-white px-6 py-3 rounded-full font-bold text-lg flex items-center gap-2 shadow-lg transition-all hover:scale-105 active:scale-95"
-            style={{ touchAction: 'manipulation' }}
+            className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full font-bold text-lg flex items-center gap-2 shadow-lg transition-all hover:scale-105"
           >
             <VolumeX className="w-6 h-6" />
             ACTIVAR SONIDO
@@ -587,7 +361,7 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
       <div className="absolute bottom-0 left-0 right-0 p-2 z-20">
         <div
           className={cn(
-            "relative w-full h-2 md:h-1.5 bg-white/30 rounded-full",
+            "relative w-full h-1.5 bg-white/30 rounded-full",
             disableSeek ? "cursor-not-allowed" : "cursor-pointer"
           )}
           onClick={(e) => {
@@ -595,13 +369,6 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
             const rect = e.currentTarget.getBoundingClientRect();
             handleSeek((e.clientX - rect.left) / rect.width * 100);
           }}
-          onTouchEnd={(e) => {
-            if (disableSeek) return;
-            const touch = e.changedTouches[0];
-            const rect = e.currentTarget.getBoundingClientRect();
-            handleSeek((touch.clientX - rect.left) / rect.width * 100);
-          }}
-          style={{ touchAction: 'manipulation' }}
         >
           <div
             className="absolute top-0 left-0 h-full bg-red-600 rounded-full transition-all"
@@ -610,45 +377,30 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
         </div>
       </div>
 
-      {/* Controls - Show on hover (desktop) or always visible (mobile) */}
+      {/* Controls - Show on hover */}
       <AnimatePresence>
-        {(isHovering || isMobile) && isVideoReady && (
+        {isHovering && (
           <motion.div
-            className="absolute bottom-6 left-1/2 -translate-x-1/2 w-[95%] backdrop-blur-md bg-black/50 rounded-xl p-2 md:p-3 z-30"
+            className="absolute bottom-6 left-1/2 -translate-x-1/2 w-[95%] backdrop-blur-md bg-black/50 rounded-xl p-3 z-30"
             initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: isMobile ? 0.9 : 1 }}
+            animate={{ y: 0, opacity: 1 }}
             exit={{ y: 20, opacity: 0 }}
           >
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-1 md:gap-2">
+              <div className="flex items-center gap-2">
                 {/* Play/Pause */}
-                <Button 
-                  variant="ghost" 
-                  size="icon" 
-                  className="text-white hover:bg-white/20 active:bg-white/30 h-10 w-10 md:h-10 md:w-10" 
-                  onClick={(e) => { e.stopPropagation(); togglePlay(); }}
-                >
+                <Button variant="ghost" size="icon" className="text-white hover:bg-white/20" onClick={togglePlay}>
                   {isEnded ? <RotateCw className="w-5 h-5" /> : isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
                 </Button>
 
                 {/* Mute/Unmute */}
-                <Button 
-                  variant="ghost" 
-                  size="icon" 
-                  className="text-white hover:bg-white/20 active:bg-white/30 h-10 w-10 md:h-10 md:w-10" 
-                  onClick={(e) => { e.stopPropagation(); toggleMute(); }}
-                >
+                <Button variant="ghost" size="icon" className="text-white hover:bg-white/20" onClick={toggleMute}>
                   {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
                 </Button>
               </div>
 
               {/* Fullscreen */}
-              <Button 
-                variant="ghost" 
-                size="icon" 
-                className="text-white hover:bg-white/20 active:bg-white/30 h-10 w-10 md:h-10 md:w-10" 
-                onClick={(e) => { e.stopPropagation(); toggleFullscreen(); }}
-              >
+              <Button variant="ghost" size="icon" className="text-white hover:bg-white/20" onClick={toggleFullscreen}>
                 <Maximize2 className="w-5 h-5" />
               </Button>
             </div>
