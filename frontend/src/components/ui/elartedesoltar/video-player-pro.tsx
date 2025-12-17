@@ -239,13 +239,48 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
     setProgress(percent);
   };
 
-  // Fullscreen
-  const toggleFullscreen = () => {
-    if (!containerRef.current) return;
-    if (!document.fullscreenElement) {
-      containerRef.current.requestFullscreen();
-    } else {
-      document.exitFullscreen();
+  // Fullscreen - with mobile support (iOS Safari)
+  const toggleFullscreen = async () => {
+    const video = videoRef.current;
+    const container = containerRef.current;
+    
+    if (!video || !container) return;
+
+    try {
+      // Check if already in fullscreen
+      const isFullscreen = document.fullscreenElement || 
+        (document as any).webkitFullscreenElement || 
+        (document as any).mozFullScreenElement ||
+        (document as any).msFullscreenElement;
+
+      if (isFullscreen) {
+        // Exit fullscreen
+        if (document.exitFullscreen) {
+          await document.exitFullscreen();
+        } else if ((document as any).webkitExitFullscreen) {
+          (document as any).webkitExitFullscreen();
+        } else if ((document as any).mozCancelFullScreen) {
+          (document as any).mozCancelFullScreen();
+        } else if ((document as any).msExitFullscreen) {
+          (document as any).msExitFullscreen();
+        }
+      } else {
+        // Enter fullscreen - try video element first for iOS
+        if ((video as any).webkitEnterFullscreen) {
+          // iOS Safari - use native video fullscreen
+          (video as any).webkitEnterFullscreen();
+        } else if (container.requestFullscreen) {
+          await container.requestFullscreen();
+        } else if ((container as any).webkitRequestFullscreen) {
+          (container as any).webkitRequestFullscreen();
+        } else if ((container as any).mozRequestFullScreen) {
+          (container as any).mozRequestFullScreen();
+        } else if ((container as any).msRequestFullscreen) {
+          (container as any).msRequestFullscreen();
+        }
+      }
+    } catch (error) {
+      console.log("Fullscreen error:", error);
     }
   };
 
@@ -359,23 +394,25 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 20, opacity: 0 }}
+            onClick={(e) => e.stopPropagation()}
+            onTouchEnd={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
+            <div className="flex items-center justify-between" onClick={(e) => e.stopPropagation()}>
+              <div className="flex items-center gap-1">
                 {/* Play/Pause */}
-                <Button variant="ghost" size="icon" className="text-white hover:bg-white/20" onClick={togglePlay}>
-                  {isEnded ? <RotateCw className="w-5 h-5" /> : isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
+                <Button variant="ghost" size="icon" className="text-white hover:bg-white/20 active:bg-white/30 min-w-[44px] min-h-[44px]" onClick={(e) => { e.stopPropagation(); togglePlay(); }}>
+                  {isEnded ? <RotateCw className="w-6 h-6" /> : isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
                 </Button>
 
                 {/* Mute/Unmute */}
-                <Button variant="ghost" size="icon" className="text-white hover:bg-white/20" onClick={toggleMute}>
-                  {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
+                <Button variant="ghost" size="icon" className="text-white hover:bg-white/20 active:bg-white/30 min-w-[44px] min-h-[44px]" onClick={(e) => { e.stopPropagation(); toggleMute(); }}>
+                  {isMuted ? <VolumeX className="w-6 h-6" /> : <Volume2 className="w-6 h-6" />}
                 </Button>
               </div>
 
               {/* Fullscreen */}
-              <Button variant="ghost" size="icon" className="text-white hover:bg-white/20" onClick={toggleFullscreen}>
-                <Maximize2 className="w-5 h-5" />
+              <Button variant="ghost" size="icon" className="text-white hover:bg-white/20 active:bg-white/30 min-w-[44px] min-h-[44px]" onClick={(e) => { e.stopPropagation(); toggleFullscreen(); }}>
+                <Maximize2 className="w-6 h-6" />
               </Button>
             </div>
           </motion.div>
