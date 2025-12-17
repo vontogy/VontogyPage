@@ -18,6 +18,7 @@ export default defineConfig({
       "@/styles": path.resolve(__dirname, "src/styles"),
       "@shared": path.resolve(__dirname, "..", "shared"),
     },
+    dedupe: ["react", "react-dom"],
   },
   root: __dirname,
   publicDir: path.resolve(__dirname, "public"),
