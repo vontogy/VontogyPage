@@ -29,7 +29,7 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
 
   const [isIOS, setIsIOS] = useState(false);
 
-  // Detect mobile and iOS - check both screen size and user agent for accuracy
+  // Detect mobile and iOS
   useEffect(() => {
     const checkMobile = () => {
       const isMobileByWidth = window.innerWidth < 768;
@@ -312,8 +312,8 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
     };
   }, [videoSrcUrl]);
 
-  // Unmute - requires user interaction (works for both touch and click)
-  const handleUnmute = useCallback((e?: React.MouseEvent | React.TouchEvent) => {
+  // Unmute - requires user interaction
+  const handleUnmute = useCallback((e?: React.MouseEvent) => {
     if (e) {
       e.preventDefault();
       e.stopPropagation();
@@ -337,13 +337,8 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
     }
   }, []);
 
-  // Toggle play/pause - works for both touch and click
-  const togglePlay = useCallback((e?: React.MouseEvent | React.TouchEvent) => {
-    if (e) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-    
+  // Toggle play/pause
+  const togglePlay = useCallback(() => {
     const video = videoRef.current;
     if (!video) return;
     
@@ -365,8 +360,8 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
     }
   }, [isEnded]);
 
-  // Handle container click/touch - for mobile compatibility
-  const handleContainerInteraction = useCallback((e: React.MouseEvent | React.TouchEvent) => {
+  // Handle container click - for play/pause
+  const handleContainerInteraction = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     
@@ -502,7 +497,6 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
       <div 
         className="absolute inset-0 z-10"
         onClick={handleContainerInteraction}
-        onTouchEnd={handleContainerInteraction}
         onContextMenu={(e) => { e.preventDefault(); return false; }}
         style={{ 
           background: 'transparent',
@@ -567,7 +561,6 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
         <div className="absolute inset-0 flex items-center justify-center z-20">
           <button
             onClick={handleContainerInteraction}
-            onTouchEnd={handleContainerInteraction}
             className="bg-red-600 hover:bg-red-700 active:bg-red-800 text-white w-20 h-20 md:w-24 md:h-24 rounded-full font-bold text-lg flex items-center justify-center shadow-lg transition-all hover:scale-105 active:scale-95"
             style={{ touchAction: 'manipulation' }}
           >
@@ -581,7 +574,6 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
         <div className="absolute inset-0 flex items-center justify-center z-20">
           <button
             onClick={handleUnmute}
-            onTouchEnd={handleUnmute}
             className="bg-red-600 hover:bg-red-700 active:bg-red-800 text-white px-6 py-3 rounded-full font-bold text-lg flex items-center gap-2 shadow-lg transition-all hover:scale-105 active:scale-95"
             style={{ touchAction: 'manipulation' }}
           >
@@ -635,7 +627,6 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
                   size="icon" 
                   className="text-white hover:bg-white/20 active:bg-white/30 h-10 w-10 md:h-10 md:w-10" 
                   onClick={(e) => { e.stopPropagation(); togglePlay(); }}
-                  onTouchEnd={(e) => { e.stopPropagation(); togglePlay(); }}
                 >
                   {isEnded ? <RotateCw className="w-5 h-5" /> : isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
                 </Button>
@@ -646,19 +637,17 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
                   size="icon" 
                   className="text-white hover:bg-white/20 active:bg-white/30 h-10 w-10 md:h-10 md:w-10" 
                   onClick={(e) => { e.stopPropagation(); toggleMute(); }}
-                  onTouchEnd={(e) => { e.stopPropagation(); toggleMute(); }}
                 >
                   {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
                 </Button>
               </div>
 
-              {/* Fullscreen - hide on iOS as it doesn't support fullscreen API well */}
+              {/* Fullscreen */}
               <Button 
                 variant="ghost" 
                 size="icon" 
                 className="text-white hover:bg-white/20 active:bg-white/30 h-10 w-10 md:h-10 md:w-10" 
                 onClick={(e) => { e.stopPropagation(); toggleFullscreen(); }}
-                onTouchEnd={(e) => { e.stopPropagation(); toggleFullscreen(); }}
               >
                 <Maximize2 className="w-5 h-5" />
               </Button>
