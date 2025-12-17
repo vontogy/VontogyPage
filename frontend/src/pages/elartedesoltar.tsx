@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Check, Shield, Star, ArrowRight, Unlink, HeartOff, CheckCircle, Crown, Heart, ShieldCheck, Award, Zap, Infinity as InfinityIcon } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/elartedesoltar/accordion";
 import { motion } from "framer-motion";
@@ -11,6 +11,14 @@ declare global {
     _fbq?: any;
   }
 }
+
+// ============================================
+// ⚙️ CONFIGURAÇÃO DO VSL - FÁCIL DE MODIFICAR
+// ============================================
+// Tempo em SEGUNDOS para revelar as seções ocultas
+// Exemplo: 198 = seções aparecem após 198 segundos de vídeo
+const VSL_REVEAL_TIME_SECONDS = 2;
+// ============================================
 
 // Assets
 const bestValueImage = "/images/elartedesoltar/images/best_value.webp";
@@ -165,6 +173,16 @@ function PricingSection({ sectionId }: { sectionId?: string }) {
 }
 
 export default function Elartedesoltar() {
+  // State to control content visibility based on video time (13 seconds)
+  const [showContent, setShowContent] = useState(false);
+  
+  // Handle video time updates
+  const handleVideoTimeUpdate = (currentTime: number) => {
+    if (currentTime >= VSL_REVEAL_TIME_SECONDS && !showContent) {
+      setShowContent(true);
+    }
+  };
+
   useEffect(() => {
     // Set Elartedesoltar page metadata
     document.title = "El Arte de Soltar: Cómo Superar a tu Ex y Recuperar tu Paz";
@@ -304,91 +322,113 @@ export default function Elartedesoltar() {
               src="https://res.cloudinary.com/dxwqoyzw1/video/upload/v1765973195/VSL-DESKTOP-VONTOGY_i64mxo.webm"
               srcMobile="https://res.cloudinary.com/dxwqoyzw1/video/upload/v1765973192/VSL-MOBILE-VONTOGY_akxrt1.webm"
               disableSeek={true}
+              onTimeUpdate={handleVideoTimeUpdate}
             />
             
-            {/* CTA Button below video */}
-            <div className="mt-12 md:mt-16 flex flex-col items-center gap-6 md:gap-8">
-              <motion.div
-                animate={{
-                  scale: [1, 1.02, 1],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="w-full flex justify-center"
-              >
-                <a 
-                  href="#pricing"
-                  onClick={scrollToPricing}
-                  className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold rounded-xl shadow-xl shadow-green-500/25 transition-all hover:scale-105 flex items-center justify-center gap-1.5 md:gap-2 mx-auto w-full md:w-auto cursor-pointer"
+            {/* CTA Button below video - Hidden until 13 seconds */}
+            {showContent && (
+              <div className="mt-12 md:mt-16 flex flex-col items-center gap-6 md:gap-8">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
                 >
-                  ¡SÍ! QUIERO SEGUIR ADELANTE
-                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 shrink-0" />
-                </a>
-              </motion.div>
+                  <motion.div
+                    animate={{
+                      scale: [1, 1.02, 1],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    className="w-full flex justify-center"
+                  >
+                    <a 
+                      href="#pricing"
+                      onClick={scrollToPricing}
+                      className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold rounded-xl shadow-xl shadow-green-500/25 transition-all hover:scale-105 flex items-center justify-center gap-1.5 md:gap-2 mx-auto w-full md:w-auto cursor-pointer"
+                    >
+                      ¡SÍ! QUIERO SEGUIR ADELANTE
+                      <ArrowRight className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 shrink-0" />
+                    </a>
+                  </motion.div>
+                </motion.div>
 
-              {/* Trust Badges */}
-              <div className="mt-6 space-y-4 w-full">
-                {/* Trust Icons Row */}
-                <div className="flex flex-wrap justify-center items-center gap-3 md:gap-4">
-                  <div className="flex items-center gap-2">
-                    <Shield className="w-5 h-5 text-green-600 shrink-0" />
-                    <span className="text-xs md:text-sm text-gray-700 font-medium">Compra Segura</span>
+                {/* Trust Badges */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="mt-6 space-y-4 w-full"
+                >
+                  {/* Trust Icons Row */}
+                  <div className="flex flex-wrap justify-center items-center gap-3 md:gap-4">
+                    <div className="flex items-center gap-2">
+                      <Shield className="w-5 h-5 text-green-600 shrink-0" />
+                      <span className="text-xs md:text-sm text-gray-700 font-medium">Compra Segura</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Award className="w-5 h-5 text-green-600 shrink-0" />
+                      <span className="text-xs md:text-sm text-gray-700 font-medium">Satisfacción Garantizada</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Zap className="w-5 h-5 text-green-600 shrink-0" />
+                      <span className="text-xs md:text-sm text-gray-700 font-medium">Acceso Inmediato</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <InfinityIcon className="w-5 h-5 text-green-600 shrink-0" />
+                      <span className="text-xs md:text-sm text-gray-700 font-medium">Acceso Vitalicio</span>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Award className="w-5 h-5 text-green-600 shrink-0" />
-                    <span className="text-xs md:text-sm text-gray-700 font-medium">Satisfacción Garantizada</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Zap className="w-5 h-5 text-green-600 shrink-0" />
-                    <span className="text-xs md:text-sm text-gray-700 font-medium">Acceso Inmediato</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <InfinityIcon className="w-5 h-5 text-green-600 shrink-0" />
-                    <span className="text-xs md:text-sm text-gray-700 font-medium">Acceso Vitalicio</span>
-                  </div>
-                </div>
 
-                {/* Powered by Hotmart */}
-                <div className="flex flex-col items-center gap-2 pt-2 border-t border-gray-200">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs text-gray-500">Impulsado por</span>
-                    <img 
-                      src={hotmartImage} 
-                      alt="Hotmart" 
-                      className="h-4 md:h-5 w-auto select-none"
-                      loading="lazy"
-                      decoding="async"
-                    />
+                  {/* Powered by Hotmart */}
+                  <div className="flex flex-col items-center gap-2 pt-2 border-t border-gray-200">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs text-gray-500">Impulsado por</span>
+                      <img 
+                        src={hotmartImage} 
+                        alt="Hotmart" 
+                        className="h-4 md:h-5 w-auto select-none"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
                   </div>
-                </div>
-              </div>
+                </motion.div>
 
-              {/* Reviews */}
-              <div className="flex flex-col items-center gap-1 pb-8 md:pb-12">
-                <div className="flex items-center gap-2">
-                  <div className="flex items-center gap-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                    ))}
+                {/* Reviews */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="flex flex-col items-center gap-1 pb-8 md:pb-12"
+                >
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                    <span className="text-gray-700 font-semibold text-base md:text-lg">
+                      4.9
+                    </span>
                   </div>
-                  <span className="text-gray-700 font-semibold text-base md:text-lg">
-                    4.9
+                  <span className="text-gray-600 text-sm md:text-base">
+                    ¡Más de 27.214 reseñas positivas!
                   </span>
-                </div>
-                <span className="text-gray-600 text-sm md:text-base">
-                  ¡Más de 27.214 reseñas positivas!
-                </span>
+                </motion.div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </section>
 
-      {/* Hero Section */}
-      <section className="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden bg-gradient-to-b from-white to-secondary/30">
+      {/* All sections below are hidden until video reaches 13 seconds */}
+      {showContent && (
+        <>
+          {/* Hero Section */}
+          <section className="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden bg-gradient-to-b from-white to-secondary/30">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-secondary/20 rounded-l-[100px] -z-10 hidden md:block" />
         
         <div className="container mx-auto px-4 max-w-6xl grid md:grid-cols-2 gap-12 items-center">
@@ -1007,6 +1047,8 @@ export default function Elartedesoltar() {
           </Accordion>
         </div>
       </section>
+        </>
+      )}
 
       {/* Footer */}
       <footer className="bg-gray-900 text-gray-400 py-12">

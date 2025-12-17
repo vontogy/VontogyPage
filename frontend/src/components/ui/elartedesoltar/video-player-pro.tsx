@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/elartedesoltar/button";
 import { Play, Pause, Volume2, VolumeX, Maximize2, RotateCw } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -10,9 +10,10 @@ interface VideoPlayerProProps {
   src: string;
   srcMobile?: string;
   disableSeek?: boolean;
+  onTimeUpdate?: (currentTime: number) => void;
 }
 
-const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disableSeek = false }) => {
+const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disableSeek = false, onTimeUpdate }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -22,6 +23,7 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
   const [progress, setProgress] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
   const [showUnmuteButton, setShowUnmuteButton] = useState(true);
+  const [blobUrl, setBlobUrl] = useState<string | null>(null);
 
   // Detect mobile
   useEffect(() => {
@@ -34,10 +36,132 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
   // Get the appropriate video source
   const videoSrc = isMobile && srcMobile ? srcMobile : src;
 
+  // PROTECTION: Convert video to blob URL to hide original source
+  useEffect(() => {
+    let isCancelled = false;
+    
+    const loadVideoAsBlob = async () => {
+      try {
+        const response = await fetch(videoSrc, {
+          mode: 'cors',
+          credentials: 'omit'
+        });
+        const blob = await response.blob();
+        if (!isCancelled) {
+          const url = URL.createObjectURL(blob);
+          setBlobUrl(url);
+        }
+      } catch (error) {
+        // Fallback to direct URL if blob fails (CORS issues)
+        console.log("Blob loading failed, using direct URL");
+        if (!isCancelled) {
+          setBlobUrl(videoSrc);
+        }
+      }
+    };
+
+    loadVideoAsBlob();
+
+    return () => {
+      isCancelled = true;
+      if (blobUrl && blobUrl.startsWith('blob:')) {
+        URL.revokeObjectURL(blobUrl);
+      }
+    };
+  }, [videoSrc]);
+
+  // PROTECTION: Disable right-click, keyboard shortcuts, and devtools
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    // Disable right-click context menu
+    const handleContextMenu = (e: MouseEvent) => {
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    };
+
+    // Disable keyboard shortcuts
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Block: Ctrl+S, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, F12
+      if (
+        (e.ctrlKey && e.key === 's') ||
+        (e.ctrlKey && e.shiftKey && e.key === 'I') ||
+        (e.ctrlKey && e.shiftKey && e.key === 'i') ||
+        (e.ctrlKey && e.shiftKey && e.key === 'J') ||
+        (e.ctrlKey && e.shiftKey && e.key === 'j') ||
+        (e.ctrlKey && e.key === 'u') ||
+        (e.ctrlKey && e.key === 'U') ||
+        e.key === 'F12'
+      ) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      }
+    };
+
+    // Disable drag
+    const handleDragStart = (e: DragEvent) => {
+      e.preventDefault();
+      return false;
+    };
+
+    // Disable select
+    const handleSelectStart = (e: Event) => {
+      e.preventDefault();
+      return false;
+    };
+
+    container.addEventListener('contextmenu', handleContextMenu);
+    container.addEventListener('dragstart', handleDragStart);
+    container.addEventListener('selectstart', handleSelectStart);
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      container.removeEventListener('contextmenu', handleContextMenu);
+      container.removeEventListener('dragstart', handleDragStart);
+      container.removeEventListener('selectstart', handleSelectStart);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
+  // PROTECTION: Detect DevTools and disable video when open
+  useEffect(() => {
+    let devToolsOpen = false;
+    const threshold = 160;
+
+    const detectDevTools = () => {
+      const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+      const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+      
+      if (widthThreshold || heightThreshold) {
+        if (!devToolsOpen) {
+          devToolsOpen = true;
+          // Pause video when devtools detected
+          if (videoRef.current && !videoRef.current.paused) {
+            videoRef.current.pause();
+            setIsPlaying(false);
+          }
+        }
+      } else {
+        devToolsOpen = false;
+      }
+    };
+
+    const interval = setInterval(detectDevTools, 1000);
+    window.addEventListener('resize', detectDevTools);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('resize', detectDevTools);
+    };
+  }, []);
+
   // Autoplay: video MUST start muted (browser policy)
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
+    if (!video || !blobUrl) return;
 
     // Ensure muted for autoplay to work
     video.muted = true;
@@ -64,7 +188,7 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
       video.removeEventListener('loadeddata', playVideo);
       video.removeEventListener('canplay', playVideo);
     };
-  }, [videoSrc]);
+  }, [blobUrl]);
 
   // Unmute - requires user interaction
   const handleUnmute = () => {
@@ -82,7 +206,7 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
   };
 
   // Toggle play/pause
-  const togglePlay = () => {
+  const togglePlay = useCallback(() => {
     const video = videoRef.current;
     if (!video) return;
     
@@ -97,29 +221,17 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
       video.pause();
       setIsPlaying(false);
     }
-  };
+  }, [isEnded]);
 
   // VSL-style progress: starts VERY fast, then crawls
-  // This makes the user not know exactly how much time is left
   const calculateVSLProgress = (realProgress: number): number => {
-    // realProgress is 0-100 (actual video progress)
-    // We transform it so:
-    // - First 5% of video = 0-40% of bar (SUPER fast)
-    // - 5-15% of video = 40-65% of bar (fast)
-    // - 15-40% of video = 65-80% of bar (medium)
-    // - Last 60% of video = 80-100% of bar (very slow)
-    
     if (realProgress <= 5) {
-      // First 5% of video → 0-40% of bar (8x speed)
       return (realProgress / 5) * 40;
     } else if (realProgress <= 15) {
-      // 5-15% of video → 40-65% of bar (2.5x speed)
       return 40 + ((realProgress - 5) / 10) * 25;
     } else if (realProgress <= 40) {
-      // 15-40% of video → 65-80% of bar (0.6x speed)
       return 65 + ((realProgress - 15) / 25) * 15;
     } else {
-      // 40-100% of video → 80-100% of bar (0.33x speed - crawling)
       return 80 + ((realProgress - 40) / 60) * 20;
     }
   };
@@ -131,6 +243,11 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
     const realProgress = (video.currentTime / video.duration) * 100;
     const vslProgress = calculateVSLProgress(isFinite(realProgress) ? realProgress : 0);
     setProgress(vslProgress);
+    
+    // Notify parent of current time
+    if (onTimeUpdate) {
+      onTimeUpdate(video.currentTime);
+    }
   };
 
   // Video ended
@@ -171,27 +288,65 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
   return (
     <div
       ref={containerRef}
-      className="relative w-full max-w-5xl mx-auto overflow-hidden rounded-xl bg-black"
+      className="relative w-full max-w-5xl mx-auto overflow-hidden rounded-xl bg-black select-none"
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
+      style={{ 
+        WebkitUserSelect: 'none', 
+        userSelect: 'none',
+        WebkitTouchCallout: 'none'
+      }}
     >
-      <video
-        ref={videoRef}
-        className="w-full"
-        src={videoSrc}
-        muted
-        playsInline
-        preload="auto"
-        onTimeUpdate={handleTimeUpdate}
-        onEnded={handleEnded}
+      {/* PROTECTION: Invisible overlay to prevent direct video interaction */}
+      <div 
+        className="absolute inset-0 z-10"
         onClick={togglePlay}
-        onPlay={() => setIsPlaying(true)}
-        onPause={() => setIsPlaying(false)}
+        onContextMenu={(e) => { e.preventDefault(); return false; }}
+        style={{ 
+          background: 'transparent',
+          WebkitUserSelect: 'none',
+          userSelect: 'none'
+        }}
       />
 
+      {blobUrl && (
+        <video
+          ref={videoRef}
+          className="w-full pointer-events-none"
+          src={blobUrl}
+          muted
+          playsInline
+          preload="auto"
+          onTimeUpdate={handleTimeUpdate}
+          onEnded={handleEnded}
+          onPlay={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
+          // PROTECTION: Disable native controls and download
+          controls={false}
+          controlsList="nodownload noplaybackrate"
+          disablePictureInPicture
+          disableRemotePlayback
+          crossOrigin="anonymous"
+          style={{
+            WebkitUserSelect: 'none',
+            userSelect: 'none',
+            pointerEvents: 'none'
+          }}
+          // @ts-ignore - These are valid HTML attributes
+          onDragStart={(e: React.DragEvent) => e.preventDefault()}
+        />
+      )}
+
+      {/* Loading state while blob is being created */}
+      {!blobUrl && (
+        <div className="w-full aspect-video bg-black flex items-center justify-center">
+          <div className="w-8 h-8 border-4 border-white/30 border-t-white rounded-full animate-spin" />
+        </div>
+      )}
+
       {/* UNMUTE BUTTON - Shows when video is muted */}
-      {showUnmuteButton && isMuted && (
-        <div className="absolute inset-0 flex items-center justify-center">
+      {showUnmuteButton && isMuted && blobUrl && (
+        <div className="absolute inset-0 flex items-center justify-center z-20">
           <button
             onClick={handleUnmute}
             className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full font-bold text-lg flex items-center gap-2 shadow-lg transition-all hover:scale-105"
@@ -203,7 +358,7 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
       )}
 
       {/* Progress Bar - Always visible at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 p-2">
+      <div className="absolute bottom-0 left-0 right-0 p-2 z-20">
         <div
           className={cn(
             "relative w-full h-1.5 bg-white/30 rounded-full",
@@ -226,7 +381,7 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
       <AnimatePresence>
         {isHovering && (
           <motion.div
-            className="absolute bottom-6 left-1/2 -translate-x-1/2 w-[95%] backdrop-blur-md bg-black/50 rounded-xl p-3"
+            className="absolute bottom-6 left-1/2 -translate-x-1/2 w-[95%] backdrop-blur-md bg-black/50 rounded-xl p-3 z-30"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 20, opacity: 0 }}
@@ -252,6 +407,34 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* PROTECTION: CSS to disable selection and interaction */}
+      <style>{`
+        video::-webkit-media-controls {
+          display: none !important;
+        }
+        video::-webkit-media-controls-enclosure {
+          display: none !important;
+        }
+        video::-webkit-media-controls-panel {
+          display: none !important;
+        }
+        video::-webkit-media-controls-play-button {
+          display: none !important;
+        }
+        video::-webkit-media-controls-start-playback-button {
+          display: none !important;
+        }
+        video::-webkit-media-controls-overlay-play-button {
+          display: none !important;
+        }
+        video::-internal-media-controls-download-button {
+          display: none !important;
+        }
+        video::-webkit-media-controls-download-button {
+          display: none !important;
+        }
+      `}</style>
     </div>
   );
 };
