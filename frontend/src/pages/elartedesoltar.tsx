@@ -285,22 +285,104 @@ export default function Elartedesoltar() {
           animation-play-state: paused;
         }
       `}</style>
-      {/* Oferta Relámpago Banner */}
-      <div className="bg-red-600 text-white py-3 px-4 text-center">
-        <p className="text-sm md:text-base font-semibold leading-none tracking-tight">
-          OFERTA RELÁMPAGO: Todo el sistema de recuperación por menos de lo que cuesta un café. Solo hoy.
-        </p>
-      </div>
 
       {/* VSL Section */}
       <section className="py-12 md:py-20 bg-gradient-to-b from-white to-secondary/20">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
+            {/* Title above video */}
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-4xl sm:text-5xl md:text-5xl font-black leading-none tracking-tight text-gray-900 text-center mb-8 md:mb-12"
+            >
+              Mira esto si quieres olvidar a quien ya te olvidó.
+            </motion.h2>
+            
             <VideoPlayerPro
               src="https://res.cloudinary.com/dxwqoyzw1/video/upload/v1765973195/VSL-DESKTOP-VONTOGY_i64mxo.webm"
               srcMobile="https://res.cloudinary.com/dxwqoyzw1/video/upload/v1765973192/VSL-MOBILE-VONTOGY_akxrt1.webm"
               disableSeek={true}
             />
+            
+            {/* CTA Button below video */}
+            <div className="mt-12 md:mt-16 flex flex-col items-center gap-6 md:gap-8">
+              <motion.div
+                animate={{
+                  scale: [1, 1.02, 1],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="w-full flex justify-center"
+              >
+                <a 
+                  href="#pricing"
+                  onClick={scrollToPricing}
+                  className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold rounded-xl shadow-xl shadow-green-500/25 transition-all hover:scale-105 flex items-center justify-center gap-1.5 md:gap-2 mx-auto w-full md:w-auto cursor-pointer"
+                >
+                  ¡SÍ! QUIERO SEGUIR ADELANTE
+                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 shrink-0" />
+                </a>
+              </motion.div>
+
+              {/* Trust Badges */}
+              <div className="mt-6 space-y-4 w-full">
+                {/* Trust Icons Row */}
+                <div className="flex flex-wrap justify-center items-center gap-3 md:gap-4">
+                  <div className="flex items-center gap-2">
+                    <Shield className="w-5 h-5 text-green-600 shrink-0" />
+                    <span className="text-xs md:text-sm text-gray-700 font-medium">Compra Segura</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Award className="w-5 h-5 text-green-600 shrink-0" />
+                    <span className="text-xs md:text-sm text-gray-700 font-medium">Satisfacción Garantizada</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Zap className="w-5 h-5 text-green-600 shrink-0" />
+                    <span className="text-xs md:text-sm text-gray-700 font-medium">Acceso Inmediato</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <InfinityIcon className="w-5 h-5 text-green-600 shrink-0" />
+                    <span className="text-xs md:text-sm text-gray-700 font-medium">Acceso Vitalicio</span>
+                  </div>
+                </div>
+
+                {/* Powered by Hotmart */}
+                <div className="flex flex-col items-center gap-2 pt-2 border-t border-gray-200">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-gray-500">Impulsado por</span>
+                    <img 
+                      src={hotmartImage} 
+                      alt="Hotmart" 
+                      className="h-4 md:h-5 w-auto select-none"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Reviews */}
+              <div className="flex flex-col items-center gap-1 pb-8 md:pb-12">
+                <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                  <span className="text-gray-700 font-semibold text-base md:text-lg">
+                    4.9
+                  </span>
+                </div>
+                <span className="text-gray-600 text-sm md:text-base">
+                  ¡Más de 27.214 reseñas positivas!
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -339,7 +421,7 @@ export default function Elartedesoltar() {
               transition={{ delay: 0.1 }}
               className="text-4xl sm:text-5xl md:text-5xl font-black leading-none tracking-tight text-gray-900"
             >
-              ¿Tu ex sigue en tu cabeza las 24 horas? Descubre cómo arrancar esa obsesión y detener el dolor en el pecho hoy mismo.
+              Lo que estás sintiendo es abstinencia, no amor. Necesitas aprender a desconectarte de quien ya decidió irse.
             </motion.h1>
             
             <motion.p 
@@ -348,7 +430,7 @@ export default function Elartedesoltar() {
               transition={{ delay: 0.2 }}
               className="text-lg md:text-xl text-gray-600 max-w-lg leading-relaxed mx-auto md:mx-0"
             >
-              Deja de revisar sus redes sociales y torturarte con el pasado. Este es el protocolo de emergencia paso a paso para desintoxicarte emocionalmente, volver a dormir en paz y recuperar tu dignidad, aunque sientas que hoy no puedes levantarte de la cama.
+              Miras el celular cada 5 minutos esperando un mensaje que no llega. Sé cómo duele. La peor parte es ver que esa persona sigue viviendo feliz, mientras tú apenas puedes levantarte de la cama. ¿Vamos a cambiar eso?
             </motion.p>
             
             <motion.div 
@@ -394,7 +476,7 @@ export default function Elartedesoltar() {
                   onClick={scrollToPricing}
                   className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold rounded-xl shadow-xl shadow-green-500/25 transition-all hover:scale-105 flex items-center justify-center md:justify-start gap-1.5 md:gap-2 mx-auto md:mx-0 w-full md:w-auto cursor-pointer"
                 >
-                  SÍ, QUIERO SANAR AHORA
+                  ¡SÍ! NECESITO SALIR DE ESTO
                   <ArrowRight className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 shrink-0" />
                 </a>
               </motion.div>
@@ -423,170 +505,6 @@ export default function Elartedesoltar() {
         </div>
       </div>
 
-      {/* Promises Section */}
-      <section className="py-20 bg-[#F5F1E8]">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-2 leading-none tracking-tight text-[#5C3A21]">
-              Más que superar a un ex, vas a recuperar tu poder:
-            </h2>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-3 md:gap-4 max-w-6xl mx-auto">
-            {/* Card 1 - Liberación */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="flex flex-col bg-white rounded-3xl overflow-hidden shadow-lg"
-            >
-              <div className="w-full h-80 md:h-96 overflow-hidden">
-                <img 
-                  src="/images/elartedesoltar/images/promise1.webp" 
-                  alt="Liberación" 
-                  className="w-full h-full object-cover select-none"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-              <div className="bg-[#2C2C2C] text-white p-6 flex-1">
-                <h3 className="text-xl font-bold mb-4 text-center">Liberación</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-2">
-                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
-                    <span className="text-sm leading-relaxed">
-                      Lograrás el "Contacto Cero" mental: sacar a tu ex de tus pensamientos, no solo de tu teléfono.
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
-                    <span className="text-sm leading-relaxed">
-                      Soltarás el peso del rencor y la rabia para sentirte ligero/a y en paz de nuevo.
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
-                    <span className="text-sm leading-relaxed">
-                      Cerrarás el ciclo definitivamente, sin dejar puertas abiertas que te lastimen.
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </motion.div>
-
-            {/* Card 2 - Reconstrucción */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="flex flex-col bg-white rounded-3xl overflow-hidden shadow-lg"
-            >
-              <div className="w-full h-80 md:h-96 overflow-hidden">
-                <img 
-                  src="/images/elartedesoltar/images/promise2.webp" 
-                  alt="Reconstrucción" 
-                  className="w-full h-full object-cover select-none"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-              <div className="bg-[#2C2C2C] text-white p-6 flex-1">
-                <h3 className="text-xl font-bold mb-4 text-center">Reconstrucción</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-2">
-                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
-                    <span className="text-sm leading-relaxed">
-                      Reconstruirás tu amor propio desde cero, mirándote al espejo con orgullo y seguridad.
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
-                    <span className="text-sm leading-relaxed">
-                      Convertirás el dolor de la ruptura en el combustible para tus metas personales y profesionales.
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
-                    <span className="text-sm leading-relaxed">
-                      Dejarás de buscar validación externa para sentirte suficiente.
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </motion.div>
-
-            {/* Card 3 - Renacimiento */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="flex flex-col bg-white rounded-3xl overflow-hidden shadow-lg"
-            >
-              <div className="w-full h-80 md:h-96 overflow-hidden">
-                <img 
-                  src="/images/elartedesoltar/images/promise3.webp" 
-                  alt="Renacimiento" 
-                  className="w-full h-full object-cover select-none"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-              <div className="bg-[#2C2C2C] text-white p-6 flex-1">
-                <h3 className="text-xl font-bold mb-4 text-center">Renacimiento</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-2">
-                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
-                    <span className="text-sm leading-relaxed">
-                      Diseñarás una vida soltera emocionante, llena de planes, viajes y nuevas experiencias.
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
-                    <span className="text-sm leading-relaxed">
-                      Te convertirás en una persona emocionalmente independiente, imposible de manipular.
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
-                    <span className="text-sm leading-relaxed">
-                      Perderás el miedo a quedarte solo/a, descubriendo que tu felicidad depende 100% de ti.
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </motion.div>
-          </div>
-          
-          {/* CTA Button */}
-          <div className="flex justify-center mt-12">
-            <motion.div
-              animate={{
-                scale: [1, 1.02, 1],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="w-full flex justify-center md:w-auto"
-            >
-              <a 
-                href="#pricing"
-                onClick={scrollToPricing}
-                className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold rounded-xl shadow-xl shadow-green-500/25 transition-all hover:scale-105 flex items-center justify-center gap-1.5 md:gap-2 mx-auto md:mx-0 w-full md:w-auto cursor-pointer"
-              >
-                <span className="md:hidden">COMENZAR MI RECUPERACIÓN</span>
-                <span className="hidden md:inline">QUIERO COMENZAR MI RECUPERACIÓN AHORA</span>
-                <ArrowRight className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 shrink-0" />
-              </a>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       {/* O Mecanismo Único Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
@@ -594,10 +512,10 @@ export default function Elartedesoltar() {
             {/* Title - First on mobile only */}
             <div className="text-center md:hidden mb-6">
               <h2 className="text-3xl md:text-4xl font-black leading-none tracking-tight text-gray-900 mb-4">
-              ¿Cansado/a de que tu estabilidad emocional dependa de si te responden un mensaje?
+              Esto no es un ebook lleno de “palabras bonitas”.
               </h2>
               <p className="text-lg text-gray-700 leading-relaxed">
-              Ya basta de poner tu felicidad en manos de quien no te valora. La soledad duele solo cuando crees que te falta algo. Este libro te enseña a ser tu propia fuente de paz y alegría, para que nunca más tengas que mendigar atención para sentirte completo/a.
+              Es una guía contra la dependencia emocional. Cuando una relación termina, tu cerebro entra en “abstinencia”, igual que un adicto sin su droga. Por eso sientes dolor físico, ansiedad y obsesión por esa persona. La guía te ayudará ahí: te entregamos el protocolo para desintoxicar tu mente, cortar los lazos y fortalecer tu autoestima. No necesitas “tener ganas” de mejorar. Solo necesitas seguir el paso a paso, hasta que el dolor desaparezca.
               </p>
             </div>
             
@@ -622,10 +540,10 @@ export default function Elartedesoltar() {
                 {/* Title - Above description on desktop */}
                 <div className="hidden md:block">
                   <h2 className="text-3xl md:text-4xl font-black leading-none tracking-tight text-gray-900 mb-4">
-                  ¿Cansado/a de que tu estabilidad emocional dependa de si te responden un mensaje?
+                  Esto no es un ebook lleno de “palabras bonitas”.
                   </h2>
                   <p className="text-lg text-gray-700 leading-relaxed text-left mb-6">
-                  Ya basta de poner tu felicidad en manos de quien no te valora. La soledad duele solo cuando crees que te falta algo. Este libro te enseña a ser tu propia fuente de paz y alegría, para que nunca más tengas que mendigar atención para sentirte completo/a.
+                  Es una guía contra la dependencia emocional. Cuando una relación termina, tu cerebro entra en “abstinencia”, igual que un adicto sin su droga. Por eso sientes dolor físico, ansiedad y obsesión por esa persona. La guía te ayudará ahí: te entregamos el protocolo para desintoxicar tu mente, cortar los lazos y fortalecer tu autoestima. No necesitas “tener ganas” de mejorar. Solo necesitas seguir el paso a paso, hasta que el dolor desaparezca.
                   </p>
                 </div>
               
@@ -694,6 +612,206 @@ export default function Elartedesoltar() {
               </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Promises Section */}
+      <section className="py-20 bg-[#F5F1E8]">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-2 leading-none tracking-tight text-[#5C3A21]">
+            Tu herida está abierta. Stalkear a tu ex en redes sociales es como hurgar una herida abierta con la mano sucia. La guía sería como un vendaje que protege la herida para que cicatrice sola.
+            </h2>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-3 md:gap-4 max-w-6xl mx-auto">
+            {/* Card 1 - Liberación */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="flex flex-col bg-white rounded-3xl overflow-hidden shadow-lg"
+            >
+              <div className="w-full h-80 md:h-96 overflow-hidden">
+                <img 
+                  src="/images/elartedesoltar/images/promise1.webp" 
+                  alt="Liberación" 
+                  className="w-full h-full object-cover select-none"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div className="bg-[#2C2C2C] text-white p-6 flex-1">
+                <h3 className="text-xl font-bold mb-4 text-center">Dolor → Alivio</h3>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-2">
+                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
+                    <span className="text-sm leading-relaxed">
+                    Cómo detener la ansiedad al ver una foto de él/ella con otra persona.
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
+                    <span className="text-sm leading-relaxed">
+                    La técnica exacta para dormir toda la noche sin despertar con esa presión en el pecho.
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
+                    <span className="text-sm leading-relaxed">
+                    Cómo desactivar el impulso de stalkear las redes sociales de tu ex.
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
+                    <span className="text-sm leading-relaxed">
+                    Elimina la sensación de culpa y deja de repasar mentalmente “¿en qué fue que me equivoqué?”.
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
+                    <span className="text-sm leading-relaxed">
+                    Cómo lidiar con una recaída sin sentirte un fracaso total.
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
+                    <span className="text-sm leading-relaxed">
+                    Sal de la posición de víctima y deja de sentir lástima por ti.
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
+
+            {/* Card 2 - Reconstrucción */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="flex flex-col bg-white rounded-3xl overflow-hidden shadow-lg"
+            >
+              <div className="w-full h-80 md:h-96 overflow-hidden">
+                <img 
+                  src="/images/elartedesoltar/images/promise2.webp" 
+                  alt="Reconstrucción" 
+                  className="w-full h-full object-cover select-none"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div className="bg-[#2C2C2C] text-white p-6 flex-1">
+                <h3 className="text-xl font-bold mb-4 text-center">Menor Esfuerzo → Mayor Resultado</h3>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-2">
+                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
+                    <span className="text-sm leading-relaxed">
+                    El ejercicio de 5 minutos diarios que aumenta tu autoestima más que 1 año de terapia mala.
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
+                    <span className="text-sm leading-relaxed">
+                    3 frases mágicas para decirte cuando te den ganas de mandar un mensaje.
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
+                    <span className="text-sm leading-relaxed">
+                    Una herramienta simple que transforma el dolor en indiferencia en pocos días.
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
+                    <span className="text-sm leading-relaxed">
+                    No necesitas leer teorías largas: solo sigue el paso a paso.
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
+
+            {/* Card 3 - Renacimiento */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="flex flex-col bg-white rounded-3xl overflow-hidden shadow-lg"
+            >
+              <div className="w-full h-80 md:h-96 overflow-hidden">
+                <img 
+                  src="/images/elartedesoltar/images/promise3.webp" 
+                  alt="Renacimiento" 
+                  className="w-full h-full object-cover select-none"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div className="bg-[#2C2C2C] text-white p-6 flex-1">
+                <h3 className="text-xl font-bold mb-4 text-center">Antes → Después</h3>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-2">
+                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
+                    <span className="text-sm leading-relaxed">
+                    Transforma la necesidad de validación en orgullo de tu propia compañía.
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
+                    <span className="text-sm leading-relaxed">
+                    Cómo recuperar el brillo en la mirada que una relación tóxica apagó.
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
+                    <span className="text-sm leading-relaxed">
+                    Sustituye el miedo a estar solo/a por la emoción de una nueva vida libre.
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
+                    <span className="text-sm leading-relaxed">
+                    Conviértete en la persona que mira atrás y dice: “¿Cómo pude sufrir por eso?”.
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
+                    <span className="text-sm leading-relaxed">
+                    Recuerda quién eras antes de que todo se derrumbara.
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
+          </div>
+          
+          {/* CTA Button */}
+          <div className="flex justify-center mt-12">
+            <motion.div
+              animate={{
+                scale: [1, 1.02, 1],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="w-full flex justify-center md:w-auto"
+            >
+              <a 
+                href="#pricing"
+                onClick={scrollToPricing}
+                className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold rounded-xl shadow-xl shadow-green-500/25 transition-all hover:scale-105 flex items-center justify-center gap-1.5 md:gap-2 mx-auto md:mx-0 w-full md:w-auto cursor-pointer"
+              >
+                <span className="md:hidden">QUIERO SEGUIR ADELANTE</span>
+                <span className="hidden md:inline">QUIERO SEGUIR ADELANTE</span>
+                <ArrowRight className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 shrink-0" />
+              </a>
+            </motion.div>
           </div>
         </div>
       </section>
