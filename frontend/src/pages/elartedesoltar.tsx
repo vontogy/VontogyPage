@@ -420,8 +420,8 @@ export default function Elartedesoltar() {
             </motion.h2>
             
             <VideoPlayerPro
-              src="https://res.cloudinary.com/dxwqoyzw1/video/upload/v1765973195/VSL-DESKTOP-VONTOGY_i64mxo.webm"
-              srcMobile="https://res.cloudinary.com/dxwqoyzw1/video/upload/v1765973192/VSL-MOBILE-VONTOGY_akxrt1.webm"
+              src="/images/elartedesoltar/images/VSL-DESKTOP-VONTOGY_i64mxo.webm"
+              srcMobile="/images/elartedesoltar/images/VSL-MOBILE-VONTOGY_akxrt1.webm"
               disableSeek={true}
               onTimeUpdate={handleVideoTimeUpdate}
             />
