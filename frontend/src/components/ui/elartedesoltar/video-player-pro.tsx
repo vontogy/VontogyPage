@@ -2,7 +2,7 @@
 
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/elartedesoltar/button";
-import { Play, Pause, Volume2, VolumeX, Maximize2, RotateCw } from "lucide-react";
+import { Play, Pause, Volume2, VolumeX, RotateCw } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -239,51 +239,6 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
     setProgress(percent);
   };
 
-  // Fullscreen - with mobile support (iOS Safari)
-  const toggleFullscreen = async () => {
-    const video = videoRef.current;
-    const container = containerRef.current;
-    
-    if (!video || !container) return;
-
-    try {
-      // Check if already in fullscreen
-      const isFullscreen = document.fullscreenElement || 
-        (document as any).webkitFullscreenElement || 
-        (document as any).mozFullScreenElement ||
-        (document as any).msFullscreenElement;
-
-      if (isFullscreen) {
-        // Exit fullscreen
-        if (document.exitFullscreen) {
-          await document.exitFullscreen();
-        } else if ((document as any).webkitExitFullscreen) {
-          (document as any).webkitExitFullscreen();
-        } else if ((document as any).mozCancelFullScreen) {
-          (document as any).mozCancelFullScreen();
-        } else if ((document as any).msExitFullscreen) {
-          (document as any).msExitFullscreen();
-        }
-      } else {
-        // Enter fullscreen - try video element first for iOS
-        if ((video as any).webkitEnterFullscreen) {
-          // iOS Safari - use native video fullscreen
-          (video as any).webkitEnterFullscreen();
-        } else if (container.requestFullscreen) {
-          await container.requestFullscreen();
-        } else if ((container as any).webkitRequestFullscreen) {
-          (container as any).webkitRequestFullscreen();
-        } else if ((container as any).mozRequestFullScreen) {
-          (container as any).mozRequestFullScreen();
-        } else if ((container as any).msRequestFullscreen) {
-          (container as any).msRequestFullscreen();
-        }
-      }
-    } catch (error) {
-      console.log("Fullscreen error:", error);
-    }
-  };
-
   // Toggle mute
   const toggleMute = () => {
     const video = videoRef.current;
@@ -334,7 +289,7 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
         onLoadedData={() => setIsLoaded(true)}
         // PROTECTION: Disable native controls and download
         controls={false}
-        controlsList="nodownload noplaybackrate"
+        controlsList="nodownload noplaybackrate nofullscreen"
         disablePictureInPicture
         disableRemotePlayback
         style={{
@@ -409,11 +364,6 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
                   {isMuted ? <VolumeX className="w-6 h-6" /> : <Volume2 className="w-6 h-6" />}
                 </Button>
               </div>
-
-              {/* Fullscreen */}
-              <Button variant="ghost" size="icon" className="text-white hover:bg-white/20 active:bg-white/30 min-w-[44px] min-h-[44px]" onClick={(e) => { e.stopPropagation(); toggleFullscreen(); }}>
-                <Maximize2 className="w-6 h-6" />
-              </Button>
             </div>
           </motion.div>
         )}
@@ -443,6 +393,15 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
           display: none !important;
         }
         video::-webkit-media-controls-download-button {
+          display: none !important;
+        }
+        video::-webkit-media-controls-fullscreen-button {
+          display: none !important;
+        }
+        video::--webkit-media-controls-fullscreen-button {
+          display: none !important;
+        }
+        video::-internal-media-controls-fullscreen-button {
           display: none !important;
         }
       `}</style>
