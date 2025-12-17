@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Check, Shield, Star, ArrowRight, Unlink, HeartOff, CheckCircle, Crown, Heart, ShieldCheck, Award, Zap, Infinity as InfinityIcon } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/elartedesoltar/accordion";
 import { motion } from "framer-motion";
+import VideoPlayerPro from "@/components/ui/elartedesoltar/video-player-pro";
 
 // Meta Pixel type declaration
 declare global {
@@ -290,6 +291,19 @@ export default function Elartedesoltar() {
           OFERTA RELÁMPAGO: Todo el sistema de recuperación por menos de lo que cuesta un café. Solo hoy.
         </p>
       </div>
+
+      {/* VSL Section */}
+      <section className="py-12 md:py-20 bg-gradient-to-b from-white to-secondary/20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <VideoPlayerPro
+              src="https://res.cloudinary.com/dxwqoyzw1/video/upload/v1765973195/VSL-DESKTOP-VONTOGY_i64mxo.webm"
+              srcMobile="https://res.cloudinary.com/dxwqoyzw1/video/upload/v1765973192/VSL-MOBILE-VONTOGY_akxrt1.webm"
+              disableSeek={true}
+            />
+          </div>
+        </div>
+      </section>
 
       {/* Hero Section */}
       <section className="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden bg-gradient-to-b from-white to-secondary/30">
