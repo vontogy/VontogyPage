@@ -2,7 +2,7 @@
 
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/elartedesoltar/button";
-import { Play, Pause, Volume2, VolumeX, Maximize2, RotateCw } from "lucide-react";
+import { Play, Pause, Volume2, VolumeX, RotateCw } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -409,11 +409,6 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
                   {isMuted ? <VolumeX className="w-6 h-6" /> : <Volume2 className="w-6 h-6" />}
                 </Button>
               </div>
-
-              {/* Fullscreen */}
-              <Button variant="ghost" size="icon" className="text-white hover:bg-white/20 active:bg-white/30 min-w-[44px] min-h-[44px]" onClick={(e) => { e.stopPropagation(); toggleFullscreen(); }}>
-                <Maximize2 className="w-6 h-6" />
-              </Button>
             </div>
           </motion.div>
         )}
