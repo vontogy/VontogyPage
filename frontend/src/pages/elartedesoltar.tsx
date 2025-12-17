@@ -17,7 +17,7 @@ declare global {
 // ============================================
 // Tempo em SEGUNDOS para revelar as seções ocultas
 // Exemplo: 198 = seções aparecem após 198 segundos de vídeo
-const VSL_REVEAL_TIME_SECONDS = 2;
+const VSL_REVEAL_TIME_SECONDS = 0;
 // ============================================
 
 // Assets
@@ -26,6 +26,107 @@ const heroSectionImage = "/images/elartedesoltar/images/herosection.webp";
 const whySectionImage = "/images/elartedesoltar/images/whysection.webp";
 const hotmartImage = "/images/elartedesoltar/hotmart.webp";
 const moneyBackImage = "/images/elartedesoltar/images/moneyback.webp";
+const bonusImage = "/images/elartedesoltar/images/bonus.webp";
+
+// Bonuses Section Component
+function BonusesSection() {
+  return (
+    <section className="py-20 bg-white">
+      <div className="container mx-auto px-4">
+        <div className="max-w-6xl mx-auto">
+          {/* Title - First on mobile, hidden on desktop (will show inside left column) */}
+          <h2 className="text-3xl md:text-4xl font-black leading-none tracking-tight text-gray-900 mb-6 text-center md:hidden">
+            Acelera tu recuperación con herramientas de emergencia
+          </h2>
+          
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            {/* Image - Second on mobile (after title), Right on desktop */}
+            <div className="relative order-2 md:order-2 flex justify-center md:justify-end pt-4 md:pt-0">
+              <div className="flex items-center justify-center">
+                <img 
+                  src={bonusImage} 
+                  alt="Bonos de emergencia: Kit SOS WhatsApp y Audio APAGANDO EL DOLOR para acelerar tu recuperación" 
+                  className="w-full max-w-lg md:max-w-xl lg:max-w-3xl xl:max-w-4xl rounded-2xl drop-shadow-2xl select-none" 
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </div>
+            
+            {/* Content - Third on mobile, Left on desktop */}
+            <div className="space-y-6 text-center md:text-left order-3 md:order-1">
+              {/* Title - Hidden on mobile (already shown above), visible on desktop */}
+              <h2 className="hidden md:block text-3xl md:text-4xl font-black leading-none tracking-tight text-gray-900 mb-4">
+                Acelera tu recuperación con herramientas de emergencia
+              </h2>
+              
+              {/* Paragraph */}
+              <p className="text-lg text-gray-700 leading-relaxed">
+                No vas a improvisar cuando más te duela. Estos bonos están diseñados para cortar recaídas, apagar la ansiedad nocturna y devolverte el control en los momentos críticos.
+              </p>
+              
+              {/* Bonus Cards */}
+              <div className="space-y-4 pt-4">
+                {/* Bono 1 */}
+                <div className="bg-gray-50 rounded-xl p-5 border border-gray-200">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    Bono 1 — Kit SOS WhatsApp
+                  </h3>
+                  <p className="text-base text-gray-700 mb-3 leading-relaxed">
+                    Guiones listos para responder sin humillarte, bloquear impulsos y proteger tu dignidad cuando tu ex aparezca.
+                  </p>
+                  <ul className="space-y-2">
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#00515E] font-bold mt-1">·</span>
+                      <span className="text-sm text-gray-600 leading-relaxed">Respuestas para cada escenario</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#00515E] font-bold mt-1">·</span>
+                      <span className="text-sm text-gray-600 leading-relaxed">Mensajes para tu padrino/madrina</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#00515E] font-bold mt-1">·</span>
+                      <span className="text-sm text-gray-600 leading-relaxed">Frases de bloqueo mental</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                {/* Bono 2 */}
+                <div className="bg-gray-50 rounded-xl p-5 border border-gray-200">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    Bono 2 — Audio 'APAGANDO EL DOLOR'
+                  </h3>
+                  <p className="text-base text-gray-700 mb-3 leading-relaxed">
+                    Reprogramación pre-sueño para calmar el pecho, bajar el cortisol y dormir sin caer en el bucle de recuerdos.
+                  </p>
+                  <ul className="space-y-2">
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#00515E] font-bold mt-1">·</span>
+                      <span className="text-sm text-gray-600 leading-relaxed">Ansiedad nocturna</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#00515E] font-bold mt-1">·</span>
+                      <span className="text-sm text-gray-600 leading-relaxed">Insomnio post-ruptura</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#00515E] font-bold mt-1">·</span>
+                      <span className="text-sm text-gray-600 leading-relaxed">Mente acelerada</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              
+              {/* Micro-CTA */}
+              <p className="text-sm text-gray-600 italic pt-2">
+                Úsalos así: crisis → Kit SOS | noche difícil → Audio.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 // Reusable Pricing Section Component
 function PricingSection({ sectionId }: { sectionId?: string }) {
@@ -345,8 +446,9 @@ export default function Elartedesoltar() {
                     className="w-full flex justify-center"
                   >
                     <a 
-                      href="#pricing"
-                      onClick={scrollToPricing}
+                      href="https://pay.hotmart.com/G103409382C?checkoutMode=10"
+                      target="_blank"
+                      rel="nofollow sponsored noopener noreferrer"
                       className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold rounded-xl shadow-xl shadow-green-500/25 transition-all hover:scale-105 flex items-center justify-center gap-1.5 md:gap-2 mx-auto w-full md:w-auto cursor-pointer"
                     >
                       ¡SÍ! QUIERO SEGUIR ADELANTE
@@ -431,96 +533,109 @@ export default function Elartedesoltar() {
           <section className="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden bg-gradient-to-b from-white to-secondary/30">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-secondary/20 rounded-l-[100px] -z-10 hidden md:block" />
         
-        <div className="container mx-auto px-4 max-w-6xl grid md:grid-cols-2 gap-12 items-center">
-          {/* Image - First on mobile, second on desktop */}
-          <div className="relative flex justify-center md:justify-end order-1 md:order-2 md:mt-8">
-            <motion.div
-               initial={{ opacity: 0, scale: 0.8 }}
-               animate={{ opacity: 1, scale: 1 }}
-               transition={{ duration: 0.6 }}
-               className="relative z-10 w-full flex justify-center scale-110 md:scale-125"
-            >
-               <div className="absolute inset-0 bg-[#00515F]/20 blur-[60px] rounded-full transform scale-75" />
-              <img 
-                src={heroSectionImage} 
-                alt="Nervovive" 
-                className="relative w-full max-w-[900px] md:max-w-[1200px] drop-shadow-2xl mx-auto select-none"
-                 width="1200"
-                 height="1080"
-                 fetchPriority="high"
-                 decoding="async"
-               />
-            </motion.div>
-          </div>
-
-          {/* Content - Second on mobile, first on desktop */}
-          <div className="space-y-6 md:space-y-8 z-10 text-center md:text-left order-2 md:order-1">
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-4xl sm:text-5xl md:text-5xl font-black leading-none tracking-tight text-gray-900"
-            >
-              Lo que estás sintiendo es abstinencia, no amor. Necesitas aprender a desconectarte de quien ya decidió irse.
-            </motion.h1>
-            
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-lg md:text-xl text-gray-600 max-w-lg leading-relaxed mx-auto md:mx-0"
-            >
-              Miras el celular cada 5 minutos esperando un mensaje que no llega. Sé cómo duele. La peor parte es ver que esa persona sigue viviendo feliz, mientras tú apenas puedes levantarte de la cama. ¿Vamos a cambiar eso?
-            </motion.p>
-            
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.25 }}
-              className="flex flex-col items-center md:items-start gap-1"
-            >
-              <div className="flex items-center gap-2">
-                <div className="flex items-center gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-                <span className="text-gray-700 font-semibold text-base md:text-lg">
-                  4.9
-                </span>
-              </div>
-              <span className="text-gray-600 text-sm md:text-base">
-              ¡Más de 27.214 reseñas positivas!
-              </span>
-            </motion.div>
-            
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="flex flex-col gap-4 pt-2 justify-center items-center md:justify-start md:items-start"
-            >
+        <div className="container mx-auto px-4 max-w-6xl">
+          {/* Title - First on mobile, inside left column on desktop */}
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl sm:text-5xl md:text-5xl font-black leading-none tracking-tight text-gray-900 text-center md:hidden mb-6"
+          >
+            Lo que estás sintiendo es abstinencia, no amor. Necesitas aprender a desconectarte de quien ya decidió irse.
+          </motion.h1>
+          
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Image - Second on mobile (after title), second on desktop */}
+            <div className="relative flex justify-center md:justify-end order-2 md:order-2 md:mt-8">
               <motion.div
-                animate={{
-                  scale: [1, 1.02, 1],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="w-full flex justify-center md:w-auto"
+                 initial={{ opacity: 0, scale: 0.8 }}
+                 animate={{ opacity: 1, scale: 1 }}
+                 transition={{ duration: 0.6 }}
+                 className="relative z-10 w-full flex justify-center scale-90 md:scale-110"
               >
-                <a 
-                  href="#pricing"
-                  onClick={scrollToPricing}
-                  className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold rounded-xl shadow-xl shadow-green-500/25 transition-all hover:scale-105 flex items-center justify-center md:justify-start gap-1.5 md:gap-2 mx-auto md:mx-0 w-full md:w-auto cursor-pointer"
-                >
-                  ¡SÍ! NECESITO SALIR DE ESTO
-                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 shrink-0" />
-                </a>
+                 <div className="absolute inset-0 bg-[#00515F]/20 blur-[60px] rounded-full transform scale-75" />
+                <img 
+                  src={heroSectionImage} 
+                  alt="Nervovive" 
+                  className="relative w-full max-w-[500px] md:max-w-[1000px] drop-shadow-2xl mx-auto select-none"
+                   width="1200"
+                   height="1080"
+                   fetchPriority="high"
+                   decoding="async"
+                 />
               </motion.div>
-            </motion.div>
+            </div>
+
+            {/* Content - Third on mobile, first on desktop */}
+            <div className="space-y-6 md:space-y-8 z-10 text-center md:text-left order-3 md:order-1">
+              {/* Title - Hidden on mobile (already shown above), visible on desktop */}
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="hidden md:block text-4xl sm:text-5xl md:text-5xl font-black leading-none tracking-tight text-gray-900"
+              >
+                Lo que estás sintiendo es abstinencia, no amor. Necesitas aprender a desconectarte de quien ya decidió irse.
+              </motion.h1>
+              
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="text-lg md:text-xl text-gray-600 max-w-lg leading-relaxed mx-auto md:mx-0"
+              >
+                Miras el celular cada 5 minutos esperando un mensaje que no llega. Sé cómo duele. La peor parte es ver que esa persona sigue viviendo feliz, mientras tú apenas puedes levantarte de la cama. ¿Vamos a cambiar eso?
+              </motion.p>
+              
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.25 }}
+                className="flex flex-col items-center md:items-start gap-1"
+              >
+                <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                  <span className="text-gray-700 font-semibold text-base md:text-lg">
+                    4.9
+                  </span>
+                </div>
+                <span className="text-gray-600 text-sm md:text-base">
+                ¡Más de 27.214 reseñas positivas!
+                </span>
+              </motion.div>
+              
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="flex flex-col gap-4 pt-2 justify-center items-center md:justify-start md:items-start"
+              >
+                <motion.div
+                  animate={{
+                    scale: [1, 1.02, 1],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="w-full flex justify-center md:w-auto"
+                >
+                  <a 
+                    href="#pricing"
+                    onClick={scrollToPricing}
+                    className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold rounded-xl shadow-xl shadow-green-500/25 transition-all hover:scale-105 flex items-center justify-center md:justify-start gap-1.5 md:gap-2 mx-auto md:mx-0 w-full md:w-auto cursor-pointer"
+                  >
+                    ¡SÍ! NECESITO SALIR DE ESTO
+                    <ArrowRight className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 shrink-0" />
+                  </a>
+                </motion.div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -566,7 +681,7 @@ export default function Elartedesoltar() {
                   <img 
                     src={whySectionImage} 
                     alt="Nervovive Bottles" 
-                    className="w-full max-w-md drop-shadow-2xl select-none" 
+                    className="w-full max-w-lg md:max-w-xl lg:max-w-2xl rounded-2xl drop-shadow-2xl select-none" 
                     width="1888"
                     height="1359"
                     loading="lazy"
@@ -869,6 +984,9 @@ export default function Elartedesoltar() {
           </div>
         </div>
       </div>
+
+      {/* Bonuses Section */}
+      <BonusesSection />
 
       {/* Pricing Section */}
       <PricingSection 
