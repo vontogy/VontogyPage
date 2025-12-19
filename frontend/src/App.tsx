@@ -7,7 +7,6 @@ import { useEffect } from "react";
 import Home from "@/pages/landingpage/home";
 import Nervovive from "@/pages/landingpage/nervovive";
 import Elartedesoltar from "@/pages/vsl/elartedesoltar";
-import Provadent from "@/pages/landingpage/provadent";
 
 // Global protection against right-click and DevTools
 function useGlobalProtection() {
@@ -95,7 +94,6 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/nervovive" component={Nervovive} />
       <Route path="/vsl/elartedesoltar" component={Elartedesoltar} />
-      <Route path="/provadent" component={Provadent} />
       <Route component={Home} />
     </Switch>
   );
