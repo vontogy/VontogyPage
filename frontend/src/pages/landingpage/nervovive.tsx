@@ -1,34 +1,34 @@
 import { useEffect } from "react";
 import { Check, Truck, Shield, ShoppingCart, Star } from "lucide-react";
-import { Button } from "@/components/ui/nervovive/button";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/nervovive/accordion";
+import { Button } from "@/components/ui/landingpages/nervovive/button";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/landingpages/nervovive/accordion";
 import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/nervovive/card";
+import { Card, CardContent } from "@/components/ui/landingpages/nervovive/card";
 
 // Assets
-const logo = "/images/nervovive/logo.webp";
-const basicImage = "/images/nervovive/images/basic.webp";
-const bestValueImage = "/images/nervovive/images/best_value.webp";
-const mostPopularImage = "/images/nervovive/images/most_popular.webp";
-const heroSectionImage = "/images/nervovive/images/herosection.webp";
-const whySectionImage = "/images/nervovive/images/whysection.webp";
-const ingredient1 = "/images/nervovive/images/ingredient1.webp";
-const ingredient2 = "/images/nervovive/images/ingredient2.webp";
-const ingredient3 = "/images/nervovive/images/ingredient3.webp";
-const ingredient4 = "/images/nervovive/images/ingredient4.webp";
-const ingredient5 = "/images/nervovive/images/ingredient5.webp";
-const bonus1 = "/images/nervovive/images/bonus1.webp";
-const bonus2 = "/images/nervovive/images/bonus2.webp";
-const freeShippingImage = "/images/nervovive/images/freeshp.webp";
-const moneyBackImage = "/images/nervovive/images/moneyback.webp";
-const certificationsImage = "/images/nervovive/images/certifications.webp";
-const naturalImage = "/images/nervovive/images/natural.webp";
-const noStimImage = "/images/nervovive/images/no-stim.webp";
-const easyImage = "/images/nervovive/images/easy.webp";
-const gmoImage = "/images/nervovive/images/gmo.webp";
-const labelImage = "/images/nervovive/images/label-1.webp";
-const refsLogosImage = "/images/nervovive/images/refs-logos.webp";
-const creditCardsImage = "/images/nervovive/images/credit-cards.webp";
+const logo = "/images/landingpages/nervovive/logo.webp";
+const basicImage = "/images/landingpages/nervovive/images/basic.webp";
+const bestValueImage = "/images/landingpages/nervovive/images/best_value.webp";
+const mostPopularImage = "/images/landingpages/nervovive/images/most_popular.webp";
+const heroSectionImage = "/images/landingpages/nervovive/images/herosection.webp";
+const whySectionImage = "/images/landingpages/nervovive/images/whysection.webp";
+const ingredient1 = "/images/landingpages/nervovive/images/ingredient1.webp";
+const ingredient2 = "/images/landingpages/nervovive/images/ingredient2.webp";
+const ingredient3 = "/images/landingpages/nervovive/images/ingredient3.webp";
+const ingredient4 = "/images/landingpages/nervovive/images/ingredient4.webp";
+const ingredient5 = "/images/landingpages/nervovive/images/ingredient5.webp";
+const bonus1 = "/images/landingpages/nervovive/images/bonus1.webp";
+const bonus2 = "/images/landingpages/nervovive/images/bonus2.webp";
+const freeShippingImage = "/images/landingpages/nervovive/images/freeshp.webp";
+const moneyBackImage = "/images/landingpages/nervovive/images/moneyback.webp";
+const certificationsImage = "/images/landingpages/nervovive/images/certifications.webp";
+const naturalImage = "/images/landingpages/nervovive/images/natural.webp";
+const noStimImage = "/images/landingpages/nervovive/images/no-stim.webp";
+const easyImage = "/images/landingpages/nervovive/images/easy.webp";
+const gmoImage = "/images/landingpages/nervovive/images/gmo.webp";
+const labelImage = "/images/landingpages/nervovive/images/label-1.webp";
+const refsLogosImage = "/images/landingpages/nervovive/images/refs-logos.webp";
+const creditCardsImage = "/images/landingpages/nervovive/images/credit-cards.webp";
 
 // Reusable Pricing Section Component
 function PricingSection({ title, sectionId }: { title: React.ReactNode | string, sectionId?: string }) {
@@ -160,7 +160,7 @@ export default function Nervovive() {
     // Set Nervovive favicon
     const favicon = document.querySelector('link[rel="icon"]') as HTMLLinkElement;
     if (favicon) {
-      favicon.href = "/images/nervovive/favicon.png";
+      favicon.href = "/images/landingpages/nervovive/favicon.png";
     }
 
     // Cleanup: restore Vontogy (Home) values when leaving the page
@@ -191,57 +191,6 @@ export default function Nervovive() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900 overflow-x-hidden">
-      {/* Secure Payment Banner */}
-      <div className="bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200 py-2.5 px-4">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm">
-            {/* Secure Payment Icon & Text */}
-            <div className="flex items-center gap-1.5 shrink-0">
-              <Shield className="w-4 h-4 text-green-600 shrink-0" />
-              <span className="text-gray-700 font-medium">Secure Payment</span>
-            </div>
-            
-            {/* Separator */}
-            <span className="text-gray-300 hidden sm:inline">•</span>
-            
-            {/* Powered by DigiStore24 */}
-            <div className="flex items-center gap-2 shrink-0">
-              <span className="text-gray-600 hidden sm:inline">Powered by</span>
-              <div className="flex items-center" title="DigiStore24 - Secure Payment Processing">
-            <img 
-              src="/images/nervovive/digistore.svg" 
-              alt="DigiStore24" 
-              className="h-8 md:h-9 max-w-[220px] md:max-w-[260px] select-none"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 py-4">
-        <div className="container mx-auto px-4 max-w-6xl flex justify-between items-center">
-              <img 
-                src={logo} 
-                alt="Nervovive Logo" 
-                className="h-8 md:h-10 w-auto select-none"
-            width="453"
-            height="95"
-            loading="eager"
-            decoding="async"
-          />
-          <a 
-            href="https://getnervovive24.com/text.php?aff=vontogy#order-now"
-            target="_blank"
-            rel="nofollow sponsored noopener noreferrer"
-            className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded-full px-6 py-2 shadow-lg shadow-yellow-500/20 transition-all hover:scale-105 cursor-pointer inline-block"
-          >
-            ORDER NOW
-          </a>
-        </div>
-      </nav>
-
       {/* Hero Section */}
       <section className="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden bg-gradient-to-b from-white to-secondary/30">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-secondary/20 rounded-l-[100px] -z-10 hidden md:block" />
@@ -1094,7 +1043,7 @@ function PricingCard({
           <div className="flex items-center gap-1">
             <span className="text-gray-600">Powered by</span>
             <img 
-              src="/images/nervovive/digistore.svg" 
+              src="/images/landingpages/nervovive/digistore.svg" 
               alt="DigiStore24" 
               className="h-6 max-w-[140px] select-none"
             />
