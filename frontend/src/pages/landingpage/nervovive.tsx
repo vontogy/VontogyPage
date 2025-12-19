@@ -191,57 +191,6 @@ export default function Nervovive() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900 overflow-x-hidden">
-      {/* Secure Payment Banner */}
-      <div className="bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200 py-2.5 px-4">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm">
-            {/* Secure Payment Icon & Text */}
-            <div className="flex items-center gap-1.5 shrink-0">
-              <Shield className="w-4 h-4 text-green-600 shrink-0" />
-              <span className="text-gray-700 font-medium">Secure Payment</span>
-            </div>
-            
-            {/* Separator */}
-            <span className="text-gray-300 hidden sm:inline">•</span>
-            
-            {/* Powered by DigiStore24 */}
-            <div className="flex items-center gap-2 shrink-0">
-              <span className="text-gray-600 hidden sm:inline">Powered by</span>
-              <div className="flex items-center" title="DigiStore24 - Secure Payment Processing">
-            <img 
-              src="/images/landingpages/nervovive/digistore.svg" 
-              alt="DigiStore24" 
-              className="h-8 md:h-9 max-w-[220px] md:max-w-[260px] select-none"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 py-4">
-        <div className="container mx-auto px-4 max-w-6xl flex justify-between items-center">
-              <img 
-                src={logo} 
-                alt="Nervovive Logo" 
-                className="h-8 md:h-10 w-auto select-none"
-            width="453"
-            height="95"
-            loading="eager"
-            decoding="async"
-          />
-          <a 
-            href="https://getnervovive24.com/text.php?aff=vontogy#order-now"
-            target="_blank"
-            rel="nofollow sponsored noopener noreferrer"
-            className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded-full px-6 py-2 shadow-lg shadow-yellow-500/20 transition-all hover:scale-105 cursor-pointer inline-block"
-          >
-            ORDER NOW
-          </a>
-        </div>
-      </nav>
-
       {/* Hero Section */}
       <section className="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden bg-gradient-to-b from-white to-secondary/30">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-secondary/20 rounded-l-[100px] -z-10 hidden md:block" />
