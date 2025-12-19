@@ -93,11 +93,15 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/nervovive" component={Nervovive} />
-      <Route path="/vsl/elartedesoltar" component={Elartedesoltar} />
+
+      {/* <Route path="/vsl/elartedesoltar" component={Elartedesoltar} /> */}
+      <Route path="/elartedesoltar" component={Elartedesoltar} />
+
       <Route component={Home} />
     </Switch>
   );
 }
+
 
 function App() {
   // Apply global protection against right-click and DevTools

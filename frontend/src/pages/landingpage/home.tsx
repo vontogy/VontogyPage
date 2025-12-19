@@ -39,7 +39,8 @@ export default function Home() {
                   Nervovive™ - Natural Nerve Support for Tingling & Burning
                 </a>
                 <a 
-                  href="/vsl/elartedesoltar" 
+                  /* href="/vsl/elartedesoltar"  */
+                  href="/elartedesoltar" 
                   className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 rounded-lg transition-all hover:scale-105 shadow-lg"
                 >
                   El Arte de Soltar - Guía Práctica para Superar a tu Ex y Renacer
