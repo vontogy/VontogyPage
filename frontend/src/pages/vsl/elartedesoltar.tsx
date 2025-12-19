@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Check, Shield, Star, ArrowRight, Unlink, HeartOff, CheckCircle, Crown, Heart, ShieldCheck, Award, Zap, Infinity as InfinityIcon } from "lucide-react";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/elartedesoltar/accordion";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/vsl/elartedesoltar/accordion";
 import { motion } from "framer-motion";
-import VideoPlayerPro from "@/components/ui/elartedesoltar/video-player-pro";
+import VideoPlayerPro from "@/components/ui/vsl/elartedesoltar/video-player-pro";
 
 // Meta Pixel type declaration
 declare global {
@@ -21,12 +21,12 @@ const VSL_REVEAL_TIME_SECONDS = 15;
 // ============================================
 
 // Assets
-const bestValueImage = "/images/elartedesoltar/images/best_value.webp";
-const heroSectionImage = "/images/elartedesoltar/images/herosection.webp";
-const whySectionImage = "/images/elartedesoltar/images/whysection.webp";
-const hotmartImage = "/images/elartedesoltar/hotmart.webp";
-const moneyBackImage = "/images/elartedesoltar/images/moneyback.webp";
-const bonusImage = "/images/elartedesoltar/images/bonus.webp";
+const bestValueImage = "/images/vsl/elartedesoltar/images/best_value.webp";
+const heroSectionImage = "/images/vsl/elartedesoltar/images/herosection.webp";
+const whySectionImage = "/images/vsl/elartedesoltar/images/whysection.webp";
+const hotmartImage = "/images/vsl/elartedesoltar/hotmart.webp";
+const moneyBackImage = "/images/vsl/elartedesoltar/images/moneyback.webp";
+const bonusImage = "/images/vsl/elartedesoltar/images/bonus.webp";
 
 // Bonuses Section Component
 function BonusesSection() {
@@ -306,7 +306,7 @@ export default function Elartedesoltar() {
     // Set Elartedesoltar favicon
     const favicon = document.querySelector('link[rel="icon"]') as HTMLLinkElement;
     if (favicon) {
-      favicon.href = "/images/elartedesoltar/icon.webp";
+      favicon.href = "/images/vsl/elartedesoltar/icon.webp";
     }
 
     // Meta Pixel Code - Exact copy from Facebook to prevent failures
@@ -420,8 +420,8 @@ export default function Elartedesoltar() {
             </motion.h2>
             
             <VideoPlayerPro
-              src="/images/elartedesoltar/images/VSL-DESKTOP-VONTOGY_i64mxo.webm"
-              srcMobile="/images/elartedesoltar/images/VSL-MOBILE-VONTOGY_akxrt1.webm"
+              src="/images/vsl/elartedesoltar/images/VSL-DESKTOP-VONTOGY_i64mxo.webm"
+              srcMobile="/images/vsl/elartedesoltar/images/VSL-MOBILE-VONTOGY_akxrt1.webm"
               disableSeek={true}
               onTimeUpdate={handleVideoTimeUpdate}
             />
@@ -791,7 +791,7 @@ export default function Elartedesoltar() {
             >
               <div className="w-full h-80 md:h-96 overflow-hidden">
                 <img 
-                  src="/images/elartedesoltar/images/promise1.webp" 
+                  src="/images/vsl/elartedesoltar/images/promise1.webp" 
                   alt="Liberación" 
                   className="w-full h-full object-cover select-none"
                   loading="lazy"
@@ -851,7 +851,7 @@ export default function Elartedesoltar() {
             >
               <div className="w-full h-80 md:h-96 overflow-hidden">
                 <img 
-                  src="/images/elartedesoltar/images/promise2.webp" 
+                  src="/images/vsl/elartedesoltar/images/promise2.webp" 
                   alt="Reconstrucción" 
                   className="w-full h-full object-cover select-none"
                   loading="lazy"
@@ -899,7 +899,7 @@ export default function Elartedesoltar() {
             >
               <div className="w-full h-80 md:h-96 overflow-hidden">
                 <img 
-                  src="/images/elartedesoltar/images/promise3.webp" 
+                  src="/images/vsl/elartedesoltar/images/promise3.webp" 
                   alt="Renacimiento" 
                   className="w-full h-full object-cover select-none"
                   loading="lazy"

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect, useCallback } from "react";
-import { Button } from "@/components/ui/elartedesoltar/button";
+import { Button } from "@/components/ui/vsl/elartedesoltar/button";
 import { Play, Pause, Volume2, VolumeX, RotateCw } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";

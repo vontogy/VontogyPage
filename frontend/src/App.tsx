@@ -4,10 +4,10 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { useEffect } from "react";
-import Home from "@/pages/home";
-import Nervovive from "@/pages/nervovive";
-import Elartedesoltar from "@/pages/elartedesoltar";
-import Provadent from "@/pages/provadent";
+import Home from "@/pages/landingpage/home";
+import Nervovive from "@/pages/landingpage/nervovive";
+import Elartedesoltar from "@/pages/vsl/elartedesoltar";
+import Provadent from "@/pages/landingpage/provadent";
 
 // Global protection against right-click and DevTools
 function useGlobalProtection() {
@@ -94,7 +94,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/nervovive" component={Nervovive} />
-      <Route path="/elartedesoltar" component={Elartedesoltar} />
+      <Route path="/vsl/elartedesoltar" component={Elartedesoltar} />
       <Route path="/provadent" component={Provadent} />
       <Route component={Home} />
     </Switch>

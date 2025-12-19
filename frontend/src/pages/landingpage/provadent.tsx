@@ -1,34 +1,34 @@
 import { useEffect } from "react";
 import { Check, Truck, Shield, ShoppingCart, Star } from "lucide-react";
-import { Button } from "@/components/ui/nervovive/button";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/nervovive/accordion";
+import { Button } from "@/components/ui/landingpages/provadent/button";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/landingpages/provadent/accordion";
 import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/nervovive/card";
+import { Card, CardContent } from "@/components/ui/landingpages/provadent/card";
 
 // Assets
-const logo = "/images/nervovive/logo.webp";
-const basicImage = "/images/nervovive/images/basic.webp";
-const bestValueImage = "/images/nervovive/images/best_value.webp";
-const mostPopularImage = "/images/nervovive/images/most_popular.webp";
-const heroSectionImage = "/images/nervovive/images/herosection.webp";
-const whySectionImage = "/images/nervovive/images/whysection.webp";
-const ingredient1 = "/images/nervovive/images/ingredient1.webp";
-const ingredient2 = "/images/nervovive/images/ingredient2.webp";
-const ingredient3 = "/images/nervovive/images/ingredient3.webp";
-const ingredient4 = "/images/nervovive/images/ingredient4.webp";
-const ingredient5 = "/images/nervovive/images/ingredient5.webp";
-const bonus1 = "/images/nervovive/images/bonus1.webp";
-const bonus2 = "/images/nervovive/images/bonus2.webp";
-const freeShippingImage = "/images/nervovive/images/freeshp.webp";
-const moneyBackImage = "/images/nervovive/images/moneyback.webp";
-const certificationsImage = "/images/nervovive/images/certifications.webp";
-const naturalImage = "/images/nervovive/images/natural.webp";
-const noStimImage = "/images/nervovive/images/no-stim.webp";
-const easyImage = "/images/nervovive/images/easy.webp";
-const gmoImage = "/images/nervovive/images/gmo.webp";
-const labelImage = "/images/nervovive/images/label-1.webp";
-const refsLogosImage = "/images/nervovive/images/refs-logos.webp";
-const creditCardsImage = "/images/nervovive/images/credit-cards.webp";
+const logo = "/images/landingpages/provadent/logo.webp";
+const basicImage = "/images/landingpages/provadent/images/basic.webp";
+const bestValueImage = "/images/landingpages/provadent/images/best_value.webp";
+const mostPopularImage = "/images/landingpages/provadent/images/most_popular.webp";
+const heroSectionImage = "/images/landingpages/provadent/images/herosection.webp";
+const whySectionImage = "/images/landingpages/provadent/images/whysection.webp";
+const ingredient1 = "/images/landingpages/provadent/images/ingredient1.webp";
+const ingredient2 = "/images/landingpages/provadent/images/ingredient2.webp";
+const ingredient3 = "/images/landingpages/provadent/images/ingredient3.webp";
+const ingredient4 = "/images/landingpages/provadent/images/ingredient4.webp";
+const ingredient5 = "/images/landingpages/provadent/images/ingredient5.webp";
+const bonus1 = "/images/landingpages/provadent/images/bonus1.webp";
+const bonus2 = "/images/landingpages/provadent/images/bonus2.webp";
+const freeShippingImage = "/images/landingpages/provadent/images/freeshp.webp";
+const moneyBackImage = "/images/landingpages/provadent/images/moneyback.webp";
+const certificationsImage = "/images/landingpages/provadent/images/certifications.webp";
+const naturalImage = "/images/landingpages/provadent/images/natural.webp";
+const noStimImage = "/images/landingpages/provadent/images/no-stim.webp";
+const easyImage = "/images/landingpages/provadent/images/easy.webp";
+const gmoImage = "/images/landingpages/provadent/images/gmo.webp";
+const labelImage = "/images/landingpages/provadent/images/label-1.webp";
+const refsLogosImage = "/images/landingpages/provadent/images/refs-logos.webp";
+const creditCardsImage = "/images/landingpages/provadent/images/credit-cards.webp";
 
 // Reusable Pricing Section Component
 function PricingSection({ title, sectionId }: { title: React.ReactNode | string, sectionId?: string }) {
@@ -137,10 +137,10 @@ function PricingSection({ title, sectionId }: { title: React.ReactNode | string,
   );
 }
 
-export default function Nervovive() {
+export default function Provadent() {
   useEffect(() => {
-    // Set Nervovive page metadata
-    document.title = "Stop The Burning & Tingling | Nervovive™ Nerve Support";
+    // Set Provadent page metadata
+    document.title = "Stop The Burning & Tingling | Provadent™ Nerve Support";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
@@ -149,7 +149,7 @@ export default function Nervovive() {
     
     const ogTitle = document.querySelector('meta[property="og:title"]');
     if (ogTitle) {
-      ogTitle.setAttribute("content", "Stop The Burning & Tingling | Nervovive™ Nerve Support");
+      ogTitle.setAttribute("content", "Stop The Burning & Tingling | Provadent™ Nerve Support");
     }
     
     const ogDescription = document.querySelector('meta[property="og:description"]');
@@ -157,10 +157,10 @@ export default function Nervovive() {
       ogDescription.setAttribute("content", "Don't let nerve pain shrink your world. Discover the breakthrough natural ritual that soothes extremities fast. 60-Day Money Back Guarantee.");
     }
     
-    // Set Nervovive favicon
+    // Set Provadent favicon
     const favicon = document.querySelector('link[rel="icon"]') as HTMLLinkElement;
     if (favicon) {
-      favicon.href = "/images/nervovive/favicon.png";
+      favicon.href = "/images/landingpages/provadent/favicon.png";
     }
 
     // Cleanup: restore Vontogy (Home) values when leaving the page
@@ -209,7 +209,7 @@ export default function Nervovive() {
               <span className="text-gray-600 hidden sm:inline">Powered by</span>
               <div className="flex items-center" title="DigiStore24 - Secure Payment Processing">
             <img 
-              src="/images/nervovive/digistore.svg" 
+              src="/images/landingpages/provadent/digistore.svg" 
               alt="DigiStore24" 
               className="h-8 md:h-9 max-w-[220px] md:max-w-[260px] select-none"
                 />
@@ -224,7 +224,7 @@ export default function Nervovive() {
         <div className="container mx-auto px-4 max-w-6xl flex justify-between items-center">
               <img 
                 src={logo} 
-                alt="Nervovive Logo" 
+                alt="Provadent Logo" 
                 className="h-8 md:h-10 w-auto select-none"
             width="453"
             height="95"
@@ -258,7 +258,7 @@ export default function Nervovive() {
                <div className="absolute inset-0 bg-[#00515F]/20 blur-[60px] rounded-full transform scale-75" />
               <img 
                 src={heroSectionImage} 
-                alt="Nervovive" 
+                alt="Provadent" 
                 className="relative w-full max-w-[900px] md:max-w-[1200px] drop-shadow-2xl mx-auto select-none"
                  width="1200"
                  height="1080"
@@ -428,10 +428,10 @@ export default function Nervovive() {
             {/* Title - First on mobile only */}
             <div className="text-center md:hidden mb-6">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Why Nervovive™ Works Where Other Supplements Have Failed.
+                Why Provadent™ Works Where Other Supplements Have Failed.
               </h2>
               <p className="text-lg text-gray-700 leading-relaxed">
-              The secret isn't just the ingredients—it's the Absorption. Many natural remedies never reach your nerve endings because they are destroyed by stomach acid. Nervovive uses a proprietary "Rapid-Delivery" processing method. This ensures the potent alkaloids in our Corydalis and Passion Flower survive digestion and rush directly to the extremities—your hands and feet—where you need relief the most.
+              The secret isn't just the ingredients—it's the Absorption. Many natural remedies never reach your nerve endings because they are destroyed by stomach acid. Provadent uses a proprietary "Rapid-Delivery" processing method. This ensures the potent alkaloids in our Corydalis and Passion Flower survive digestion and rush directly to the extremities—your hands and feet—where you need relief the most.
               </p>
             </div>
             
@@ -441,7 +441,7 @@ export default function Nervovive() {
                 <div className="flex items-center justify-center">
                   <img 
                     src={whySectionImage} 
-                    alt="Nervovive Bottles" 
+                    alt="Provadent Bottles" 
                     className="w-full max-w-md drop-shadow-2xl select-none" 
                     width="1888"
                     height="1359"
@@ -456,10 +456,10 @@ export default function Nervovive() {
                 {/* Title - Above description on desktop */}
                 <div className="hidden md:block">
                   <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                  Why Nervovive™ Works Where Other Supplements Have Failed.
+                  Why Provadent™ Works Where Other Supplements Have Failed.
                   </h2>
                   <p className="text-lg text-gray-700 leading-relaxed text-left mb-6">
-                  The secret isn't just the ingredients—it's the Absorption. Many natural remedies never reach your nerve endings because they are destroyed by stomach acid. Nervovive uses a proprietary "Rapid-Delivery" processing method. This ensures the potent alkaloids in our Corydalis and Passion Flower survive digestion and rush directly to the extremities—your hands and feet—where you need relief the most.
+                  The secret isn't just the ingredients—it's the Absorption. Many natural remedies never reach your nerve endings because they are destroyed by stomach acid. Provadent uses a proprietary "Rapid-Delivery" processing method. This ensures the potent alkaloids in our Corydalis and Passion Flower survive digestion and rush directly to the extremities—your hands and feet—where you need relief the most.
                   </p>
                 </div>
               
@@ -592,7 +592,7 @@ export default function Nervovive() {
         title={
           <>
             <span className="text-red-600">Urgent Action Required! Limited-Time Offer Available, Don't Miss Out! </span>
-            <span className="text-primary">Hurry Up - Secure Your Nervovive Before Stock Runs Out!</span>
+            <span className="text-primary">Hurry Up - Secure Your Provadent Before Stock Runs Out!</span>
           </>
         }
       />
@@ -621,18 +621,18 @@ export default function Nervovive() {
           
           <Accordion type="single" collapsible className="w-full space-y-4">
             <FAQItem 
-              question="How does Nervovive work?" 
+              question="How does Provadent work?" 
               answer="This formula mixes powerful ingredients meant to help your body absorb the necessary nutrients and manage neuropathy. What makes this product special is that it also naturally supports normal blood sugar levels while helping your organism properly absorb and regulate the amount of sugar it gets." 
             />
             <FAQItem 
               question="Are there any side effects?" 
-              answer="As always, if you currently have a medical condition or you’re taking other prescription medication, we advise you to show a bottle of NervoVive to your doctor before you use it, just to put your mind at ease." 
+              answer="As always, if you currently have a medical condition or you're taking other prescription medication, we advise you to show a bottle of Provadent to your doctor before you use it, just to put your mind at ease." 
             />
             <FAQItem 
               question="What is your money-back guarantee?" 
               answer="It is a risk-free option we are offering you because we believe in this formula so much.
 
-It means you can try Nervovive for a full 60 days.
+It means you can try Provadent for a full 60 days.
 
 And if you are not completely convinced by the amazing results, then just get in touch with us and we’ll refund your money." 
             />
@@ -643,7 +643,7 @@ And if you are not completely convinced by the amazing results, then just get in
 It is a smart choice because those who buy the 6-bottle pack get a massive discount, free shipping, and 2 free online guides. That's a lot of value and savings, especially since our clients usually want to reorder once they start feeling results." 
             />
             <FAQItem 
-              question="How do I use Nervovive?" 
+              question="How do I use Provadent?" 
               answer="Simply take 2 capsules per day, with plenty of water." 
             />
             <FAQItem 
@@ -656,12 +656,12 @@ It is a smart choice because those who buy the 6-bottle pack get a massive disco
               </AccordionTrigger>
               <AccordionContent className="text-gray-600 leading-relaxed pb-4 text-base">
                 <p className="mb-4">
-                Inside every single capsule of NervoVive is a proprietary formula of scientifically proven, extra-strong ingredients, custom-made to support the health of your nervous system and help you enjoy a normal, discomfort-free life.
+                Inside every single capsule of Provadent is a proprietary formula of scientifically proven, extra-strong ingredients, custom-made to support the health of your nervous system and help you enjoy a normal, discomfort-free life.
                 </p>
                 <div className="flex justify-center mt-6">
                   <img 
                     src={labelImage} 
-                    alt="Nervovive Product Label" 
+                    alt="Provadent Product Label" 
                     className="w-full max-w-2xl h-auto rounded-lg shadow-md select-none" 
                     loading="lazy"
                     decoding="async"
@@ -715,7 +715,7 @@ It is a smart choice because those who buy the 6-bottle pack get a massive disco
 
       {/* Pricing Section - Duplicate */}
       <PricingSection 
-        title={<span className="text-primary">Claim your Discounted Nervovive Below While Stock Lasts</span>}
+        title={<span className="text-primary">Claim your Discounted Provadent Below While Stock Lasts</span>}
       />
 
       {/* Scientific References Section */}
@@ -774,7 +774,7 @@ It is a smart choice because those who buy the 6-bottle pack get a massive disco
           <div className="mb-8 flex justify-center">
             <img 
               src={logo} 
-              alt="Nervovive" 
+              alt="Provadent" 
               className="h-8 w-auto brightness-0 invert opacity-50 select-none" 
               loading="lazy"
               decoding="async"
@@ -1094,7 +1094,7 @@ function PricingCard({
           <div className="flex items-center gap-1">
             <span className="text-gray-600">Powered by</span>
             <img 
-              src="/images/nervovive/digistore.svg" 
+              src="/images/landingpages/provadent/digistore.svg" 
               alt="DigiStore24" 
               className="h-6 max-w-[140px] select-none"
             />
