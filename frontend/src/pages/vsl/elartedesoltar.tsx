@@ -50,6 +50,8 @@ function BonusesSection() {
                   className="w-full max-w-lg md:max-w-xl lg:max-w-3xl xl:max-w-4xl rounded-2xl drop-shadow-2xl select-none" 
                   loading="lazy"
                   decoding="async"
+                  width="1600"
+                  height="1200"
                 />
               </div>
             </div>
@@ -146,14 +148,18 @@ function PricingSection({ sectionId }: { sectionId?: string }) {
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Product Image - Left */}
             <div className="order-1 md:order-1 flex justify-center md:justify-end">
-              <div className="relative">
-                <img 
-                  src={bestValueImage} 
-                  alt="El Arte de Soltar" 
-                  className="w-full max-w-md md:max-w-lg lg:max-w-xl drop-shadow-2xl select-none" 
-                  loading="lazy"
-                  decoding="async"
-                />
+              <div className="relative w-full max-w-md md:max-w-lg lg:max-w-xl">
+                <div className="w-full aspect-[3/4] relative">
+                  <img 
+                    src={bestValueImage} 
+                    alt="El Arte de Soltar" 
+                    className="w-full h-full object-contain drop-shadow-2xl select-none" 
+                    loading="lazy"
+                    decoding="async"
+                    width="600"
+                    height="800"
+                  />
+                </div>
               </div>
             </div>
 
@@ -230,13 +236,17 @@ function PricingSection({ sectionId }: { sectionId?: string }) {
                   <div className="flex flex-col items-center gap-2 pt-2 border-t border-gray-200">
                     <div className="flex items-center gap-2">
                       <span className="text-xs text-gray-500">Impulsado por</span>
-                      <img 
-                        src={hotmartImage} 
-                        alt="Hotmart" 
-                        className="h-4 md:h-5 w-auto select-none"
-                        loading="lazy"
-                        decoding="async"
-                      />
+                      <div className="h-4 md:h-5 aspect-[4/1] relative">
+                        <img 
+                          src={hotmartImage} 
+                          alt="Hotmart" 
+                          className="h-full w-auto object-contain select-none"
+                          loading="lazy"
+                          decoding="async"
+                          width="200"
+                          height="50"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -248,13 +258,15 @@ function PricingSection({ sectionId }: { sectionId?: string }) {
           <div className="mt-12 max-w-4xl mx-auto">
             <div className="bg-white rounded-2xl p-6 md:p-8 border border-gray-200 shadow-lg">
               <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8">
-                <div className="flex-shrink-0">
+                <div className="flex-shrink-0 w-32 h-32 md:w-40 md:h-40 aspect-square relative">
                   <img 
                     src={moneyBackImage} 
                     alt="Money Back Guarantee" 
-                    className="w-32 h-32 md:w-40 md:h-40 object-contain select-none" 
+                    className="w-full h-full object-contain select-none" 
                     loading="lazy"
                     decoding="async"
+                    width="160"
+                    height="160"
                   />
                 </div>
                 <div className="flex-1 text-center md:text-left">
@@ -276,7 +288,7 @@ function PricingSection({ sectionId }: { sectionId?: string }) {
 
 export default function Elartedesoltar() {
   // State to control content visibility - now shows immediately on page load
-  const [showContent, setShowContent] = useState(true);
+  const [showContent] = useState(true);
   
   // Handle video time updates - COMMENTED OUT: content now appears on page load
   // const handleVideoTimeUpdate = (currentTime: number) => {
@@ -420,12 +432,16 @@ export default function Elartedesoltar() {
               Mira esto si quieres olvidar a quien ya te olvidó.
             </motion.h2>
             
-            <VideoPlayerPro
-              src="/images/vsl/elartedesoltar/images/VSL-DESKTOP-VONTOGY_i64mxo.webm"
-              srcMobile="/images/vsl/elartedesoltar/images/VSL-MOBILE-VONTOGY_akxrt1.webm"
-              disableSeek={true}
-              // onTimeUpdate={handleVideoTimeUpdate}
-            />
+            {/* Video container with reserved space to prevent CLS */}
+            {/* Mobile: 1080x1920 (9/16 portrait), Desktop: 16/9 landscape */}
+            <div className="w-full aspect-[9/16] md:aspect-video mb-12 md:mb-16">
+              <VideoPlayerPro
+                src="/images/vsl/elartedesoltar/images/VSL-DESKTOP-VONTOGY_i64mxo.webm"
+                srcMobile="/images/vsl/elartedesoltar/images/VSL-MOBILE-VONTOGY_akxrt1.webm"
+                disableSeek={true}
+                // onTimeUpdate={handleVideoTimeUpdate}
+              />
+            </div>
             
             {/* CTA Button below video - Now visible on page load */}
             {showContent && (
@@ -489,13 +505,17 @@ export default function Elartedesoltar() {
                   <div className="flex flex-col items-center gap-2 pt-2 border-t border-gray-200">
                     <div className="flex items-center gap-2">
                       <span className="text-xs text-gray-500">Impulsado por</span>
-                      <img 
-                        src={hotmartImage} 
-                        alt="Hotmart" 
-                        className="h-4 md:h-5 w-auto select-none"
-                        loading="lazy"
-                        decoding="async"
-                      />
+                      <div className="h-4 md:h-5 aspect-[4/1] relative">
+                        <img 
+                          src={hotmartImage} 
+                          alt="Hotmart" 
+                          className="h-full w-auto object-contain select-none"
+                          loading="lazy"
+                          decoding="async"
+                          width="200"
+                          height="50"
+                        />
+                      </div>
                     </div>
                   </div>
                 </motion.div>
@@ -555,15 +575,17 @@ export default function Elartedesoltar() {
                  className="relative z-10 w-full flex justify-center scale-90 md:scale-110"
               >
                  <div className="absolute inset-0 bg-[#00515F]/20 blur-[60px] rounded-full transform scale-75" />
-                <img 
-                  src={heroSectionImage} 
-                  alt="Nervovive" 
-                  className="relative w-full max-w-[500px] md:max-w-[1000px] drop-shadow-2xl mx-auto select-none"
-                   width="1200"
-                   height="1080"
-                   fetchPriority="high"
-                   decoding="async"
-                 />
+                 <div className="relative w-full max-w-[500px] md:max-w-[1000px] aspect-[10/9] mx-auto">
+                   <img 
+                     src={heroSectionImage} 
+                     alt="Nervovive" 
+                     className="relative w-full h-full object-contain drop-shadow-2xl select-none"
+                     width="1200"
+                     height="1080"
+                     fetchPriority="high"
+                     decoding="async"
+                   />
+                 </div>
               </motion.div>
             </div>
 
@@ -790,13 +812,15 @@ export default function Elartedesoltar() {
               transition={{ duration: 0.5 }}
               className="flex flex-col bg-white rounded-3xl overflow-hidden shadow-lg"
             >
-              <div className="w-full h-80 md:h-96 overflow-hidden">
+              <div className="w-full aspect-[4/3] overflow-hidden relative">
                 <img 
                   src="/images/vsl/elartedesoltar/images/promise1.webp" 
                   alt="Liberación" 
                   className="w-full h-full object-cover select-none"
                   loading="lazy"
                   decoding="async"
+                  width="800"
+                  height="600"
                 />
               </div>
               <div className="bg-[#2C2C2C] text-white p-6 flex-1">
@@ -850,13 +874,15 @@ export default function Elartedesoltar() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="flex flex-col bg-white rounded-3xl overflow-hidden shadow-lg"
             >
-              <div className="w-full h-80 md:h-96 overflow-hidden">
+              <div className="w-full aspect-[4/3] overflow-hidden relative">
                 <img 
                   src="/images/vsl/elartedesoltar/images/promise2.webp" 
                   alt="Reconstrucción" 
                   className="w-full h-full object-cover select-none"
                   loading="lazy"
                   decoding="async"
+                  width="800"
+                  height="600"
                 />
               </div>
               <div className="bg-[#2C2C2C] text-white p-6 flex-1">
@@ -898,13 +924,15 @@ export default function Elartedesoltar() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="flex flex-col bg-white rounded-3xl overflow-hidden shadow-lg"
             >
-              <div className="w-full h-80 md:h-96 overflow-hidden">
+              <div className="w-full aspect-[4/3] overflow-hidden relative">
                 <img 
                   src="/images/vsl/elartedesoltar/images/promise3.webp" 
                   alt="Renacimiento" 
                   className="w-full h-full object-cover select-none"
                   loading="lazy"
                   decoding="async"
+                  width="800"
+                  height="600"
                 />
               </div>
               <div className="bg-[#2C2C2C] text-white p-6 flex-1">

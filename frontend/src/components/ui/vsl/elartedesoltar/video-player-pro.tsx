@@ -244,7 +244,7 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
   return (
     <div
       ref={containerRef}
-      className="relative w-full max-w-5xl mx-auto overflow-hidden rounded-xl bg-black select-none"
+      className="relative w-full h-full overflow-hidden rounded-xl bg-black select-none"
       style={{ 
         WebkitUserSelect: 'none', 
         userSelect: 'none',
@@ -265,7 +265,7 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
 
       <video
         ref={videoRef}
-        className="w-full pointer-events-none"
+        className="w-full h-full object-cover pointer-events-none"
         src={videoSrc}
         muted
         playsInline
