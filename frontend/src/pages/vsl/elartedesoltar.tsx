@@ -17,7 +17,8 @@ declare global {
 // ============================================
 // Tempo em SEGUNDOS para revelar as seções ocultas
 // Exemplo: 198 = seções aparecem após 198 segundos de vídeo
-const VSL_REVEAL_TIME_SECONDS = 198;
+// COMENTADO: Conteúdo agora aparece quando a página carrega
+// const VSL_REVEAL_TIME_SECONDS = 198;
 // ============================================
 
 // Assets
@@ -274,15 +275,15 @@ function PricingSection({ sectionId }: { sectionId?: string }) {
 }
 
 export default function Elartedesoltar() {
-  // State to control content visibility based on video time (13 seconds)
-  const [showContent, setShowContent] = useState(false);
+  // State to control content visibility - now shows immediately on page load
+  const [showContent, setShowContent] = useState(true);
   
-  // Handle video time updates
-  const handleVideoTimeUpdate = (currentTime: number) => {
-    if (currentTime >= VSL_REVEAL_TIME_SECONDS && !showContent) {
-      setShowContent(true);
-    }
-  };
+  // Handle video time updates - COMMENTED OUT: content now appears on page load
+  // const handleVideoTimeUpdate = (currentTime: number) => {
+  //   if (currentTime >= VSL_REVEAL_TIME_SECONDS && !showContent) {
+  //     setShowContent(true);
+  //   }
+  // };
 
   useEffect(() => {
     // Set Elartedesoltar page metadata
@@ -423,10 +424,10 @@ export default function Elartedesoltar() {
               src="/images/vsl/elartedesoltar/images/VSL-DESKTOP-VONTOGY_i64mxo.webm"
               srcMobile="/images/vsl/elartedesoltar/images/VSL-MOBILE-VONTOGY_akxrt1.webm"
               disableSeek={true}
-              onTimeUpdate={handleVideoTimeUpdate}
+              // onTimeUpdate={handleVideoTimeUpdate}
             />
             
-            {/* CTA Button below video - Hidden until 13 seconds */}
+            {/* CTA Button below video - Now visible on page load */}
             {showContent && (
               <div className="mt-12 md:mt-16 flex flex-col items-center gap-6 md:gap-8">
                 <motion.div
@@ -526,7 +527,7 @@ export default function Elartedesoltar() {
         </div>
       </section>
 
-      {/* All sections below are hidden until video reaches 13 seconds */}
+      {/* All sections below - Now visible on page load */}
       {showContent && (
         <>
           {/* Hero Section */}
