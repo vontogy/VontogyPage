@@ -384,13 +384,6 @@ export default function Elartedesoltar() {
     };
   }, []);
 
-  const scrollToPricing = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const pricingSection = document.getElementById("pricing");
-    if (pricingSection) {
-      pricingSection.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
 
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900 overflow-x-hidden">
@@ -649,8 +642,9 @@ export default function Elartedesoltar() {
                   className="w-full flex justify-center md:w-auto"
                 >
                   <a 
-                    href="#pricing"
-                    onClick={scrollToPricing}
+                    href="https://pay.hotmart.com/G103409382C?checkoutMode=10"
+                    target="_blank"
+                    rel="nofollow sponsored noopener noreferrer"
                     className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold rounded-xl shadow-xl shadow-green-500/25 transition-all hover:scale-105 flex items-center justify-center md:justify-start gap-1.5 md:gap-2 mx-auto md:mx-0 w-full md:w-auto cursor-pointer"
                   >
                     ¡SÍ! NECESITO SALIR DE ESTO
@@ -778,8 +772,9 @@ export default function Elartedesoltar() {
                   className="w-full flex justify-center md:w-auto"
                 >
                   <a 
-                    href="#pricing"
-                    onClick={scrollToPricing}
+                    href="https://pay.hotmart.com/G103409382C?checkoutMode=10"
+                    target="_blank"
+                    rel="nofollow sponsored noopener noreferrer"
                     className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold rounded-xl shadow-xl shadow-green-500/25 transition-all hover:scale-105 flex items-center justify-center md:justify-start gap-1.5 md:gap-2 mx-auto md:mx-0 w-full md:w-auto cursor-pointer"
                   >
                     <span className="md:hidden">SER FELIZ SIN DEPENDER DE NADIE</span>
@@ -987,8 +982,9 @@ export default function Elartedesoltar() {
               className="w-full flex justify-center md:w-auto"
             >
               <a 
-                href="#pricing"
-                onClick={scrollToPricing}
+                href="https://pay.hotmart.com/G103409382C?checkoutMode=10"
+                target="_blank"
+                rel="nofollow sponsored noopener noreferrer"
                 className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold rounded-xl shadow-xl shadow-green-500/25 transition-all hover:scale-105 flex items-center justify-center gap-1.5 md:gap-2 mx-auto md:mx-0 w-full md:w-auto cursor-pointer"
               >
                 <span className="md:hidden">QUIERO SEGUIR ADELANTE</span>
