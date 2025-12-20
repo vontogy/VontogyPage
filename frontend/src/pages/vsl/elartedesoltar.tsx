@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Check, Shield, Star, ArrowRight, Unlink, HeartOff, CheckCircle, Crown, Heart, ShieldCheck, Award, Zap, Infinity as InfinityIcon } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/vsl/elartedesoltar/accordion";
 import { motion } from "framer-motion";
@@ -202,6 +202,7 @@ function PricingSection({ sectionId }: { sectionId?: string }) {
                     href="https://pay.hotmart.com/G103409382C?checkoutMode=10"
                     target="_blank"
                     rel="nofollow sponsored noopener noreferrer"
+                    onClick={trackInitiateCheckout}
                     className="w-full h-14 md:h-16 px-4 md:px-6 text-base md:text-lg bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold rounded-xl shadow-xl shadow-green-500/25 transition-all hover:scale-105 flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <span className="md:hidden">APROVECHAR ESTE REGALO</span>
@@ -286,6 +287,29 @@ function PricingSection({ sectionId }: { sectionId?: string }) {
   );
 }
 
+// Helper function to track InitiateCheckout event
+const trackInitiateCheckout = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  e.preventDefault();
+  const url = e.currentTarget.href;
+
+  // Generate unique event ID for deduplication
+  const eventId = 'ic_' + Date.now() + '_' + Math.random().toString(16).slice(2);
+
+  // Track InitiateCheckout event
+  if (window.fbq) {
+    window.fbq('track', 'InitiateCheckout', {
+      content_name: 'El Arte de Soltar',
+      content_type: 'product',
+      currency: 'USD'
+    }, { eventID: eventId });
+  }
+
+  // Redirect after small delay to ensure event is sent
+  setTimeout(() => {
+    window.location.href = url;
+  }, 250);
+};
+
 export default function Elartedesoltar() {
   // State to control content visibility - now shows immediately on page load
   const [showContent] = useState(true);
@@ -348,6 +372,12 @@ export default function Elartedesoltar() {
       if (window.fbq) {
         window.fbq('init', '1826999544612219');
         window.fbq('track', 'PageView');
+        // Track ViewContent for product page
+        window.fbq('track', 'ViewContent', {
+          content_name: 'El Arte de Soltar',
+          content_type: 'product'
+        });
+        window.fbq('set', 'autoConfig', false, '1826999544612219');
       } else {
         // Retry after a short delay if script not loaded yet
         setTimeout(initPixel, 50);
@@ -462,6 +492,7 @@ export default function Elartedesoltar() {
                       href="https://pay.hotmart.com/G103409382C?checkoutMode=10"
                       target="_blank"
                       rel="nofollow sponsored noopener noreferrer"
+                      onClick={trackInitiateCheckout}
                       className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold rounded-xl shadow-xl shadow-green-500/25 transition-all hover:scale-105 flex items-center justify-center gap-1.5 md:gap-2 mx-auto w-full md:w-auto cursor-pointer"
                     >
                       ¡SÍ! QUIERO SEGUIR ADELANTE
@@ -648,6 +679,7 @@ export default function Elartedesoltar() {
                     href="https://pay.hotmart.com/G103409382C?checkoutMode=10"
                     target="_blank"
                     rel="nofollow sponsored noopener noreferrer"
+                    onClick={trackInitiateCheckout}
                     className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold rounded-xl shadow-xl shadow-green-500/25 transition-all hover:scale-105 flex items-center justify-center md:justify-start gap-1.5 md:gap-2 mx-auto md:mx-0 w-full md:w-auto cursor-pointer"
                   >
                     ¡SÍ! NECESITO SALIR DE ESTO
@@ -778,6 +810,7 @@ export default function Elartedesoltar() {
                     href="https://pay.hotmart.com/G103409382C?checkoutMode=10"
                     target="_blank"
                     rel="nofollow sponsored noopener noreferrer"
+                    onClick={trackInitiateCheckout}
                     className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold rounded-xl shadow-xl shadow-green-500/25 transition-all hover:scale-105 flex items-center justify-center md:justify-start gap-1.5 md:gap-2 mx-auto md:mx-0 w-full md:w-auto cursor-pointer"
                   >
                     <span className="md:hidden">SER FELIZ SIN DEPENDER DE NADIE</span>
@@ -988,6 +1021,7 @@ export default function Elartedesoltar() {
                 href="https://pay.hotmart.com/G103409382C?checkoutMode=10"
                 target="_blank"
                 rel="nofollow sponsored noopener noreferrer"
+                onClick={trackInitiateCheckout}
                 className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold rounded-xl shadow-xl shadow-green-500/25 transition-all hover:scale-105 flex items-center justify-center gap-1.5 md:gap-2 mx-auto md:mx-0 w-full md:w-auto cursor-pointer"
               >
                 <span className="md:hidden">QUIERO SEGUIR ADELANTE</span>
