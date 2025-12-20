@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Check, Shield, Star, ArrowRight, Unlink, HeartOff, CheckCircle, Crown, Heart, ShieldCheck, Award, Zap, Infinity as InfinityIcon } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/vsl/elartedesoltar/accordion";
 import { motion } from "framer-motion";
@@ -290,6 +290,9 @@ export default function Elartedesoltar() {
   // State to control content visibility - now shows immediately on page load
   const [showContent] = useState(true);
   
+  // Ref to prevent duplicate pixel initialization
+  const pixelInitialized = useRef(false);
+  
   // Handle video time updates - COMMENTED OUT: content now appears on page load
   // const handleVideoTimeUpdate = (currentTime: number) => {
   //   if (currentTime >= VSL_REVEAL_TIME_SECONDS && !showContent) {
@@ -322,39 +325,79 @@ export default function Elartedesoltar() {
       favicon.href = "/images/vsl/elartedesoltar/icon.webp";
     }
 
-    // Meta Pixel Code - Exact copy from Facebook to prevent failures
-    if (!window.fbq) {
-      (function(f: any, b: any, e: any, v: any, n?: any, t?: any, s?: any) {
-        if (f.fbq) return;
-        n = f.fbq = function() {
-          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
-        };
-        if (!f._fbq) f._fbq = n;
-        n.push = n;
-        n.loaded = !0;
-        n.version = '2.0';
-        n.queue = [];
-        t = b.createElement(e);
-        t.async = !0;
-        t.src = v;
-        s = b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t, s);
-      })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-    }
+    // Meta Pixel Code - Prevent duplicate initialization
+    const PIXEL_ID = '1826999544612219';
     
-    // Initialize and track page view - must be called after script loads
-    if (window.fbq) {
-      window.fbq('init', '1826999544612219');
-      window.fbq('track', 'PageView');
-    }
+    // Only initialize if not already initialized (using ref to prevent React StrictMode double execution)
+    if (!pixelInitialized.current) {
+      pixelInitialized.current = true; // Set immediately to prevent race conditions
+      
+      // Load script only if not already loaded
+      if (!window.fbq) {
+        (function(f: any, b: any, e: any, v: any, n?: any, t?: any, s?: any) {
+          if (f.fbq) return;
+          n = f.fbq = function() {
+            n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+          };
+          if (!f._fbq) f._fbq = n;
+          n.push = n;
+          n.loaded = !0;
+          n.version = '2.0';
+          n.queue = [];
+          t = b.createElement(e);
+          t.async = !0;
+          t.src = v;
+          s = b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t, s);
+        })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+      }
+      
+      // Initialize pixel after script loads
+      const initPixel = () => {
+        // Double check with global flag to prevent multiple initializations
+        const globalKey = `_fbpixel_${PIXEL_ID}_init`;
+        if (window.fbq && !(window as any)[globalKey]) {
+          try {
+            (window as any)[globalKey] = true; // Set flag before init
+            window.fbq('init', PIXEL_ID);
+            window.fbq('track', 'PageView');
+          } catch (e) {
+            console.warn('Meta Pixel initialization error:', e);
+            (window as any)[globalKey] = false; // Reset on error
+          }
+        }
+      };
+      
+      // Wait for script to be ready (async load)
+      // Try immediately, then retry if needed
+      if (window.fbq) {
+        initPixel();
+      } else {
+        // Script still loading, wait a bit
+        let checkCount = 0;
+        const maxChecks = 40; // 2 seconds max (40 * 50ms)
+        const checkReady = setInterval(() => {
+          checkCount++;
+          if (window.fbq) {
+            clearInterval(checkReady);
+            initPixel();
+          } else if (checkCount >= maxChecks) {
+            clearInterval(checkReady);
+          }
+        }, 50);
+      }
 
-    // Add noscript image for Meta Pixel
-    const noscriptImg = document.createElement('img');
-    noscriptImg.height = 1;
-    noscriptImg.width = 1;
-    noscriptImg.style.display = 'none';
-    noscriptImg.src = 'https://www.facebook.com/tr?id=1826999544612219&ev=PageView&noscript=1';
-    document.body.appendChild(noscriptImg);
+      // Add noscript image for Meta Pixel (only once)
+      const noscriptSelector = `img[src*="facebook.com/tr?id=${PIXEL_ID}"]`;
+      if (!document.querySelector(noscriptSelector)) {
+        const noscriptImg = document.createElement('img');
+        noscriptImg.height = 1;
+        noscriptImg.width = 1;
+        noscriptImg.style.display = 'none';
+        noscriptImg.src = `https://www.facebook.com/tr?id=${PIXEL_ID}&ev=PageView&noscript=1`;
+        document.body.appendChild(noscriptImg);
+      }
+    }
 
     // Cleanup: restore Vontogy (Home) values when leaving the page
     return () => {
