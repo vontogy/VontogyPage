@@ -22,7 +22,7 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
   const [isMuted, setIsMuted] = useState(true);
   const [progress, setProgress] = useState(0);
   const [showControls, setShowControls] = useState(false);
-  const [showUnmuteButton, setShowUnmuteButton] = useState(true);
+  const [showPlayButton, setShowPlayButton] = useState(true);
   const [isLoaded, setIsLoaded] = useState(false);
 
   // Detect mobile
@@ -124,35 +124,23 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
     };
   }, []);
 
-  // Autoplay: video MUST start muted (browser policy)
+  // Video loading - no autoplay
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    // Ensure muted for autoplay to work
+    // Ensure muted initially
     video.muted = true;
     video.volume = 1;
-
-    // Play video as soon as possible
-    const playVideo = async () => {
-      try {
-        await video.play();
-        setIsPlaying(true);
-        setIsLoaded(true);
-      } catch (e) {
-        console.log("Autoplay failed, will retry on interaction");
-      }
-    };
 
     // Handle when video can start playing (doesn't need full download!)
     const handleCanPlay = () => {
       setIsLoaded(true);
-      playVideo();
     };
 
-    // Try to play immediately if already loaded
+    // Check if already loaded
     if (video.readyState >= 3) {
-      handleCanPlay();
+      setIsLoaded(true);
     }
 
     // Listen for when video is ready to play (streaming!)
@@ -163,19 +151,20 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
     };
   }, [videoSrc]);
 
-  // Unmute - requires user interaction
-  const handleUnmute = () => {
+  // Play and unmute - requires user interaction
+  const handlePlay = () => {
     const video = videoRef.current;
     if (!video) return;
     
+    // Unmute and play
     video.muted = false;
     setIsMuted(false);
-    setShowUnmuteButton(false);
+    setShowPlayButton(false);
     
-    // Also play if paused
-    if (video.paused) {
-      video.play().then(() => setIsPlaying(true));
-    }
+    // Play video
+    video.play().then(() => setIsPlaying(true)).catch((e) => {
+      console.log("Play failed:", e);
+    });
   };
 
   // Toggle play/pause
@@ -245,7 +234,6 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
     if (!video) return;
     video.muted = !video.muted;
     setIsMuted(video.muted);
-    if (!video.muted) setShowUnmuteButton(false);
   };
 
   // Toggle controls visibility on click
@@ -256,7 +244,7 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
   return (
     <div
       ref={containerRef}
-      className="relative w-full max-w-5xl mx-auto overflow-hidden rounded-xl bg-black select-none"
+      className="relative w-full h-full overflow-hidden rounded-xl bg-black select-none"
       style={{ 
         WebkitUserSelect: 'none', 
         userSelect: 'none',
@@ -277,7 +265,7 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
 
       <video
         ref={videoRef}
-        className="w-full pointer-events-none"
+        className="w-full h-full object-cover pointer-events-none"
         src={videoSrc}
         muted
         playsInline
@@ -308,15 +296,15 @@ const VideoPlayerPro: React.FC<VideoPlayerProProps> = ({ src, srcMobile, disable
         </div>
       )}
 
-      {/* UNMUTE BUTTON - Shows when video is muted */}
-      {showUnmuteButton && isMuted && isLoaded && (
+      {/* PLAY BUTTON - Shows when video is not playing */}
+      {showPlayButton && isLoaded && !isPlaying && (
         <div className="absolute inset-0 flex items-center justify-center z-20">
           <button
-            onClick={handleUnmute}
+            onClick={handlePlay}
             className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full font-bold text-lg flex items-center gap-2 shadow-lg transition-all hover:scale-105"
           >
-            <VolumeX className="w-6 h-6" />
-            ACTIVAR SONIDO
+            <Play className="w-6 h-6" />
+            Ver Video
           </button>
         </div>
       )}
