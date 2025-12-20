@@ -9,6 +9,8 @@ declare global {
   interface Window {
     fbq?: (...args: any[]) => void;
     _fbq?: any;
+    dataLayer?: any[];
+    gtag?: (...args: any[]) => void;
   }
 }
 
@@ -344,6 +346,25 @@ export default function Elartedesoltar() {
     const favicon = document.querySelector('link[rel="icon"]') as HTMLLinkElement;
     if (favicon) {
       favicon.href = "/images/vsl/elartedesoltar/icon.webp";
+    }
+
+    // Google Tag (gtag.js) - Load script if not already loaded
+    if (!window.gtag) {
+      const script1 = document.createElement('script');
+      script1.async = true;
+      script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-HQSZQB4RKX';
+      document.head.appendChild(script1);
+
+      // Initialize dataLayer and gtag function
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function() {
+        window.dataLayer!.push(arguments);
+      };
+      window.gtag('js', new Date());
+      window.gtag('config', 'G-HQSZQB4RKX');
+    } else {
+      // If gtag already exists, just configure this tag
+      window.gtag('config', 'G-HQSZQB4RKX');
     }
 
     // Meta Pixel Code - Exact copy from Facebook to prevent failures
