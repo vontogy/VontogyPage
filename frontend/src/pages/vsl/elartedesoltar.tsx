@@ -429,8 +429,8 @@ export default function Elartedesoltar() {
             {/* Mobile: 1080x1920 (9/16 portrait), Desktop: 16/9 landscape */}
             <div className="w-full aspect-[9/16] md:aspect-video mb-12 md:mb-16">
               <VideoPlayerPro
-                src="/images/vsl/elartedesoltar/images/VSL-DESKTOP-VONTOGY_i64mxo.webm"
-                srcMobile="/images/vsl/elartedesoltar/images/VSL-MOBILE-VONTOGY_akxrt1.webm"
+                src="/images/vsl/elartedesoltar/images/VSL-DESKTOP-VONTOGY.webm"
+                srcMobile="/images/vsl/elartedesoltar/images/VSL-MOBILE-VONTOGY.webm"
                 disableSeek={true}
                 // onTimeUpdate={handleVideoTimeUpdate}
               />
@@ -531,7 +531,7 @@ export default function Elartedesoltar() {
                     </span>
                   </div>
                   <span className="text-gray-600 text-sm md:text-base">
-                    ¡Más de 27.214 reseñas positivas!
+                    ¡Más de 2.714 reseñas positivas!
                   </span>
                 </motion.div>
               </div>
@@ -565,10 +565,10 @@ export default function Elartedesoltar() {
                  initial={{ opacity: 0, scale: 0.8 }}
                  animate={{ opacity: 1, scale: 1 }}
                  transition={{ duration: 0.6 }}
-                 className="relative z-10 w-full flex justify-center scale-90 md:scale-110"
+                 className="relative z-10 w-full flex justify-center md:scale-110"
               >
                  <div className="absolute inset-0 bg-[#00515F]/20 blur-[60px] rounded-full transform scale-75" />
-                 <div className="relative w-full max-w-[500px] md:max-w-[1000px] aspect-[10/9] mx-auto">
+                 <div className="relative w-full max-w-md md:max-w-[1000px] aspect-[3/4] md:aspect-[10/9] mx-auto">
                    <img 
                      src={heroSectionImage} 
                      alt="Nervovive" 
@@ -620,7 +620,7 @@ export default function Elartedesoltar() {
                   </span>
                 </div>
                 <span className="text-gray-600 text-sm md:text-base">
-                ¡Más de 27.214 reseñas positivas!
+                ¡Más de 2.714 reseñas positivas!
                 </span>
               </motion.div>
               
@@ -1037,7 +1037,7 @@ export default function Elartedesoltar() {
                 </span>
               </div>
               <span className="text-gray-600 text-base md:text-lg">
-                ¡Más de 27.214 reseñas positivas!
+                ¡Más de 2.714 reseñas positivas!
               </span>
             </div>
           </div>
