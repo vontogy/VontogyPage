@@ -343,18 +343,27 @@ export default function Elartedesoltar() {
     }
     
     // Initialize and track page view - must be called after script loads
+    // Wait for script to load before initializing
+    const initPixel = () => {
+      if (window.fbq) {
+        window.fbq('init', '1826999544612219');
+        window.fbq('track', 'PageView');
+      } else {
+        // Retry after a short delay if script not loaded yet
+        setTimeout(initPixel, 50);
+      }
+    };
+    
+    // Start initialization
     if (window.fbq) {
-      window.fbq('init', '1826999544612219');
-      window.fbq('track', 'PageView');
+      initPixel();
+    } else {
+      // Wait for script to load
+      setTimeout(initPixel, 50);
     }
-
-    // Add noscript image for Meta Pixel
-    const noscriptImg = document.createElement('img');
-    noscriptImg.height = 1;
-    noscriptImg.width = 1;
-    noscriptImg.style.display = 'none';
-    noscriptImg.src = 'https://www.facebook.com/tr?id=1826999544612219&ev=PageView&noscript=1';
-    document.body.appendChild(noscriptImg);
+    
+    // Note: noscript image should only be in static HTML, not added via JS
+    // If JS is running, we don't need the noscript fallback
 
     // Cleanup: restore Vontogy (Home) values when leaving the page
     return () => {
@@ -374,12 +383,6 @@ export default function Elartedesoltar() {
       
       if (favicon) {
         favicon.href = "https://res.cloudinary.com/dopp0v9eq/image/upload/v1763574787/monfily-black-nobg_risk6t.png";
-      }
-      
-      // Remove Meta Pixel noscript image
-      const pixelImg = document.querySelector('img[src*="facebook.com/tr?id=1826999544612219"]');
-      if (pixelImg && pixelImg.parentNode) {
-        pixelImg.parentNode.removeChild(pixelImg);
       }
     };
   }, []);
