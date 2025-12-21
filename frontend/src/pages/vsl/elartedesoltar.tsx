@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Check, Shield, Star, ArrowRight, Unlink, HeartOff, CheckCircle, Crown, Heart, ShieldCheck, Award, Zap, Infinity as InfinityIcon } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/vsl/elartedesoltar/accordion";
 import { motion } from "framer-motion";
@@ -365,21 +365,21 @@ export default function Elartedesoltar() {
     }
     
     // Initialize Meta Pixel
+    const initPixel = () => {
+      if (window.fbq) {
+        window.fbq('init', '1361956482292993');
+        window.fbq('set', 'autoConfig', false, '1361956482292993');
+        window.fbq('track', 'PageView');
+      } else {
+        setTimeout(initPixel, 50);
+      }
+    };
+    
+    // Start initialization
     if (window.fbq) {
-      window.fbq('init', '1361956482292993');
-      window.fbq('set', 'autoConfig', false, '1361956482292993');
-      window.fbq('track', 'PageView');
+      initPixel();
     } else {
       // Wait for script to load
-      const initPixel = () => {
-        if (window.fbq) {
-          window.fbq('init', '1361956482292993');
-          window.fbq('set', 'autoConfig', false, '1361956482292993');
-          window.fbq('track', 'PageView');
-        } else {
-          setTimeout(initPixel, 50);
-        }
-      };
       setTimeout(initPixel, 50);
     }
 
