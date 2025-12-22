@@ -15,72 +15,6 @@ export default function Home() {
             Affiliate Marketing Website
           </p>
 
-          {/* Info Card */}
-          <div className="bg-gray-800 rounded-xl p-8 border border-gray-700 shadow-lg">
-            <h2 className="text-white font-bold text-xl mb-6">Contact & Information</h2>
-            
-            <div className="space-y-4 text-sm">
-              <p className="text-gray-300">
-                <strong className="text-white">Website Owner:</strong> Vontogy
-              </p>
-              <p className="text-gray-400">
-                This is an affiliate marketing website. For product inquiries, please contact the vendor directly.
-              </p>
-            </div>
-
-            {/* Products Section */}
-            <div className="mt-8 pt-6 border-t border-gray-700">
-              <h3 className="text-white font-semibold mb-4">Our Products</h3>
-              <div className="flex flex-col gap-4">
-                <a 
-                  href="/nervovive" 
-                  className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 rounded-lg transition-all hover:scale-105 shadow-lg"
-                >
-                  Nervovive™ - Natural Nerve Support for Tingling & Burning
-                </a>
-                <a 
-                  /* href="/vsl/elartedesoltar"  */
-                  href="/elartedesoltar" 
-                  className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 rounded-lg transition-all hover:scale-105 shadow-lg"
-                >
-                  El Arte de Soltar - Guía Práctica para Superar a tu Ex y Renacer
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Payment Platforms Section */}
-          <div className="bg-gray-800 rounded-xl p-8 border border-gray-700 shadow-lg mt-8">
-            <h2 className="text-white font-bold text-xl mb-6">Payment & Affiliate Platforms</h2>
-            
-            <div className="space-y-4 text-sm">
-              <p className="text-gray-300 mb-4">
-                This website may use various third-party payment processing and affiliate platforms to facilitate transactions, including but not limited to:
-              </p>
-              
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                <div className="bg-gray-700/50 rounded-lg p-4 text-center">
-                  <p className="text-white font-semibold text-xs">DigiStore24</p>
-                </div>
-                <div className="bg-gray-700/50 rounded-lg p-4 text-center">
-                  <p className="text-white font-semibold text-xs">BuyGoods</p>
-                </div>
-                <div className="bg-gray-700/50 rounded-lg p-4 text-center">
-                  <p className="text-white font-semibold text-xs">ClickBank</p>
-                </div>
-                <div className="bg-gray-700/50 rounded-lg p-4 text-center">
-                  <p className="text-white font-semibold text-xs">Hotmart</p>
-                </div>
-              </div>
-
-              <div className="bg-gray-900/50 p-4 rounded-lg border border-gray-700/50 mt-6">
-                <p className="text-gray-400 text-xs leading-relaxed">
-                  <strong className="text-gray-300">Platform Disclaimer:</strong> This website is not owned, operated, or endorsed by DigiStore24, BuyGoods, ClickBank, Hotmart, or any other third-party payment processing platform. These platforms are independent service providers used solely for transaction processing. We are not responsible for the policies, practices, or terms of service of these third-party platforms. All transactions are subject to the terms and conditions of the respective platform and product vendor.
-                </p>
-              </div>
-            </div>
-          </div>
-
           {/* Disclaimers */}
           <div className="text-xs max-w-2xl mx-auto leading-relaxed space-y-4 mt-8">
             <div className="bg-gray-800/50 p-6 rounded-lg border border-gray-700/50">
@@ -121,6 +55,38 @@ export default function Home() {
                 
                 <p>
                   <strong className="text-gray-300">Advertising Compliance:</strong> This website complies with advertising standards and regulations. All claims made on this website are based on available information and are not intended to mislead consumers. Product descriptions and claims are provided by product vendors and are subject to their own terms and conditions.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Payment Platforms Section */}
+          <div className="bg-gray-800 rounded-xl p-8 border border-gray-700 shadow-lg mt-8">
+            <h2 className="text-white font-bold text-xl mb-6">Payment & Affiliate Platforms</h2>
+            
+            <div className="space-y-4 text-sm">
+              <p className="text-gray-300 mb-4">
+                This website may use various third-party payment processing and affiliate platforms to facilitate transactions, including but not limited to:
+              </p>
+              
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <div className="bg-gray-700/50 rounded-lg p-4 text-center">
+                  <p className="text-white font-semibold text-xs">DigiStore24</p>
+                </div>
+                <div className="bg-gray-700/50 rounded-lg p-4 text-center">
+                  <p className="text-white font-semibold text-xs">BuyGoods</p>
+                </div>
+                <div className="bg-gray-700/50 rounded-lg p-4 text-center">
+                  <p className="text-white font-semibold text-xs">ClickBank</p>
+                </div>
+                <div className="bg-gray-700/50 rounded-lg p-4 text-center">
+                  <p className="text-white font-semibold text-xs">Hotmart</p>
+                </div>
+              </div>
+
+              <div className="bg-gray-900/50 p-4 rounded-lg border border-gray-700/50 mt-6">
+                <p className="text-gray-400 text-xs leading-relaxed">
+                  <strong className="text-gray-300">Platform Disclaimer:</strong> This website is not owned, operated, or endorsed by DigiStore24, BuyGoods, ClickBank, Hotmart, or any other third-party payment processing platform. These platforms are independent service providers used solely for transaction processing. We are not responsible for the policies, practices, or terms of service of these third-party platforms. All transactions are subject to the terms and conditions of the respective platform and product vendor.
                 </p>
               </div>
             </div>
