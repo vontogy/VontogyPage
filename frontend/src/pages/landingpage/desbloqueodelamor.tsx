@@ -39,7 +39,7 @@ function PricingSection({ sectionId }: { sectionId?: string }) {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Product Image - Left (Desktop only) */}
-            <div className="order-1 md:order-1 hidden md:flex justify-center md:justify-end">
+            <div id="pricing-image" className="order-1 md:order-1 hidden md:flex justify-center md:justify-end">
               <div className="relative w-full max-w-md md:max-w-lg lg:max-w-xl">
                 <div className="w-full aspect-[3/4] relative">
                   <img 
@@ -60,11 +60,11 @@ function PricingSection({ sectionId }: { sectionId?: string }) {
               <div className="bg-white rounded-2xl p-6 md:p-8 border-2 border-[#CA9E63] shadow-xl">
                 {/* Price Text */}
                 <p className="text-lg md:text-xl font-bold text-gray-900 mb-4 leading-relaxed text-center">
-                  LIBRO DIGITAL + 3 BONOS EXCLUSIVOS
+                  LIBRO DIGITAL + 2 BONOS EXCLUSIVOS
                 </p>
 
                 {/* Product Image - Mobile only (inside card) */}
-                <div className="flex justify-center mb-6 md:hidden">
+                <div id="pricing-image-mobile" className="flex justify-center mb-6 md:hidden">
                   <div className="relative w-full max-w-xs">
                     <div className="w-full aspect-[3/4] relative">
                       <img 
@@ -83,7 +83,7 @@ function PricingSection({ sectionId }: { sectionId?: string }) {
                 {/* Large Price */}
                 <div className="mb-6 text-center">
                   <p className="text-sm md:text-base text-red-600 line-through mb-2 font-bold">
-                    De US$ 19,90 por
+                    De US$ 24,90 por
                   </p>
                   <div className="text-6xl md:text-7xl lg:text-8xl font-black text-green-600 mb-2 tracking-tighter">
                     US$ 8,90
@@ -97,6 +97,7 @@ function PricingSection({ sectionId }: { sectionId?: string }) {
 
                 {/* CTA Button */}
                 <motion.div
+                  id="pricing-cta"
                   animate={{
                     scale: [1, 1.02, 1],
                   }}
@@ -108,7 +109,7 @@ function PricingSection({ sectionId }: { sectionId?: string }) {
                   className="w-full"
                 >
                   <a 
-                    href="https://pay.hotmart.com/G103409382C?checkoutMode=10"
+                    href="https://pay.hotmart.com/B103516360I?checkoutMode=10"
                     target="_blank"
                     rel="nofollow sponsored noopener noreferrer"
                     className="w-full h-14 md:h-16 px-4 md:px-6 text-base md:text-lg bg-[#CA9E63] hover:bg-[#B0894F] text-white font-bold rounded-xl shadow-xl shadow-[#CA9E63]/25 transition-all hover:scale-105 flex items-center justify-center gap-2 cursor-pointer"
@@ -268,8 +269,8 @@ export default function Desbloqueodelamor() {
     // Initialize Meta Pixel
     const initPixel = () => {
       if (window.fbq) {
-        window.fbq('init', '1361956482292993');
-        window.fbq('set', 'autoConfig', false, '1361956482292993');
+        window.fbq('init', '2554305048323209');
+        window.fbq('set', 'autoConfig', false, '2554305048323209');
         window.fbq('track', 'PageView');
       } else {
         setTimeout(initPixel, 50);
@@ -315,12 +316,15 @@ export default function Desbloqueodelamor() {
           height={1} 
           width={1} 
           style={{ display: 'none' }}
-          src="https://www.facebook.com/tr?id=1361956482292993&ev=PageView&noscript=1"
+          src="https://www.facebook.com/tr?id=2554305048323209&ev=PageView&noscript=1"
           alt=""
         />
       </noscript>
       {/* End Meta Pixel Code */}
       <style>{`
+        html {
+          scroll-behavior: smooth;
+        }
         @keyframes scroll {
           0% {
             transform: translateX(0);
@@ -502,9 +506,22 @@ export default function Desbloqueodelamor() {
                   className="w-full flex justify-center md:justify-start"
                 >
                   <a 
-                    href="https://pay.hotmart.com/G103409382C?checkoutMode=10"
-                    target="_blank"
-                    rel="nofollow sponsored noopener noreferrer"
+                    href="#pricing-image"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const isMobile = window.innerWidth < 768;
+                      const elementId = isMobile ? 'pricing-image-mobile' : 'pricing-image';
+                      const element = document.getElementById(elementId);
+                      if (element) {
+                        const offset = 100; // Offset para não ficar colado no topo
+                        const elementPosition = element.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - offset;
+                        window.scrollTo({
+                          top: offsetPosition,
+                          behavior: 'smooth'
+                        });
+                      }
+                    }}
                     className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-[#CA9E63] hover:bg-[#B0894F] text-white font-bold rounded-xl shadow-xl shadow-[#CA9E63]/25 transition-all hover:scale-105 flex items-center justify-center mx-auto md:mx-0 w-full md:w-auto cursor-pointer leading-tight text-center whitespace-normal"
                   >
                     <span className="md:hidden">QUIERO DESTRABAR MI VIDA AMOROSA AHORA</span>
@@ -632,13 +649,26 @@ export default function Desbloqueodelamor() {
                   className="w-full flex justify-center md:w-auto"
                 >
                   <a 
-                    href="https://pay.hotmart.com/G103409382C?checkoutMode=10"
-                    target="_blank"
-                    rel="nofollow sponsored noopener noreferrer"
+                    href="#pricing-image"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const isMobile = window.innerWidth < 768;
+                      const elementId = isMobile ? 'pricing-image-mobile' : 'pricing-image';
+                      const element = document.getElementById(elementId);
+                      if (element) {
+                        const offset = 100; // Offset para não ficar colado no topo
+                        const elementPosition = element.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - offset;
+                        window.scrollTo({
+                          top: offsetPosition,
+                          behavior: 'smooth'
+                        });
+                      }
+                    }}
                     className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-[#CA9E63] hover:bg-[#B0894F] text-white font-bold rounded-xl shadow-xl shadow-[#CA9E63]/25 transition-all hover:scale-105 flex items-center justify-center md:justify-start gap-1.5 md:gap-2 mx-auto md:mx-0 w-full md:w-auto cursor-pointer"
                   >
-                    <span className="md:hidden">SER FELIZ SIN DEPENDER DE NADIE</span>
-                    <span className="hidden md:inline">QUIERO SER FELIZ SIN DEPENDER DE NADIE</span>
+                    <span className="md:hidden">DESBLOQUEAR ESTO YA</span>
+                    <span className="hidden md:inline">DESBLOQUEAR ESTE PATRÓN YA</span>
                     <ArrowRight className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 shrink-0" />
                   </a>
                 </motion.div>
@@ -800,9 +830,22 @@ export default function Desbloqueodelamor() {
               className="w-full flex justify-center md:w-auto"
             >
               <a 
-                href="https://pay.hotmart.com/G103409382C?checkoutMode=10"
-                target="_blank"
-                rel="nofollow sponsored noopener noreferrer"
+                href="#pricing-image"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const isMobile = window.innerWidth < 768;
+                  const elementId = isMobile ? 'pricing-image-mobile' : 'pricing-image';
+                  const element = document.getElementById(elementId);
+                  if (element) {
+                    const offset = 100; // Offset para não ficar colado no topo
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - offset;
+                    window.scrollTo({
+                      top: offsetPosition,
+                      behavior: 'smooth'
+                    });
+                  }
+                }}
                 className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-[#CA9E63] hover:bg-[#B0894F] text-white font-bold rounded-xl shadow-xl shadow-[#CA9E63]/25 transition-all hover:scale-105 flex items-center justify-center gap-1.5 md:gap-2 mx-auto md:mx-0 w-full md:w-auto cursor-pointer"
               >
                 <span className="md:hidden">SANAR ESTO AHORA</span>
@@ -815,11 +858,6 @@ export default function Desbloqueodelamor() {
       </section>
 
 
-
-      {/* Pricing Section */}
-      <PricingSection 
-        sectionId="pricing"
-      />
 
       {/* About Author Section */}
       <section className="py-20 bg-white">
@@ -915,9 +953,22 @@ export default function Desbloqueodelamor() {
                   className="w-full flex justify-center md:justify-start"
                 >
                   <a 
-                    href="https://pay.hotmart.com/G103409382C?checkoutMode=10"
-                    target="_blank"
-                    rel="nofollow sponsored noopener noreferrer"
+                    href="#pricing-image"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const isMobile = window.innerWidth < 768;
+                      const elementId = isMobile ? 'pricing-image-mobile' : 'pricing-image';
+                      const element = document.getElementById(elementId);
+                      if (element) {
+                        const offset = 100; // Offset para não ficar colado no topo
+                        const elementPosition = element.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - offset;
+                        window.scrollTo({
+                          top: offsetPosition,
+                          behavior: 'smooth'
+                        });
+                      }
+                    }}
                     className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-[#CA9E63] hover:bg-[#B0894F] text-white font-bold rounded-xl shadow-xl shadow-[#CA9E63]/25 transition-all hover:scale-105 flex items-center justify-center mx-auto md:mx-0 w-full md:w-auto cursor-pointer leading-tight text-center whitespace-normal"
                   >
                     <span className="md:hidden">QUIERO ACCEDER AL<br />MÉTODO DE MARÍA</span>
@@ -945,6 +996,11 @@ export default function Desbloqueodelamor() {
           </div>
         </div>
       </section>
+
+      {/* Pricing Section */}
+      <PricingSection 
+        sectionId="pricing"
+      />
 
       {/* Reviews Section */}
       <section className="py-20 bg-gray-50">
