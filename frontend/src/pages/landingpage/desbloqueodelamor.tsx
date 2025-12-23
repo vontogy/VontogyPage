@@ -204,21 +204,21 @@ export default function Desbloqueodelamor() {
 
   useEffect(() => {
     // Set Desbloqueodelamor page metadata
-    document.title = "El Arte de Soltar: Cómo Superar a tu Ex y Recuperar tu Paz";
+    document.title = "Desbloqueo del Amor: Sanar la Herida de Abandono y Atraer el Amor Verdadero";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute("content", "¿No logras olvidar? Descubre la guía práctica para arrancar el apego, dejar de revisar sus redes y dormir tranquilo hoy mismo. Descarga inmediata en PDF.");
+      metaDescription.setAttribute("content", "Descubre cómo desbloquear los patrones inconscientes que te alejan del amor. Sanar la Herida de Abandono, dejar de aceptar migajas y atraer relaciones sanas. Libro digital + 2 bonos exclusivos por solo US$ 8,90.");
     }
     
     const ogTitle = document.querySelector('meta[property="og:title"]');
     if (ogTitle) {
-      ogTitle.setAttribute("content", "El Arte de Soltar: Cómo Superar a tu Ex y Recuperar tu Paz");
+      ogTitle.setAttribute("content", "Desbloqueo del Amor: Sanar la Herida de Abandono y Atraer el Amor Verdadero");
     }
     
     const ogDescription = document.querySelector('meta[property="og:description"]');
     if (ogDescription) {
-      ogDescription.setAttribute("content", "¿No logras olvidar? Descubre la guía práctica para arrancar el apego, dejar de revisar sus redes y dormir tranquilo hoy mismo. Descarga inmediata en PDF.");
+      ogDescription.setAttribute("content", "Descubre cómo desbloquear los patrones inconscientes que te alejan del amor. Sanar la Herida de Abandono, dejar de aceptar migajas y atraer relaciones sanas. Libro digital + 2 bonos exclusivos por solo US$ 8,90.");
     }
     
     // Set Desbloqueodelamor favicon
