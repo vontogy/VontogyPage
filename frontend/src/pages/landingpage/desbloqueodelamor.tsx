@@ -17,6 +17,7 @@ const bestValueImage = "/images/landingpages/desbloqueodelamor/images/best_value
 const heroSectionImage = "/images/landingpages/desbloqueodelamor/images/herosection.webp";
 const heroSectionDesktopImage = "/images/landingpages/desbloqueodelamor/images/herosection_desktop.webp";
 const heroSectionLogo = "/images/landingpages/desbloqueodelamor/images/herosection_logo.webp";
+const whoImage = "/images/landingpages/desbloqueodelamor/images/Who.webp";
 const whySectionImage = "/images/landingpages/desbloqueodelamor/images/whysection.webp";
 const hotmartImage = "/images/landingpages/desbloqueodelamor/hotmart.webp";
 const moneyBackImage = "/images/landingpages/desbloqueodelamor/images/moneyback.webp";
@@ -836,15 +837,18 @@ export default function Desbloqueodelamor() {
               </div>
 
               {/* Image - Mobile only (below subtitle) */}
-              <div className="flex justify-center md:hidden mb-6">
-                <div className="relative w-full max-w-xs">
-                  <img 
-                    src={heroSectionDesktopImage} 
-                    alt="María Calderini" 
-                    className="w-full h-auto rounded-2xl drop-shadow-2xl select-none object-contain" 
-                    loading="lazy"
-                    decoding="async"
-                  />
+              <div className="flex justify-center md:hidden mb-6" style={{ marginLeft: '-1rem', marginRight: '-1rem', width: 'calc(100% + 2rem)' }}>
+                <div className="relative w-full">
+                  <div className="absolute inset-0 bg-[#B0894F]/40 blur-[100px] rounded-full transform scale-100" />
+                  <div className="relative">
+                    <img 
+                      src={whoImage} 
+                      alt="María Calderini" 
+                      className="w-full h-auto rounded-2xl drop-shadow-2xl select-none object-contain" 
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
                 </div>
               </div>
               
@@ -925,14 +929,17 @@ export default function Desbloqueodelamor() {
 
             {/* Image - Right (Desktop only) */}
             <div className="hidden md:flex justify-center items-start">
-              <div className="relative w-full max-w-2xl lg:max-w-3xl">
-                <img 
-                  src={heroSectionDesktopImage} 
-                  alt="María Calderini" 
-                  className="w-full h-auto rounded-2xl drop-shadow-2xl select-none object-contain" 
-                  loading="lazy"
-                  decoding="async"
-                />
+              <div className="relative w-full max-w-3xl lg:max-w-4xl">
+                <div className="absolute inset-0 bg-[#B0894F]/40 blur-[100px] rounded-full transform scale-100" />
+                <div className="relative">
+                  <img 
+                    src={whoImage} 
+                    alt="María Calderini" 
+                    className="w-full h-auto rounded-2xl drop-shadow-2xl select-none object-contain" 
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -944,7 +951,7 @@ export default function Desbloqueodelamor() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-black leading-none tracking-tight text-gray-900 mb-4">
-              Opinión de los Lectores
+              Lo que dicen nuestras lectoras
             </h2>
             <div className="flex flex-col items-center gap-1 mt-4">
               <div className="flex items-center gap-2">
