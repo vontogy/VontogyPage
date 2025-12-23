@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Shield, Star, ArrowRight, Unlink, HeartOff, CheckCircle, Crown, Heart, ShieldCheck, Award, Zap, Infinity as InfinityIcon } from "lucide-react";
+import { Shield, Star, ArrowRight, Award, Zap, Infinity as InfinityIcon, CheckCircle } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/landingpages/desbloqueodelamor/accordion";
 import { motion } from "framer-motion";
 
@@ -20,127 +20,25 @@ const heroSectionLogo = "/images/landingpages/desbloqueodelamor/images/herosecti
 const whySectionImage = "/images/landingpages/desbloqueodelamor/images/whysection.webp";
 const hotmartImage = "/images/landingpages/desbloqueodelamor/hotmart.webp";
 const moneyBackImage = "/images/landingpages/desbloqueodelamor/images/moneyback.webp";
-const bonusImage = "/images/landingpages/desbloqueodelamor/images/bonus.webp";
 
-// Bonuses Section Component
-function BonusesSection() {
-  return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          {/* Title - First on mobile, hidden on desktop (will show inside left column) */}
-          <h2 className="text-3xl md:text-4xl font-black leading-none tracking-tight text-gray-900 mb-6 text-center md:hidden">
-            Acelera tu recuperación con herramientas de emergencia
-          </h2>
-          
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-            {/* Image - Second on mobile (after title), Right on desktop */}
-            <div className="relative order-2 md:order-2 flex justify-center md:justify-end pt-4 md:pt-0">
-              <div className="flex items-center justify-center">
-                <img 
-                  src={bonusImage} 
-                  alt="Bonos de emergencia: Kit SOS WhatsApp y Audio APAGANDO EL DOLOR para acelerar tu recuperación" 
-                  className="w-full max-w-lg md:max-w-xl lg:max-w-3xl xl:max-w-4xl rounded-2xl drop-shadow-2xl select-none" 
-                  loading="lazy"
-                  decoding="async"
-                  width="1600"
-                  height="1200"
-                />
-              </div>
-            </div>
-            
-            {/* Content - Third on mobile, Left on desktop */}
-            <div className="space-y-6 text-center md:text-left order-3 md:order-1">
-              {/* Title - Hidden on mobile (already shown above), visible on desktop */}
-              <h2 className="hidden md:block text-3xl md:text-4xl font-black leading-none tracking-tight text-gray-900 mb-4">
-                Acelera tu recuperación con herramientas de emergencia
-              </h2>
-              
-              {/* Paragraph */}
-              <p className="text-lg text-gray-700 leading-relaxed">
-                No vas a improvisar cuando más te duela. Estos bonos están diseñados para cortar recaídas, apagar la ansiedad nocturna y devolverte el control en los momentos críticos.
-              </p>
-              
-              {/* Bonus Cards */}
-              <div className="space-y-4 pt-4">
-                {/* Bono 1 */}
-                <div className="bg-gray-50 rounded-xl p-5 border border-gray-200">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Bono 1 — Kit SOS WhatsApp
-                  </h3>
-                  <p className="text-base text-gray-700 mb-3 leading-relaxed">
-                    Guiones listos para responder sin humillarte, bloquear impulsos y proteger tu dignidad cuando tu ex aparezca.
-                  </p>
-                  <ul className="space-y-2">
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#00515E] font-bold mt-1">·</span>
-                      <span className="text-sm text-gray-600 leading-relaxed">Respuestas para cada escenario</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#00515E] font-bold mt-1">·</span>
-                      <span className="text-sm text-gray-600 leading-relaxed">Mensajes para tu padrino/madrina</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#00515E] font-bold mt-1">·</span>
-                      <span className="text-sm text-gray-600 leading-relaxed">Frases de bloqueo mental</span>
-                    </li>
-                  </ul>
-                </div>
-                
-                {/* Bono 2 */}
-                <div className="bg-gray-50 rounded-xl p-5 border border-gray-200">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Bono 2 — Audio 'APAGANDO EL DOLOR'
-                  </h3>
-                  <p className="text-base text-gray-700 mb-3 leading-relaxed">
-                    Reprogramación pre-sueño para calmar el pecho, bajar el cortisol y dormir sin caer en el bucle de recuerdos.
-                  </p>
-                  <ul className="space-y-2">
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#00515E] font-bold mt-1">·</span>
-                      <span className="text-sm text-gray-600 leading-relaxed">Ansiedad nocturna</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#00515E] font-bold mt-1">·</span>
-                      <span className="text-sm text-gray-600 leading-relaxed">Insomnio post-ruptura</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#00515E] font-bold mt-1">·</span>
-                      <span className="text-sm text-gray-600 leading-relaxed">Mente acelerada</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              
-              {/* Micro-CTA */}
-              <p className="text-sm text-gray-600 italic pt-2">
-                Úsalos así: crisis → Kit SOS | noche difícil → Audio.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 // Reusable Pricing Section Component
 function PricingSection({ sectionId }: { sectionId?: string }) {
   return (
-    <section id={sectionId} className="py-20 bg-gradient-to-b from-white to-secondary/20">
+    <section id={sectionId} className="py-20 bg-[#F5F1E8]">
       <div className="container mx-auto px-4">
         {/* Headline */}
         <div className="text-center mb-12 max-w-4xl mx-auto">
           <h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 leading-none tracking-tight text-gray-900">
-            ¿Cuánto vale tu paz mental? Probablemente más que una hamburguesa.
+            ¿Cuánto vale dejar de repetir el mismo sufrimiento año tras año?
           </h2>
         </div>
         
         {/* Pricing Content - Image Left, Card Right */}
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-            {/* Product Image - Left */}
-            <div className="order-1 md:order-1 flex justify-center md:justify-end">
+            {/* Product Image - Left (Desktop only) */}
+            <div className="order-1 md:order-1 hidden md:flex justify-center md:justify-end">
               <div className="relative w-full max-w-md md:max-w-lg lg:max-w-xl">
                 <div className="w-full aspect-[3/4] relative">
                   <img 
@@ -158,25 +56,42 @@ function PricingSection({ sectionId }: { sectionId?: string }) {
 
             {/* Pricing Card - Right */}
             <div className="order-2 md:order-2">
-              <div className="bg-white rounded-2xl p-6 md:p-8 border-2 border-yellow-400 shadow-xl">
+              <div className="bg-white rounded-2xl p-6 md:p-8 border-2 border-[#CA9E63] shadow-xl">
                 {/* Price Text */}
-                <p className="text-base md:text-lg text-gray-700 mb-4 leading-relaxed text-center">
-                  Todo el método costaría <span className="font-bold">$97</span> en una sesión de terapia. Hoy te lo llevas por un pago único de:
+                <p className="text-lg md:text-xl font-bold text-gray-900 mb-4 leading-relaxed text-center">
+                  LIBRO DIGITAL + 3 BONOS EXCLUSIVOS
                 </p>
+
+                {/* Product Image - Mobile only (inside card) */}
+                <div className="flex justify-center mb-6 md:hidden">
+                  <div className="relative w-full max-w-xs">
+                    <div className="w-full aspect-[3/4] relative">
+                      <img 
+                        src={bestValueImage} 
+                        alt="El Arte de Soltar" 
+                        className="w-full h-full object-contain drop-shadow-2xl select-none" 
+                        loading="lazy"
+                        decoding="async"
+                        width="600"
+                        height="800"
+                      />
+                    </div>
+                  </div>
+                </div>
 
                 {/* Large Price */}
                 <div className="mb-6 text-center">
                   <p className="text-sm md:text-base text-red-600 line-through mb-2 font-bold">
-                    De $19,90 por
+                    De US$ 19,90 por
                   </p>
-                  <div className="text-8xl md:text-7xl lg:text-8xl font-black text-green-600 mb-2 tracking-tighter">
-                    $6,90
+                  <div className="text-6xl md:text-7xl lg:text-8xl font-black text-green-600 mb-2 tracking-tighter">
+                    US$ 8,90
                   </div>
                 </div>
 
                 {/* Descriptive Text */}
                 <p className="text-sm md:text-base text-gray-700 mb-6 leading-relaxed text-center">
-                  Sí, leíste bien. Por menos de lo que te cuesta un café en Starbucks o un combo de comida rápida, obtienes el mapa exacto para sanar tu corazón y recuperar tu vida. ¿Vas a dejar que el precio de un café te separe de tu felicidad?
+                  Ya gastaste mucho más en ropa para intentar impresionar, en cenas que no llevaron a nada y en terapias que no fueron directo al punto. Hoy, tu libertad emocional cuesta menos que un snack en la panadería.
                 </p>
 
                 {/* CTA Button */}
@@ -497,10 +412,10 @@ export default function Desbloqueodelamor() {
                  initial={{ opacity: 0, scale: 0.8 }}
                  animate={{ opacity: 1, scale: 1 }}
                  transition={{ duration: 0.6 }}
-                 className="relative z-10 w-full flex justify-center md:scale-150"
+                 className="relative z-10 w-full flex justify-center md:scale-[180%]"
               >
                  <div className="absolute inset-0 bg-[#B0894F]/20 blur-[60px] rounded-full transform scale-75" />
-                 <div className="relative w-full max-w-[1400px] aspect-[10/9] mx-auto">
+                 <div className="relative w-full max-w-[1600px] aspect-[10/9] mx-auto">
                    <img 
                      src={heroSectionDesktopImage} 
                      alt="Nervovive" 
@@ -606,87 +521,103 @@ export default function Desbloqueodelamor() {
 
 
       {/* O Mecanismo Único Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-[#F5F1E8]">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             {/* Title - First on mobile only */}
             <div className="text-center md:hidden mb-6">
-              <h2 className="text-3xl md:text-4xl font-black leading-none tracking-tight text-gray-900 mb-4">
-              Esto no es un ebook lleno de “palabras bonitas”.
+              <h2 className="text-3xl md:text-4xl font-black leading-none tracking-tight text-gray-900 mb-6">
+              ¿Por qué una mujer tan increíble sigue sola o infeliz en el amor?
               </h2>
-              <p className="text-lg text-gray-700 leading-relaxed">
-              Es una guía contra la dependencia emocional. Cuando una relación termina, tu cerebro entra en “abstinencia”, igual que un adicto sin su droga. Por eso sientes dolor físico, ansiedad y obsesión por esa persona. La guía te ayudará ahí: te entregamos el protocolo para desintoxicar tu mente, cortar los lazos y fortalecer tu autoestima. No necesitas “tener ganas” de mejorar. Solo necesitas seguir el paso a paso, hasta que el dolor desaparezca.
-              </p>
             </div>
             
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              {/* Image - Second on mobile, first on desktop */}
-              <div className="relative order-2 md:order-1">
-                <div className="flex items-center justify-center">
-                  <img 
-                    src={whySectionImage} 
-                    alt="Nervovive Bottles" 
-                    className="w-full max-w-lg md:max-w-xl lg:max-w-2xl rounded-2xl drop-shadow-2xl select-none" 
-                    width="1888"
-                    height="1359"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
+            <div className="grid md:grid-cols-2 gap-12 md:items-stretch">
+              {/* Image - After title on mobile (order-1), second on desktop (right) */}
+              <div className="relative order-1 md:order-2 flex">
+                <img 
+                  src={whySectionImage} 
+                  alt="Nervovive Bottles" 
+                  className="w-full max-w-lg md:w-full md:h-full rounded-2xl drop-shadow-2xl select-none object-cover" 
+                  width="1888"
+                  height="1359"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
               
-              {/* Content - Third on mobile, second on desktop */}
-              <div className="space-y-6 text-center md:text-left order-3 md:order-2">
-                {/* Title - Above description on desktop */}
-                <div className="hidden md:block">
-                  <h2 className="text-3xl md:text-4xl font-black leading-none tracking-tight text-gray-900 mb-4">
-                  Esto no es un ebook lleno de “palabras bonitas”.
-                  </h2>
-                  <p className="text-lg text-gray-700 leading-relaxed text-left mb-6">
-                  Es una guía contra la dependencia emocional. Cuando una relación termina, tu cerebro entra en “abstinencia”, igual que un adicto sin su droga. Por eso sientes dolor físico, ansiedad y obsesión por esa persona. La guía te ayudará ahí: te entregamos el protocolo para desintoxicar tu mente, cortar los lazos y fortalecer tu autoestima. No necesitas “tener ganas” de mejorar. Solo necesitas seguir el paso a paso, hasta que el dolor desaparezca.
+              {/* Content - After image on mobile (order-2), first on desktop (left) */}
+              <div className="space-y-6 text-center md:text-left order-2 md:order-1">
+                {/* Subtitle and content for mobile */}
+                <div className="md:hidden text-lg text-gray-700 leading-relaxed space-y-4">
+                  <p>
+                    Tal vez te preguntes qué hay de malo en ti. Eres inteligente, luchadora, independiente… pero en tu vida amorosa, parece que siempre estás viviendo la misma película repetida:
+                  </p>
+                  <div className="space-y-3">
+                    <div className="border-2 border-[#CA9E63] rounded-xl p-4">
+                      <p>Te entregas al 100% al principio, pero tu pareja pierde el interés y se aleja.</p>
+                    </div>
+                    <div className="border-2 border-[#CA9E63] rounded-xl p-4">
+                      <p>Atraes a hombres no disponibles (casados, con "situaciones" o que no quieren compromiso).</p>
+                    </div>
+                    <div className="border-2 border-[#CA9E63] rounded-xl p-4">
+                      <p>Sientes un vacío constante, incluso cuando estás con alguien, aceptando migajas de atención solo para no quedarte sola.</p>
+                    </div>
+                    <div className="border-2 border-[#CA9E63] rounded-xl p-4">
+                      <p>Intentas controlarlo todo para evitar que te hagan daño, pero terminas asfixiando la relación.</p>
+                    </div>
+                  </div>
+                  <p>
+                    La verdad es dura, pero hay que decirla: el problema no es tu apariencia, tu edad ni la "mala suerte". El problema es lo que cargas sin darte cuenta.
+                  </p>
+                  <p>
+                    Mientras no sanes la Herida de Abandono y los patrones que heredaste de tu familia, seguirás actuando como una niña herida en el cuerpo de una mujer adulta.
+                  </p>
+                  <p>
+                    Intentas "comprar" amor siendo buena o intentas protegerte siendo "demasiado fuerte". El resultado siempre es el mismo: el rechazo.
+                  </p>
+                  <p className="font-bold">
+                    No necesitas otro consejo de amiga ni más terapia. Necesitas desbloquear ese patrón inconsciente para dejar de repeler el amor que tanto deseas.
                   </p>
                 </div>
-              
-              {/* Features Icons */}
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-                <div className="flex flex-col items-center gap-2">
-                  <div className="bg-[#00515E]/10 p-3 rounded-full">
-                    <Unlink className="w-8 h-8 md:w-10 md:h-10 text-[#00515E]" />
+                {/* Title - Above description on desktop */}
+                <div className="hidden md:block">
+                  <h2 className="text-3xl md:text-4xl font-black leading-none tracking-tight text-gray-900 mb-6">
+                  ¿Por qué una mujer tan increíble sigue sola o infeliz en el amor?
+                  </h2>
+                  <div className="text-lg text-gray-700 leading-relaxed text-left space-y-6">
+                    <p className="text-xl">
+                      Tal vez te preguntes qué hay de malo en ti. Eres inteligente, luchadora, independiente… pero en tu vida amorosa, parece que siempre estás viviendo la misma película repetida:
+                    </p>
+                    <div className="grid grid-cols-2 gap-4 my-6">
+                      <div className="border-2 border-[#CA9E63] rounded-xl p-5 hover:shadow-md transition-shadow text-center flex items-center justify-center">
+                        <p className="leading-relaxed">Te entregas al 100% al principio, pero tu pareja pierde el interés y se aleja.</p>
+                      </div>
+                      <div className="border-2 border-[#CA9E63] rounded-xl p-5 hover:shadow-md transition-shadow text-center flex items-center justify-center">
+                        <p className="leading-relaxed">Atraes a hombres no disponibles (casados, con "situaciones" o que no quieren compromiso).</p>
+                      </div>
+                      <div className="border-2 border-[#CA9E63] rounded-xl p-5 hover:shadow-md transition-shadow text-center flex items-center justify-center">
+                        <p className="leading-relaxed">Sientes un vacío constante, incluso cuando estás con alguien, aceptando migajas de atención solo para no quedarte sola.</p>
+                      </div>
+                      <div className="border-2 border-[#CA9E63] rounded-xl p-5 hover:shadow-md transition-shadow text-center flex items-center justify-center">
+                        <p className="leading-relaxed">Intentas controlarlo todo para evitar que te hagan daño, pero terminas asfixiando la relación.</p>
+                      </div>
+                    </div>
+                    <div className="space-y-5 pt-2">
+                      <p>
+                        La verdad es dura, pero hay que decirla: el problema no es tu apariencia, tu edad ni la "mala suerte". El problema es lo que cargas sin darte cuenta.
+                      </p>
+                      <p>
+                        Mientras no sanes la Herida de Abandono y los patrones que heredaste de tu familia, seguirás actuando como una niña herida en el cuerpo de una mujer adulta.
+                      </p>
+                      <p>
+                        Intentas "comprar" amor siendo buena o intentas protegerte siendo "demasiado fuerte". El resultado siempre es el mismo: el rechazo.
+                      </p>
+                      <p className="font-bold text-xl pt-2">
+                        No necesitas otro consejo de amiga ni más terapia. Necesitas desbloquear ese patrón inconsciente para dejar de repeler el amor que tanto deseas.
+                      </p>
+                    </div>
                   </div>
-                  <span className="text-xs md:text-sm font-medium text-gray-700 text-center leading-tight">Rompe la dependencia</span>
                 </div>
-                <div className="flex flex-col items-center gap-2">
-                  <div className="bg-[#00515E]/10 p-3 rounded-full">
-                    <HeartOff className="w-8 h-8 md:w-10 md:h-10 text-[#00515E]" />
-                  </div>
-                  <span className="text-xs md:text-sm font-medium text-gray-700 text-center leading-tight">Deja de mendigar amor</span>
-                </div>
-                <div className="flex flex-col items-center gap-2">
-                  <div className="bg-[#00515E]/10 p-3 rounded-full">
-                    <CheckCircle className="w-8 h-8 md:w-10 md:h-10 text-[#00515E]" />
-                  </div>
-                  <span className="text-xs md:text-sm font-medium text-gray-700 text-center leading-tight">Siéntete suficiente</span>
-                </div>
-                <div className="flex flex-col items-center gap-2">
-                  <div className="bg-[#00515E]/10 p-3 rounded-full">
-                    <Crown className="w-8 h-8 md:w-10 md:h-10 text-[#00515E]" />
-                  </div>
-                  <span className="text-xs md:text-sm font-medium text-gray-700 text-center leading-tight">Recupera tu dignidad</span>
-                </div>
-                <div className="flex flex-col items-center gap-2">
-                  <div className="bg-[#00515E]/10 p-3 rounded-full">
-                    <Heart className="w-8 h-8 md:w-10 md:h-10 text-[#00515E]" />
-                  </div>
-                  <span className="text-xs md:text-sm font-medium text-gray-700 text-center leading-tight">Adiós a la ansiedad</span>
-                </div>
-                <div className="flex flex-col items-center gap-2">
-                  <div className="bg-[#00515E]/10 p-3 rounded-full">
-                    <ShieldCheck className="w-8 h-8 md:w-10 md:h-10 text-[#00515E]" />
-                  </div>
-                  <span className="text-xs md:text-sm font-medium text-gray-700 text-center leading-tight">Paz mental blindada</span>
-                </div>
-              </div>
-              
               <div className="flex justify-center md:justify-start">
                 <motion.div
                   animate={{
@@ -718,16 +649,19 @@ export default function Desbloqueodelamor() {
       </section>
 
       {/* Promises Section */}
-      <section className="py-20 bg-[#F5F1E8]">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4 max-w-6xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-2 leading-none tracking-tight text-[#5C3A21]">
-            Tu herida está abierta. Stalkear a tu ex en redes sociales es como hurgar una herida abierta con la mano sucia. La guía sería como un vendaje que protege la herida para que cicatrice sola.
+          <div className="text-center mb-8">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 leading-none tracking-tight text-gray-900">
+              Estás tocando tu propia herida.
             </h2>
+            <p className="text-lg md:text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
+              Seguir humillándote por migajas de atención es como intentar curar una quemadura con agua hirviendo. Este libro es la curita que detiene el dolor de inmediato y permite que tu piel sane de verdad.
+            </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-3 md:gap-4 max-w-6xl mx-auto">
-            {/* Card 1 - Liberación */}
+          <div className="grid md:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto">
+            {/* Card 1 - Dolor → Alivio Inmediato */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -735,61 +669,44 @@ export default function Desbloqueodelamor() {
               transition={{ duration: 0.5 }}
               className="flex flex-col bg-white rounded-3xl overflow-hidden shadow-lg"
             >
-              <div className="w-full aspect-[4/3] overflow-hidden relative">
-                <img 
-                  src="/images/landingpages/desbloqueodelamor/images/promise1.webp" 
-                  alt="Liberación" 
-                  className="w-full h-full object-cover select-none"
-                  loading="lazy"
-                  decoding="async"
-                  width="800"
-                  height="600"
-                />
-              </div>
               <div className="bg-[#2C2C2C] text-white p-6 flex-1">
-                <h3 className="text-xl font-bold mb-4 text-center">Dolor → Alivio</h3>
+                <h3 className="text-xl font-bold mb-4 text-center">Dolor → Alivio Inmediato</h3>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2">
                     <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
                     <span className="text-sm leading-relaxed">
-                    Cómo detener la ansiedad al ver una foto de él/ella con otra persona.
+                      Cómo detener la ansiedad aplastante cuando él ve tu mensaje y no responde.
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
                     <span className="text-sm leading-relaxed">
-                    La técnica exacta para dormir toda la noche sin despertar con esa presión en el pecho.
+                      La técnica exacta para dormir en paz sin quedarte repasando "¿en qué fue que me equivoqué?" en tu cabeza.
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
                     <span className="text-sm leading-relaxed">
-                    Cómo desactivar el impulso de stalkear las redes sociales de tu ex.
+                      Cómo desactivar el impulso de stalkear a tu ex (o al actual no disponible) en las redes sociales.
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
                     <span className="text-sm leading-relaxed">
-                    Elimina la sensación de culpa y deja de repasar mentalmente “¿en qué fue que me equivoqué?”.
+                      Elimina la sensación de culpa y sal de la posición de "víctima" de tu propia historia amorosa.
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
                     <span className="text-sm leading-relaxed">
-                    Cómo lidiar con una recaída sin sentirte un fracaso total.
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
-                    <span className="text-sm leading-relaxed">
-                    Sal de la posición de víctima y deja de sentir lástima por ti.
+                      Cómo lidiar con una "desaparición" de él sin sentir que tú no vales.
                     </span>
                   </li>
                 </ul>
               </div>
             </motion.div>
 
-            {/* Card 2 - Reconstrucción */}
+            {/* Card 2 - Menor Esfuerzo → Mayor Resultado */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -797,49 +714,38 @@ export default function Desbloqueodelamor() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="flex flex-col bg-white rounded-3xl overflow-hidden shadow-lg"
             >
-              <div className="w-full aspect-[4/3] overflow-hidden relative">
-                <img 
-                  src="/images/landingpages/desbloqueodelamor/images/promise2.webp" 
-                  alt="Reconstrucción" 
-                  className="w-full h-full object-cover select-none"
-                  loading="lazy"
-                  decoding="async"
-                  width="800"
-                  height="600"
-                />
-              </div>
               <div className="bg-[#2C2C2C] text-white p-6 flex-1">
                 <h3 className="text-xl font-bold mb-4 text-center">Menor Esfuerzo → Mayor Resultado</h3>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2">
                     <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
                     <span className="text-sm leading-relaxed">
-                    El ejercicio de 5 minutos diarios que aumenta tu autoestima más que 1 año de terapia mala.
+                      Entiende la raíz de tu "mala suerte" en el amor con una lectura rápida, que desbloquea más que años de terapia convencional.
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
                     <span className="text-sm leading-relaxed">
-                    3 frases mágicas para decirte cuando te den ganas de mandar un mensaje.
+                      3 actitudes simples para hacer cuando te den ganas de mandar ese mensaje desde la carencia.
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
                     <span className="text-sm leading-relaxed">
-                    Una herramienta simple que transforma el dolor en indiferencia en pocos días.
+                      Una herramienta práctica que transforma el dolor del rechazo en indiferencia (y poder) en pocos días.
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
                     <span className="text-sm leading-relaxed">
-                    No necesitas leer teorías largas: solo sigue el paso a paso.
+                      No necesitas leer teorías difíciles: solo sigue el paso a paso para reprogramar tu inconsciente.
                     </span>
                   </li>
                 </ul>
               </div>
             </motion.div>
 
-            {/* Card 3 - Renacimiento */}
+            {/* Card 3 - Antes (Carente) → Después (Magnética) */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -847,48 +753,31 @@ export default function Desbloqueodelamor() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="flex flex-col bg-white rounded-3xl overflow-hidden shadow-lg"
             >
-              <div className="w-full aspect-[4/3] overflow-hidden relative">
-                <img 
-                  src="/images/landingpages/desbloqueodelamor/images/promise3.webp" 
-                  alt="Renacimiento" 
-                  className="w-full h-full object-cover select-none"
-                  loading="lazy"
-                  decoding="async"
-                  width="800"
-                  height="600"
-                />
-              </div>
               <div className="bg-[#2C2C2C] text-white p-6 flex-1">
-                <h3 className="text-xl font-bold mb-4 text-center">Antes → Después</h3>
+                <h3 className="text-xl font-bold mb-4 text-center">Antes (Carente) → Después (Magnética)</h3>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2">
                     <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
                     <span className="text-sm leading-relaxed">
-                    Transforma la necesidad de validación en orgullo de tu propia compañía.
+                      Transforma la necesidad desesperada de validación masculina en orgullo por tu propia compañía.
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
                     <span className="text-sm leading-relaxed">
-                    Cómo recuperar el brillo en la mirada que una relación tóxica apagó.
+                      Cómo recuperar el brillo en la mirada que las relaciones tóxicas apagaron.
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
                     <span className="text-sm leading-relaxed">
-                    Sustituye el miedo a estar solo/a por la emoción de una nueva vida libre.
+                      Sustituye el miedo a quedarte sola por la emoción de una nueva vida libre de ataduras emocionales.
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
                     <span className="text-sm leading-relaxed">
-                    Conviértete en la persona que mira atrás y dice: “¿Cómo pude sufrir por eso?”.
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <ArrowRight className="w-4 h-4 text-[#D4AF37] mt-1.5 shrink-0" />
-                    <span className="text-sm leading-relaxed">
-                    Recuerda quién eras antes de que todo se derrumbara.
+                      Conviértete en la persona que mira atrás y dice: "¿Cómo pude aceptar tan poco durante tanto tiempo?".
                     </span>
                   </li>
                 </ul>
@@ -915,8 +804,8 @@ export default function Desbloqueodelamor() {
                 rel="nofollow sponsored noopener noreferrer"
                 className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-[#CA9E63] hover:bg-[#B0894F] text-white font-bold rounded-xl shadow-xl shadow-[#CA9E63]/25 transition-all hover:scale-105 flex items-center justify-center gap-1.5 md:gap-2 mx-auto md:mx-0 w-full md:w-auto cursor-pointer"
               >
-                <span className="md:hidden">QUIERO SEGUIR ADELANTE</span>
-                <span className="hidden md:inline">QUIERO SEGUIR ADELANTE</span>
+                <span className="md:hidden">SANAR ESTO AHORA</span>
+                <span className="hidden md:inline">QUIERO SEGUIR ADELANTE Y SANAR ESTO</span>
                 <ArrowRight className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 shrink-0" />
               </a>
             </motion.div>
@@ -924,27 +813,131 @@ export default function Desbloqueodelamor() {
         </div>
       </section>
 
-      {/* Manual de Acción Rápida Strip */}
-      <div className="bg-[#00515E] py-8 md:py-10 text-white shadow-lg relative z-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black mb-4 md:mb-6 leading-none tracking-tight">
-              No es un libro de teoría aburrida.<br />Es un Manual de Acción Rápida.
-            </h2>
-            <p className="text-base md:text-lg lg:text-xl leading-relaxed opacity-95">
-              Olvídate de leer 300 páginas de relleno. Diseñamos este método para personas ocupadas (y con el corazón roto) que necesitan alivio inmediato. Está estructurado en "dosis" de 10 minutos para que puedas leer una página y aplicar una solución al instante. Menos lectura, más resultados.
-            </p>
-          </div>
-        </div>
-      </div>
 
-      {/* Bonuses Section */}
-      <BonusesSection />
 
       {/* Pricing Section */}
       <PricingSection 
         sectionId="pricing"
       />
+
+      {/* About Author Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+            {/* Text Content - Left */}
+            <div className="space-y-6">
+              <div className="text-center md:text-left">
+                <h2 className="text-3xl md:text-4xl font-black leading-none tracking-tight text-gray-900 mb-6">
+                  ¿Quién te va a guiar en este camino?
+                </h2>
+                <p className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
+                  Soy María Calderini, terapeuta junguiana y psicogenealogista.
+                </p>
+              </div>
+
+              {/* Image - Mobile only (below subtitle) */}
+              <div className="flex justify-center md:hidden mb-6">
+                <div className="relative w-full max-w-xs">
+                  <img 
+                    src={heroSectionDesktopImage} 
+                    alt="María Calderini" 
+                    className="w-full h-auto rounded-2xl drop-shadow-2xl select-none object-contain" 
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+              
+              <div className="space-y-6 text-lg text-gray-700 leading-relaxed text-center md:text-left">
+                <p>
+                  Mi trabajo no se basa en "suposiciones" ni en consejos motivacionales vacíos. Desarrollé un método práctico que une ciencia y terapia profunda para desbloquear patrones emocionales que parecen imposibles de resolver.
+                </p>
+                <p>
+                  Dediqué mi carrera a entender por qué mujeres inteligentes y capaces siguen atrapadas en ciclos de rechazo y sufrimiento amoroso —y, más importante, cómo sacarlas de ahí rápidamente.
+                </p>
+              </div>
+
+              {/* Social Proof Box */}
+              <div>
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-6 text-center md:text-left">
+                  Mis números no mienten:
+                </h3>
+                <div className="space-y-4">
+                  <div className="border-2 border-[#CA9E63] rounded-xl p-5 hover:shadow-md transition-shadow text-center md:text-left">
+                    <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
+                      <div className="flex-shrink-0 w-12 h-12 bg-[#CA9E63] rounded-full flex items-center justify-center">
+                        <CheckCircle className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <p className="text-2xl md:text-3xl font-black text-gray-900">+7.000</p>
+                        <p className="text-base text-gray-700">alumnas transformadas en cursos y acompañamientos</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="border-2 border-[#CA9E63] rounded-xl p-5 hover:shadow-md transition-shadow text-center md:text-left">
+                    <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
+                      <div className="flex-shrink-0 w-12 h-12 bg-[#CA9E63] rounded-full flex items-center justify-center">
+                        <CheckCircle className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <p className="text-2xl md:text-3xl font-black text-gray-900">+10.000</p>
+                        <p className="text-base text-gray-700">libros vendidos</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <p className="text-lg text-gray-700 leading-relaxed text-center md:text-left">
+                Escribí "Desbloqueo del Amor" para que sea el primer paso accesible para cualquier mujer que se cansó de sufrir y quiere una solución real, sin tener que gastar en consulta ahora.
+              </p>
+
+              {/* CTA Button */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="flex flex-col gap-4 pt-2 justify-center items-center md:justify-start md:items-start"
+              >
+                <motion.div
+                  animate={{
+                    scale: [1, 1.02, 1],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="w-full flex justify-center md:justify-start"
+                >
+                  <a 
+                    href="https://pay.hotmart.com/G103409382C?checkoutMode=10"
+                    target="_blank"
+                    rel="nofollow sponsored noopener noreferrer"
+                    className="h-14 md:h-16 px-3 md:px-10 text-lg sm:text-lg md:text-lg lg:text-xl bg-[#CA9E63] hover:bg-[#B0894F] text-white font-bold rounded-xl shadow-xl shadow-[#CA9E63]/25 transition-all hover:scale-105 flex items-center justify-center mx-auto md:mx-0 w-full md:w-auto cursor-pointer leading-tight text-center whitespace-normal"
+                  >
+                    <span className="md:hidden">QUIERO ACCEDER AL<br />MÉTODO DE MARÍA</span>
+                    <span className="hidden md:inline">QUIERO ACCEDER AL MÉTODO DE MARÍA</span>
+                  </a>
+                </motion.div>
+              </motion.div>
+            </div>
+
+            {/* Image - Right (Desktop only) */}
+            <div className="hidden md:flex justify-center items-start">
+              <div className="relative w-full max-w-2xl lg:max-w-3xl">
+                <img 
+                  src={heroSectionDesktopImage} 
+                  alt="María Calderini" 
+                  className="w-full h-auto rounded-2xl drop-shadow-2xl select-none object-contain" 
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Reviews Section */}
       <section className="py-20 bg-gray-50">
@@ -980,25 +973,25 @@ export default function Desbloqueodelamor() {
               {(() => {
                 const reviews = [
                   { name: "Valentina María Martínez Herrera", review: "Llevaba dos semanas sin dormir más de 3 horas seguidas. La técnica de respiración del capítulo 4 fue mágica. Por fin pude descansar y mi cabeza dejó de dar vueltas. ¡Gracias!" },
-                  { name: "Fernando Antonio Rodríguez Delgado", review: "Sentía un dolor físico en el pecho que no se iba con nada. Este libro me dio el 'aire' que necesitaba para volver a respirar. Es como un botiquín de primeros auxilios para el alma." },
+                  { name: "Fernanda Antonia Rodríguez Delgado", review: "Sentía un dolor físico en el pecho que no se iba con nada. Este libro me dio el 'aire' que necesitaba para volver a respirar. Es como un botiquín de primeros auxilios para el alma." },
                   { name: "Clara Isabel Sánchez Moreno", review: "Honestamente, lo compré solo por el precio, pero el contenido vale oro. Me ayudó a levantarme de la cama el domingo y dejar de llorar. Muy recomendado." },
-                  { name: "Javier Eduardo González Ruiz", review: "Era adicto a revisar su 'última conexión' en WhatsApp. El ejercicio de desintoxicación digital me abrió los ojos. Llevo 5 días de Contacto Cero y me siento libre." },
+                  { name: "Javiera Eduarda González Ruiz", review: "Era adicta a revisar su 'última conexión' en WhatsApp. El ejercicio de desintoxicación digital me abrió los ojos. Llevo 5 días de Contacto Cero y me siento libre." },
                   { name: "Mariana Esperanza López Vargas", review: "Me sentía patética rogando atención. Este libro me devolvió la dignidad. Entendí que no necesito a nadie para estar completa. Ya no espero su mensaje." },
-                  { name: "Andrés Felipe Pérez Jiménez", review: "No podía sacármela de la cabeza. La técnica para frenar los pensamientos intrusivos funciona de verdad. Ahora puedo trabajar sin distraerme pensando en ella." },
-                  { name: "Ricardo José Torres Mendoza", review: "Soy muy escéptico con los libros de autoayuda, pero este es diferente. No tiene frases vacías, son pasos concretos. Si eres lógico y quieres un plan de acción, es este." },
+                  { name: "Andrea Felipa Pérez Jiménez", review: "No podía sacármelo de la cabeza. La técnica para frenar los pensamientos intrusivos funciona de verdad. Ahora puedo trabajar sin distraerme pensando en él." },
+                  { name: "Ricarda Josefina Torres Mendoza", review: "Soy muy escéptica con los libros de autoayuda, pero este es diferente. No tiene frases vacías, son pasos concretos. Si eres lógica y quieres un plan de acción, es este." },
                   { name: "Sofía Alejandra Benítez Castro", review: "Me gusta que sea directo. No quería leer 300 páginas de teoría. Fui directo a los ejercicios y sentí la diferencia esa misma tarde. Práctico y real." },
-                  { name: "Diego Armando Morales Rojas", review: "Pensé que era solo para mujeres, pero me equivoqué. Los hombres también sufrimos y no sabemos cómo gestionarlo. Este manual me dio claridad y fuerza." },
+                  { name: "Diana Armanda Morales Rojas", review: "Pensé que no funcionaría para mí, pero me equivoqué. Este manual me dio la claridad y fuerza que necesitaba para sanar mi corazón roto." },
                   { name: "Elena Patricia Vargas Salazar", review: "Me di cuenta de que perdí años tratando de complacer a alguien que no me valoraba. Hoy me siento más guapa, más segura y lista para lo que viene. ¡Me recuperé a mí misma!" },
-                  { name: "Lucas Sebastián Díaz Ochoa", review: "Mi ex me dejó por otro y mi autoestima estaba en el suelo. Este libro me enseñó a reconstruir mi valor. Ahora veo que el que perdió fue ella, no yo." },
+                  { name: "Lucía Sebastiana Díaz Ochoa", review: "Mi ex me dejó por otra y mi autoestima estaba en el suelo. Este libro me enseñó a reconstruir mi valor. Ahora veo que el que perdió fue él, no yo." },
                   { name: "Gabriela Fernanda Castillo Medina", review: "Es increíble cómo cambia tu perspectiva. Pasé de víctima a protagonista de mi vida en una semana. Mis amigos dicen que me ven brillar de nuevo." },
                   { name: "Patricia Lucía Navarro Gutiérrez", review: "Simplemente transformador. Cuesta menos que una hamburguesa y te ahorra meses de terapia." },
-                  { name: "Jorge Luis Álvarez Paredes", review: "El mejor dinero que he invertido en mí. Dejé de culparme por todo." },
+                  { name: "Jorgelina Luisa Álvarez Paredes", review: "El mejor dinero que he invertido en mí. Dejé de culparme por todo." },
                   { name: "Isabela Carmen Ramírez Fuentes", review: "Lectura rápida y sanadora. Me sentí comprendida en cada página." },
-                  { name: "Mateo Andrés Fernández Córdoba", review: "Si estás pasando por una ruptura, no lo pienses. Cómpralo. Te va a ahorrar mucho sufrimiento." },
+                  { name: "Matilde Andrea Fernández Córdoba", review: "Si estás pasando por una ruptura, no lo pienses. Cómpralo. Te va a ahorrar mucho sufrimiento." },
                   { name: "Lucía Esperanza Pérez Montoya", review: "10/10. Me ayudó a cerrar el ciclo sin rencor y con mucha paz." },
-                  { name: "Roberto Carlos Silva Aguirre", review: "Lo leí hace un mes cuando estaba destrozado. Hoy puedo decir que estoy felizmente soltero, enfocado en mis proyectos y sin miedo a la soledad. Me cambió el chip." },
+                  { name: "Roberta Carlota Silva Aguirre", review: "Lo leí hace un mes cuando estaba destrozada. Hoy puedo decir que estoy felizmente soltera, enfocada en mis proyectos y sin miedo a la soledad. Me cambió el chip." },
                   { name: "Carmen Rosa Ortega Villalobos", review: "Lo compré llorando y lo terminé sonriendo. Me dio la fuerza para bloquearlo y empezar de cero en otra ciudad. Gracias por tanto." },
-                  { name: "Alejandro David Vega Espinoza", review: "Creía que nunca iba a superar a mi ex de 5 años. Este método me hizo ver que la vida sigue y puede ser incluso mejor. Ya estoy saliendo con alguien nuevo y sano." },
+                  { name: "Alejandra Davina Vega Espinoza", review: "Creía que nunca iba a superar a mi ex de 5 años. Este método me hizo ver que la vida sigue y puede ser incluso mejor. Ya estoy saliendo con alguien nuevo y sano." },
                 ];
                 // Render 3 times for smoother infinite loop
                 return [...reviews, ...reviews, ...reviews].map((review, index) => (
@@ -1033,8 +1026,8 @@ export default function Desbloqueodelamor() {
               <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">Sobre el Producto y Para Quien Sirve</h3>
               <div className="space-y-4">
                 <FAQItem 
-                  question="¿Este libro sirve tanto para hombres como para mujeres?" 
-                  answer="Absolutamente. El dolor de la rejección y el proceso neuroquímico del apego son universales. El método se enfoca en cómo el cerebro humano procesa la pérdida, independientemente del género." 
+                  question="¿Este libro es solo para mujeres?" 
+                  answer="Sí, este libro está diseñado específicamente para mujeres que están pasando por dificultades en sus relaciones amorosas. El método se enfoca en cómo las mujeres procesan la pérdida emocional y los patrones de apego, con un enfoque práctico y directo al grano." 
                 />
                 <FAQItem 
                   question="Mi relación duró muchos años (o décadas), ¿funcionará para mí?" 
