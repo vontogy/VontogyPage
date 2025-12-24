@@ -8,6 +8,7 @@ import Home from "@/pages/landingpage/home";
 import Nervovive from "@/pages/landingpage/nervovive";
 import Elartedesoltar from "@/pages/vsl/elartedesoltar";
 import Desbloqueodelamor from "@/pages/landingpage/desbloqueodelamor";
+import Audifort from "@/pages/popup/audifort";
 
 // Global protection against right-click and DevTools
 function useGlobalProtection() {
@@ -98,6 +99,7 @@ function Router() {
       {/* <Route path="/vsl/elartedesoltar" component={Elartedesoltar} /> */}
       <Route path="/elartedesoltar" component={Elartedesoltar} />
       <Route path="/desbloqueodelamor" component={Desbloqueodelamor} />
+      <Route path="/audifort" component={Audifort} />
 
       <Route component={Home} />
     </Switch>
