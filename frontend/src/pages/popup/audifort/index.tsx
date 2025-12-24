@@ -1,9 +1,26 @@
 import { useEffect, useRef } from "react";
-import "./assets/css/style.css";
 
 export default function Audifort() {
   const containerRef = useRef<HTMLDivElement>(null);
   const popupLoadedRef = useRef(false);
+
+  // Load and inject Audifort CSS
+  useEffect(() => {
+    // Create a link element for the CSS
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '/src/pages/popup/audifort/assets/css/style.css';
+    link.setAttribute('data-audifort-css', 'true');
+    document.head.appendChild(link);
+
+    // Cleanup - remove CSS when unmounting
+    return () => {
+      const audifortCSS = document.head.querySelector('link[data-audifort-css="true"]');
+      if (audifortCSS) {
+        audifortCSS.remove();
+      }
+    };
+  }, []);
 
   // Update meta tags for Audifort page
   useEffect(() => {
@@ -220,6 +237,12 @@ export default function Audifort() {
     };
   }, []);
 
-  return <div ref={containerRef} style={{ minHeight: "100vh", width: "100%" }} />;
+  return (
+    <div 
+      className="audifort-wrapper" 
+      ref={containerRef} 
+      style={{ minHeight: "100vh", width: "100%", isolation: "isolate" }} 
+    />
+  );
 }
 
