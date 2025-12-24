@@ -1,0 +1,465 @@
+<!-- Discount Popup Modal -->
+<div id="discount-popup-overlay" class="discount-popup-overlay">
+    <div class="discount-popup-container">
+        <div class="discount-popup-content">
+            <a href="https://audifort.pay.clickbank.net/?cbitems=3&cbfid=60511&template=six&exitoffer=exit" 
+               class="discount-popup-close-x addToCart" 
+               id="discount-popup-close-x" 
+               aria-label="Close"
+               data-sku="ADF06" 
+               data-price="294" 
+               data-link-type="popup-close-x" 
+               data-link-index="6" 
+               data-callback="ctaEvents"
+               target="_blank">×</a>
+            <h2 class="discount-popup-title">Special Discount</h2>
+            
+            <div class="discount-popup-details">
+                <div class="discount-detail-row">
+                    <span class="discount-label">6-pack plan:</span>
+                    <span class="discount-price-original">$297.00</span>
+                </div>
+                <div class="discount-detail-row">
+                    <span class="discount-label">Your price:</span>
+                    <span class="discount-price-new">$197.00</span>
+                </div>
+                <div class="discount-detail-row">
+                    <span class="discount-label">per unit:</span>
+                    <span class="discount-price-unit">$32.83</span>
+                </div>
+            </div>
+            
+            <div class="discount-timer-section">
+                <p class="discount-timer-label">Offer expires in:</p>
+                <div class="discount-timer-box">
+                    <span id="discount-timer">00:09:40</span>
+                </div>
+            </div>
+            
+            <div class="discount-popup-buttons">
+                <a href="https://audifort.pay.clickbank.net/?cbitems=3&cbfid=60511&template=six&exitoffer=exit" 
+                   class="discount-popup-button addToCart" 
+                   data-sku="ADF06" 
+                   data-price="294" 
+                   data-link-type="popup-cta" 
+                   data-link-index="6" 
+                   data-callback="ctaEvents" 
+                   target="_blank">
+                    Get Discount
+                </a>
+                <a href="https://audifort.pay.clickbank.net/?cbitems=3&cbfid=60511&template=six&exitoffer=exit" 
+                   class="discount-popup-close-btn addToCart" 
+                   id="discount-popup-close-btn"
+                   data-sku="ADF06" 
+                   data-price="294" 
+                   data-link-type="popup-close" 
+                   data-link-index="6" 
+                   data-callback="ctaEvents"
+                   target="_blank">Close</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.discount-popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.discount-popup-overlay.show {
+    display: flex;
+}
+
+.discount-popup-container {
+    position: relative;
+    max-width: 650px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.discount-popup-content {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 2.5rem 3rem;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.discount-popup-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #000;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.discount-popup-details {
+    margin-bottom: 1.5rem;
+}
+
+.discount-detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    text-align: left;
+}
+
+.discount-label {
+    font-family: 'OpenSans', sans-serif;
+    font-size: 1.1rem;
+    color: #000;
+}
+
+.discount-price-original {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    color: #999;
+    text-decoration: line-through;
+}
+
+.discount-price-new {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #198754;
+}
+
+.discount-price-unit {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    color: #000;
+}
+
+.discount-timer-section {
+    margin-bottom: 1.5rem;
+}
+
+.discount-timer-label {
+    font-family: 'OpenSans', sans-serif;
+    font-size: 0.95rem;
+    color: #dc3545;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.discount-timer-box {
+    background-color: #ffcccc;
+    border-radius: 10px;
+    padding: 0.75rem 1.5rem;
+    display: inline-block;
+}
+
+#discount-timer {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #dc3545;
+    letter-spacing: 2px;
+}
+
+.discount-popup-close-x {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #999;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+    text-decoration: none;
+    z-index: 10;
+}
+
+.discount-popup-close-x:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+.discount-popup-buttons {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.discount-popup-button {
+    flex: 1;
+    background-color: #fd7e14;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.4rem 2.5rem;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.discount-popup-button:hover {
+    background-color: #e66a00;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.discount-popup-close-btn {
+    flex: 1;
+    background-color: #6c757d;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.4rem 2.5rem;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    display: inline-block;
+}
+
+.discount-popup-close-btn:hover {
+    background-color: #5a6268;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* Body scroll lock when popup is open */
+body.popup-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 576px) {
+    .discount-popup-content {
+        padding: 1.5rem;
+    }
+    
+    .discount-popup-close-x {
+        top: 0.75rem;
+        right: 0.75rem;
+        font-size: 2rem;
+        width: 1.75rem;
+        height: 1.75rem;
+    }
+    
+    .discount-popup-title {
+        font-size: 1.5rem;
+    }
+    
+    .discount-price-new {
+        font-size: 1.2rem;
+    }
+    
+    #discount-timer {
+        font-size: 1.3rem;
+    }
+    
+    .discount-popup-buttons {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .discount-popup-button,
+    .discount-popup-close-btn {
+        font-size: 1.1rem;
+        padding: 1rem 1.5rem;
+        width: 100%;
+    }
+}
+</style>
+
+<script>
+(function() {
+    // Constants
+    const TIMER_STORAGE_KEY = 'audifort_discount_timer';
+    const TIMER_TIMESTAMP_KEY = 'audifort_discount_timer_timestamp';
+    const INITIAL_TIME = 580; // 9 minutes and 40 seconds in seconds (9*60 + 40)
+    const CACHE_DURATION = 2 * 60 * 60 * 1000; // 2 hours in milliseconds
+    
+    let timeLeft = INITIAL_TIME;
+    let timerInterval;
+    
+    // Check if cached timer exists and is still valid
+    function loadTimerFromCache() {
+        try {
+            const savedTime = localStorage.getItem(TIMER_STORAGE_KEY);
+            const savedTimestamp = localStorage.getItem(TIMER_TIMESTAMP_KEY);
+            
+            if (savedTime && savedTimestamp) {
+                const now = Date.now();
+                const timestamp = parseInt(savedTimestamp, 10);
+                const timeDiff = now - timestamp;
+                
+                // Check if 2 hours have passed
+                if (timeDiff < CACHE_DURATION) {
+                    // Timer is still valid, calculate elapsed time
+                    const saved = parseInt(savedTime, 10);
+                    const elapsedSeconds = Math.floor(timeDiff / 1000);
+                    
+                    // Subtract elapsed time from saved time
+                    const newTimeLeft = saved - elapsedSeconds;
+                    
+                    if (newTimeLeft > 0) {
+                        timeLeft = newTimeLeft;
+                        return true;
+                    } else {
+                        // Timer has expired
+                        timeLeft = 0;
+                        clearTimerCache();
+                        return true;
+                    }
+                } else {
+                    // More than 2 hours passed, clear cache and restart
+                    clearTimerCache();
+                }
+            }
+        } catch (error) {
+            console.error('Error loading timer from cache:', error);
+        }
+        return false;
+    }
+    
+    // Save timer to cache
+    function saveTimerToCache() {
+        try {
+            localStorage.setItem(TIMER_STORAGE_KEY, timeLeft.toString());
+            localStorage.setItem(TIMER_TIMESTAMP_KEY, Date.now().toString());
+        } catch (error) {
+            console.error('Error saving timer to cache:', error);
+        }
+    }
+    
+    // Clear timer cache
+    function clearTimerCache() {
+        try {
+            localStorage.removeItem(TIMER_STORAGE_KEY);
+            localStorage.removeItem(TIMER_TIMESTAMP_KEY);
+        } catch (error) {
+            console.error('Error clearing timer cache:', error);
+        }
+    }
+    
+    function formatTime(seconds) {
+        const hours = Math.floor(seconds / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
+        const secs = seconds % 60;
+        return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    }
+    
+    function updateTimer() {
+        const timerElement = document.getElementById('discount-timer');
+        if (timerElement) {
+            timerElement.textContent = formatTime(timeLeft);
+            
+            if (timeLeft > 0) {
+                timeLeft--;
+                // Save to cache every second
+                saveTimerToCache();
+            } else {
+                // Timer reached zero, clear cache and stop
+                clearInterval(timerInterval);
+                clearTimerCache();
+            }
+        }
+    }
+    
+    // Show popup function
+    window.showDiscountPopup = function() {
+        // Load timer from cache
+        const timerLoaded = loadTimerFromCache();
+        
+        const overlay = document.getElementById('discount-popup-overlay');
+        if (overlay) {
+            overlay.classList.add('show');
+            
+            // Prevent body scroll
+            const scrollY = window.scrollY || window.pageYOffset;
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${scrollY}px`;
+            document.body.style.width = '100%';
+            document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflow = 'hidden';
+            
+            // Start timer
+            timerInterval = setInterval(updateTimer, 1000);
+            updateTimer(); // Initial call
+        }
+    };
+    
+    function closePopup() {
+        const overlay = document.getElementById('discount-popup-overlay');
+        if (overlay) {
+            overlay.classList.remove('show');
+            
+            // Restore body scroll
+            const scrollY = document.body.style.top;
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
+            if (scrollY) {
+                window.scrollTo(0, parseInt(scrollY || '0') * -1);
+            }
+            
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                // Save timer when closing
+                saveTimerToCache();
+            }
+        }
+    }
+    
+    // Save timer before page unload
+    window.addEventListener('beforeunload', function() {
+        if (timerInterval) {
+            saveTimerToCache();
+        }
+    });
+    
+    // Make closePopup available globally if needed
+    window.closeDiscountPopup = closePopup;
+})();
+</script>
+
+
