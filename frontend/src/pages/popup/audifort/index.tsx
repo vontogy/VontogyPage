@@ -5,6 +5,50 @@ export default function Audifort() {
   const containerRef = useRef<HTMLDivElement>(null);
   const popupLoadedRef = useRef(false);
 
+  // Update meta tags for Audifort page
+  useEffect(() => {
+    // Save original meta tags
+    const originalTitle = document.title;
+    const originalDescription = document.querySelector('meta[name="description"]')?.getAttribute('content');
+    const originalOgTitle = document.querySelector('meta[property="og:title"]')?.getAttribute('content');
+    const originalOgDescription = document.querySelector('meta[property="og:description"]')?.getAttribute('content');
+
+    // Set Audifort specific meta tags
+    document.title = "Audifort - Hearing Support Supplement";
+    
+    const descriptionMeta = document.querySelector('meta[name="description"]');
+    if (descriptionMeta) {
+      descriptionMeta.setAttribute('content', 'Audifort is a natural hearing support supplement designed to promote healthy hearing and ear function. Order now with special discount!');
+    }
+
+    const ogTitleMeta = document.querySelector('meta[property="og:title"]');
+    if (ogTitleMeta) {
+      ogTitleMeta.setAttribute('content', 'Audifort - Hearing Support Supplement');
+    }
+
+    const ogDescriptionMeta = document.querySelector('meta[property="og:description"]');
+    if (ogDescriptionMeta) {
+      ogDescriptionMeta.setAttribute('content', 'Audifort is a natural hearing support supplement designed to promote healthy hearing and ear function. Order now with special discount!');
+    }
+
+    // Cleanup - restore original meta tags on unmount
+    return () => {
+      document.title = originalTitle;
+      
+      if (descriptionMeta && originalDescription) {
+        descriptionMeta.setAttribute('content', originalDescription);
+      }
+      
+      if (ogTitleMeta && originalOgTitle) {
+        ogTitleMeta.setAttribute('content', originalOgTitle);
+      }
+      
+      if (ogDescriptionMeta && originalOgDescription) {
+        ogDescriptionMeta.setAttribute('content', originalOgDescription);
+      }
+    };
+  }, []);
+
   useEffect(() => {
     const loadHTML = async () => {
       try {
