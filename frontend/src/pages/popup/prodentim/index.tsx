@@ -330,7 +330,7 @@ export default function Prodentim() {
                 </div>
                 
                 <div class="discount-popup-buttons">
-                  <a href="https://prodentim24.com/text.php#aff=vontogy" 
+                  <a href="https://prodentim24.com/text.php#order-now" 
                      class="discount-popup-button addToCart" 
                      data-sku="PRD06" 
                      data-price="294" 
