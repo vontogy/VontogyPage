@@ -296,15 +296,10 @@ export default function Prodentim() {
             <div class="discount-popup-container">
               <div class="discount-popup-content">
             <a href="https://prodentim24.com/text.php#aff=vontogy" 
-               class="discount-popup-close-x addToCart" 
+               class="discount-popup-close-x" 
                id="discount-popup-close-x" 
                aria-label="Close"
-               data-sku="PRD06" 
-               data-price="294" 
-               data-link-type="popup-close-x" 
-               data-link-index="6" 
-               data-callback="ctaEvents"
-               target="_blank">×</a>
+               rel="noopener noreferrer nofollow">×</a>
                 <h2 class="discount-popup-title">Special Discount</h2>
                 
                 <div class="discount-popup-details">
@@ -330,25 +325,15 @@ export default function Prodentim() {
                 </div>
                 
                 <div class="discount-popup-buttons">
-                  <a href="https://prodentim24.com/text.php#order-now" 
-                     class="discount-popup-button addToCart" 
-                     data-sku="PRD06" 
-                     data-price="294" 
-                     data-link-type="popup-cta" 
-                     data-link-index="6" 
-                     data-callback="ctaEvents" 
-                     target="_blank">
+                  <a href="https://prodentim24.com/text.php?aff=vontogy#order-now" 
+                     class="discount-popup-button" 
+                     rel="noopener noreferrer nofollow">
                       Get Discount
                   </a>
                   <a href="https://prodentim24.com/text.php#aff=vontogy" 
-                     class="discount-popup-close-btn addToCart" 
+                     class="discount-popup-close-btn" 
                      id="discount-popup-close-btn"
-                     data-sku="PRD06" 
-                     data-price="294" 
-                     data-link-type="popup-close" 
-                     data-link-index="6" 
-                     data-callback="ctaEvents"
-                     target="_blank">Close</a>
+                     rel="noopener noreferrer nofollow">Close</a>
                 </div>
               </div>
             </div>
@@ -397,10 +382,11 @@ export default function Prodentim() {
           .discount-popup-button { flex: 1; background-color: #007953; color: #ffffff; font-family: 'Montserrat', 'Quicksand', sans-serif; font-size: 1.4rem; font-weight: 700; text-transform: uppercase; text-decoration: none; padding: 1.4rem 2.5rem; border-radius: 10px; border: none; cursor: pointer; transition: background-color 0.3s ease; text-align: center; }
           .discount-popup-button:hover { background-color: #005a3d; color: #ffffff; text-decoration: none; }
           .discount-popup-close-btn { flex: 1; background-color: #6c757d; color: #ffffff; font-family: 'Montserrat', 'Quicksand', sans-serif; font-size: 1.4rem; font-weight: 700; text-transform: uppercase; text-decoration: none; padding: 1.4rem 2.5rem; border-radius: 10px; border: none; cursor: pointer; transition: background-color 0.3s ease; text-align: center; display: inline-block; }
-          .discount-popup-close-btn:hover { background-color: #5a6268; color: #ffffff; text-decoration: none; }
-          body.popup-open { overflow: hidden; position: fixed; width: 100%; }
-          @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-          @media (max-width: 576px) {
+           .discount-popup-close-btn:hover { background-color: #5a6268; color: #ffffff; text-decoration: none; }
+           @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+           @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+           .spinner { display: inline-block; width: 20px; height: 20px; border: 3px solid rgba(255,255,255,0.3); border-radius: 50%; border-top-color: #ffffff; animation: spin 0.8s linear infinite; }
+           @media (max-width: 576px) {
             .discount-popup-content { padding: 1.5rem; }
             .discount-popup-close-x { top: 0.75rem; right: 0.75rem; font-size: 2rem; width: 1.75rem; height: 1.75rem; }
             .discount-popup-title { font-size: 1.5rem; }
@@ -492,31 +478,94 @@ export default function Prodentim() {
           }
         };
         
-        // Show popup function
-        (window as any).showDiscountPopup = () => {
-          loadTimerFromCache();
-          
-          const overlay = document.getElementById('discount-popup-overlay');
-          if (overlay) {
-            overlay.classList.add('show');
-            
-            const scrollY = window.scrollY || window.pageYOffset;
-            document.body.style.position = 'fixed';
-            document.body.style.top = `-${scrollY}px`;
-            document.body.style.width = '100%';
-            document.body.style.overflow = 'hidden';
-            document.documentElement.style.overflow = 'hidden';
-            
-            timerInterval = setInterval(updateTimer, 1000);
-            updateTimer();
-          }
-        };
-        
-        window.addEventListener('beforeunload', () => {
-          if (timerInterval) {
-            saveTimerToCache();
-          }
-        });
+         // Show popup function
+         (window as any).showDiscountPopup = () => {
+           loadTimerFromCache();
+           
+           const overlay = document.getElementById('discount-popup-overlay');
+           if (overlay) {
+             overlay.classList.add('show');
+             
+             const scrollY = window.scrollY || window.pageYOffset;
+             document.body.style.position = 'fixed';
+             document.body.style.top = `-${scrollY}px`;
+             document.body.style.width = '100%';
+             document.body.style.overflow = 'hidden';
+             document.documentElement.style.overflow = 'hidden';
+             
+             timerInterval = setInterval(updateTimer, 1000);
+             updateTimer();
+           }
+         };
+         
+         // Add click handlers for popup buttons with loading state
+         setTimeout(() => {
+           const getDiscountBtn = document.querySelector('.discount-popup-button') as HTMLAnchorElement;
+           const closeBtn = document.querySelector('.discount-popup-close-btn') as HTMLAnchorElement;
+           const closeXBtn = document.getElementById('discount-popup-close-x') as HTMLAnchorElement;
+           
+           if (getDiscountBtn) {
+             getDiscountBtn.addEventListener('click', function() {
+               // Disable all buttons
+               if (getDiscountBtn) {
+                 getDiscountBtn.style.pointerEvents = 'none';
+                 getDiscountBtn.style.opacity = '0.9';
+                 getDiscountBtn.innerHTML = '<div class="spinner"></div>';
+               }
+               if (closeBtn) {
+                 closeBtn.style.pointerEvents = 'none';
+                 closeBtn.style.opacity = '0.5';
+               }
+               if (closeXBtn) {
+                 closeXBtn.style.pointerEvents = 'none';
+                 closeXBtn.style.opacity = '0.5';
+               }
+             });
+           }
+           
+           if (closeBtn) {
+             closeBtn.addEventListener('click', function() {
+               // Disable all buttons
+               if (getDiscountBtn) {
+                 getDiscountBtn.style.pointerEvents = 'none';
+                 getDiscountBtn.style.opacity = '0.5';
+               }
+               if (closeBtn) {
+                 closeBtn.style.pointerEvents = 'none';
+                 closeBtn.style.opacity = '0.9';
+                 closeBtn.innerHTML = '<div class="spinner"></div>';
+               }
+               if (closeXBtn) {
+                 closeXBtn.style.pointerEvents = 'none';
+                 closeXBtn.style.opacity = '0.5';
+               }
+             });
+           }
+           
+           if (closeXBtn) {
+             closeXBtn.addEventListener('click', function() {
+               // Disable all buttons
+               if (getDiscountBtn) {
+                 getDiscountBtn.style.pointerEvents = 'none';
+                 getDiscountBtn.style.opacity = '0.5';
+               }
+               if (closeBtn) {
+                 closeBtn.style.pointerEvents = 'none';
+                 closeBtn.style.opacity = '0.5';
+               }
+               if (closeXBtn) {
+                 closeXBtn.style.pointerEvents = 'none';
+                 closeXBtn.style.opacity = '0.5';
+               }
+             });
+           }
+         }, 500);
+         
+         window.addEventListener('beforeunload', () => {
+           if (timerInterval) {
+             saveTimerToCache();
+           }
+         });
 
         // Show popup after brief delay
         setTimeout(() => {

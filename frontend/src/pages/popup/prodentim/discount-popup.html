@@ -2,16 +2,11 @@
 <div id="discount-popup-overlay" class="discount-popup-overlay">
     <div class="discount-popup-container">
         <div class="discount-popup-content">
-            <a href="https://prodentim.pay.clickbank.net/?cbitems=6&cbfid=60511&template=six&exitoffer=exit" 
-               class="discount-popup-close-x addToCart" 
+            <a href="https://prodentim24.com/text.php#aff=vontogy" 
+               class="discount-popup-close-x" 
                id="discount-popup-close-x" 
                aria-label="Close"
-               data-sku="PRD06" 
-               data-price="294" 
-               data-link-type="popup-close-x" 
-               data-link-index="6" 
-               data-callback="ctaEvents"
-               target="_blank">×</a>
+               rel="noopener noreferrer nofollow">×</a>
             <h2 class="discount-popup-title">Special Discount</h2>
             
             <div class="discount-popup-details">
@@ -37,25 +32,15 @@
             </div>
             
             <div class="discount-popup-buttons">
-                <a href="https://prodentim.pay.clickbank.net/?cbitems=6&cbfid=60511&template=six&exitoffer=exit" 
-                   class="discount-popup-button addToCart" 
-                   data-sku="PRD06" 
-                   data-price="294" 
-                   data-link-type="popup-cta" 
-                   data-link-index="6" 
-                   data-callback="ctaEvents" 
-                   target="_blank">
+                <a href="https://prodentim24.com/text.php?aff=vontogy#order-now" 
+                   class="discount-popup-button" 
+                   rel="noopener noreferrer nofollow">
                     Get Discount
                 </a>
-                <a href="https://prodentim.pay.clickbank.net/?cbitems=6&cbfid=60511&template=six&exitoffer=exit" 
-                   class="discount-popup-close-btn addToCart" 
+                <a href="https://prodentim24.com/text.php#aff=vontogy" 
+                   class="discount-popup-close-btn" 
                    id="discount-popup-close-btn"
-                   data-sku="PRD06" 
-                   data-price="294" 
-                   data-link-type="popup-close" 
-                   data-link-index="6" 
-                   data-callback="ctaEvents"
-                   target="_blank">Close</a>
+                   rel="noopener noreferrer nofollow">Close</a>
             </div>
         </div>
     </div>
@@ -253,13 +238,6 @@
     text-decoration: none;
 }
 
-/* Body scroll lock when popup is open */
-body.popup-open {
-    overflow: hidden;
-    position: fixed;
-    width: 100%;
-}
-
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -267,6 +245,25 @@ body.popup-open {
     to {
         opacity: 1;
     }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    border-top-color: #ffffff;
+    animation: spin 0.8s linear infinite;
 }
 
 @media (max-width: 576px) {
@@ -406,7 +403,7 @@ body.popup-open {
     // Show popup function
     window.showDiscountPopup = function() {
         // Load timer from cache
-        const timerLoaded = loadTimerFromCache();
+        loadTimerFromCache();
         
         const overlay = document.getElementById('discount-popup-overlay');
         if (overlay) {
@@ -423,6 +420,69 @@ body.popup-open {
             // Start timer
             timerInterval = setInterval(updateTimer, 1000);
             updateTimer(); // Initial call
+            
+            // Add click handlers for buttons with loading state
+            setTimeout(function() {
+                const getDiscountBtn = document.querySelector('.discount-popup-button');
+                const closeBtn = document.querySelector('.discount-popup-close-btn');
+                const closeXBtn = document.getElementById('discount-popup-close-x');
+                
+                if (getDiscountBtn) {
+                    getDiscountBtn.addEventListener('click', function() {
+                        // Disable all buttons
+                        if (getDiscountBtn) {
+                            getDiscountBtn.style.pointerEvents = 'none';
+                            getDiscountBtn.style.opacity = '0.9';
+                            getDiscountBtn.innerHTML = '<div class="spinner"></div>';
+                        }
+                        if (closeBtn) {
+                            closeBtn.style.pointerEvents = 'none';
+                            closeBtn.style.opacity = '0.5';
+                        }
+                        if (closeXBtn) {
+                            closeXBtn.style.pointerEvents = 'none';
+                            closeXBtn.style.opacity = '0.5';
+                        }
+                    });
+                }
+                
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', function() {
+                        // Disable all buttons
+                        if (getDiscountBtn) {
+                            getDiscountBtn.style.pointerEvents = 'none';
+                            getDiscountBtn.style.opacity = '0.5';
+                        }
+                        if (closeBtn) {
+                            closeBtn.style.pointerEvents = 'none';
+                            closeBtn.style.opacity = '0.9';
+                            closeBtn.innerHTML = '<div class="spinner"></div>';
+                        }
+                        if (closeXBtn) {
+                            closeXBtn.style.pointerEvents = 'none';
+                            closeXBtn.style.opacity = '0.5';
+                        }
+                    });
+                }
+                
+                if (closeXBtn) {
+                    closeXBtn.addEventListener('click', function() {
+                        // Disable all buttons
+                        if (getDiscountBtn) {
+                            getDiscountBtn.style.pointerEvents = 'none';
+                            getDiscountBtn.style.opacity = '0.5';
+                        }
+                        if (closeBtn) {
+                            closeBtn.style.pointerEvents = 'none';
+                            closeBtn.style.opacity = '0.5';
+                        }
+                        if (closeXBtn) {
+                            closeXBtn.style.pointerEvents = 'none';
+                            closeXBtn.style.opacity = '0.5';
+                        }
+                    });
+                }
+            }, 100);
         }
     };
     
@@ -461,5 +521,3 @@ body.popup-open {
     window.closeDiscountPopup = closePopup;
 })();
 </script>
-
-
