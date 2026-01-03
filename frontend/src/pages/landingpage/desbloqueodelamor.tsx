@@ -372,10 +372,10 @@ export default function Desbloqueodelamor() {
              className="relative z-10 w-full"
              style={{ marginLeft: '-1rem', marginRight: '-1rem', width: 'calc(100% + 2rem)' }}
           >
-             <div className="relative w-full" style={{ minHeight: '60vh' }}>
+                 <div className="relative w-full" style={{ minHeight: '60vh' }}>
                <img 
                  src={heroSectionImage} 
-                 alt="Nervovive" 
+                 alt="Desbloqueo del Amor" 
                  className="relative w-full h-auto object-contain select-none"
                  width="1200"
                  height="1080"
@@ -423,7 +423,7 @@ export default function Desbloqueodelamor() {
                  <div className="relative w-full max-w-[1600px] aspect-[10/9] mx-auto">
                    <img 
                      src={heroSectionDesktopImage} 
-                     alt="Nervovive" 
+                     alt="Desbloqueo del Amor" 
                      className="relative w-full h-full object-contain drop-shadow-2xl select-none"
                      width="1200"
                      height="1080"
@@ -554,7 +554,7 @@ export default function Desbloqueodelamor() {
               <div className="relative order-1 md:order-2 flex">
                 <img 
                   src={whySectionImage} 
-                  alt="Nervovive Bottles" 
+                  alt="Desbloqueo del Amor" 
                   className="w-full max-w-lg md:w-full md:h-full rounded-2xl drop-shadow-2xl select-none object-cover" 
                   width="1888"
                   height="1359"

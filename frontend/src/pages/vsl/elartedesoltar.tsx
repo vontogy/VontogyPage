@@ -603,7 +603,7 @@ export default function Elartedesoltar() {
                  <div className="relative w-full max-w-md md:max-w-[1000px] aspect-[3/4] md:aspect-[10/9] mx-auto">
                    <img 
                      src={heroSectionImage} 
-                     alt="Nervovive" 
+                     alt="El Arte de Soltar" 
                      className="relative w-full h-full object-contain drop-shadow-2xl select-none"
                      width="1200"
                      height="1080"
@@ -729,7 +729,7 @@ export default function Elartedesoltar() {
                 <div className="flex items-center justify-center">
                   <img 
                     src={whySectionImage} 
-                    alt="Nervovive Bottles" 
+                    alt="El Arte de Soltar" 
                     className="w-full max-w-lg md:max-w-xl lg:max-w-2xl rounded-2xl drop-shadow-2xl select-none" 
                     width="1888"
                     height="1359"
