@@ -5,9 +5,9 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { useEffect } from "react";
 import Home from "@/pages/landingpage/home";
-import Nervovive from "@/pages/landingpage/nervovive";
 import Elartedesoltar from "@/pages/vsl/elartedesoltar";
 import Desbloqueodelamor from "@/pages/landingpage/desbloqueodelamor";
+import Prodentim from "@/pages/popup/prodentim";
 
 // Global protection against right-click and DevTools
 function useGlobalProtection() {
@@ -93,12 +93,9 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
-      <Route path="/nervovive" component={Nervovive} />
-
-      {/* <Route path="/vsl/elartedesoltar" component={Elartedesoltar} /> */}
       <Route path="/elartedesoltar" component={Elartedesoltar} />
       <Route path="/desbloqueodelamor" component={Desbloqueodelamor} />
-
+      <Route path="/prodentim" component={Prodentim} />
       <Route component={Home} />
     </Switch>
   );
