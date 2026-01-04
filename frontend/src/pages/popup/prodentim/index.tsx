@@ -162,22 +162,17 @@ export default function Prodentim() {
   useEffect(() => {
     const loadHTML = async () => {
       try {
-        console.log('ProDentim: Starting to load HTML...');
         // Try to load the HTML file
         // In development, Vite might serve it, in production we need it in public
         const response = await fetch("/prodentim/prodentim.html");
-        
-        console.log('ProDentim: Response status:', response.status);
         
         if (!response.ok) {
           throw new Error("HTML file not found");
         }
         
         const html = await response.text();
-        console.log('ProDentim: HTML loaded, length:', html.length);
         
         if (!containerRef.current) {
-          console.log('ProDentim: Container ref not available');
           return;
         }
 
@@ -261,9 +256,7 @@ export default function Prodentim() {
 
         // Inject body content
         if (containerRef.current) {
-          console.log('ProDentim: Injecting HTML content...');
           containerRef.current.innerHTML = doc.body.innerHTML;
-          console.log('ProDentim: HTML injected successfully');
 
           // Execute scripts - use script injection for better CSP compatibility
           const scripts = doc.body.querySelectorAll("script");
@@ -323,7 +316,6 @@ export default function Prodentim() {
       }
     };
 
-    console.log('ProDentim: Component mounted, loading HTML...');
     loadHTML();
 
     // Dispatch staticsDone event to trigger any scripts waiting for it
@@ -331,7 +323,6 @@ export default function Prodentim() {
       const event = new Event('staticsDone');
       window.dispatchEvent(event);
       document.dispatchEvent(event);
-      console.log('ProDentim: staticsDone event dispatched');
     }, 500);
 
     // Load discount popup after 2 seconds
