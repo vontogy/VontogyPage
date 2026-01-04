@@ -93,12 +93,9 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
-
-      {/* <Route path="/vsl/elartedesoltar" component={Elartedesoltar} /> */}
       <Route path="/elartedesoltar" component={Elartedesoltar} />
       <Route path="/desbloqueodelamor" component={Desbloqueodelamor} />
       <Route path="/prodentim" component={Prodentim} />
-
       <Route component={Home} />
     </Switch>
   );
