@@ -8,9 +8,9 @@ export default function Prodentim() {
   useEffect(() => {
     // Load multiple CSS files in order
     const cssFiles = [
-      '/src/pages/popup/prodentim/statics/css/bootstrap.min.css',
-      '/src/pages/popup/prodentim/statics/css/style.css',
-      '/src/pages/popup/prodentim/statics/css/webfont.css'
+      '/prodentim/statics/css/bootstrap.min.css',
+      '/prodentim/statics/css/style.css',
+      '/prodentim/statics/css/webfont.css'
     ];
 
     const links: HTMLLinkElement[] = [];
@@ -165,7 +165,7 @@ export default function Prodentim() {
         console.log('ProDentim: Starting to load HTML...');
         // Try to load the HTML file
         // In development, Vite might serve it, in production we need it in public
-        const response = await fetch("/src/pages/popup/prodentim/prodentim.html");
+        const response = await fetch("/prodentim/prodentim.html");
         
         console.log('ProDentim: Response status:', response.status);
         
@@ -187,18 +187,34 @@ export default function Prodentim() {
 
         // Adjust asset paths to work from the root
         // Import images using Vite's import system
-        const basePath = "/src/pages/popup/prodentim/";
+        const basePath = "/prodentim/statics/";
         
         // Remove stylesheet links since we're importing CSS directly
         doc.querySelectorAll("link[rel='stylesheet']").forEach((link) => {
           link.remove();
         });
 
+        // Fix link hrefs (like favicon)
+        doc.querySelectorAll("link[href]").forEach((link) => {
+          const href = link.getAttribute("href");
+          if (href && !href.startsWith("http") && !href.startsWith("/")) {
+            // If it starts with "statics/", replace with absolute path
+            if (href.startsWith("statics/")) {
+              link.setAttribute("href", "/prodentim/" + href);
+            }
+          }
+        });
+
         // Fix script sources
         doc.querySelectorAll("script[src]").forEach((script) => {
           const src = script.getAttribute("src");
           if (src && !src.startsWith("http") && !src.startsWith("/")) {
-            script.setAttribute("src", basePath + src);
+            // If it starts with "statics/", replace with absolute path
+            if (src.startsWith("statics/")) {
+              script.setAttribute("src", "/prodentim/" + src);
+            } else {
+              script.setAttribute("src", basePath + src);
+            }
           }
         });
 
@@ -206,7 +222,12 @@ export default function Prodentim() {
         doc.querySelectorAll("img[src]").forEach((img) => {
           const src = img.getAttribute("src");
           if (src && !src.startsWith("http") && !src.startsWith("/")) {
-            img.setAttribute("src", basePath + src);
+            // If it starts with "statics/", replace with absolute path
+            if (src.startsWith("statics/")) {
+              img.setAttribute("src", "/prodentim/" + src);
+            } else {
+              img.setAttribute("src", basePath + src);
+            }
           }
         });
 
@@ -214,7 +235,12 @@ export default function Prodentim() {
         doc.querySelectorAll("source[srcset]").forEach((source) => {
           const srcset = source.getAttribute("srcset");
           if (srcset && !srcset.startsWith("http") && !srcset.startsWith("/")) {
-            source.setAttribute("srcset", basePath + srcset);
+            // If it starts with "statics/", replace with absolute path
+            if (srcset.startsWith("statics/")) {
+              source.setAttribute("srcset", "/prodentim/" + srcset);
+            } else {
+              source.setAttribute("srcset", basePath + srcset);
+            }
           }
         });
 
@@ -225,7 +251,10 @@ export default function Prodentim() {
           if (!existingStyle) {
             const newStyle = document.createElement("style");
             newStyle.setAttribute("data-prodentim-style", "true");
-            newStyle.textContent = style.textContent;
+            // Fix font paths in CSS (statics/fonts/... -> /prodentim/statics/fonts/...)
+            let styleContent = style.textContent || "";
+            styleContent = styleContent.replace(/url\(["']?statics\//g, 'url("/prodentim/statics/');
+            newStyle.textContent = styleContent;
             document.head.appendChild(newStyle);
           }
         });
