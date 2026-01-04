@@ -265,7 +265,7 @@ export default function Prodentim() {
           containerRef.current.innerHTML = doc.body.innerHTML;
           console.log('ProDentim: HTML injected successfully');
 
-          // Execute scripts - evaluate inline instead of appending to avoid module errors
+          // Execute scripts - use script injection for better CSP compatibility
           const scripts = doc.body.querySelectorAll("script");
           scripts.forEach((oldScript) => {
             // Check if it's an external script
@@ -279,11 +279,32 @@ export default function Prodentim() {
               });
               document.head.appendChild(newScript);
             } else if (oldScript.innerHTML) {
-              // Execute inline scripts using indirect eval (global scope)
+              // Execute inline scripts by injecting as script element (better CSP compatibility)
               try {
-                (0, eval)(oldScript.innerHTML);
+                const newScript = document.createElement("script");
+                newScript.textContent = oldScript.innerHTML;
+                // Copy attributes if any
+                Array.from(oldScript.attributes).forEach((attr) => {
+                  if (attr.name !== 'src' && attr.name !== 'innerHTML') {
+                    newScript.setAttribute(attr.name, attr.value);
+                  }
+                });
+                document.head.appendChild(newScript);
+                // Remove after execution to keep DOM clean
+                setTimeout(() => {
+                  if (newScript.parentNode) {
+                    newScript.parentNode.removeChild(newScript);
+                  }
+                }, 0);
               } catch (error) {
                 console.error("Error executing inline script:", error);
+                // Fallback: try Function constructor if script injection fails
+                try {
+                  // Function constructor is more CSP-friendly than eval
+                  new Function(oldScript.innerHTML)();
+                } catch (fallbackError) {
+                  console.error("Error with Function constructor fallback:", fallbackError);
+                }
               }
             }
           });
