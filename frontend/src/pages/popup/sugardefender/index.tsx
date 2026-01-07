@@ -296,7 +296,7 @@ export default function SugarDefender() {
 
           // Execute scripts with corrected paths after a brief delay
           setTimeout(() => {
-            scriptsToExecute.forEach((scriptData, index) => {
+            scriptsToExecute.forEach((scriptData) => {
               const newScript = document.createElement("script");
               
               if (scriptData.src) {
