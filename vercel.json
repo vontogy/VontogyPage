@@ -11,7 +11,7 @@
     },
     {
       "source": "/prodentim",
-      "destination": "/index.html"
+      "destination": "/prodentim.html"
     },
     {
       "source": "/((?!sugardefender|prodentim|sitemap\\.xml|robots\\.txt|gtag\\.js|assets).*)",
