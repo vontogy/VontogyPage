@@ -185,10 +185,22 @@ export default function Prodentim() {
       try {
         // Try to load the HTML file
         // In development, Vite might serve it, in production we need it in public
-        const response = await fetch("/prodentim/prodentim.html");
+        let response = await fetch("/prodentim/prodentim.html", {
+          cache: 'no-cache',
+          headers: {
+            'Accept': 'text/html',
+          }
+        });
         
         if (!response.ok) {
-          throw new Error("HTML file not found");
+          console.error(`Failed to load prodentim.html: ${response.status} ${response.statusText}`);
+          // Try with reload cache
+          response = await fetch("/prodentim/prodentim.html", {
+            cache: 'reload',
+          });
+          if (!response.ok) {
+            throw new Error(`HTML file not found: ${response.status} ${response.statusText}. Please ensure the file exists at /prodentim/prodentim.html`);
+          }
         }
         
         const html = await response.text();
