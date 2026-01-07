@@ -3,15 +3,39 @@
   "outputDirectory": "frontend/dist",
   "installCommand": "npm install",
   "trailingSlash": false,
-  "cleanUrls": true,
+  "cleanUrls": false,
   "rewrites": [
+    {
+      "source": "/prodentim/statics/:path*",
+      "destination": "/prodentim/statics/:path*"
+    },
+    {
+      "source": "/prodentim/prodentim.html",
+      "destination": "/prodentim/prodentim.html"
+    },
+    {
+      "source": "/prodentim/discount-popup.html",
+      "destination": "/prodentim/discount-popup.html"
+    },
+    {
+      "source": "/sugardefender/assets/:path*",
+      "destination": "/sugardefender/assets/:path*"
+    },
+    {
+      "source": "/sugardefender/index.html",
+      "destination": "/sugardefender/index.html"
+    },
+    {
+      "source": "/sugardefender/discount-popup.html",
+      "destination": "/sugardefender/discount-popup.html"
+    },
     {
       "source": "/sugardefender",
       "destination": "/index.html"
     },
     {
       "source": "/prodentim",
-      "destination": "/prodentim.html"
+      "destination": "/index.html"
     },
     {
       "source": "/((?!sugardefender|prodentim|sitemap\\.xml|robots\\.txt|gtag\\.js|assets).*)",
