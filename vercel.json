@@ -2,21 +2,10 @@
   "buildCommand": "npm run build:frontend",
   "outputDirectory": "frontend/dist",
   "installCommand": "npm install",
-  "routes": [
+  "rewrites": [
     {
-      "src": "/sugardefender/(.*)",
-      "dest": "/sugardefender/$1"
-    },
-    {
-      "src": "/prodentim/(.*)",
-      "dest": "/prodentim/$1"
-    },
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ],
   "headers": [
