@@ -2,9 +2,19 @@
   "buildCommand": "npm run build:frontend",
   "outputDirectory": "frontend/dist",
   "installCommand": "npm install",
+  "trailingSlash": false,
+  "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/sugardefender",
+      "destination": "/sugardefender/index.html"
+    },
+    {
+      "source": "/prodentim",
+      "destination": "/prodentim/prodentim.html"
+    },
+    {
+      "source": "/((?!sugardefender|prodentim|sitemap\\.xml|robots\\.txt|gtag\\.js|assets).*)",
       "destination": "/index.html"
     }
   ],
