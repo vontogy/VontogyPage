@@ -272,6 +272,8 @@ export default function SugarDefender() {
                 scriptSrc = "/sugardefender/" + scriptSrc;
               }
             }
+            // Log for debugging
+            console.log(`Loading script: ${scriptSrc}`);
             scriptData.src = scriptSrc;
           } else if (script.innerHTML) {
             scriptData.content = script.innerHTML;
@@ -294,21 +296,47 @@ export default function SugarDefender() {
 
           // Execute scripts with corrected paths after a brief delay
           setTimeout(() => {
-            scriptsToExecute.forEach((scriptData) => {
+            scriptsToExecute.forEach((scriptData, index) => {
               const newScript = document.createElement("script");
               
               if (scriptData.src) {
-                newScript.src = scriptData.src;
+                // Ensure the path is absolute and correct
+                let finalSrc = scriptData.src;
+                if (!finalSrc.startsWith("http") && !finalSrc.startsWith("/")) {
+                  finalSrc = "/sugardefender/" + finalSrc;
+                }
+                
+                newScript.src = finalSrc;
+                
+                // For external scripts, add error handling
+                newScript.onerror = (error) => {
+                  console.error(`Failed to load script: ${finalSrc}`, error);
+                  // Try to fetch and see what we're getting
+                  fetch(finalSrc)
+                    .then(response => response.text())
+                    .then(text => {
+                      console.error(`Response for ${finalSrc} (first 200 chars):`, text.substring(0, 200));
+                    })
+                    .catch(err => console.error("Fetch error:", err));
+                };
+                newScript.onload = () => {
+                  console.log(`Successfully loaded script: ${finalSrc}`);
+                };
               } else if (scriptData.content) {
                 newScript.textContent = scriptData.content;
               }
               
-              // Set all attributes
+              // Set all attributes (including defer, async, etc.)
               Object.entries(scriptData.attributes).forEach(([name, value]) => {
-                newScript.setAttribute(name, value);
+                if (name === 'defer' || name === 'async') {
+                  (newScript as any)[name] = true;
+                } else if (name !== 'src') {
+                  newScript.setAttribute(name, value);
+                }
               });
               
-              document.head.appendChild(newScript);
+              // Append to body for better compatibility with defer/async
+              document.body.appendChild(newScript);
               
               // Remove inline scripts after execution to keep DOM clean
               if (scriptData.content) {
