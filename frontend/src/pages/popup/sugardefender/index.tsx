@@ -4,25 +4,9 @@ export default function SugarDefender() {
   const containerRef = useRef<HTMLDivElement>(null);
   const popupLoadedRef = useRef(false);
 
-  // Load and inject SugarDefender CSS
+  // Load and inject SugarDefender CSS - removed duplicate loading, CSS will be loaded from HTML
   useEffect(() => {
-    // Load multiple CSS files in order
-    const cssFiles = [
-      '/sugardefender/assets/bootstrap/bootstrap.min.css',
-      '/sugardefender/assets/css/style.css'
-    ];
-
     const links: HTMLLinkElement[] = [];
-    
-    cssFiles.forEach((href, index) => {
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = href;
-      link.setAttribute('data-sugardefender-css', 'true');
-      link.setAttribute('data-css-index', index.toString());
-      document.head.appendChild(link);
-      links.push(link);
-    });
 
     // Force body to be visible and reset global styles (override CSS that hides it)
     const styleOverride = document.createElement('style');
@@ -63,19 +47,9 @@ export default function SugarDefender() {
         box-sizing: border-box;
       }
 
-      /* Ensure proper inheritance */
-      .sugardefender-wrapper div,
-      .sugardefender-wrapper span,
-      .sugardefender-wrapper p,
-      .sugardefender-wrapper a,
-      .sugardefender-wrapper img,
-      .sugardefender-wrapper button,
-      .sugardefender-wrapper h1, .sugardefender-wrapper h2, .sugardefender-wrapper h3,
-      .sugardefender-wrapper h4, .sugardefender-wrapper h5, .sugardefender-wrapper h6,
-      .sugardefender-wrapper ul, .sugardefender-wrapper ol, .sugardefender-wrapper li,
-      .sugardefender-wrapper section, .sugardefender-wrapper header, .sugardefender-wrapper footer {
-        font-family: inherit;
-        line-height: inherit;
+      /* Don't override font-family for elements inside wrapper - let Bootstrap handle it */
+      .sugardefender-wrapper * {
+        box-sizing: border-box;
       }
 
       /* Ensure Bootstrap grid works properly */
@@ -100,6 +74,22 @@ export default function SugarDefender() {
         width: 100%;
         padding-right: 15px;
         padding-left: 15px;
+      }
+      
+      /* Hide Vercel badge/button */
+      [data-vercel-badge],
+      [data-vercel-badge-wrapper],
+      a[href*="vercel.com"],
+      a[href*="vercel.live"],
+      iframe[src*="vercel"],
+      div[class*="vercel"],
+      div[id*="vercel"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        left: -9999px !important;
       }
     `;
     document.head.appendChild(styleOverride);
@@ -161,6 +151,9 @@ export default function SugarDefender() {
   useEffect(() => {
     const loadHTML = async () => {
       try {
+        // Wait a bit to ensure CSS files are loaded first
+        await new Promise(resolve => setTimeout(resolve, 100));
+        
         // Try to load the HTML file
         // In development, Vite might serve it, in production we need it in public
         const response = await fetch("/sugardefender/index.html");
@@ -182,8 +175,42 @@ export default function SugarDefender() {
         // Adjust asset paths to work from the root
         const basePath = "/sugardefender/assets/";
         
-        // Remove stylesheet links since we're importing CSS directly
-        doc.querySelectorAll("link[rel='stylesheet']").forEach((link) => {
+        // Fix and inject stylesheet links from HTML (don't remove them, just fix paths)
+        doc.head.querySelectorAll("link[rel='stylesheet']").forEach((link) => {
+          const href = link.getAttribute("href");
+          if (href) {
+            let fixedHref = href;
+            if (!href.startsWith("http") && !href.startsWith("/")) {
+              // If it starts with "assets/", replace with absolute path
+              if (href.startsWith("assets/")) {
+                fixedHref = "/sugardefender/" + href;
+              } else {
+                fixedHref = basePath + href;
+              }
+            }
+            // Inject the stylesheet link into the document head if not already loaded
+            const existingLink = document.head.querySelector(`link[href="${fixedHref}"]`);
+            if (!existingLink) {
+              const newLink = document.createElement("link");
+              newLink.rel = "stylesheet";
+              newLink.href = fixedHref;
+              newLink.setAttribute("data-sugardefender-css", "true");
+              
+              // Add error handling
+              newLink.onerror = () => {
+                console.error(`Failed to load CSS from HTML: ${fixedHref}`);
+              };
+              newLink.onload = () => {
+                console.log(`Successfully loaded CSS from HTML: ${fixedHref}`);
+              };
+              
+              document.head.appendChild(newLink);
+            }
+          }
+        });
+        
+        // Remove from parsed doc to avoid duplication
+        doc.head.querySelectorAll("link[rel='stylesheet']").forEach((link) => {
           link.remove();
         });
 
@@ -193,6 +220,9 @@ export default function SugarDefender() {
           if (href && !href.startsWith("http") && !href.startsWith("/")) {
             // If it starts with "assets/", replace with absolute path
             if (href.startsWith("assets/")) {
+              link.setAttribute("href", "/sugardefender/" + href);
+            } else {
+              // Fix other relative paths (like apple-touch-icon.png, favicon, etc.)
               link.setAttribute("href", "/sugardefender/" + href);
             }
           }
@@ -206,7 +236,7 @@ export default function SugarDefender() {
             if (src.startsWith("assets/")) {
               script.setAttribute("src", "/sugardefender/" + src);
             } else {
-              script.setAttribute("src", basePath + src);
+              script.setAttribute("src", "/sugardefender/" + src);
             }
           }
         });
@@ -214,12 +244,13 @@ export default function SugarDefender() {
         // Fix image sources
         doc.querySelectorAll("img[src]").forEach((img) => {
           const src = img.getAttribute("src");
-          if (src && !src.startsWith("http") && !src.startsWith("/")) {
+          if (src && !src.startsWith("http") && !src.startsWith("/") && !src.startsWith("data:")) {
             // If it starts with "assets/", replace with absolute path
             if (src.startsWith("assets/")) {
               img.setAttribute("src", "/sugardefender/" + src);
             } else {
-              img.setAttribute("src", basePath + src);
+              // Fix other relative paths (like favicon, etc.)
+              img.setAttribute("src", "/sugardefender/" + src);
             }
           }
         });
@@ -237,13 +268,16 @@ export default function SugarDefender() {
           }
         });
 
-        // Extract and inject styles
-        const styles = doc.querySelectorAll("style");
-        styles.forEach((style) => {
-          const existingStyle = document.head.querySelector(`style[data-sugardefender-style]`);
+        // Extract and inject styles from both head and body
+        const headStyles = doc.head.querySelectorAll("style");
+        const bodyStyles = doc.body.querySelectorAll("style");
+        const allStyles = [...Array.from(headStyles), ...Array.from(bodyStyles)];
+        
+        allStyles.forEach((style, index) => {
+          const existingStyle = document.head.querySelector(`style[data-sugardefender-style="${index}"]`);
           if (!existingStyle) {
             const newStyle = document.createElement("style");
-            newStyle.setAttribute("data-sugardefender-style", "true");
+            newStyle.setAttribute("data-sugardefender-style", index.toString());
             // Fix font paths in CSS (assets/fonts/... -> /sugardefender/assets/fonts/...)
             let styleContent = style.textContent || "";
             styleContent = styleContent.replace(/url\(["']?assets\//g, 'url("/sugardefender/assets/');
@@ -252,53 +286,98 @@ export default function SugarDefender() {
           }
         });
 
-        // Inject body content
+        // Remove scripts from body before injecting HTML (to prevent auto-execution with wrong paths)
+        const scriptsToExecute: { src?: string; content?: string; attributes: { [key: string]: string } }[] = [];
+        doc.body.querySelectorAll("script").forEach((script) => {
+          const scriptData: { src?: string; content?: string; attributes: { [key: string]: string } } = {
+            attributes: {}
+          };
+          
+          if (script.src) {
+            let scriptSrc = script.getAttribute("src") || "";
+            if (scriptSrc && !scriptSrc.startsWith("http") && !scriptSrc.startsWith("/")) {
+              if (scriptSrc.startsWith("assets/")) {
+                scriptSrc = "/sugardefender/" + scriptSrc;
+              } else {
+                scriptSrc = "/sugardefender/" + scriptSrc;
+              }
+            }
+            // Log for debugging
+            console.log(`Loading script: ${scriptSrc}`);
+            scriptData.src = scriptSrc;
+          } else if (script.innerHTML) {
+            scriptData.content = script.innerHTML;
+          }
+          
+          // Copy all attributes
+          Array.from(script.attributes).forEach((attr) => {
+            if (attr.name !== 'src' && attr.name !== 'innerHTML') {
+              scriptData.attributes[attr.name] = attr.value;
+            }
+          });
+          
+          scriptsToExecute.push(scriptData);
+          script.remove(); // Remove from DOM before injecting
+        });
+
+        // Inject body content (without scripts)
         if (containerRef.current) {
           containerRef.current.innerHTML = doc.body.innerHTML;
 
-          // Execute scripts - use script injection for better CSP compatibility
-          const scripts = doc.body.querySelectorAll("script");
-          scripts.forEach((oldScript) => {
-            // Check if it's an external script
-            if (oldScript.src) {
+          // Execute scripts with corrected paths after a brief delay
+          setTimeout(() => {
+            scriptsToExecute.forEach((scriptData) => {
               const newScript = document.createElement("script");
-              newScript.src = oldScript.src;
-              Array.from(oldScript.attributes).forEach((attr) => {
-                if (attr.name !== 'src') {
-                  newScript.setAttribute(attr.name, attr.value);
+              
+              if (scriptData.src) {
+                // Ensure the path is absolute and correct
+                let finalSrc = scriptData.src;
+                if (!finalSrc.startsWith("http") && !finalSrc.startsWith("/")) {
+                  finalSrc = "/sugardefender/" + finalSrc;
+                }
+                
+                newScript.src = finalSrc;
+                
+                // For external scripts, add error handling
+                newScript.onerror = (error) => {
+                  console.error(`Failed to load script: ${finalSrc}`, error);
+                  // Try to fetch and see what we're getting
+                  fetch(finalSrc)
+                    .then(response => response.text())
+                    .then(text => {
+                      console.error(`Response for ${finalSrc} (first 200 chars):`, text.substring(0, 200));
+                    })
+                    .catch(err => console.error("Fetch error:", err));
+                };
+                newScript.onload = () => {
+                  console.log(`Successfully loaded script: ${finalSrc}`);
+                };
+              } else if (scriptData.content) {
+                newScript.textContent = scriptData.content;
+              }
+              
+              // Set all attributes (including defer, async, etc.)
+              Object.entries(scriptData.attributes).forEach(([name, value]) => {
+                if (name === 'defer' || name === 'async') {
+                  (newScript as any)[name] = true;
+                } else if (name !== 'src') {
+                  newScript.setAttribute(name, value);
                 }
               });
-              document.head.appendChild(newScript);
-            } else if (oldScript.innerHTML) {
-              // Execute inline scripts by injecting as script element (better CSP compatibility)
-              try {
-                const newScript = document.createElement("script");
-                newScript.textContent = oldScript.innerHTML;
-                // Copy attributes if any
-                Array.from(oldScript.attributes).forEach((attr) => {
-                  if (attr.name !== 'src' && attr.name !== 'innerHTML') {
-                    newScript.setAttribute(attr.name, attr.value);
-                  }
-                });
-                document.head.appendChild(newScript);
-                // Remove after execution to keep DOM clean
+              
+              // Append to body for better compatibility with defer/async
+              document.body.appendChild(newScript);
+              
+              // Remove inline scripts after execution to keep DOM clean
+              if (scriptData.content) {
                 setTimeout(() => {
                   if (newScript.parentNode) {
                     newScript.parentNode.removeChild(newScript);
                   }
                 }, 0);
-              } catch (error) {
-                console.error("Error executing inline script:", error);
-                // Fallback: try Function constructor if script injection fails
-                try {
-                  // Function constructor is more CSP-friendly than eval
-                  new Function(oldScript.innerHTML)();
-                } catch (fallbackError) {
-                  console.error("Error with Function constructor fallback:", fallbackError);
-                }
               }
-            }
-          });
+            });
+          }, 100);
         }
       } catch (error) {
         console.error("Error loading SugarDefender page:", error);
@@ -324,11 +403,26 @@ export default function SugarDefender() {
     }, 500);
 
     // Load discount popup after 2 seconds
+    // Note: The popup HTML and script are already in index.html, so we just need to ensure it shows automatically
     const loadDiscountPopup = () => {
       if (popupLoadedRef.current) return;
       popupLoadedRef.current = true;
 
       try {
+        // Check if popup already exists from index.html
+        const existingPopup = document.getElementById('discount-popup-overlay');
+        if (existingPopup) {
+          // Popup already exists in HTML, just ensure it shows automatically
+          // The index.html script will handle showing it, but we can trigger it here as backup
+          setTimeout(() => {
+            if (typeof (window as any).showDiscountPopup === 'function') {
+              (window as any).showDiscountPopup();
+            }
+          }, 200);
+          return;
+        }
+
+        // If popup doesn't exist, inject it (fallback)
         // Inject popup HTML directly
         const popupHTML = `
           <div id="discount-popup-overlay" class="discount-popup-overlay">

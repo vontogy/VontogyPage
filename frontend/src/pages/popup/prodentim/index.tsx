@@ -102,6 +102,27 @@ export default function Prodentim() {
         padding-right: 15px;
         padding-left: 15px;
       }
+      
+      /* Hide Vercel badge/button */
+      [data-vercel-badge],
+      [data-vercel-badge-wrapper],
+      a[href*="vercel.com"],
+      a[href*="vercel.live"],
+      iframe[src*="vercel"],
+      div[class*="vercel"],
+      div[id*="vercel"],
+      *[class*="vercel-badge"],
+      *[id*="vercel-badge"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        left: -9999px !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+      }
     `;
     document.head.appendChild(styleOverride);
 
@@ -164,10 +185,22 @@ export default function Prodentim() {
       try {
         // Try to load the HTML file
         // In development, Vite might serve it, in production we need it in public
-        const response = await fetch("/prodentim/prodentim.html");
+        let response = await fetch("/prodentim/prodentim.html", {
+          cache: 'no-cache',
+          headers: {
+            'Accept': 'text/html',
+          }
+        });
         
         if (!response.ok) {
-          throw new Error("HTML file not found");
+          console.error(`Failed to load prodentim.html: ${response.status} ${response.statusText}`);
+          // Try with reload cache
+          response = await fetch("/prodentim/prodentim.html", {
+            cache: 'reload',
+          });
+          if (!response.ok) {
+            throw new Error(`HTML file not found: ${response.status} ${response.statusText}. Please ensure the file exists at /prodentim/prodentim.html`);
+          }
         }
         
         const html = await response.text();
