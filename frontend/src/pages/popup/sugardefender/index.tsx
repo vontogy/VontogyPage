@@ -194,6 +194,9 @@ export default function SugarDefender() {
             // If it starts with "assets/", replace with absolute path
             if (href.startsWith("assets/")) {
               link.setAttribute("href", "/sugardefender/" + href);
+            } else {
+              // Fix other relative paths (like apple-touch-icon.png, favicon, etc.)
+              link.setAttribute("href", "/sugardefender/" + href);
             }
           }
         });
@@ -206,7 +209,7 @@ export default function SugarDefender() {
             if (src.startsWith("assets/")) {
               script.setAttribute("src", "/sugardefender/" + src);
             } else {
-              script.setAttribute("src", basePath + src);
+              script.setAttribute("src", "/sugardefender/" + src);
             }
           }
         });
@@ -214,12 +217,13 @@ export default function SugarDefender() {
         // Fix image sources
         doc.querySelectorAll("img[src]").forEach((img) => {
           const src = img.getAttribute("src");
-          if (src && !src.startsWith("http") && !src.startsWith("/")) {
+          if (src && !src.startsWith("http") && !src.startsWith("/") && !src.startsWith("data:")) {
             // If it starts with "assets/", replace with absolute path
             if (src.startsWith("assets/")) {
               img.setAttribute("src", "/sugardefender/" + src);
             } else {
-              img.setAttribute("src", basePath + src);
+              // Fix other relative paths (like favicon, etc.)
+              img.setAttribute("src", "/sugardefender/" + src);
             }
           }
         });
@@ -252,53 +256,70 @@ export default function SugarDefender() {
           }
         });
 
-        // Inject body content
+        // Remove scripts from body before injecting HTML (to prevent auto-execution with wrong paths)
+        const scriptsToExecute: { src?: string; content?: string; attributes: { [key: string]: string } }[] = [];
+        doc.body.querySelectorAll("script").forEach((script) => {
+          const scriptData: { src?: string; content?: string; attributes: { [key: string]: string } } = {
+            attributes: {}
+          };
+          
+          if (script.src) {
+            let scriptSrc = script.getAttribute("src") || "";
+            if (scriptSrc && !scriptSrc.startsWith("http") && !scriptSrc.startsWith("/")) {
+              if (scriptSrc.startsWith("assets/")) {
+                scriptSrc = "/sugardefender/" + scriptSrc;
+              } else {
+                scriptSrc = "/sugardefender/" + scriptSrc;
+              }
+            }
+            scriptData.src = scriptSrc;
+          } else if (script.innerHTML) {
+            scriptData.content = script.innerHTML;
+          }
+          
+          // Copy all attributes
+          Array.from(script.attributes).forEach((attr) => {
+            if (attr.name !== 'src' && attr.name !== 'innerHTML') {
+              scriptData.attributes[attr.name] = attr.value;
+            }
+          });
+          
+          scriptsToExecute.push(scriptData);
+          script.remove(); // Remove from DOM before injecting
+        });
+
+        // Inject body content (without scripts)
         if (containerRef.current) {
           containerRef.current.innerHTML = doc.body.innerHTML;
 
-          // Execute scripts - use script injection for better CSP compatibility
-          const scripts = doc.body.querySelectorAll("script");
-          scripts.forEach((oldScript) => {
-            // Check if it's an external script
-            if (oldScript.src) {
+          // Execute scripts with corrected paths after a brief delay
+          setTimeout(() => {
+            scriptsToExecute.forEach((scriptData) => {
               const newScript = document.createElement("script");
-              newScript.src = oldScript.src;
-              Array.from(oldScript.attributes).forEach((attr) => {
-                if (attr.name !== 'src') {
-                  newScript.setAttribute(attr.name, attr.value);
-                }
+              
+              if (scriptData.src) {
+                newScript.src = scriptData.src;
+              } else if (scriptData.content) {
+                newScript.textContent = scriptData.content;
+              }
+              
+              // Set all attributes
+              Object.entries(scriptData.attributes).forEach(([name, value]) => {
+                newScript.setAttribute(name, value);
               });
+              
               document.head.appendChild(newScript);
-            } else if (oldScript.innerHTML) {
-              // Execute inline scripts by injecting as script element (better CSP compatibility)
-              try {
-                const newScript = document.createElement("script");
-                newScript.textContent = oldScript.innerHTML;
-                // Copy attributes if any
-                Array.from(oldScript.attributes).forEach((attr) => {
-                  if (attr.name !== 'src' && attr.name !== 'innerHTML') {
-                    newScript.setAttribute(attr.name, attr.value);
-                  }
-                });
-                document.head.appendChild(newScript);
-                // Remove after execution to keep DOM clean
+              
+              // Remove inline scripts after execution to keep DOM clean
+              if (scriptData.content) {
                 setTimeout(() => {
                   if (newScript.parentNode) {
                     newScript.parentNode.removeChild(newScript);
                   }
                 }, 0);
-              } catch (error) {
-                console.error("Error executing inline script:", error);
-                // Fallback: try Function constructor if script injection fails
-                try {
-                  // Function constructor is more CSP-friendly than eval
-                  new Function(oldScript.innerHTML)();
-                } catch (fallbackError) {
-                  console.error("Error with Function constructor fallback:", fallbackError);
-                }
               }
-            }
-          });
+            });
+          }, 100);
         }
       } catch (error) {
         console.error("Error loading SugarDefender page:", error);
