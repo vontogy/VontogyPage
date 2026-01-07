@@ -4,34 +4,9 @@ export default function SugarDefender() {
   const containerRef = useRef<HTMLDivElement>(null);
   const popupLoadedRef = useRef(false);
 
-  // Load and inject SugarDefender CSS
+  // Load and inject SugarDefender CSS - removed duplicate loading, CSS will be loaded from HTML
   useEffect(() => {
-    // Load multiple CSS files in order
-    const cssFiles = [
-      '/sugardefender/assets/bootstrap/bootstrap.min.css',
-      '/sugardefender/assets/css/style.css'
-    ];
-
     const links: HTMLLinkElement[] = [];
-    
-    cssFiles.forEach((href, index) => {
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = href;
-      link.setAttribute('data-sugardefender-css', 'true');
-      link.setAttribute('data-css-index', index.toString());
-      
-      // Add error handling for CSS loading
-      link.onerror = () => {
-        console.error(`Failed to load CSS: ${href}`);
-      };
-      link.onload = () => {
-        console.log(`Successfully loaded CSS: ${href}`);
-      };
-      
-      document.head.appendChild(link);
-      links.push(link);
-    });
 
     // Force body to be visible and reset global styles (override CSS that hides it)
     const styleOverride = document.createElement('style');
