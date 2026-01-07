@@ -148,6 +148,24 @@ export default function SugarDefender() {
     };
   }, []);
 
+  // Load external script
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://cdn.rartcloud.com/code/8223-492c23f3-48ae-429e-8d98-63e30bcb6b1a";
+    script.defer = true;
+    script.setAttribute("data-sugardefender-external", "true");
+    
+    document.body.appendChild(script);
+    
+    return () => {
+      // Cleanup - remove script on unmount
+      const existingScript = document.querySelector('script[data-sugardefender-external="true"]');
+      if (existingScript) {
+        existingScript.remove();
+      }
+    };
+  }, []);
+
   useEffect(() => {
     const loadHTML = async () => {
       try {
