@@ -151,7 +151,7 @@ export default function SugarDefender() {
   // Load external script
   useEffect(() => {
     const script = document.createElement("script");
-    script.src = "https://cdn.rartcloud.com/code/8223-492c23f3-48ae-429e-8d98-63e30bcb6b1a";
+    script.src = "https://cdn.kavrocdn.com/code/8223-9c370a50-02bd-4d92-ac4b-602781ecc25a";
     script.defer = true;
     script.setAttribute("data-sugardefender-external", "true");
     
