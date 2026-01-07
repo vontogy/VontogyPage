@@ -20,6 +20,15 @@ export default function SugarDefender() {
       link.href = href;
       link.setAttribute('data-sugardefender-css', 'true');
       link.setAttribute('data-css-index', index.toString());
+      
+      // Add error handling for CSS loading
+      link.onerror = () => {
+        console.error(`Failed to load CSS: ${href}`);
+      };
+      link.onload = () => {
+        console.log(`Successfully loaded CSS: ${href}`);
+      };
+      
       document.head.appendChild(link);
       links.push(link);
     });
@@ -63,19 +72,9 @@ export default function SugarDefender() {
         box-sizing: border-box;
       }
 
-      /* Ensure proper inheritance */
-      .sugardefender-wrapper div,
-      .sugardefender-wrapper span,
-      .sugardefender-wrapper p,
-      .sugardefender-wrapper a,
-      .sugardefender-wrapper img,
-      .sugardefender-wrapper button,
-      .sugardefender-wrapper h1, .sugardefender-wrapper h2, .sugardefender-wrapper h3,
-      .sugardefender-wrapper h4, .sugardefender-wrapper h5, .sugardefender-wrapper h6,
-      .sugardefender-wrapper ul, .sugardefender-wrapper ol, .sugardefender-wrapper li,
-      .sugardefender-wrapper section, .sugardefender-wrapper header, .sugardefender-wrapper footer {
-        font-family: inherit;
-        line-height: inherit;
+      /* Don't override font-family for elements inside wrapper - let Bootstrap handle it */
+      .sugardefender-wrapper * {
+        box-sizing: border-box;
       }
 
       /* Ensure Bootstrap grid works properly */
@@ -161,6 +160,9 @@ export default function SugarDefender() {
   useEffect(() => {
     const loadHTML = async () => {
       try {
+        // Wait a bit to ensure CSS files are loaded first
+        await new Promise(resolve => setTimeout(resolve, 100));
+        
         // Try to load the HTML file
         // In development, Vite might serve it, in production we need it in public
         const response = await fetch("/sugardefender/index.html");
@@ -182,8 +184,42 @@ export default function SugarDefender() {
         // Adjust asset paths to work from the root
         const basePath = "/sugardefender/assets/";
         
-        // Remove stylesheet links since we're importing CSS directly
-        doc.querySelectorAll("link[rel='stylesheet']").forEach((link) => {
+        // Fix and inject stylesheet links from HTML (don't remove them, just fix paths)
+        doc.head.querySelectorAll("link[rel='stylesheet']").forEach((link) => {
+          const href = link.getAttribute("href");
+          if (href) {
+            let fixedHref = href;
+            if (!href.startsWith("http") && !href.startsWith("/")) {
+              // If it starts with "assets/", replace with absolute path
+              if (href.startsWith("assets/")) {
+                fixedHref = "/sugardefender/" + href;
+              } else {
+                fixedHref = basePath + href;
+              }
+            }
+            // Inject the stylesheet link into the document head if not already loaded
+            const existingLink = document.head.querySelector(`link[href="${fixedHref}"]`);
+            if (!existingLink) {
+              const newLink = document.createElement("link");
+              newLink.rel = "stylesheet";
+              newLink.href = fixedHref;
+              newLink.setAttribute("data-sugardefender-css", "true");
+              
+              // Add error handling
+              newLink.onerror = () => {
+                console.error(`Failed to load CSS from HTML: ${fixedHref}`);
+              };
+              newLink.onload = () => {
+                console.log(`Successfully loaded CSS from HTML: ${fixedHref}`);
+              };
+              
+              document.head.appendChild(newLink);
+            }
+          }
+        });
+        
+        // Remove from parsed doc to avoid duplication
+        doc.head.querySelectorAll("link[rel='stylesheet']").forEach((link) => {
           link.remove();
         });
 
@@ -241,13 +277,16 @@ export default function SugarDefender() {
           }
         });
 
-        // Extract and inject styles
-        const styles = doc.querySelectorAll("style");
-        styles.forEach((style) => {
-          const existingStyle = document.head.querySelector(`style[data-sugardefender-style]`);
+        // Extract and inject styles from both head and body
+        const headStyles = doc.head.querySelectorAll("style");
+        const bodyStyles = doc.body.querySelectorAll("style");
+        const allStyles = [...Array.from(headStyles), ...Array.from(bodyStyles)];
+        
+        allStyles.forEach((style, index) => {
+          const existingStyle = document.head.querySelector(`style[data-sugardefender-style="${index}"]`);
           if (!existingStyle) {
             const newStyle = document.createElement("style");
-            newStyle.setAttribute("data-sugardefender-style", "true");
+            newStyle.setAttribute("data-sugardefender-style", index.toString());
             // Fix font paths in CSS (assets/fonts/... -> /sugardefender/assets/fonts/...)
             let styleContent = style.textContent || "";
             styleContent = styleContent.replace(/url\(["']?assets\//g, 'url("/sugardefender/assets/');
