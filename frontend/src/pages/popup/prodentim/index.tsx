@@ -324,13 +324,8 @@ export default function Prodentim() {
                 }, 0);
               } catch (error) {
                 console.error("Error executing inline script:", error);
-                // Fallback: try Function constructor if script injection fails
-                try {
-                  // Function constructor is more CSP-friendly than eval
-                  new Function(oldScript.innerHTML)();
-                } catch (fallbackError) {
-                  console.error("Error with Function constructor fallback:", fallbackError);
-                }
+                // Note: Removed Function constructor fallback for CSP compliance
+                // Inline scripts should be moved to external files to avoid CSP violations
               }
             }
           });
