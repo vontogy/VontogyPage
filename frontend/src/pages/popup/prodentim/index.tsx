@@ -102,6 +102,27 @@ export default function Prodentim() {
         padding-right: 15px;
         padding-left: 15px;
       }
+      
+      /* Hide Vercel badge/button */
+      [data-vercel-badge],
+      [data-vercel-badge-wrapper],
+      a[href*="vercel.com"],
+      a[href*="vercel.live"],
+      iframe[src*="vercel"],
+      div[class*="vercel"],
+      div[id*="vercel"],
+      *[class*="vercel-badge"],
+      *[id*="vercel-badge"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        left: -9999px !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+      }
     `;
     document.head.appendChild(styleOverride);
 

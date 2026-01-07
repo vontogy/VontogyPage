@@ -7,10 +7,18 @@
   "rewrites": [
     {
       "source": "/sugardefender",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/sugardefender/index.html",
       "destination": "/sugardefender/index.html"
     },
     {
       "source": "/prodentim",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/prodentim/prodentim.html",
       "destination": "/prodentim/prodentim.html"
     },
     {
