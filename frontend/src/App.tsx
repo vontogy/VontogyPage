@@ -9,6 +9,7 @@ import Elartedesoltar from "@/pages/vsl/elartedesoltar";
 import Desbloqueodelamor from "@/pages/landingpage/desbloqueodelamor";
 import Prodentim from "@/pages/popup/prodentim";
 import SugarDefender from "@/pages/popup/sugardefender";
+import Audifort from "@/pages/popup/audifort";
 
 // Global protection against right-click and DevTools
 function useGlobalProtection() {
@@ -98,6 +99,7 @@ function Router() {
       <Route path="/desbloqueodelamor" component={Desbloqueodelamor} />
       <Route path="/prodentim" component={Prodentim} />
       <Route path="/sugardefender" component={SugarDefender} />
+      <Route path="/audifort" component={Audifort} />
       <Route component={Home} />
     </Switch>
   );
