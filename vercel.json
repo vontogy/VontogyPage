@@ -42,10 +42,6 @@
       "destination": "/audifort/discount-popup.html"
     },
     {
-      "source": "/audifort/:file(favicon.*|apple-touch-icon.*)",
-      "destination": "/audifort/:file"
-    },
-    {
       "source": "/sugardefender",
       "destination": "/index.html"
     },
@@ -63,62 +59,6 @@
     }
   ],
   "headers": [
-    {
-      "source": "/audifort/assets/css/(.*)\\.css",
-      "headers": [
-        { "key": "Content-Type", "value": "text/css; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-      ]
-    },
-    {
-      "source": "/audifort/assets/js/(.*)\\.js",
-      "headers": [
-        { "key": "Content-Type", "value": "application/javascript; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-      ]
-    },
-    {
-      "source": "/audifort/assets/(.*)\\.css",
-      "headers": [
-        { "key": "Content-Type", "value": "text/css; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-      ]
-    },
-    {
-      "source": "/audifort/assets/(.*)\\.js",
-      "headers": [
-        { "key": "Content-Type", "value": "application/javascript; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-      ]
-    },
-    {
-      "source": "/audifort/assets/img/(.*)\\.png",
-      "headers": [
-        { "key": "Content-Type", "value": "image/png" },
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-      ]
-    },
-    {
-      "source": "/audifort/assets/img/(.*)\\.jpg",
-      "headers": [
-        { "key": "Content-Type", "value": "image/jpeg" },
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-      ]
-    },
-    {
-      "source": "/audifort/assets/img/(.*)\\.jpeg",
-      "headers": [
-        { "key": "Content-Type", "value": "image/jpeg" },
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-      ]
-    },
-    {
-      "source": "/audifort/assets/(.*)\\.(png|jpg|jpeg|gif|webp|svg|ico)",
-      "headers": [
-        { "key": "Content-Type", "value": "image/*" },
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-      ]
-    },
     {
       "source": "/sugardefender/(.*).html",
       "headers": [
@@ -197,7 +137,6 @@
     {
       "source": "/audifort/(.*)\\.(png|jpg|jpeg|gif|webp|svg)",
       "headers": [
-        { "key": "Content-Type", "value": "image/*" },
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     },
