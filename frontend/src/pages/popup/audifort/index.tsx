@@ -633,11 +633,26 @@ export default function Audifort() {
     }, 500);
 
     // Load discount popup after 2 seconds
+    // Note: The popup HTML and script are already in index.html, so we just need to ensure it shows automatically
     const loadDiscountPopup = () => {
       if (popupLoadedRef.current) return;
       popupLoadedRef.current = true;
 
       try {
+        // Check if popup already exists from index.html
+        const existingPopup = document.getElementById('discount-popup-overlay');
+        if (existingPopup) {
+          // Popup already exists in HTML, just ensure it shows automatically
+          // The index.html script will handle showing it, but we can trigger it here as backup
+          setTimeout(() => {
+            if (typeof (window as any).showDiscountPopup === 'function') {
+              (window as any).showDiscountPopup();
+            }
+          }, 200);
+          return;
+        }
+
+        // If popup doesn't exist, inject it (fallback)
         // Inject popup HTML directly
         const popupHTML = `
           <div id="discount-popup-overlay" class="discount-popup-overlay">
