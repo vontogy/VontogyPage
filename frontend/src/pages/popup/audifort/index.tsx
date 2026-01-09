@@ -203,15 +203,70 @@ export default function Audifort() {
         // Wait a bit more to ensure CSS is applied
         await new Promise(resolve => setTimeout(resolve, 100));
         
-        // Try to load the HTML file
+        // Try to load the HTML file with retry mechanism
         // In development, Vite might serve it, in production we need it in public
-        const response = await fetch("/audifort/index.html");
+        const urlsToTry = [
+          "/audifort/index.html",
+          `${window.location.origin}/audifort/index.html`,
+          "/audifort/index.html?v=" + Date.now()
+        ];
         
-        if (!response.ok) {
-          throw new Error("HTML file not found");
+        let response: Response | null = null;
+        let lastError: Error | null = null;
+        
+        for (const url of urlsToTry) {
+          try {
+            console.log(`Trying to fetch: ${url}`);
+            const fetchResponse = await fetch(url, {
+              headers: {
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                'Cache-Control': 'no-cache, no-store, must-revalidate',
+                'Pragma': 'no-cache'
+              },
+              cache: 'no-store'
+            });
+            
+            if (fetchResponse.ok) {
+              response = fetchResponse;
+              console.log(`Successfully fetched from: ${url}`);
+              break;
+            } else {
+              console.warn(`Failed to fetch ${url}: ${fetchResponse.status} ${fetchResponse.statusText}`);
+              lastError = new Error(`HTTP ${fetchResponse.status}: ${fetchResponse.statusText}`);
+            }
+          } catch (fetchError) {
+            console.warn(`Error fetching ${url}:`, fetchError);
+            lastError = fetchError as Error;
+          }
+        }
+        
+        if (!response || !response.ok) {
+          console.error('All fetch attempts failed');
+          console.error('Response headers:', response ? Object.fromEntries(response.headers.entries()) : 'No response');
+          throw lastError || new Error('HTML file not found - all URLs failed');
+        }
+        
+        // Check content type
+        const contentType = response.headers.get('content-type');
+        console.log('Content-Type:', contentType);
+        
+        if (contentType && !contentType.includes('text/html')) {
+          console.warn(`Unexpected content type: ${contentType}`);
         }
         
         const html = await response.text();
+        
+        // Verify we got HTML content
+        if (!html || html.trim().length === 0) {
+          throw new Error('Empty HTML content received');
+        }
+        
+        if (!html.includes('<!DOCTYPE') && !html.includes('<html')) {
+          console.error('Invalid HTML received (first 200 chars):', html.substring(0, 200));
+          throw new Error('Invalid HTML content received - not an HTML document');
+        }
+        
+        console.log('Successfully loaded HTML, length:', html.length);
         
         if (!containerRef.current) {
           return;
@@ -611,12 +666,33 @@ export default function Audifort() {
         }
       } catch (error) {
         console.error("Error loading Audifort page:", error);
+        
+        // Log additional debug information
+        console.error('Current location:', window.location.href);
+        console.error('Base URL:', window.location.origin);
+        
+        // Try to fetch the file again to get more error details
+        try {
+          const debugResponse = await fetch("/audifort/index.html", { method: 'HEAD' });
+          console.error('Debug HEAD request status:', debugResponse.status);
+          console.error('Debug HEAD request headers:', Object.fromEntries(debugResponse.headers.entries()));
+        } catch (debugError) {
+          console.error('Debug HEAD request failed:', debugError);
+        }
+        
         if (containerRef.current) {
           containerRef.current.innerHTML = `
-            <div style="padding: 2rem; text-align: center; color: #000;">
-              <h1>Error loading page</h1>
-              <p>Could not load Audifort page. Please try again later.</p>
-              <p style="color: red; font-size: 0.9rem;">${error}</p>
+            <div style="padding: 2rem; text-align: center; color: #000; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+              <h1 style="color: #dc3545; margin-bottom: 1rem;">Error loading page</h1>
+              <p style="font-size: 1.1rem; margin-bottom: 1rem;">Could not load Audifort page. Please try again later.</p>
+              <details style="margin-top: 2rem; text-align: left; max-width: 600px; margin-left: auto; margin-right: auto;">
+                <summary style="cursor: pointer; color: #007953; font-weight: bold;">Technical Details</summary>
+                <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto; font-size: 0.85rem; margin-top: 1rem;">${JSON.stringify({
+                  error: error instanceof Error ? error.message : String(error),
+                  location: window.location.href,
+                  timestamp: new Date().toISOString()
+                }, null, 2)}</pre>
+              </details>
             </div>
           `;
         }
@@ -633,163 +709,11 @@ export default function Audifort() {
     }, 500);
 
     // Load discount popup after 2 seconds
-    const loadDiscountPopup = async () => {
+    const loadDiscountPopup = () => {
       if (popupLoadedRef.current) return;
       popupLoadedRef.current = true;
 
       try {
-        // Check if popup already exists from index.html
-        const existingPopup = document.getElementById('discount-popup-overlay');
-        if (existingPopup) {
-          // Popup already exists in HTML, just ensure it shows automatically
-          // The index.html script will handle showing it, but we can trigger it here as backup
-          setTimeout(() => {
-            if (typeof (window as any).showDiscountPopup === 'function') {
-              (window as any).showDiscountPopup();
-            }
-          }, 200);
-          return;
-        }
-
-        // Try to load discount-popup.html from public folder
-        try {
-          console.log("Attempting to load /audifort/discount-popup.html");
-          const popupResponse = await fetch("/audifort/discount-popup.html");
-          console.log("Popup response status:", popupResponse.status, popupResponse.ok);
-          
-          if (popupResponse.ok) {
-            const popupHTML = await popupResponse.text();
-            console.log("Successfully fetched discount-popup.html, length:", popupHTML.length);
-            
-            // Parse the popup HTML
-            const parser = new DOMParser();
-            const popupDoc = parser.parseFromString(popupHTML, "text/html");
-            
-            // Extract and inject styles FIRST
-            const popupStyles = popupDoc.querySelectorAll("style");
-            popupStyles.forEach((style) => {
-              const existingStyle = document.head.querySelector(`style[data-audifort-popup-style="true"]`);
-              if (!existingStyle) {
-                const newStyle = document.createElement("style");
-                newStyle.setAttribute("data-audifort-popup-style", "true");
-                newStyle.textContent = style.textContent || "";
-                document.head.appendChild(newStyle);
-              }
-            });
-            
-            // Extract and inject popup HTML FIRST (before executing scripts)
-            const popupOverlay = popupDoc.getElementById('discount-popup-overlay');
-            if (popupOverlay) {
-              const popupContainer = document.createElement("div");
-              popupContainer.id = "audifort-discount-popup-container";
-              // Clone the element and append it
-              const clonedOverlay = popupOverlay.cloneNode(true) as HTMLElement;
-              popupContainer.appendChild(clonedOverlay);
-              document.body.appendChild(popupContainer);
-            }
-            
-            // Extract and execute scripts AFTER HTML is injected
-            const popupScripts = popupDoc.querySelectorAll("script");
-            const scriptPromises: Promise<void>[] = [];
-            
-            popupScripts.forEach((script) => {
-              const newScript = document.createElement("script");
-              if (script.src) {
-                // Fix script src path if needed
-                let scriptSrc = script.src;
-                if (!scriptSrc.startsWith("http") && !scriptSrc.startsWith("/")) {
-                  scriptSrc = "/audifort/" + scriptSrc;
-                }
-                newScript.src = scriptSrc;
-                
-                // Create promise for script loading
-                const scriptPromise = new Promise<void>((resolve) => {
-                  newScript.onload = () => resolve();
-                  newScript.onerror = () => resolve(); // Continue even if script fails
-                  setTimeout(() => resolve(), 5000); // Timeout after 5 seconds
-                });
-                scriptPromises.push(scriptPromise);
-              } else if (script.textContent) {
-                // For inline scripts, inject as script element and let browser execute it
-                // This is more reliable than using Function constructor or eval
-                console.log("Injecting inline script from discount-popup.html");
-                const inlineScript = document.createElement("script");
-                inlineScript.textContent = script.textContent;
-                
-                // Copy all attributes from original script
-                Array.from(script.attributes).forEach((attr) => {
-                  if (attr.name !== 'textContent') {
-                    inlineScript.setAttribute(attr.name, attr.value);
-                  }
-                });
-                
-                // Append to body and let browser execute it naturally
-                document.body.appendChild(inlineScript);
-                console.log("Inline script injected, waiting for execution...");
-                
-                // Note: We don't remove the script as it may be needed for the popup to work
-                // The browser will execute it and it will define window.showDiscountPopup
-              }
-              
-              // Only append to DOM if it has src (external script)
-              if (script.src) {
-                // Copy all attributes
-                Array.from(script.attributes).forEach((attr) => {
-                  if (attr.name !== 'src' && attr.name !== 'textContent') {
-                    newScript.setAttribute(attr.name, attr.value);
-                  }
-                });
-                
-                document.body.appendChild(newScript);
-              }
-            });
-            
-            // Wait for all external scripts to load
-            await Promise.all(scriptPromises);
-            
-            // Give a delay for inline scripts to execute (they execute asynchronously when injected)
-            await new Promise(resolve => setTimeout(resolve, 200));
-            
-            // Verify popup was loaded correctly
-            const popupElement = document.getElementById('discount-popup-overlay');
-            const hasShowFunction = typeof (window as any).showDiscountPopup === 'function';
-            
-            if (!popupElement || !hasShowFunction) {
-              console.warn("Popup not properly loaded from discount-popup.html");
-              console.warn("Popup element exists:", !!popupElement);
-              console.warn("showDiscountPopup function exists:", hasShowFunction);
-              // Remove what was loaded and fall through to fallback
-              const popupContainer = document.getElementById("audifort-discount-popup-container");
-              if (popupContainer) {
-                popupContainer.remove();
-              }
-              const popupStyle = document.head.querySelector(`style[data-audifort-popup-style="true"]`);
-              if (popupStyle) {
-                popupStyle.remove();
-              }
-              // Fall through to fallback
-            } else {
-              // Show popup after brief delay to ensure everything is loaded
-              setTimeout(() => {
-                console.log("Calling showDiscountPopup from discount-popup.html");
-                (window as any).showDiscountPopup();
-              }, 300);
-              
-              return; // Successfully loaded from discount-popup.html
-            }
-          } else {
-            console.warn("discount-popup.html response not ok, status:", popupResponse.status);
-            // Fall through to fallback
-          }
-        } catch (fetchError) {
-          console.error("Failed to load discount-popup.html, using fallback:", fetchError);
-          // Continue to fallback below
-        }
-        
-        // If we reach here, fetch failed or response was not ok - use fallback
-        console.log("Using fallback: injecting popup HTML directly");
-
-        // If popup doesn't exist and fetch failed, inject it (fallback)
         // Inject popup HTML directly
         const popupHTML = `
           <div id="discount-popup-overlay" class="discount-popup-overlay">
