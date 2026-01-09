@@ -30,12 +30,42 @@ export default function Audifort() {
         width: 100% !important;
         min-height: 100vh !important;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
-        font-size: 16px;
-        line-height: 1.5;
-        color: #272727;
-        background: white;
-        margin: 0;
-        padding: 0;
+        font-size: 16px !important;
+        line-height: 1.5 !important;
+        color: #272727 !important;
+        background: white !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      
+      /* Ensure all elements inside wrapper inherit properly */
+      .audifort-wrapper * {
+        box-sizing: border-box !important;
+      }
+      
+      /* Force visibility of all content */
+      .audifort-wrapper img {
+        display: inline-block !important;
+        max-width: 100% !important;
+        height: auto !important;
+      }
+      
+      .audifort-wrapper a {
+        color: inherit !important;
+        text-decoration: none !important;
+      }
+      
+      .audifort-wrapper button,
+      .audifort-wrapper .btn,
+      .audifort-wrapper .btn-new {
+        display: inline-block !important;
+        padding: 0.5rem 1rem !important;
+        background-color: #007953 !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 4px !important;
+        cursor: pointer !important;
+        text-decoration: none !important;
       }
       
       .async-hide {
@@ -146,7 +176,31 @@ export default function Audifort() {
   useEffect(() => {
     const loadHTML = async () => {
       try {
-        // Wait a bit to ensure CSS files are loaded first
+        // Pre-load main CSS file FIRST before anything else
+        const mainCssLink = document.createElement("link");
+        mainCssLink.rel = "stylesheet";
+        mainCssLink.href = "/audifort/assets/css/style.css";
+        mainCssLink.setAttribute("data-audifort-css-preload", "true");
+        
+        const cssPreloadPromise = new Promise<void>((resolve) => {
+          mainCssLink.onload = () => {
+            console.log("Pre-loaded main CSS successfully");
+            resolve();
+          };
+          mainCssLink.onerror = () => {
+            console.error("Failed to pre-load main CSS, will try again later");
+            resolve(); // Continue anyway
+          };
+          setTimeout(() => {
+            console.warn("CSS preload timeout");
+            resolve();
+          }, 3000);
+        });
+        
+        document.head.appendChild(mainCssLink);
+        await cssPreloadPromise;
+        
+        // Wait a bit more to ensure CSS is applied
         await new Promise(resolve => setTimeout(resolve, 100));
         
         // Try to load the HTML file
@@ -170,11 +224,15 @@ export default function Audifort() {
         // Adjust asset paths to work from the root
         const basePath = "/audifort/assets/";
         
-        // Fix and inject stylesheet links from HTML (don't remove them, just fix paths)
+        // Fix and inject stylesheet links from HTML FIRST, and wait for them to load
+        const cssLinks: Promise<void>[] = [];
+        const cssHrefs: string[] = [];
+        
         doc.head.querySelectorAll("link[rel='stylesheet']").forEach((link) => {
           const href = link.getAttribute("href");
           if (href) {
             let fixedHref = href;
+            // Handle relative paths
             if (!href.startsWith("http") && !href.startsWith("/")) {
               // If it starts with "assets/", replace with absolute path
               if (href.startsWith("assets/")) {
@@ -182,7 +240,15 @@ export default function Audifort() {
               } else {
                 fixedHref = basePath + href;
               }
+            } else if (href.startsWith("/") && !href.startsWith("/audifort/")) {
+              // If it's an absolute path but not starting with /audifort/, add it
+              if (href.startsWith("/assets/")) {
+                fixedHref = "/audifort" + href;
+              }
             }
+            
+            cssHrefs.push(fixedHref);
+            
             // Inject the stylesheet link into the document head if not already loaded
             const existingLink = document.head.querySelector(`link[href="${fixedHref}"]`);
             if (!existingLink) {
@@ -191,18 +257,75 @@ export default function Audifort() {
               newLink.href = fixedHref;
               newLink.setAttribute("data-audifort-css", "true");
               
-              // Add error handling
-              newLink.onerror = () => {
-                console.error(`Failed to load CSS from HTML: ${fixedHref}`);
-              };
-              newLink.onload = () => {
-                console.log(`Successfully loaded CSS from HTML: ${fixedHref}`);
-              };
+              // Create a promise that resolves when the CSS loads
+              const cssPromise = new Promise<void>((resolve) => {
+                newLink.onerror = () => {
+                  console.error(`Failed to load CSS from HTML: ${fixedHref}`);
+                  // Try alternative path
+                  const altHref = fixedHref.replace("/audifort/audifort/", "/audifort/");
+                  if (altHref !== fixedHref) {
+                    console.log(`Trying alternative path: ${altHref}`);
+                    newLink.href = altHref;
+                  } else {
+                    // Still resolve to continue even if CSS fails
+                    resolve();
+                  }
+                };
+                newLink.onload = () => {
+                  console.log(`Successfully loaded CSS from HTML: ${fixedHref}`);
+                  resolve();
+                };
+                // Timeout after 5 seconds
+                setTimeout(() => {
+                  console.warn(`CSS load timeout for: ${fixedHref}`);
+                  resolve();
+                }, 5000);
+              });
               
               document.head.appendChild(newLink);
+              cssLinks.push(cssPromise);
             }
           }
         });
+        
+        // Also ensure main CSS is loaded directly as fallback
+        const mainCssHref = "/audifort/assets/css/style.css";
+        if (!cssHrefs.includes(mainCssHref)) {
+          const existingMainCss = document.head.querySelector(`link[href="${mainCssHref}"]`);
+          if (!existingMainCss) {
+            const mainCssLink = document.createElement("link");
+            mainCssLink.rel = "stylesheet";
+            mainCssLink.href = mainCssHref;
+            mainCssLink.setAttribute("data-audifort-css", "true");
+            
+            const mainCssPromise = new Promise<void>((resolve) => {
+              mainCssLink.onload = () => {
+                console.log(`Successfully loaded main CSS: ${mainCssHref}`);
+                resolve();
+              };
+              mainCssLink.onerror = () => {
+                console.error(`Failed to load main CSS: ${mainCssHref}`);
+                resolve();
+              };
+              setTimeout(() => resolve(), 5000);
+            });
+            
+            document.head.appendChild(mainCssLink);
+            cssLinks.push(mainCssPromise);
+          }
+        }
+        
+        // Wait for all CSS files to load before injecting HTML
+        await Promise.all(cssLinks);
+        
+        // Verify CSS was loaded by checking if stylesheets are in the document
+        const loadedCss = document.head.querySelectorAll('link[data-audifort-css="true"]');
+        console.log(`Loaded ${loadedCss.length} CSS files for Audifort`);
+        
+        // Force a reflow to ensure CSS is applied
+        if (containerRef.current) {
+          containerRef.current.offsetHeight;
+        }
         
         // Remove from parsed doc to avoid duplication
         doc.head.querySelectorAll("link[rel='stylesheet']").forEach((link) => {
@@ -263,7 +386,7 @@ export default function Audifort() {
           }
         });
 
-        // Extract and inject styles from both head and body
+        // Extract and inject styles from both head and body BEFORE injecting HTML
         const headStyles = doc.head.querySelectorAll("style");
         const bodyStyles = doc.body.querySelectorAll("style");
         const allStyles = [...Array.from(headStyles), ...Array.from(bodyStyles)];
@@ -280,6 +403,9 @@ export default function Audifort() {
             document.head.appendChild(newStyle);
           }
         });
+
+        // Wait a bit more to ensure CSS is fully applied
+        await new Promise(resolve => setTimeout(resolve, 100));
 
         // Remove scripts from body before injecting HTML (to prevent auto-execution with wrong paths)
         const scriptsToExecute: { src?: string; content?: string; attributes: { [key: string]: string } }[] = [];
@@ -733,7 +859,10 @@ export default function Audifort() {
         width: "100%", 
         isolation: "isolate",
         position: "relative",
-        overflow: "visible"
+        overflow: "visible",
+        display: "block",
+        opacity: 1,
+        visibility: "visible"
       }} 
     />
   );
