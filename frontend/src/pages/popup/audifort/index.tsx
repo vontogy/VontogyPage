@@ -217,18 +217,45 @@ export default function Audifort() {
           return;
         }
 
-        // Parse the HTML
+        // Pre-process HTML string to fix ALL asset paths before parsing
+        // This MUST happen before parsing to prevent browser from loading wrong paths
+        let preprocessedHTML = html;
+        
+        // Fix href attributes (CSS, links) - handle both single and double quotes, with or without spaces
+        preprocessedHTML = preprocessedHTML
+          .replace(/href\s*=\s*["']assets\//gi, 'href="/audifort/assets/')
+          .replace(/href\s*=\s*["']\/assets\//gi, 'href="/audifort/assets/')
+          // Fix src attributes (images, scripts)
+          .replace(/src\s*=\s*["']assets\//gi, 'src="/audifort/assets/')
+          .replace(/src\s*=\s*["']\/assets\//gi, 'src="/audifort/assets/')
+          // Fix srcset attributes (responsive images)
+          .replace(/srcset\s*=\s*["']assets\//gi, 'srcset="/audifort/assets/')
+          .replace(/srcset\s*=\s*["']\/assets\//gi, 'srcset="/audifort/assets/')
+          // Fix url() in style attributes and inline styles
+          .replace(/url\(["']?assets\//gi, 'url("/audifort/assets/')
+          .replace(/url\(["']?\/assets\//gi, 'url("/audifort/assets/');
+        
+        // Verify that the CSS link was corrected
+        if (preprocessedHTML.includes('href="assets/') || preprocessedHTML.includes("href='assets/")) {
+          console.warn("Warning: Some asset paths may not have been corrected in preprocess step");
+          // Force correction one more time
+          preprocessedHTML = preprocessedHTML
+            .replace(/href\s*=\s*["']assets\//gi, 'href="/audifort/assets/')
+            .replace(/src\s*=\s*["']assets\//gi, 'src="/audifort/assets/');
+        }
+        
+        // Log verification
+        const cssLinkCheck = preprocessedHTML.match(/href=["']\/audifort\/assets\/css\/style\.css["']/);
+        if (cssLinkCheck) {
+          console.log("✓ CSS link path corrected successfully");
+        } else {
+          console.error("✗ CSS link path NOT corrected! HTML may still have incorrect paths");
+          // Emergency fix: try one more aggressive replacement
+          preprocessedHTML = preprocessedHTML.replace(/href=["']assets\/css\/style\.css["']/gi, 'href="/audifort/assets/css/style.css"');
+        }
+        
+        // Parse the HTML AFTER all paths are corrected
         const parser = new DOMParser();
-        
-        // Pre-process HTML string to fix all asset paths before parsing
-        const preprocessedHTML = html
-          .replace(/href=["']assets\//g, 'href="/audifort/assets/')
-          .replace(/href=["']\/assets\//g, 'href="/audifort/assets/')
-          .replace(/src=["']assets\//g, 'src="/audifort/assets/')
-          .replace(/src=["']\/assets\//g, 'src="/audifort/assets/')
-          .replace(/srcset=["']assets\//g, 'srcset="/audifort/assets/')
-          .replace(/srcset=["']\/assets\//g, 'srcset="/audifort/assets/');
-        
         const doc = parser.parseFromString(preprocessedHTML, "text/html");
 
         // Adjust asset paths to work from the root
@@ -337,9 +364,15 @@ export default function Audifort() {
           containerRef.current.offsetHeight;
         }
         
-        // Remove from parsed doc to avoid duplication
+        // Remove stylesheet links from parsed doc to avoid duplication
+        // They've already been loaded manually with correct paths
         doc.head.querySelectorAll("link[rel='stylesheet']").forEach((link) => {
           link.remove();
+        });
+        
+        // Also remove any script tags from head that might have incorrect paths
+        doc.head.querySelectorAll("script[src]").forEach((script) => {
+          script.remove();
         });
 
         // Fix link hrefs (like favicon)
@@ -486,15 +519,34 @@ export default function Audifort() {
 
         // Final verification: ensure all paths in the HTML are correct before injection
         // This is a safety check to catch any paths we might have missed
-        const bodyHTML = doc.body.innerHTML;
-        const correctedBodyHTML = bodyHTML
+        let bodyHTML = doc.body.innerHTML;
+        // Apply comprehensive path corrections
+        bodyHTML = bodyHTML
           .replace(/src=["']assets\//g, 'src="/audifort/assets/')
           .replace(/src=["']\/assets\//g, 'src="/audifort/assets/')
           .replace(/href=["']assets\//g, 'href="/audifort/assets/')
           .replace(/href=["']\/assets\//g, 'href="/audifort/assets/')
           .replace(/srcset=["']assets\//g, 'srcset="/audifort/assets/')
-          .replace(/srcset=["']\/assets\//g, 'srcset="/audifort/assets/');
+          .replace(/srcset=["']\/assets\//g, 'srcset="/audifort/assets/')
+          .replace(/url\(["']?assets\//g, 'url("/audifort/assets/')
+          .replace(/url\(["']?\/assets\//g, 'url("/audifort/assets/');
+        
+        let correctedBodyHTML = bodyHTML;
 
+        // Final safety check: ensure no incorrect paths remain
+        const finalCheck = correctedBodyHTML.match(/["']assets\//g);
+        if (finalCheck && finalCheck.length > 0) {
+          console.warn(`Warning: Found ${finalCheck.length} uncorrected asset paths, fixing now...`);
+          // Apply one more round of corrections - be more aggressive
+          correctedBodyHTML = correctedBodyHTML
+            .replace(/src=["']assets\//g, 'src="/audifort/assets/')
+            .replace(/src=["']\/assets\//g, 'src="/audifort/assets/')
+            .replace(/href=["']assets\//g, 'href="/audifort/assets/')
+            .replace(/href=["']\/assets\//g, 'href="/audifort/assets/')
+            .replace(/srcset=["']assets\//g, 'srcset="/audifort/assets/')
+            .replace(/srcset=["']\/assets\//g, 'srcset="/audifort/assets/');
+        }
+        
         // Inject body content (without scripts) with corrected paths
         if (containerRef.current) {
           containerRef.current.innerHTML = correctedBodyHTML;
