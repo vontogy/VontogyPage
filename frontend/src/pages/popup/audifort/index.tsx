@@ -653,15 +653,19 @@ export default function Audifort() {
 
         // Try to load discount-popup.html from public folder
         try {
+          console.log("Attempting to load /audifort/discount-popup.html");
           const popupResponse = await fetch("/audifort/discount-popup.html");
+          console.log("Popup response status:", popupResponse.status, popupResponse.ok);
+          
           if (popupResponse.ok) {
             const popupHTML = await popupResponse.text();
+            console.log("Successfully fetched discount-popup.html, length:", popupHTML.length);
             
             // Parse the popup HTML
             const parser = new DOMParser();
             const popupDoc = parser.parseFromString(popupHTML, "text/html");
             
-            // Extract and inject styles
+            // Extract and inject styles FIRST
             const popupStyles = popupDoc.querySelectorAll("style");
             popupStyles.forEach((style) => {
               const existingStyle = document.head.querySelector(`style[data-audifort-popup-style="true"]`);
@@ -673,7 +677,18 @@ export default function Audifort() {
               }
             });
             
-            // Extract and execute scripts FIRST (before injecting HTML)
+            // Extract and inject popup HTML FIRST (before executing scripts)
+            const popupOverlay = popupDoc.getElementById('discount-popup-overlay');
+            if (popupOverlay) {
+              const popupContainer = document.createElement("div");
+              popupContainer.id = "audifort-discount-popup-container";
+              // Clone the element and append it
+              const clonedOverlay = popupOverlay.cloneNode(true) as HTMLElement;
+              popupContainer.appendChild(clonedOverlay);
+              document.body.appendChild(popupContainer);
+            }
+            
+            // Extract and execute scripts AFTER HTML is injected
             const popupScripts = popupDoc.querySelectorAll("script");
             const scriptPromises: Promise<void>[] = [];
             
@@ -695,46 +710,84 @@ export default function Audifort() {
                 });
                 scriptPromises.push(scriptPromise);
               } else if (script.textContent) {
-                newScript.textContent = script.textContent;
+                // For inline scripts, inject as script element and let browser execute it
+                // This is more reliable than using Function constructor or eval
+                console.log("Injecting inline script from discount-popup.html");
+                const inlineScript = document.createElement("script");
+                inlineScript.textContent = script.textContent;
+                
+                // Copy all attributes from original script
+                Array.from(script.attributes).forEach((attr) => {
+                  if (attr.name !== 'textContent') {
+                    inlineScript.setAttribute(attr.name, attr.value);
+                  }
+                });
+                
+                // Append to body and let browser execute it naturally
+                document.body.appendChild(inlineScript);
+                console.log("Inline script injected, waiting for execution...");
+                
+                // Note: We don't remove the script as it may be needed for the popup to work
+                // The browser will execute it and it will define window.showDiscountPopup
               }
               
-              // Copy all attributes
-              Array.from(script.attributes).forEach((attr) => {
-                if (attr.name !== 'src' && attr.name !== 'textContent') {
-                  newScript.setAttribute(attr.name, attr.value);
-                }
-              });
-              
-              document.body.appendChild(newScript);
+              // Only append to DOM if it has src (external script)
+              if (script.src) {
+                // Copy all attributes
+                Array.from(script.attributes).forEach((attr) => {
+                  if (attr.name !== 'src' && attr.name !== 'textContent') {
+                    newScript.setAttribute(attr.name, attr.value);
+                  }
+                });
+                
+                document.body.appendChild(newScript);
+              }
             });
             
-            // Wait for all scripts to load
+            // Wait for all external scripts to load
             await Promise.all(scriptPromises);
             
-            // Extract and inject popup HTML (the div with id="discount-popup-overlay")
-            const popupOverlay = popupDoc.getElementById('discount-popup-overlay');
-            if (popupOverlay) {
-              const popupContainer = document.createElement("div");
-              popupContainer.id = "audifort-discount-popup-container";
-              // Clone the element and append it
-              const clonedOverlay = popupOverlay.cloneNode(true) as HTMLElement;
-              popupContainer.appendChild(clonedOverlay);
-              document.body.appendChild(popupContainer);
-            }
+            // Give a delay for inline scripts to execute (they execute asynchronously when injected)
+            await new Promise(resolve => setTimeout(resolve, 200));
             
-            // Show popup after brief delay to ensure everything is loaded
-            setTimeout(() => {
-              if (typeof (window as any).showDiscountPopup === 'function') {
-                (window as any).showDiscountPopup();
+            // Verify popup was loaded correctly
+            const popupElement = document.getElementById('discount-popup-overlay');
+            const hasShowFunction = typeof (window as any).showDiscountPopup === 'function';
+            
+            if (!popupElement || !hasShowFunction) {
+              console.warn("Popup not properly loaded from discount-popup.html");
+              console.warn("Popup element exists:", !!popupElement);
+              console.warn("showDiscountPopup function exists:", hasShowFunction);
+              // Remove what was loaded and fall through to fallback
+              const popupContainer = document.getElementById("audifort-discount-popup-container");
+              if (popupContainer) {
+                popupContainer.remove();
               }
-            }, 200);
-            
-            return; // Successfully loaded from discount-popup.html
+              const popupStyle = document.head.querySelector(`style[data-audifort-popup-style="true"]`);
+              if (popupStyle) {
+                popupStyle.remove();
+              }
+              // Fall through to fallback
+            } else {
+              // Show popup after brief delay to ensure everything is loaded
+              setTimeout(() => {
+                console.log("Calling showDiscountPopup from discount-popup.html");
+                (window as any).showDiscountPopup();
+              }, 300);
+              
+              return; // Successfully loaded from discount-popup.html
+            }
+          } else {
+            console.warn("discount-popup.html response not ok, status:", popupResponse.status);
+            // Fall through to fallback
           }
         } catch (fetchError) {
-          console.warn("Failed to load discount-popup.html, using fallback:", fetchError);
+          console.error("Failed to load discount-popup.html, using fallback:", fetchError);
           // Continue to fallback below
         }
+        
+        // If we reach here, fetch failed or response was not ok - use fallback
+        console.log("Using fallback: injecting popup HTML directly");
 
         // If popup doesn't exist and fetch failed, inject it (fallback)
         // Inject popup HTML directly
