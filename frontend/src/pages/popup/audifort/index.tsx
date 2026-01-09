@@ -219,7 +219,17 @@ export default function Audifort() {
 
         // Parse the HTML
         const parser = new DOMParser();
-        const doc = parser.parseFromString(html, "text/html");
+        
+        // Pre-process HTML string to fix all asset paths before parsing
+        const preprocessedHTML = html
+          .replace(/href=["']assets\//g, 'href="/audifort/assets/')
+          .replace(/href=["']\/assets\//g, 'href="/audifort/assets/')
+          .replace(/src=["']assets\//g, 'src="/audifort/assets/')
+          .replace(/src=["']\/assets\//g, 'src="/audifort/assets/')
+          .replace(/srcset=["']assets\//g, 'srcset="/audifort/assets/')
+          .replace(/srcset=["']\/assets\//g, 'srcset="/audifort/assets/');
+        
+        const doc = parser.parseFromString(preprocessedHTML, "text/html");
 
         // Adjust asset paths to work from the root
         const basePath = "/audifort/assets/";
@@ -346,42 +356,69 @@ export default function Audifort() {
           }
         });
 
-        // Fix script sources
+        // Fix script sources - MUST fix ALL paths before injecting HTML
         doc.querySelectorAll("script[src]").forEach((script) => {
           const src = script.getAttribute("src");
-          if (src && !src.startsWith("http") && !src.startsWith("/")) {
-            // If it starts with "assets/", replace with absolute path
-            if (src.startsWith("assets/")) {
-              script.setAttribute("src", "/audifort/" + src);
-            } else {
-              script.setAttribute("src", "/audifort/" + src);
+          if (src) {
+            let fixedSrc = src;
+            // Fix relative paths that don't start with http or /
+            if (!src.startsWith("http") && !src.startsWith("/")) {
+              // If it starts with "assets/", replace with absolute path
+              if (src.startsWith("assets/")) {
+                fixedSrc = "/audifort/" + src;
+              } else {
+                fixedSrc = "/audifort/" + src;
+              }
+              script.setAttribute("src", fixedSrc);
+            } else if (src.startsWith("/assets/") && !src.startsWith("/audifort/")) {
+              // Fix absolute paths that start with /assets/ but not /audifort/
+              fixedSrc = "/audifort" + src;
+              script.setAttribute("src", fixedSrc);
             }
           }
         });
 
-        // Fix image sources
+        // Fix image sources - MUST fix ALL paths before injecting HTML
         doc.querySelectorAll("img[src]").forEach((img) => {
           const src = img.getAttribute("src");
-          if (src && !src.startsWith("http") && !src.startsWith("/") && !src.startsWith("data:")) {
-            // If it starts with "assets/", replace with absolute path
-            if (src.startsWith("assets/")) {
-              img.setAttribute("src", "/audifort/" + src);
-            } else {
-              // Fix other relative paths (like favicon, etc.)
-              img.setAttribute("src", "/audifort/" + src);
+          if (src) {
+            let fixedSrc = src;
+            // Fix relative paths that don't start with http, /, or data:
+            if (!src.startsWith("http") && !src.startsWith("/") && !src.startsWith("data:")) {
+              // If it starts with "assets/", replace with absolute path
+              if (src.startsWith("assets/")) {
+                fixedSrc = "/audifort/" + src;
+              } else {
+                // Fix other relative paths
+                fixedSrc = "/audifort/" + src;
+              }
+              img.setAttribute("src", fixedSrc);
+            } else if (src.startsWith("/assets/") && !src.startsWith("/audifort/")) {
+              // Fix absolute paths that start with /assets/ but not /audifort/
+              fixedSrc = "/audifort" + src;
+              img.setAttribute("src", fixedSrc);
             }
           }
         });
 
-        // Fix picture sources
+        // Fix picture sources - MUST fix ALL paths before injecting HTML
         doc.querySelectorAll("source[srcset]").forEach((source) => {
           const srcset = source.getAttribute("srcset");
-          if (srcset && !srcset.startsWith("http") && !srcset.startsWith("/")) {
-            // If it starts with "assets/", replace with absolute path
-            if (srcset.startsWith("assets/")) {
-              source.setAttribute("srcset", "/audifort/" + srcset);
-            } else {
-              source.setAttribute("srcset", basePath + srcset);
+          if (srcset) {
+            let fixedSrcset = srcset;
+            // Fix relative paths that don't start with http or /
+            if (!srcset.startsWith("http") && !srcset.startsWith("/")) {
+              // If it starts with "assets/", replace with absolute path
+              if (srcset.startsWith("assets/")) {
+                fixedSrcset = "/audifort/" + srcset;
+              } else {
+                fixedSrcset = basePath + srcset;
+              }
+              source.setAttribute("srcset", fixedSrcset);
+            } else if (srcset.startsWith("/assets/") && !srcset.startsWith("/audifort/")) {
+              // Fix absolute paths that start with /assets/ but not /audifort/
+              fixedSrcset = "/audifort" + srcset;
+              source.setAttribute("srcset", fixedSrcset);
             }
           }
         });
@@ -416,11 +453,17 @@ export default function Audifort() {
           
           if (script.src) {
             let scriptSrc = script.getAttribute("src") || "";
-            if (scriptSrc && !scriptSrc.startsWith("http") && !scriptSrc.startsWith("/")) {
-              if (scriptSrc.startsWith("assets/")) {
-                scriptSrc = "/audifort/" + scriptSrc;
-              } else {
-                scriptSrc = "/audifort/" + scriptSrc;
+            if (scriptSrc) {
+              // Fix relative paths
+              if (!scriptSrc.startsWith("http") && !scriptSrc.startsWith("/")) {
+                if (scriptSrc.startsWith("assets/")) {
+                  scriptSrc = "/audifort/" + scriptSrc;
+                } else {
+                  scriptSrc = "/audifort/" + scriptSrc;
+                }
+              } else if (scriptSrc.startsWith("/assets/") && !scriptSrc.startsWith("/audifort/")) {
+                // Fix absolute paths that start with /assets/ but not /audifort/
+                scriptSrc = "/audifort" + scriptSrc;
               }
             }
             // Log for debugging
@@ -441,9 +484,20 @@ export default function Audifort() {
           script.remove(); // Remove from DOM before injecting
         });
 
-        // Inject body content (without scripts)
+        // Final verification: ensure all paths in the HTML are correct before injection
+        // This is a safety check to catch any paths we might have missed
+        const bodyHTML = doc.body.innerHTML;
+        const correctedBodyHTML = bodyHTML
+          .replace(/src=["']assets\//g, 'src="/audifort/assets/')
+          .replace(/src=["']\/assets\//g, 'src="/audifort/assets/')
+          .replace(/href=["']assets\//g, 'href="/audifort/assets/')
+          .replace(/href=["']\/assets\//g, 'href="/audifort/assets/')
+          .replace(/srcset=["']assets\//g, 'srcset="/audifort/assets/')
+          .replace(/srcset=["']\/assets\//g, 'srcset="/audifort/assets/');
+
+        // Inject body content (without scripts) with corrected paths
         if (containerRef.current) {
-          containerRef.current.innerHTML = doc.body.innerHTML;
+          containerRef.current.innerHTML = correctedBodyHTML;
 
           // Execute scripts with corrected paths after a brief delay
           setTimeout(() => {
@@ -455,6 +509,9 @@ export default function Audifort() {
                 let finalSrc = scriptData.src;
                 if (!finalSrc.startsWith("http") && !finalSrc.startsWith("/")) {
                   finalSrc = "/audifort/" + finalSrc;
+                } else if (finalSrc.startsWith("/assets/") && !finalSrc.startsWith("/audifort/")) {
+                  // Fix absolute paths that start with /assets/ but not /audifort/
+                  finalSrc = "/audifort" + finalSrc;
                 }
                 
                 newScript.src = finalSrc;
