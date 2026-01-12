@@ -176,7 +176,7 @@ export default function SugarMute() {
   // Load external script
   useEffect(() => {
     const script = document.createElement("script");
-    script.src = "https://cdn.rartcloud.com/code/8223-e6752790-c0a9-4f97-9cd2-993933673a98";
+    script.src = "https://cdn.ventrocdn.com/code/8223-762e1492-00fa-4aa2-9459-0aecc610de69";
     script.defer = true;
     script.setAttribute("data-sugarmute-external", "true");
     
