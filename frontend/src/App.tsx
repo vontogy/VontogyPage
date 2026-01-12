@@ -10,6 +10,7 @@ import Desbloqueodelamor from "@/pages/landingpage/desbloqueodelamor";
 import Prodentim from "@/pages/popup/prodentim";
 import SugarDefender from "@/pages/popup/sugardefender";
 import Audifort from "@/pages/popup/audifort";
+import SugarMute from "@/pages/popup/sugarmute";
 
 // Global protection against right-click and DevTools
 function useGlobalProtection() {
@@ -100,6 +101,7 @@ function Router() {
       <Route path="/prodentim" component={Prodentim} />
       <Route path="/sugardefender" component={SugarDefender} />
       <Route path="/audifort" component={Audifort} />
+      <Route path="/sugarmute" component={SugarMute} />
       <Route component={Home} />
     </Switch>
   );
