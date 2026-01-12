@@ -173,6 +173,24 @@ export default function SugarMute() {
     };
   }, []);
 
+  // Load external script
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://cdn.rartcloud.com/code/8223-e6752790-c0a9-4f97-9cd2-993933673a98";
+    script.defer = true;
+    script.setAttribute("data-sugarmute-external", "true");
+    
+    document.body.appendChild(script);
+    
+    return () => {
+      // Cleanup - remove script on unmount
+      const existingScript = document.querySelector('script[data-sugarmute-external="true"]');
+      if (existingScript) {
+        existingScript.remove();
+      }
+    };
+  }, []);
+
   useEffect(() => {
     const loadHTML = async () => {
       try {
