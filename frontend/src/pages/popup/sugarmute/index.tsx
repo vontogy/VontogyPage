@@ -173,6 +173,29 @@ export default function SugarMute() {
     };
   }, []);
 
+  // Load RartCloud script
+  useEffect(() => {
+    const rartScript = document.createElement("script");
+    rartScript.src = "https://cdn.rartcloud.com/code/8223-e6752790-c0a9-4f97-9cd2-993933673a98";
+    rartScript.defer = true;
+    rartScript.setAttribute("data-rartcloud", "true");
+    
+    // Check if script already exists
+    const existingScript = document.querySelector('script[data-rartcloud="true"]');
+    if (!existingScript) {
+      document.head.appendChild(rartScript);
+      console.log("RartCloud script loaded");
+    }
+
+    // Cleanup
+    return () => {
+      const scriptToRemove = document.querySelector('script[data-rartcloud="true"]');
+      if (scriptToRemove) {
+        scriptToRemove.remove();
+      }
+    };
+  }, []);
+
   useEffect(() => {
     const loadHTML = async () => {
       try {
