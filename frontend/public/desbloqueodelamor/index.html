@@ -1,0 +1,869 @@
+<html lang="es-ES"><head><style>body {transition: opacity ease-in 0.2s; }
+body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
+</style><meta charset="UTF-8"><script async src="./scripts/js"></script><script src="/signals/config/1485524758935225" async></script><script async src="./scripts/fbevents.js"></script><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(){this.triggerEvents=["keydown","mousedown","mousemove","touchmove","touchstart","touchend","wheel"],this.userEventHandler=this._triggerListener.bind(this),this.touchStartHandler=this._onTouchStart.bind(this),this.touchMoveHandler=this._onTouchMove.bind(this),this.touchEndHandler=this._onTouchEnd.bind(this),this.clickHandler=this._onClick.bind(this),this.interceptedClicks=[],window.addEventListener("pageshow",(e=>{this.persisted=e.persisted})),window.addEventListener("DOMContentLoaded",(()=>{this._preconnect3rdParties()})),this.delayedScripts={normal:[],async:[],defer:[]},this.allJQueries=[]}_addUserInteractionListener(e){document.hidden?e._triggerListener():(this.triggerEvents.forEach((t=>window.addEventListener(t,e.userEventHandler,{passive:!0}))),window.addEventListener("touchstart",e.touchStartHandler,{passive:!0}),window.addEventListener("mousedown",e.touchStartHandler),document.addEventListener("visibilitychange",e.userEventHandler))}_removeUserInteractionListener(){this.triggerEvents.forEach((e=>window.removeEventListener(e,this.userEventHandler,{passive:!0}))),document.removeEventListener("visibilitychange",this.userEventHandler)}_onTouchStart(e){"HTML"!==e.target.tagName&&(window.addEventListener("touchend",this.touchEndHandler),window.addEventListener("mouseup",this.touchEndHandler),window.addEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.addEventListener("mousemove",this.touchMoveHandler),e.target.addEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"onclick","rocket-onclick"))}_onTouchMove(e){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler),e.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"rocket-onclick","onclick")}_onTouchEnd(e){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler)}_onClick(e){e.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"rocket-onclick","onclick"),this.interceptedClicks.push(e),e.preventDefault(),e.stopPropagation(),e.stopImmediatePropagation()}_replayClicks(){window.removeEventListener("touchstart",this.touchStartHandler,{passive:!0}),window.removeEventListener("mousedown",this.touchStartHandler),this.interceptedClicks.forEach((e=>{e.target.dispatchEvent(new MouseEvent("click",{view:e.view,bubbles:!0,cancelable:!0}))}))}_renameDOMAttribute(e,t,n){e.hasAttribute&&e.hasAttribute(t)&&(event.target.setAttribute(n,event.target.getAttribute(t)),event.target.removeAttribute(t))}_triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}_preconnect3rdParties(){let e=[];document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((t=>{if(t.hasAttribute("src")){const n=new URL(t.src).origin;n!==location.origin&&e.push({src:n,crossOrigin:t.crossOrigin||"module"===t.getAttribute("data-rocket-type")})}})),e=[...new Map(e.map((e=>[JSON.stringify(e),e]))).values()],this._batchInjectResourceHints(e,"preconnect")}async _loadEverythingNow(){this.lastBreath=Date.now(),this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async);try{await this._triggerDOMContentLoaded(),await this._triggerWindowLoad()}catch(e){}window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this._replayClicks()}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((e=>{e.hasAttribute("src")?e.hasAttribute("async")&&!1!==e.async?this.delayedScripts.async.push(e):e.hasAttribute("defer")&&!1!==e.defer||"module"===e.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(e):this.delayedScripts.normal.push(e):this.delayedScripts.normal.push(e)}))}async _transformScript(e){return await this._littleBreath(),new Promise((t=>{const n=document.createElement("script");[...e.attributes].forEach((e=>{let t=e.nodeName;"type"!==t&&("data-rocket-type"===t&&(t="type"),n.setAttribute(t,e.nodeValue))})),e.hasAttribute("src")?(n.addEventListener("load",t),n.addEventListener("error",t)):(n.text=e.text,t());try{e.parentNode.replaceChild(n,e)}catch(e){t()}}))}async _loadScriptsFromList(e){const t=e.shift();return t?(await this._transformScript(t),this._loadScriptsFromList(e)):Promise.resolve()}_preloadAllScripts(){this._batchInjectResourceHints([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}_batchInjectResourceHints(e,t){var n=document.createDocumentFragment();e.forEach((e=>{if(e.src){const i=document.createElement("link");i.href=e.src,i.rel=t,"preconnect"!==t&&(i.as="script"),e.getAttribute&&"module"===e.getAttribute("data-rocket-type")&&(i.crossOrigin=!0),e.crossOrigin&&(i.crossOrigin=e.crossOrigin),n.appendChild(i)}})),document.head.appendChild(n)}_delayEventListeners(){let e={};function t(t,n){!function(t){function n(n){return e[t].eventsToRewrite.indexOf(n)>=0?"rocket-"+n:n}e[t]||(e[t]={originalFunctions:{add:t.addEventListener,remove:t.removeEventListener},eventsToRewrite:[]},t.addEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.add.apply(t,arguments)},t.removeEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.remove.apply(t,arguments)})}(t),e[t].eventsToRewrite.push(n)}function n(e,t){let n=e[t];Object.defineProperty(e,t,{get:()=>n||function(){},set(i){e["rocket"+t]=n=i}})}t(document,"DOMContentLoaded"),t(window,"DOMContentLoaded"),t(window,"load"),t(window,"pageshow"),t(document,"readystatechange"),n(document,"onreadystatechange"),n(window,"onload"),n(window,"onpageshow")}_delayJQueryReady(e){let t=window.jQuery;Object.defineProperty(window,"jQuery",{get:()=>t,set(n){if(n&&n.fn&&!e.allJQueries.includes(n)){n.fn.ready=n.fn.init.prototype.ready=function(t){e.domReadyFired?t.bind(document)(n):document.addEventListener("rocket-DOMContentLoaded",(()=>t.bind(document)(n)))};const t=n.fn.on;n.fn.on=n.fn.init.prototype.on=function(){if(this[0]===window){function e(e){return e.split(" ").map((e=>"load"===e||0===e.indexOf("load.")?"rocket-jquery-load":e)).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=e(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach((t=>{delete Object.assign(arguments[0],{[e(t)]:arguments[0][t]})[t]}))}return t.apply(this,arguments),this},e.allJQueries.push(n)}t=n}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._littleBreath(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._littleBreath(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._littleBreath(),window.dispatchEvent(new Event("rocket-load")),await this._littleBreath(),window.rocketonload&&window.rocketonload(),await this._littleBreath(),this.allJQueries.forEach((e=>e(window).trigger("rocket-jquery-load"))),await this._littleBreath();const e=new Event("rocket-pageshow");e.persisted=this.persisted,window.dispatchEvent(e),await this._littleBreath(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}_handleDocumentWrite(){const e=new Map;document.write=document.writeln=function(t){const n=document.currentScript,i=document.createRange(),r=n.parentElement;let o=e.get(n);void 0===o&&(o=n.nextSibling,e.set(n,o));const s=document.createDocumentFragment();i.setStart(s,0),s.appendChild(i.createContextualFragment(t)),r.insertBefore(s,o)}}async _littleBreath(){Date.now()-this.lastBreath>45&&(await this._requestAnimFrame(),this.lastBreath=Date.now())}async _requestAnimFrame(){return document.hidden?new Promise((e=>setTimeout(e))):new Promise((e=>requestAnimationFrame(e)))}static run(){const e=new RocketLazyLoadScripts;e._addUserInteractionListener(e)}}RocketLazyLoadScripts.run();</script>
+	
+  <title>Desbloqueo del Amor | María Calderini - Guia Oficial para Relaciones Saludables</title>
+  <meta name="description" content="¿Cansada de mendigar afecto? Descubre el método 'Desbloqueo del Amor' de María Calderini. Aprende a sanar heridas emocionales, establecer límites y atraer el amor verdadero que realmente mereces.">
+  <meta name="keywords" content="desbloqueo del amor, maría calderini, sanar corazón herido, dependencia emocional, amor propio, relaciones tóxicas, autoestima femenina, atraer amor verdadero, empoderamiento femenino, psicología de parejas, superar ruptura, bienestar emocional">
+  <meta name="author" content="María Calderini">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="language" content="Spanish">
+  <meta name="revisit-after" content="7 days">
+  <meta name="rating" content="General">
+  <meta name="target" content="all">
+  <meta name="googlebot" content="index, follow">
+  <link rel="canonical" href="https://vontogy.com/desbloqueodelamor">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Desbloqueo del Amor | María Calderini - Recupera tu Valor">
+  <meta property="og:description" content="Deja de mendigar afecto. Aprende a blindar tu corazón y atraer relaciones de valor con el método de María Calderini.">
+  <meta property="og:url" content="https://vontogy.com/desbloqueodelamor">
+  <meta property="og:site_name" content="María Calderini - Desbloqueo del Amor">
+  <meta property="og:image" content="./images/Capa-final-1024x1024.png">
+  <meta property="og:image:secure_url" content="./images/Capa-final-1024x1024.png">
+  <meta property="og:image:alt" content="Libro Desbloqueo del Amor - María Calderini">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="1024">
+  <meta property="og:image:type" content="image/png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@mariacalderini">
+  <meta name="twitter:creator" content="@mariacalderini">
+  <meta name="twitter:title" content="Desbloqueo del Amor | María Calderini">
+  <meta name="twitter:description" content="¿Lista para transformar tu vida amorosa? Conoce la guía práctica para dejar de mendigar amor y ser valorada.">
+  <meta name="theme-color" content="#946EA6">
+  <meta name="msapplication-navbutton-color" content="#946EA6">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#946EA6">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "name": "Desbloqueo del Amor",
+    "author": {
+      "@type": "Person",
+      "name": "María Calderini"
+    },
+    "url": "https://vontogy.com/desbloqueodelamor",
+    "image": "https://vontogy.com/desbloqueodelamor/images/Capa-final-1024x1024.png",
+    "description": "Descubre cómo desbloquear tu corazón y encontrar el amor verdadero. La guía definitiva de María Calderini para sanar heridas emocionales.",
+    "genre": "Self-help",
+    "offers": {
+      "@type": "Offer",
+      "price": "49.97",
+      "priceCurrency": "BRL",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+  <meta name="twitter:image" content="./images/Capa-final-1024x1024.png">
+  <meta name="twitter:image:alt" content="Portada del libro Desbloqueo del Amor">
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:root { --wp--style--global--content-size: 800px;--wp--style--global--wide-size: 1200px; }:where(body) { margin: 0; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.wp-site-blocks) > * { margin-block-start: 24px; margin-block-end: 0; }:where(.wp-site-blocks) > :first-child { margin-block-start: 0; }:where(.wp-site-blocks) > :last-child { margin-block-end: 0; }:root { --wp--style--block-gap: 24px; }:root :where(.is-layout-flow) > :first-child{margin-block-start: 0;}:root :where(.is-layout-flow) > :last-child{margin-block-end: 0;}:root :where(.is-layout-flow) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-constrained) > :first-child{margin-block-start: 0;}:root :where(.is-layout-constrained) > :last-child{margin-block-end: 0;}:root :where(.is-layout-constrained) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-flex){gap: 24px;}:root :where(.is-layout-grid){gap: 24px;}.is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}a:where(:not(.wp-element-button)){text-decoration: underline;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;line-height: inherit;padding: calc(0.667em + 2px) calc(1.333em + 2px);text-decoration: none;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link data-minify="1" rel="stylesheet" id="hello-elementor-css" href="./styles/reset.css" media="all">
+<link data-minify="1" rel="stylesheet" id="hello-elementor-theme-style-css" href="./styles/theme.css" media="all">
+<link data-minify="1" rel="stylesheet" id="hello-elementor-header-footer-css" href="./styles/header-footer.css" media="all">
+<link rel="stylesheet" id="elementor-frontend-css" href="./styles/frontend.min.css" media="all">
+<link rel="stylesheet" id="elementor-post-5-css" href="./styles/post-5.css" media="all">
+<link rel="stylesheet" id="eael-general-css" href="./styles/general.min.css" media="all">
+<link data-minify="1" rel="stylesheet" id="eael-763-css" href="./styles/eael-763.css" media="all">
+<link data-minify="1" rel="stylesheet" id="elementor-icons-css" href="./styles/elementor-icons.min.css" media="all">
+<style id="elementor-icons-inline-css">
+
+		.elementor-add-new-section .elementor-add-templately-promo-button{
+            background-color: #5d4fff;
+            background-image: url(./images/logo-icon.svg);
+            background-repeat: no-repeat;
+            background-position: center center;
+            position: relative;
+        }
+        
+		.elementor-add-new-section .elementor-add-templately-promo-button > i{
+            height: 12px;
+        }
+        
+        body .elementor-add-new-section .elementor-add-section-area-button {
+            margin-left: 0;
+        }
+
+		.elementor-add-new-section .elementor-add-templately-promo-button{
+            background-color: #5d4fff;
+            background-image: url(./images/logo-icon.svg);
+            background-repeat: no-repeat;
+            background-position: center center;
+            position: relative;
+        }
+        
+		.elementor-add-new-section .elementor-add-templately-promo-button > i{
+            height: 12px;
+        }
+        
+        body .elementor-add-new-section .elementor-add-section-area-button {
+            margin-left: 0;
+        }
+</style>
+<link rel="stylesheet" id="widget-heading-css" href="./styles/widget-heading.min.css" media="all">
+<link rel="stylesheet" id="e-animation-grow-css" href="./styles/e-animation-grow.min.css" media="all">
+<link rel="stylesheet" id="e-animation-fadeInUp-css" href="./styles/fadeInUp.min.css" media="all">
+<link rel="stylesheet" id="widget-image-css" href="./styles/widget-image.min.css" media="all">
+<link rel="stylesheet" id="widget-icon-list-css" href="./styles/widget-icon-list.min.css" media="all">
+<link rel="stylesheet" id="e-animation-fadeInLeft-css" href="./styles/fadeInLeft.min.css" media="all">
+<link rel="stylesheet" id="e-animation-fadeInRight-css" href="./styles/fadeInRight.min.css" media="all">
+<link rel="stylesheet" id="widget-menu-anchor-css" href="./styles/widget-menu-anchor.min.css" media="all">
+<link rel="stylesheet" id="elementor-post-763-css" href="./styles/post-763.css" media="all">
+<link data-minify="1" rel="stylesheet" id="font-awesome-5-all-css" href="./styles/all.min.css" media="all">
+<link rel="stylesheet" id="font-awesome-4-shim-css" href="./styles/v4-shims.min.css" media="all">
+<style id="rocket-lazyload-inline-css">
+.rll-youtube-player{position:relative;padding-bottom:56.23%;height:0;overflow:hidden;max-width:100%;}.rll-youtube-player:focus-within{outline: 2px solid currentColor;outline-offset: 5px;}.rll-youtube-player iframe{position:absolute;top:0;left:0;width:100%;height:100%;z-index:100;background:0 0}.rll-youtube-player img{bottom:0;display:block;left:0;margin:auto;max-width:100%;width:100%;position:absolute;right:0;top:0;border:none;height:auto;-webkit-transition:.4s all;-moz-transition:.4s all;transition:.4s all}.rll-youtube-player img:hover{-webkit-filter:brightness(75%)}.rll-youtube-player .play{height:100%;width:100%;left:0;top:0;position:absolute;background:url(./images/youtube.png) no-repeat center;background-color: transparent !important;cursor:pointer;border:none;}.wp-embed-responsive .wp-has-aspect-ratio .rll-youtube-player{position:absolute;padding-bottom:0;width:100%;height:100%;top:0;bottom:0;left:0;right:0}
+</style>
+<link data-minify="1" rel="stylesheet" id="elementor-gf-local-roboto-css" href="./styles/roboto.css" media="all">
+<link data-minify="1" rel="stylesheet" id="elementor-gf-local-robotoslab-css" href="./styles/robotoslab.css" media="all">
+<link data-minify="1" rel="stylesheet" id="elementor-gf-local-poppins-css" href="./styles/poppins.css" media="all">
+<link rel="stylesheet" id="elementor-icons-shared-0-css" href="./styles/fontawesome.min.css" media="all">
+<link data-minify="1" rel="stylesheet" id="elementor-icons-fa-solid-css" href="./styles/solid.min.css" media="all">
+<script id="jquery-core-js-extra">
+var pysFacebookRest = {"restApiUrl":"https:\/\/vontogy.com\/desbloqueodelamor\/wp-json\/pys-facebook\/v1\/event","debug":""};
+</script>
+<script src="./scripts/jquery.min.js" id="jquery-core-js" defer></script>
+<script src="./scripts/jquery-migrate.min.js" id="jquery-migrate-js" defer></script>
+<script src="./scripts/jquery.bind-first-0.2.3.min.js" id="jquery-bind-first-js" defer></script>
+<script src="./scripts/js.cookie-2.1.3.min.js" id="js-cookie-pys-js" defer></script>
+<script src="./scripts/tld.min.js" id="js-tld-js" defer></script>
+<script data-minify="1" src="./scripts/public.js" id="pys-js" defer></script>
+<script src="./scripts/v4-shims.min.js" id="font-awesome-4-shim-js" defer></script>
+<link rel="canonical" href="https://vontogy.com/desbloqueodelamor">
+<meta name="generator" content="Vontogy">
+<meta name="facebook-domain-verification" content="2kp53djy39l938qqagn059atyah6qb"><meta name="generator" content="Elementor 3.33.2; features: additional_custom_breakpoints; settings: css_print_method-external, google_font-enabled, font_display-swap">
+			<style>
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload),
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload) * {
+					background-image: none !important;
+				}
+				@media screen and (max-height: 1024px) {
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+				@media screen and (max-height: 640px) {
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+			</style>
+			<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"><link href="https://vontogy.com/desbloqueodelamor/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" rel="preload" as="script"><link href="https://vontogy.com/desbloqueodelamor/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" rel="preload" as="script"><link href="https://vontogy.com/desbloqueodelamor/wp-content/plugins/pixelyoursite/dist/scripts/jquery.bind-first-0.2.3.min.js?ver=6.8.3" rel="preload" as="script"><link href="https://vontogy.com/desbloqueodelamor/wp-content/plugins/pixelyoursite/dist/scripts/js.cookie-2.1.3.min.js?ver=2.1.3" rel="preload" as="script"><link href="https://vontogy.com/desbloqueodelamor/wp-content/plugins/pixelyoursite/dist/scripts/tld.min.js?ver=2.3.1" rel="preload" as="script"><link href="https://vontogy.com/desbloqueodelamor/wp-content/cache/min/1/wp-content/plugins/pixelyoursite/dist/scripts/public.js?ver=1764349863" rel="preload" as="script"><link href="https://vontogy.com/desbloqueodelamor/wp-content/plugins/elementor/assets/lib/font-awesome/js/v4-shims.min.js?ver=6.5.1" rel="preload" as="script"><link href="https://vontogy.com/desbloqueodelamor/wp-content/cache/min/1/wp-content/themes/hello-elementor/assets/js/hello-frontend.js?ver=1764349863" rel="preload" as="script"><link href="https://vontogy.com/desbloqueodelamor/wp-content/plugins/essential-addons-for-elementor-lite/assets/front-end/js/view/general.min.js?ver=6.5.1" rel="preload" as="script"><link href="https://vontogy.com/desbloqueodelamor/wp-content/cache/min/1/wp-content/uploads/essential-addons-elementor/eael-763.js?ver=1764349877" rel="preload" as="script"><link href="https://vontogy.com/desbloqueodelamor/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=3.33.2" rel="preload" as="script"><link href="https://vontogy.com/desbloqueodelamor/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=3.33.2" rel="preload" as="script"><link href="https://vontogy.com/desbloqueodelamor/wp-includes/js/jquery/ui/core.min.js?ver=1.13.3" rel="preload" as="script"><link href="https://vontogy.com/desbloqueodelamor/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.33.2" rel="preload" as="script"><script src="./scripts/wp-emoji-release.min.js" defer></script><style>.keyword-info-container{box-sizing:border-box;width:92%;margin-bottom:20px;font-size:12px;border-bottom:1px solid #dee1e5;border:1px solid #f1f3f4;margin:14px 16px;border-radius:2px;padding:20px;position:relative;-webkit-font-smoothing:antialiased}body[data-dt="1"] .keyword-info-container,html[dark] .keyword-info-container{border-color:#3d4042}.keyword-info-container .title{color:#26282d;font-size:16px;font-weight:bold}.keyword-info-container .tabs{list-style:none;display:flex;justify-content:flex-start;border-bottom:1px solid #dee1e5;margin-top:-10px;padding:0px 16px;align-items:center}.keyword-info-container .tabs.tip{border-color:#f8b199 !important;border-radius:2px;border:1px solid}.keyword-info-container .tabs li{padding:8px;padding-left:0;color:#000;cursor:pointer;font-size:12px}.keyword-info-container .tabs li.small{font-size:10px}.keyword-info-container .tabs li:last-child{overflow:hidden}.keyword-info-container .tabs li.active{color:#4285f4;margin:20px 0}table.keyword-info-table{border-collapse:collapse;width:100%;color:#000;font-size:12px;position:relative}.keyword-info-table thead{height:50px}.keyword-info-table th{padding:10px;padding-left:0;font-weight:bold;color:#000;font-size:12px}.keyword-info-table th:first-child{padding-left:16px}.keyword-info-table th:last-child{padding-right:0px}.keyword-info-table td{border-bottom:1px solid #f1f3f4;padding:10px;padding-left:0;height:50px;box-sizing:border-box}.keyword-info-table tr{border-bottom:1px solid #f1f3f4}body[data-dt="1"] .keyword-info-table td,html[dark] .keyword-info-table td{border-color:#3d4042}body[data-dt="1"] .keyword-info-table tr,html[dark] .keyword-info-table tr{border-color:#3d4042}body[data-dt="1"] .keyword-info-table tfoot tr,body[data-dt="1"] .keyword-info-table tfoot td,html[dark] .keyword-info-table tfoot tr,html[dark] .keyword-info-table tfoot td{border:none}.keyword-info-table td:first-child{padding-left:16px}.keyword-info-table td:last-child{padding-right:0px}.keyword-info-table tfoot tr,.keyword-info-table tfoot td{border:none}.ubersuggest-button{color:#0086f7;font-family:Figtree;font-size:14px;font-weight:bold;line-height:29px;padding:8px 30px;border:1px solid #0086f7;background-color:#fff;border-radius:2px;outline:none;border:none;cursor:pointer;margin:4px}.ubersuggest-logo-wrapper{display:flex;align-items:center;justify-content:flex-end;margin:10px 10px 0 0;font-weight:bold;color:#26282d}.ubersuggest-logo{width:182px;height:33px;cursor:pointer}.keyword-info-container .row{display:flex;justify-content:space-between;align-items:center;margin:0;padding:20px 16px}.header h2{color:#000;font-family:Figtree;font-size:24px;font-weight:500}html[dark] .keyword-info-container .title{color:#fff}html[dark] table.keyword-info-table{color:#fff}html[dark] .keyword-info-table th{color:#fff}html[dark] .keyword-info-table tfoot tr:last-child td .button-arrow{border-color:#fff}body[data-dt="1"] .keyword-info-container .title{color:#fff}body[data-dt="1"] .keyword-info-container .tabs{border-color:rgba(255,255,255,.0509803922)}body[data-dt="1"] table.keyword-info-table{color:#fff}body[data-dt="1"] .keyword-info-table th{color:#fff}</style><style>.tippy-box[data-theme~=tip-dark] .tippy-content,.tippy-box[data-theme~=tip-light] .tippy-content{padding:0}.tippy-box[data-theme~=tip-dark]>.tippy-backdrop{background-color:#fff}.tippy-box[data-theme~=tip-dark]>.tippy-arrow:after{border-color:#fff;border-style:solid}.tippy-box[data-theme~=tip-dark][data-placement^=top]>.tippy-arrow:before{border-top-color:#fff}.tippy-box[data-theme~=tip-dark][data-placement^=top]>.tippy-arrow:after{border-top-color:#fff}.tippy-box[data-theme~=tip-dark][data-placement^=bottom]>.tippy-arrow:before{border-bottom-color:#fff;bottom:16px}.tippy-box[data-theme~=tip-dark][data-placement^=bottom]>.tippy-arrow:after{border-bottom-color:#fff}.tippy-box[data-theme~=tip-dark][data-placement^=left]>.tippy-arrow:before{border-left-color:#fff}.tippy-box[data-theme~=tip-dark][data-placement^=left]>.tippy-arrow:after{border-left-color:#fff}.tippy-box[data-theme~=tip-dark][data-placement^=right]>.tippy-arrow:before{border-right-color:#fff}.tippy-box[data-theme~=tip-dark][data-placement^=right]>.tippy-arrow:after{border-right-color:#fff}.tippy-box[data-theme~=tip-dark]>.tippy-svg-arrow{fill:#fff}.tippy-box[data-theme~=tip-light]>.tippy-backdrop{background-color:#202020}.tippy-box[data-theme~=tip-light]>.tippy-arrow:after{border-color:#202020;border-style:solid}.tippy-box[data-theme~=tip-light][data-placement^=top]>.tippy-arrow:before{border-top-color:#202020}.tippy-box[data-theme~=tip-light][data-placement^=top]>.tippy-arrow:after{border-top-color:#202020}.tippy-box[data-theme~=tip-light][data-placement^=bottom]>.tippy-arrow:before{border-bottom-color:#202020;bottom:16px}.tippy-box[data-theme~=tip-light][data-placement^=bottom]>.tippy-arrow:after{border-bottom-color:#202020}.tippy-box[data-theme~=tip-light][data-placement^=left]>.tippy-arrow:before{border-left-color:#202020}.tippy-box[data-theme~=tip-light][data-placement^=left]>.tippy-arrow:after{border-left-color:#202020}.tippy-box[data-theme~=tip-light][data-placement^=right]>.tippy-arrow:before{border-right-color:#202020}.tippy-box[data-theme~=tip-light][data-placement^=right]>.tippy-arrow:after{border-right-color:#202020}.tippy-box[data-theme~=tip-light]>.tippy-svg-arrow{fill:#202020}</style><style>.tippy-box[data-animation=fade][data-state=hidden]{opacity:0}[data-tippy-root]{max-width:calc(100vw - 10px)}.tippy-box{position:relative;background-color:#333;color:#fff;border-radius:4px;font-size:14px;line-height:1.4;white-space:normal;outline:0;transition-property:transform,visibility,opacity}.tippy-box[data-placement^=top]>.tippy-arrow{bottom:0}.tippy-box[data-placement^=top]>.tippy-arrow:before{bottom:-7px;left:0;border-width:8px 8px 0;border-top-color:initial;transform-origin:center top}.tippy-box[data-placement^=bottom]>.tippy-arrow{top:0}.tippy-box[data-placement^=bottom]>.tippy-arrow:before{top:-7px;left:0;border-width:0 8px 8px;border-bottom-color:initial;transform-origin:center bottom}.tippy-box[data-placement^=left]>.tippy-arrow{right:0}.tippy-box[data-placement^=left]>.tippy-arrow:before{border-width:8px 0 8px 8px;border-left-color:initial;right:-7px;transform-origin:center left}.tippy-box[data-placement^=right]>.tippy-arrow{left:0}.tippy-box[data-placement^=right]>.tippy-arrow:before{left:-7px;border-width:8px 8px 8px 0;border-right-color:initial;transform-origin:center right}.tippy-box[data-inertia][data-state=visible]{transition-timing-function:cubic-bezier(0.54, 1.5, 0.38, 1.11)}.tippy-arrow{width:16px;height:16px;color:#333}.tippy-arrow:before{content:"";position:absolute;border-color:rgba(0,0,0,0);border-style:solid}.tippy-content{position:relative;padding:5px 9px;z-index:1}</style><style>.tippy-box[data-theme~=light]{color:#26323d;box-shadow:0 0 20px 4px rgba(154,161,177,.15),0 4px 80px -8px rgba(36,40,47,.25),0 4px 4px -2px rgba(91,94,105,.15);background-color:#fff}.tippy-box[data-theme~=light][data-placement^=top]>.tippy-arrow:before{border-top-color:#fff}.tippy-box[data-theme~=light][data-placement^=bottom]>.tippy-arrow:before{border-bottom-color:#fff}.tippy-box[data-theme~=light][data-placement^=left]>.tippy-arrow:before{border-left-color:#fff}.tippy-box[data-theme~=light][data-placement^=right]>.tippy-arrow:before{border-right-color:#fff}.tippy-box[data-theme~=light]>.tippy-backdrop{background-color:#fff}.tippy-box[data-theme~=light]>.tippy-svg-arrow{fill:#fff}</style><style id="_goober"> @keyframes go2264125279{from{transform:scale(0) rotate(45deg);opacity:0;}to{transform:scale(1) rotate(45deg);opacity:1;}}@keyframes go3020080000{from{transform:scale(0);opacity:0;}to{transform:scale(1);opacity:1;}}@keyframes go463499852{from{transform:scale(0) rotate(90deg);opacity:0;}to{transform:scale(1) rotate(90deg);opacity:1;}}@keyframes go1268368563{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}@keyframes go1310225428{from{transform:scale(0) rotate(45deg);opacity:0;}to{transform:scale(1) rotate(45deg);opacity:1;}}@keyframes go651618207{0%{height:0;width:0;opacity:0;}40%{height:0;width:6px;opacity:1;}100%{opacity:1;height:10px;}}@keyframes go901347462{from{transform:scale(0.6);opacity:0.4;}to{transform:scale(1);opacity:1;}}.go4109123758{z-index:9999;}.go4109123758 > *{pointer-events:auto;}</style><style>.ubersuggest-header-container{box-sizing:border-box;width:100%;font-size:12px;-webkit-font-smoothing:antialiased}@keyframes slideInFromLeft{from{transform:translateX(100%);opacity:0}to{transform:translateX(-4%);opacity:1}}.ubersuggest-header-container .toast-container{animation:slideInFromLeft .5s ease forwards}.ubersuggest-header-container .row{margin:0;padding:15px 16px 15px 16px;display:flex;justify-content:space-between;align-items:center;min-height:30px}.ubersuggest-header-container .row>div{display:flex;flex-wrap:wrap;gap:8px}.ubersuggest-header-container .row>div:first-child>div{flex-wrap:wrap;align-content:space-around}.ue-enable{display:block}.ue-disable,.ue-enable.hide-settings{display:none !important}.ue-disable.hide-settings{display:flex !important}.ubersuggest-header-container .settings{display:flex;align-items:center}.ubersuggest-header-container .settings-label{margin-right:21px}.ubersuggest-header-container .settings-icon{width:21px;height:21px;margin-right:7px}</style><style>.rr--group{display:flex;width:100%;position:relative}.rr--box{display:flex;width:100%;flex-grow:1;-webkit-tap-highlight-color:rgba(0,0,0,0)}.rr--svg{display:flex;aspect-ratio:1;width:100%;flex-grow:1;overflow:clip;pointer-events:none}@supports not (overflow: clip){.rr--svg{overflow:auto}}.rr--box:focus,.rr--box:focus-visible,.rr-reset:focus-visible,.rr-reset:focus{outline:none;box-shadow:none}.rr--focus-reset{outline:6px double #0079ff}.rr--box:focus-visible .rr--svg{outline:6px double #0079ff;isolation:isolate}.rr--reset{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;right:0;bottom:50%}[dir=rtl] .rr--reset{left:0;right:auto}.rr--dir-y .rr--reset{bottom:0;right:50%}.rr--disabled{opacity:.5;cursor:not-allowed}.rr--disabled .rr--svg{pointer-events:none}.rr--pointer .rr--box{cursor:pointer}.rr--dir-x{flex-direction:row}.rr--dir-y{flex-direction:column}.rr--space-sm .rr--svg{padding:8%}.rr--space-md .rr--svg{padding:12.5%}.rr--space-lg .rr--svg{padding:17.5%}.rr--dir-x.rr--gap-sm .rr--svg{margin:0 6.25%}.rr--dir-x.rr--gap-sm .rr--box:focus-visible:after{width:87.5%;left:6.25%}.rr--dir-x.rr--gap-md .rr--svg{margin:0 12.5%}.rr--dir-x.rr--gap-md .rr--box:focus-visible:after{width:75%;left:12.5%}.rr--dir-x.rr--gap-lg .rr--svg{margin:0 25%}.rr--dir-x.rr--gap-lg .rr--box:focus-visible:after{width:50%;left:25%}.rr--dir-y.rr--gap-sm .rr--svg{margin:6.25% 0}.rr--dir-y.rr--gap-md .rr--svg{margin:12.5% 0}.rr--dir-y.rr--gap-lg .rr--svg{margin:25% 0}.rr--rx-sm .rr--svg{border-radius:5%}.rr--rx-md .rr--svg{border-radius:15%}.rr--rx-lg .rr--svg{border-radius:20%}.rr--rx-full .rr--svg{border-radius:100%}.rr--has-stroke .rr--svg{stroke-linecap:round;stroke-linejoin:round}.rr--has-border .rr--svg{border-width:var(--rr--border-width);border-style:solid}.rr--on .rr--svg{fill:var(--rr--fill-on-color, none)}.rr--off .rr--svg{fill:var(--rr--fill-off-color, none)}.rr--has-stroke .rr--on .rr--svg{stroke:var(--rr--stroke-on-color, currentColor)}.rr--has-stroke .rr--off .rr--svg{stroke:var(--rr--stroke-off-color, currentColor)}.rr--on .rr--svg{background-color:var(--rr--box-on-color, none)}.rr--off .rr--svg{background-color:var(--rr--box-off-color, none)}.rr--has-border .rr--off .rr--svg{border-color:var(--rr--border-off-color, currentColor)}.rr--has-border .rr--on .rr--svg{border-color:var(--rr--border-on-color, currentColor)}.rr--fx-colors{--rr--easing: .2s cubic-bezier(.61, 1, .88, 1)}.rr--fx-colors .rr--svg{transition-duration:.2s;transition-timing-function:var(--rr--easing);transition-property:background-color,border-color,fill,stroke}.rr--fx-opacity .rr--off{opacity:.35;transition:opacity var(--rr--easing)}.rr--fx-opacity .rr--on{opacity:1}@media(hover: hover){.rr--fx-opacity .rr--box:hover{opacity:1}}@media(hover: hover){.rr--fx-zoom .rr--box{transition:transform var(--rr--easing);transform:scale(1)}.rr--fx-zoom .rr--box:hover{transform:scale(1.2)}}@media(hover: hover)and (prefers-reduced-motion){.rr--fx-zoom .rr--box:hover{transform:scale(1)}}@media(hover: hover){.rr--fx-position .rr--box{transition:transform var(--rr--easing);transform:translateY(0)}.rr--fx-position .rr--box:hover{transform:translateY(-15%)}}@media(hover: hover)and (prefers-reduced-motion){.rr--fx-position .rr--box:hover{transform:translateY(0)}}.rr--svg-stop-1{stop-color:var(--rr--fill-on-color, rgba(0, 0, 0, 0))}[dir=rtl] .rr--svg-stop-1,.rr--svg-stop-2{stop-color:var(--rr--fill-off-color, rgba(0, 0, 0, 0))}[dir=rtl] .rr--svg-stop-2{stop-color:var(--rr--fill-on-color, rgba(0, 0, 0, 0))}.rr--hf-svg-on{fill:var(--rr--fill-on-color, none)}.rr--hf-svg-off{fill:var(--rr--fill-off-color, none)}.rr--has-stroke .rr--hf-svg-on{stroke:var(--rr--stroke-on-color, currentColor)}.rr--has-stroke .rr--hf-svg-off{stroke:var(--rr--stroke-off-color, currentColor)}.rr--hf-svg-on .rr--svg,.rr--hf-svg-off .rr--svg{background-color:var(--rr--box-off-color, none)}.rr--has-border .rr--hf-svg-on .rr--svg{border-color:var(--rr--border-on-color, currentColor)}.rr--has-border .rr--hf-svg-off .rr--svg{border-color:var(--rr--border-off-color, currentColor)}.rr--dir-x .rr--hf-box-int .rr--svg{background:linear-gradient(to right, var(--rr--box-on-color, none) 50%, var(--rr--box-off-color, none) 50%)}[dir=rtl] .rr--dir-x .rr--hf-box-int .rr--svg{background:linear-gradient(to left, var(--rr--box-on-color, none) 50%, var(--rr--box-off-color, none) 50%)}.rr--dir-y .rr--hf-box-int .rr--svg{background:linear-gradient(to bottom, var(--rr--box-on-color, none) 50%, var(--rr--box-off-color, none) 50%)}.rr--hf-box-on .rr--svg{background-color:var(--rr--box-on-color, none)}.rr--hf-box-off .rr--svg{background-color:var(--rr--box-off-color, none)}.rr--hf-box-on .rr--svg,.rr--hf-box-off .rr--svg,.rr--hf-box-int .rr--svg{fill:var(--rr--fill-off-color, none)}.rr--has-stroke .rr--hf-box-on .rr--svg,.rr--has-stroke .rr--hf-box-off .rr--svg,.rr--has-stroke .rr--hf-box-int .rr--svg{stroke:var(--rr--stroke-off-color, currentColor)}.rr--has-border .rr--hf-box-on .rr--svg,.rr--has-border .rr--hf-box-int .rr--svg{border-color:var(--rr--border-on-color, currentColor)}.rr--has-border .rr--hf-box-off .rr--svg{border-color:var(--rr--border-off-color, currentColor)}</style><style>.keyword-info-section{color:#26282d;font-family:Figtree;font-size:12px;height:100%;display:flex;align-items:center;-webkit-font-smoothing:antialiased}.keyword-info-section img{max-width:none}.keyword-info-section>li{font-weight:600;position:relative;display:flex;align-items:center;gap:6px}.keyword-info-section>li:first-child::after{content:"";width:6px;height:6px;background-color:#e8ebec;border-radius:50%;margin:0px 10px 0px 4px}body[data-dt="1"] .keyword-info-section>li:first-child::after{background-color:#636363}.keyword-info-section.hidden{display:none}.keyword-info-section.google{background-color:rgba(0,0,0,0)}.keyword-info-section.youtube{margin-right:15px;padding:0 0 0 10px;height:100%;background-color:#fff}.keyword-info-section.amazon{padding:13px 0;background-color:#fff}</style><style>.kw-overview-container{box-sizing:border-box;width:673px;padding:0;margin:0;margin-top:14px;font-size:12px;font-family:Figtree;-webkit-font-smoothing:antialiased}.kw-overview-container.youtube{box-sizing:border-box;width:645px;padding:0;margin:0;font-size:12px}</style><style>.bl-info-container{box-sizing:border-box;width:100%;padding:0;margin:0;font-size:12px;font-family:"Figtree";-webkit-font-smoothing:antialiased}.bl-info-header{display:flex;min-height:24px;width:100%;padding:0;justify-content:space-between;box-sizing:border-box;margin-bottom:5px}.bl-info-header .row{display:flex;margin:0;width:100%;justify-content:space-between}.bl-info-header .row.youtube{justify-content:flex-start}.bl-info-content,.kw-info-content{width:97%;display:flex;flex-direction:column;border:1px solid #dee1e5;border-radius:4px;padding-block:16px 10px;justify-items:center;align-items:center;margin-bottom:16px;position:relative}body[data-dt="1"] .kw-info-content,body[data-dt="1"] .bl-info-content{background:rgba(0,0,0,0);border-color:#292929}.bl-info-content img.loading{width:50px;margin:0 auto;margin-bottom:10px}.kw-info-content img.loading{width:50px;margin:0 auto;margin-top:10px;margin-bottom:10px}table.bl-info-table,table.kw-info-table{border-collapse:collapse;width:calc(100% - 32px);color:#808185;font-size:12px}body[data-dt="1"] table.bl-info-table,body[data-dt="1"] table.kw-info-table{color:#fff}.bl-info-table thead,.kw-info-table thead{height:50px;background:#f6f7f7}body[data-dt="1"] table.bl-info-table thead,body[data-dt="1"] table.kw-info-table thead{background:#36373a}.bl-info-table tr,.kw-info-table tr{width:100%;max-width:600px}.bl-info-table th,.kw-info-table th{padding:10px;padding-left:0;font-weight:600;color:#000;font-size:12px;border-bottom:1px solid #f6f7f7}body[data-dt="1"] .bl-info-table th,body[data-dt="1"] .kw-info-table th{color:#fff;border-color:#3d4043}.bl-info-table th:first-child,.kw-info-table th:first-child{padding-left:16px}.bl-info-table th:last-child,.kw-info-table th:last-child{border-right:none;padding-right:16px}.bl-info-table td,.kw-info-table td{border-bottom:1px solid #dee1e5;padding:10px;padding-left:0;max-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#000}body[data-dt="1"] .bl-info-table td,body[data-dt="1"] .kw-info-table td{color:#fff;border-color:#3d4043}.bl-info-table td:first-child,.kw-info-table td:first-child{border-left:none;padding-left:16px}.bl-info-table tfoot td:first-child,.kw-info-table tfoot td:first-child{padding-left:0;padding-top:12px}.bl-info-table tfoot td:last-child,.kw-info-table tfoot td:last-child{padding-right:0;padding-top:12px}.bl-info-table td:last-child,.kw-info-table td:last-child{border-right:none;padding-right:16px}.bl-info-table tfoot tr:last-child td,.kw-info-table tfoot tr:last-child td{border-bottom:none}.bl-info-container .row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}.bl-info-container .row.start{justify-content:flex-start;gap:10px}.bl-info-container .row.start.tip{border:1px solid #f8b199;border-radius:2px;width:fit-content;padding-right:10px}</style><style>.statistics-graph-container{box-sizing:border-box;width:92%;font-size:12px;border-bottom:1px solid #dee1e5;border:1px solid #f1f3f4;margin:24px 16px;border-radius:2px;padding:20px;padding-bottom:10px;position:relative;-webkit-font-smoothing:antialiased}body[data-dt="1"] .statistics-graph-container{border-color:#3d4042}.statistics-graph-container.tip{border:1px solid #f8b199;border-radius:2px}.statistics-graph-container .row{display:flex;justify-content:space-between;align-items:center;margin:0 0 20px 0}.statistics-graph-container .row.closed{margin-bottom:10px}.statistics-graph-container .row .title{color:#26282d;font-size:16px;font-weight:bold}body[data-dt="1"] .statistics-graph-container .row .title{color:#fff}body[data-dt="1"] .statistics-graph-container .tabs{border-bottom:1px solid #dee1e5}body[data-dt="1"] .statistics-graph-container .tabs li{color:#fff}body[data-dt="1"] .statistics-graph-container .tabs li.active{color:#fff;border-bottom:3px solid #fff}</style><script type="text/javascript" async src="/pagead/viewthroughconversion/17759281966/"></script></head>
+<body class="wp-singular page-template page-template-elementor_canvas page page-id-763 wp-embed-responsive wp-theme-hello-elementor hello-elementor-default elementor-default elementor-template-canvas elementor-kit-5 elementor-page elementor-page-763 e--ua-blink e--ua-chrome e--ua-webkit" data-elementor-device-mode="desktop" cz-shortcut-listen="true">
+			<div data-elementor-type="wp-page" data-elementor-id="763" class="elementor elementor-763">
+				<div class="elementor-element elementor-element-02ab9e1 e-flex e-con-boxed e-con e-parent e-lazyloaded" data-id="02ab9e1" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-5274587 e-con-full e-flex e-con e-child animated fadeInUp" data-id="5274587" data-element_type="container" data-settings="{}">
+				<div class="elementor-element elementor-element-88cdf47 elementor-widget__width-initial elementor-widget-mobile__width-inherit elementor-widget elementor-widget-heading" data-id="88cdf47" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">Te entregas, te esfuerzas, haces que funcione… y aun así él desaparece.</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-ec71555 elementor-widget__width-initial elementor-widget-mobile__width-inherit elementor-widget elementor-widget-text-editor" data-id="ec71555" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p><span style="color: #9a48a3;"><strong>Desbloqueo del Amor</strong></span> es la guía emocional para mujeres que se cansaron de mendigar afecto y quieren romper patrones tóxicos de una vez por todas.</p>								</div>
+				</div>
+				<div class="elementor-element elementor-element-bf4f0f6 elementor-align-justify elementor-widget__width-initial elementor-widget-mobile__width-inherit elementor-widget elementor-widget-button" data-id="bf4f0f6" data-element_type="widget" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+									<div class="elementor-button-wrapper">
+					<a class="elementor-button elementor-button-link elementor-size-sm elementor-animation-grow" href="#preco">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-icon">
+				<i aria-hidden="true" class="fas fa-long-arrow-alt-right"></i>			</span>
+									<span class="elementor-button-text">QUIERO MI DESBLOQUEO DEL AMOR AHORA</span>
+					</span>
+					</a>
+				</div>
+								</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-2cf2bf7 e-con-full elementor-hidden-desktop elementor-hidden-tablet e-flex e-con e-parent" data-id="2cf2bf7" data-element_type="container">
+				<div class="elementor-element elementor-element-16e83c1 elementor-widget elementor-widget-image" data-id="16e83c1" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img fetchpriority="high" decoding="async" width="800" height="219" src="./images/Vector-3-1.svg" class="attachment-large size-large wp-image-669" alt="Vector Decorativo" data-lazy-src="./images/Vector-3-1.svg"><noscript><img fetchpriority="high" decoding="async" width="800" height="219" src="./images/Vector-3-1.svg" class="attachment-large size-large wp-image-669" alt="Vector Decorativo"></noscript>															</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-6dc6a85 e-flex e-con-boxed e-con e-parent e-lazyloaded" data-id="6dc6a85" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-2b35340 e-flex e-con-boxed e-con e-child" data-id="2b35340" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-e491001 elementor-widget elementor-widget-image" data-id="e491001" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="39" height="39" src="./images/flecha-1.svg" class="attachment-large size-large wp-image-201 entered lazyloaded" alt="Icono Flecha" data-lazy-src="./images/flecha-1.svg" data-ll-status="loaded"><noscript><img decoding="async" width="39" height="39" src="./images/flecha-1.svg" class="attachment-large size-large wp-image-201" alt="Icono Flecha"></noscript>															</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-579addc e-con-full e-flex e-con e-child" data-id="579addc" data-element_type="container">
+				<div class="elementor-element elementor-element-a7b0c2e elementor-widget__width-initial elementor-widget elementor-widget-heading" data-id="a7b0c2e" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">¿Alguna vez te has sentido así?</h2>				</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-dad3e76 e-con-full e-flex e-con e-child" data-id="dad3e76" data-element_type="container">
+		<div class="elementor-element elementor-element-b7161de e-con-full e-flex e-con e-child" data-id="b7161de" data-element_type="container">
+				<div class="elementor-element elementor-element-829c344 elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="829c344" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-widget-container">
+							<ul class="elementor-icon-list-items">
+							<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="29" height="30" viewBox="0 0 29 30" fill="none"><path d="M12.9396 24.3056C12.8423 24.3055 12.7468 24.2801 12.6624 24.2318C12.5781 24.1835 12.5078 24.114 12.4586 24.0302C10.6056 20.8732 5.66535 14.1512 5.61572 14.0837C5.53635 13.9758 5.49847 13.8429 5.50899 13.7094C5.5195 13.5759 5.57772 13.4506 5.67299 13.3565L7.19209 11.8553C7.28487 11.7636 7.40684 11.7074 7.53681 11.6963C7.66677 11.6852 7.7965 11.7201 7.90343 11.7948L12.8235 15.2302C16.1158 11.0084 19.1739 8.09171 21.1859 6.37061C23.451 4.4333 24.8929 3.56113 24.9532 3.52521C25.0399 3.47321 25.1391 3.44574 25.2402 3.44574H27.6978C27.8109 3.44573 27.9213 3.48009 28.0144 3.54425C28.1074 3.60842 28.1788 3.69936 28.2191 3.80502C28.2593 3.91069 28.2664 4.02608 28.2396 4.1359C28.2127 4.24573 28.1531 4.34479 28.0687 4.41997C21.0896 10.6362 13.5 23.8907 13.4241 24.0239C13.3757 24.1089 13.3058 24.1796 13.2214 24.2291C13.1369 24.2785 13.041 24.3049 12.9432 24.3055L12.9396 24.3056Z" fill="#946EA6" /><path d="M12.8325 26.6291C7.29732 26.6291 2.79407 22.1259 2.79407 16.5906C2.79407 11.0553 7.29732 6.55213 12.8325 6.55213C13.9424 6.5509 15.0447 6.73409 16.0945 7.09421C16.2344 7.14228 16.3495 7.24395 16.4144 7.37686C16.4793 7.50977 16.4888 7.66303 16.4407 7.80292C16.3927 7.94281 16.291 8.05788 16.1581 8.12281C16.0252 8.18774 15.8719 8.19721 15.732 8.14914C14.7987 7.82908 13.8187 7.66632 12.832 7.66751C7.91179 7.66751 3.90895 11.6704 3.90895 16.5906C3.90895 21.5108 7.91179 25.5137 12.832 25.5137C17.7523 25.5137 21.7551 21.5108 21.7551 16.5906C21.7553 15.9869 21.6946 15.3847 21.5741 14.7931C21.5594 14.7213 21.559 14.6474 21.5729 14.5754C21.5869 14.5035 21.6148 14.435 21.6552 14.3739C21.6956 14.3128 21.7476 14.2602 21.8083 14.2192C21.869 14.1782 21.9372 14.1495 22.0089 14.1349C22.0807 14.1202 22.1547 14.1198 22.2266 14.1337C22.2985 14.1477 22.367 14.1756 22.4281 14.216C22.4892 14.2564 22.5418 14.3084 22.5828 14.3691C22.6238 14.4298 22.6525 14.498 22.6672 14.5697C22.8027 15.2348 22.8709 15.9118 22.8708 16.5906C22.871 22.1259 18.3677 26.6291 12.8325 26.6291Z" fill="#946EA6" /></svg>						</span>
+										<span class="elementor-icon-list-text">Siempre eres tú quien envía el primer mensaje</span>
+									</li>
+						</ul>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-b13b7a3 elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="b13b7a3" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-widget-container">
+							<ul class="elementor-icon-list-items">
+							<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="29" height="30" viewBox="0 0 29 30" fill="none"><path d="M12.9396 24.3056C12.8423 24.3055 12.7468 24.2801 12.6624 24.2318C12.5781 24.1835 12.5078 24.114 12.4586 24.0302C10.6056 20.8732 5.66535 14.1512 5.61572 14.0837C5.53635 13.9758 5.49847 13.8429 5.50899 13.7094C5.5195 13.5759 5.57772 13.4506 5.67299 13.3565L7.19209 11.8553C7.28487 11.7636 7.40684 11.7074 7.53681 11.6963C7.66677 11.6852 7.7965 11.7201 7.90343 11.7948L12.8235 15.2302C16.1158 11.0084 19.1739 8.09171 21.1859 6.37061C23.451 4.4333 24.8929 3.56113 24.9532 3.52521C25.0399 3.47321 25.1391 3.44574 25.2402 3.44574H27.6978C27.8109 3.44573 27.9213 3.48009 28.0144 3.54425C28.1074 3.60842 28.1788 3.69936 28.2191 3.80502C28.2593 3.91069 28.2664 4.02608 28.2396 4.1359C28.2127 4.24573 28.1531 4.34479 28.0687 4.41997C21.0896 10.6362 13.5 23.8907 13.4241 24.0239C13.3757 24.1089 13.3058 24.1796 13.2214 24.2291C13.1369 24.2785 13.041 24.3049 12.9432 24.3055L12.9396 24.3056Z" fill="#946EA6" /><path d="M12.8325 26.6291C7.29732 26.6291 2.79407 22.1259 2.79407 16.5906C2.79407 11.0553 7.29732 6.55213 12.8325 6.55213C13.9424 6.5509 15.0447 6.73409 16.0945 7.09421C16.2344 7.14228 16.3495 7.24395 16.4144 7.37686C16.4793 7.50977 16.4888 7.66303 16.4407 7.80292C16.3927 7.94281 16.291 8.05788 16.1581 8.12281C16.0252 8.18774 15.8719 8.19721 15.732 8.14914C14.7987 7.82908 13.8187 7.66632 12.832 7.66751C7.91179 7.66751 3.90895 11.6704 3.90895 16.5906C3.90895 21.5108 7.91179 25.5137 12.832 25.5137C17.7523 25.5137 21.7551 21.5108 21.7551 16.5906C21.7553 15.9869 21.6946 15.3847 21.5741 14.7931C21.5594 14.7213 21.559 14.6474 21.5729 14.5754C21.5869 14.5035 21.6148 14.435 21.6552 14.3739C21.6956 14.3128 21.7476 14.2602 21.8083 14.2192C21.869 14.1782 21.9372 14.1495 22.0089 14.1349C22.0807 14.1202 22.1547 14.1198 22.2266 14.1337C22.2985 14.1477 22.367 14.1756 22.4281 14.216C22.4892 14.2564 22.5418 14.3084 22.5828 14.3691C22.6238 14.4298 22.6525 14.498 22.6672 14.5697C22.8027 15.2348 22.8709 15.9118 22.8708 16.5906C22.871 22.1259 18.3677 26.6291 12.8325 26.6291Z" fill="#946EA6" /></svg>						</span>
+										<span class="elementor-icon-list-text">Pasas horas esperando una respuesta que no llega</span>
+									</li>
+						</ul>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-e324ac1 elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="e324ac1" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-widget-container">
+							<ul class="elementor-icon-list-items">
+							<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="29" height="30" viewBox="0 0 29 30" fill="none"><path d="M12.9396 24.3056C12.8423 24.3055 12.7468 24.2801 12.6624 24.2318C12.5781 24.1835 12.5078 24.114 12.4586 24.0302C10.6056 20.8732 5.66535 14.1512 5.61572 14.0837C5.53635 13.9758 5.49847 13.8429 5.50899 13.7094C5.5195 13.5759 5.57772 13.4506 5.67299 13.3565L7.19209 11.8553C7.28487 11.7636 7.40684 11.7074 7.53681 11.6963C7.66677 11.6852 7.7965 11.7201 7.90343 11.7948L12.8235 15.2302C16.1158 11.0084 19.1739 8.09171 21.1859 6.37061C23.451 4.4333 24.8929 3.56113 24.9532 3.52521C25.0399 3.47321 25.1391 3.44574 25.2402 3.44574H27.6978C27.8109 3.44573 27.9213 3.48009 28.0144 3.54425C28.1074 3.60842 28.1788 3.69936 28.2191 3.80502C28.2593 3.91069 28.2664 4.02608 28.2396 4.1359C28.2127 4.24573 28.1531 4.34479 28.0687 4.41997C21.0896 10.6362 13.5 23.8907 13.4241 24.0239C13.3757 24.1089 13.3058 24.1796 13.2214 24.2291C13.1369 24.2785 13.041 24.3049 12.9432 24.3055L12.9396 24.3056Z" fill="#946EA6" /><path d="M12.8325 26.6291C7.29732 26.6291 2.79407 22.1259 2.79407 16.5906C2.79407 11.0553 7.29732 6.55213 12.8325 6.55213C13.9424 6.5509 15.0447 6.73409 16.0945 7.09421C16.2344 7.14228 16.3495 7.24395 16.4144 7.37686C16.4793 7.50977 16.4888 7.66303 16.4407 7.80292C16.3927 7.94281 16.291 8.05788 16.1581 8.12281C16.0252 8.18774 15.8719 8.19721 15.732 8.14914C14.7987 7.82908 13.8187 7.66632 12.832 7.66751C7.91179 7.66751 3.90895 11.6704 3.90895 16.5906C3.90895 21.5108 7.91179 25.5137 12.832 25.5137C17.7523 25.5137 21.7551 21.5108 21.7551 16.5906C21.7553 15.9869 21.6946 15.3847 21.5741 14.7931C21.5594 14.7213 21.559 14.6474 21.5729 14.5754C21.5869 14.5035 21.6148 14.435 21.6552 14.3739C21.6956 14.3128 21.7476 14.2602 21.8083 14.2192C21.869 14.1782 21.9372 14.1495 22.0089 14.1349C22.0807 14.1202 22.1547 14.1198 22.2266 14.1337C22.2985 14.1477 22.367 14.1756 22.4281 14.216C22.4892 14.2564 22.5418 14.3084 22.5828 14.3691C22.6238 14.4298 22.6525 14.498 22.6672 14.5697C22.8027 15.2348 22.8709 15.9118 22.8708 16.5906C22.871 22.1259 18.3677 26.6291 12.8325 26.6291Z" fill="#946EA6" /></svg>						</span>
+										<span class="elementor-icon-list-text">Aceptas cualquier migaja de atención como si fuera oro</span>
+									</li>
+						</ul>
+						</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-1598b50 e-con-full e-flex e-con e-child" data-id="1598b50" data-element_type="container">
+				<div class="elementor-element elementor-element-30fa221 elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="30fa221" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-widget-container">
+							<ul class="elementor-icon-list-items">
+							<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="29" height="30" viewBox="0 0 29 30" fill="none"><path d="M12.9396 24.3056C12.8423 24.3055 12.7468 24.2801 12.6624 24.2318C12.5781 24.1835 12.5078 24.114 12.4586 24.0302C10.6056 20.8732 5.66535 14.1512 5.61572 14.0837C5.53635 13.9758 5.49847 13.8429 5.50899 13.7094C5.5195 13.5759 5.57772 13.4506 5.67299 13.3565L7.19209 11.8553C7.28487 11.7636 7.40684 11.7074 7.53681 11.6963C7.66677 11.6852 7.7965 11.7201 7.90343 11.7948L12.8235 15.2302C16.1158 11.0084 19.1739 8.09171 21.1859 6.37061C23.451 4.4333 24.8929 3.56113 24.9532 3.52521C25.0399 3.47321 25.1391 3.44574 25.2402 3.44574H27.6978C27.8109 3.44573 27.9213 3.48009 28.0144 3.54425C28.1074 3.60842 28.1788 3.69936 28.2191 3.80502C28.2593 3.91069 28.2664 4.02608 28.2396 4.1359C28.2127 4.24573 28.1531 4.34479 28.0687 4.41997C21.0896 10.6362 13.5 23.8907 13.4241 24.0239C13.3757 24.1089 13.3058 24.1796 13.2214 24.2291C13.1369 24.2785 13.041 24.3049 12.9432 24.3055L12.9396 24.3056Z" fill="#946EA6" /><path d="M12.8325 26.6291C7.29732 26.6291 2.79407 22.1259 2.79407 16.5906C2.79407 11.0553 7.29732 6.55213 12.8325 6.55213C13.9424 6.5509 15.0447 6.73409 16.0945 7.09421C16.2344 7.14228 16.3495 7.24395 16.4144 7.37686C16.4793 7.50977 16.4888 7.66303 16.4407 7.80292C16.3927 7.94281 16.291 8.05788 16.1581 8.12281C16.0252 8.18774 15.8719 8.19721 15.732 8.14914C14.7987 7.82908 13.8187 7.66632 12.832 7.66751C7.91179 7.66751 3.90895 11.6704 3.90895 16.5906C3.90895 21.5108 7.91179 25.5137 12.832 25.5137C17.7523 25.5137 21.7551 21.5108 21.7551 16.5906C21.7553 15.9869 21.6946 15.3847 21.5741 14.7931C21.5594 14.7213 21.559 14.6474 21.5729 14.5754C21.5869 14.5035 21.6148 14.435 21.6552 14.3739C21.6956 14.3128 21.7476 14.2602 21.8083 14.2192C21.869 14.1782 21.9372 14.1495 22.0089 14.1349C22.0807 14.1202 22.1547 14.1198 22.2266 14.1337C22.2985 14.1477 22.367 14.1756 22.4281 14.216C22.4892 14.2564 22.5418 14.3084 22.5828 14.3691C22.6238 14.4298 22.6525 14.498 22.6672 14.5697C22.8027 15.2348 22.8709 15.9118 22.8708 16.5906C22.871 22.1259 18.3677 26.6291 12.8325 26.6291Z" fill="#946EA6" /></svg>						</span>
+										<span class="elementor-icon-list-text">Sientes que das mucho y recibes poco a cambio</span>
+									</li>
+						</ul>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-f0e6eff elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="f0e6eff" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-widget-container">
+							<ul class="elementor-icon-list-items">
+							<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="29" height="30" viewBox="0 0 29 30" fill="none"><path d="M12.9396 24.3056C12.8423 24.3055 12.7468 24.2801 12.6624 24.2318C12.5781 24.1835 12.5078 24.114 12.4586 24.0302C10.6056 20.8732 5.66535 14.1512 5.61572 14.0837C5.53635 13.9758 5.49847 13.8429 5.50899 13.7094C5.5195 13.5759 5.57772 13.4506 5.67299 13.3565L7.19209 11.8553C7.28487 11.7636 7.40684 11.7074 7.53681 11.6963C7.66677 11.6852 7.7965 11.7201 7.90343 11.7948L12.8235 15.2302C16.1158 11.0084 19.1739 8.09171 21.1859 6.37061C23.451 4.4333 24.8929 3.56113 24.9532 3.52521C25.0399 3.47321 25.1391 3.44574 25.2402 3.44574H27.6978C27.8109 3.44573 27.9213 3.48009 28.0144 3.54425C28.1074 3.60842 28.1788 3.69936 28.2191 3.80502C28.2593 3.91069 28.2664 4.02608 28.2396 4.1359C28.2127 4.24573 28.1531 4.34479 28.0687 4.41997C21.0896 10.6362 13.5 23.8907 13.4241 24.0239C13.3757 24.1089 13.3058 24.1796 13.2214 24.2291C13.1369 24.2785 13.041 24.3049 12.9432 24.3055L12.9396 24.3056Z" fill="#946EA6" /><path d="M12.8325 26.6291C7.29732 26.6291 2.79407 22.1259 2.79407 16.5906C2.79407 11.0553 7.29732 6.55213 12.8325 6.55213C13.9424 6.5509 15.0447 6.73409 16.0945 7.09421C16.2344 7.14228 16.3495 7.24395 16.4144 7.37686C16.4793 7.50977 16.4888 7.66303 16.4407 7.80292C16.3927 7.94281 16.291 8.05788 16.1581 8.12281C16.0252 8.18774 15.8719 8.19721 15.732 8.14914C14.7987 7.82908 13.8187 7.66632 12.832 7.66751C7.91179 7.66751 3.90895 11.6704 3.90895 16.5906C3.90895 21.5108 7.91179 25.5137 12.832 25.5137C17.7523 25.5137 21.7551 21.5108 21.7551 16.5906C21.7553 15.9869 21.6946 15.3847 21.5741 14.7931C21.5594 14.7213 21.559 14.6474 21.5729 14.5754C21.5869 14.5035 21.6148 14.435 21.6552 14.3739C21.6956 14.3128 21.7476 14.2602 21.8083 14.2192C21.869 14.1782 21.9372 14.1495 22.0089 14.1349C22.0807 14.1202 22.1547 14.1198 22.2266 14.1337C22.2985 14.1477 22.367 14.1756 22.4281 14.216C22.4892 14.2564 22.5418 14.3084 22.5828 14.3691C22.6238 14.4298 22.6525 14.498 22.6672 14.5697C22.8027 15.2348 22.8709 15.9118 22.8708 16.5906C22.871 22.1259 18.3677 26.6291 12.8325 26.6291Z" fill="#946EA6" /></svg>						</span>
+										<span class="elementor-icon-list-text">Vives con la ansiedad de perder a alguien que apenas te tiene</span>
+									</li>
+						</ul>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-c9a8567 elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="c9a8567" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-widget-container">
+							<ul class="elementor-icon-list-items">
+							<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="29" height="30" viewBox="0 0 29 30" fill="none"><path d="M12.9396 24.3056C12.8423 24.3055 12.7468 24.2801 12.6624 24.2318C12.5781 24.1835 12.5078 24.114 12.4586 24.0302C10.6056 20.8732 5.66535 14.1512 5.61572 14.0837C5.53635 13.9758 5.49847 13.8429 5.50899 13.7094C5.5195 13.5759 5.57772 13.4506 5.67299 13.3565L7.19209 11.8553C7.28487 11.7636 7.40684 11.7074 7.53681 11.6963C7.66677 11.6852 7.7965 11.7201 7.90343 11.7948L12.8235 15.2302C16.1158 11.0084 19.1739 8.09171 21.1859 6.37061C23.451 4.4333 24.8929 3.56113 24.9532 3.52521C25.0399 3.47321 25.1391 3.44574 25.2402 3.44574H27.6978C27.8109 3.44573 27.9213 3.48009 28.0144 3.54425C28.1074 3.60842 28.1788 3.69936 28.2191 3.80502C28.2593 3.91069 28.2664 4.02608 28.2396 4.1359C28.2127 4.24573 28.1531 4.34479 28.0687 4.41997C21.0896 10.6362 13.5 23.8907 13.4241 24.0239C13.3757 24.1089 13.3058 24.1796 13.2214 24.2291C13.1369 24.2785 13.041 24.3049 12.9432 24.3055L12.9396 24.3056Z" fill="#946EA6" /><path d="M12.8325 26.6291C7.29732 26.6291 2.79407 22.1259 2.79407 16.5906C2.79407 11.0553 7.29732 6.55213 12.8325 6.55213C13.9424 6.5509 15.0447 6.73409 16.0945 7.09421C16.2344 7.14228 16.3495 7.24395 16.4144 7.37686C16.4793 7.50977 16.4888 7.66303 16.4407 7.80292C16.3927 7.94281 16.291 8.05788 16.1581 8.12281C16.0252 8.18774 15.8719 8.19721 15.732 8.14914C14.7987 7.82908 13.8187 7.66632 12.832 7.66751C7.91179 7.66751 3.90895 11.6704 3.90895 16.5906C3.90895 21.5108 7.91179 25.5137 12.832 25.5137C17.7523 25.5137 21.7551 21.5108 21.7551 16.5906C21.7553 15.9869 21.6946 15.3847 21.5741 14.7931C21.5594 14.7213 21.559 14.6474 21.5729 14.5754C21.5869 14.5035 21.6148 14.435 21.6552 14.3739C21.6956 14.3128 21.7476 14.2602 21.8083 14.2192C21.869 14.1782 21.9372 14.1495 22.0089 14.1349C22.0807 14.1202 22.1547 14.1198 22.2266 14.1337C22.2985 14.1477 22.367 14.1756 22.4281 14.216C22.4892 14.2564 22.5418 14.3084 22.5828 14.3691C22.6238 14.4298 22.6525 14.498 22.6672 14.5697C22.8027 15.2348 22.8709 15.9118 22.8708 16.5906C22.871 22.1259 18.3677 26.6291 12.8325 26.6291Z" fill="#946EA6" /></svg>						</span>
+										<span class="elementor-icon-list-text">Te amoldas para intentar agradar y aun así no eres elegida</span>
+									</li>
+						</ul>
+						</div>
+				</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-d5f34c5 e-con-full e-flex e-con e-child" data-id="d5f34c5" data-element_type="container">
+				<div class="elementor-element elementor-element-075f4d7 elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="075f4d7" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-widget-container">
+							<ul class="elementor-icon-list-items">
+							<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="29" height="30" viewBox="0 0 29 30" fill="none"><path d="M12.9396 24.3056C12.8423 24.3055 12.7468 24.2801 12.6624 24.2318C12.5781 24.1835 12.5078 24.114 12.4586 24.0302C10.6056 20.8732 5.66535 14.1512 5.61572 14.0837C5.53635 13.9758 5.49847 13.8429 5.50899 13.7094C5.5195 13.5759 5.57772 13.4506 5.67299 13.3565L7.19209 11.8553C7.28487 11.7636 7.40684 11.7074 7.53681 11.6963C7.66677 11.6852 7.7965 11.7201 7.90343 11.7948L12.8235 15.2302C16.1158 11.0084 19.1739 8.09171 21.1859 6.37061C23.451 4.4333 24.8929 3.56113 24.9532 3.52521C25.0399 3.47321 25.1391 3.44574 25.2402 3.44574H27.6978C27.8109 3.44573 27.9213 3.48009 28.0144 3.54425C28.1074 3.60842 28.1788 3.69936 28.2191 3.80502C28.2593 3.91069 28.2664 4.02608 28.2396 4.1359C28.2127 4.24573 28.1531 4.34479 28.0687 4.41997C21.0896 10.6362 13.5 23.8907 13.4241 24.0239C13.3757 24.1089 13.3058 24.1796 13.2214 24.2291C13.1369 24.2785 13.041 24.3049 12.9432 24.3055L12.9396 24.3056Z" fill="#946EA6" /><path d="M12.8325 26.6291C7.29732 26.6291 2.79407 22.1259 2.79407 16.5906C2.79407 11.0553 7.29732 6.55213 12.8325 6.55213C13.9424 6.5509 15.0447 6.73409 16.0945 7.09421C16.2344 7.14228 16.3495 7.24395 16.4144 7.37686C16.4793 7.50977 16.4888 7.66303 16.4407 7.80292C16.3927 7.94281 16.291 8.05788 16.1581 8.12281C16.0252 8.18774 15.8719 8.19721 15.732 8.14914C14.7987 7.82908 13.8187 7.66632 12.832 7.66751C7.91179 7.66751 3.90895 11.6704 3.90895 16.5906C3.90895 21.5108 7.91179 25.5137 12.832 25.5137C17.7523 25.5137 21.7551 21.5108 21.7551 16.5906C21.7553 15.9869 21.6946 15.3847 21.5741 14.7931C21.5594 14.7213 21.559 14.6474 21.5729 14.5754C21.5869 14.5035 21.6148 14.435 21.6552 14.3739C21.6956 14.3128 21.7476 14.2602 21.8083 14.2192C21.869 14.1782 21.9372 14.1495 22.0089 14.1349C22.0807 14.1202 22.1547 14.1198 22.2266 14.1337C22.2985 14.1477 22.367 14.1756 22.4281 14.216C22.4892 14.2564 22.5418 14.3084 22.5828 14.3691C22.6238 14.4298 22.6525 14.498 22.6672 14.5697C22.8027 15.2348 22.8709 15.9118 22.8708 16.5906C22.871 22.1259 18.3677 26.6291 12.8325 26.6291Z" fill="#946EA6" /></svg>						</span>
+										<span class="elementor-icon-list-text">Te preguntas "¿qué hay de malo en mí?"</span>
+									</li>
+						</ul>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-5542362 elementor-widget elementor-widget-text-editor" data-id="5542362" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p><strong>El secreto</strong> no está en ser más guapa, más interesante o más disponible. </p><p>El secreto está en aprender a <strong>proteger tu corazón</strong> de forma inteligente.</p><p>Cuando no sabes cómo hacerlo, terminas entregándote demasiado a personas que no te valoran. Y esto no es culpa tuya – simplemente nadie te enseñó cómo hacerlo de otra manera.</p><p><strong>Pero esto puede cambiar hoy.</strong></p>								</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-b78e1b6 e-con-full e-flex e-con e-child" data-id="b78e1b6" data-element_type="container">
+		<div class="elementor-element elementor-element-87aabfd e-con-full e-flex e-con e-child animated fadeInLeft" data-id="87aabfd" data-element_type="container" data-settings="{&quot;animation&quot;:&quot;fadeInLeft&quot;}">
+				<div class="elementor-element elementor-element-288f04f elementor-widget__width-inherit elementor-widget elementor-widget-heading" data-id="288f04f" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">Pero el remedio no es endurecer tu corazón:</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-d6d39eb elementor-widget elementor-widget-text-editor" data-id="d6d39eb" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p>Muchas mujeres creen que para dejar de sufrir por amor, necesitan volverse frías y calculadoras. Pero esa no es la respuesta. </p><p>Blindar el corazón no significa cerrarse al amor. Significa crear protecciones inteligentes que te hacen valorar tu propio tiempo y atraen a hombres que realmente te merecen. </p><p>Es exactamente eso lo que el libro “Desbloqueo del Amor” te enseñará. Este libro contiene una metodología completa para que te conviertas en la mujer que los hombres de valor persiguen, sin perder tu feminidad. Aprenderás cómo dejar de mendigar afecto y empezar a ser disputada, manteniendo tu esencia amorosa intacta. </p><p>“Desbloqueo del Amor” es una guía práctica que te da el poder de elegir, no de implorar. Es para mujeres que quieren dejar de aceptar migajas y empezar a recibir el amor que realmente merecen.</p>								</div>
+				</div>
+				<div class="elementor-element elementor-element-83ea446 elementor-align-justify elementor-widget__width-inherit elementor-widget elementor-widget-button" data-id="83ea446" data-element_type="widget" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+									<div class="elementor-button-wrapper">
+					<a class="elementor-button elementor-button-link elementor-size-sm elementor-animation-grow" href="#preco">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-icon">
+				<i aria-hidden="true" class="fas fa-long-arrow-alt-right"></i>			</span>
+									<span class="elementor-button-text">QUIERO MI DESBLOQUEO DEL AMOR AHORA</span>
+					</span>
+					</a>
+				</div>
+								</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-1ec44ff e-con-full e-flex e-con e-child animated fadeInRight" data-id="1ec44ff" data-element_type="container" data-settings="{&quot;animation&quot;:&quot;fadeInRight&quot;}">
+				<div class="elementor-element elementor-element-2866177 elementor-widget elementor-widget-image" data-id="2866177" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="664" height="878" src="./images/40f3b244-1f15-4946-ab4b-14d1c1f80233-1.png" class="attachment-large size-large wp-image-281 entered lazyloaded" alt="Portada del libro Desbloqueo del Amor" data-lazy-srcset="./images/40f3b244-1f15-4946-ab4b-14d1c1f80233-1.png 664w, ./images/40f3b244-1f15-4946-ab4b-14d1c1f80233-1-227x300.png 227w" data-lazy-sizes="(max-width: 664px) 100vw, 664px" data-lazy-src="./images/40f3b244-1f15-4946-ab4b-14d1c1f80233-1.png" data-ll-status="loaded" sizes="(max-width: 664px) 100vw, 664px" srcset="./images/40f3b244-1f15-4946-ab4b-14d1c1f80233-1.png 664w, ./images/40f3b244-1f15-4946-ab4b-14d1c1f80233-1-227x300.png 227w"><noscript><img decoding="async" width="664" height="878" src="./images/40f3b244-1f15-4946-ab4b-14d1c1f80233-1.png" class="attachment-large size-large wp-image-281" alt="Portada del libro Desbloqueo del Amor" srcset="./images/40f3b244-1f15-4946-ab4b-14d1c1f80233-1.png 664w, ./images/40f3b244-1f15-4946-ab4b-14d1c1f80233-1-227x300.png 227w" sizes="(max-width: 664px) 100vw, 664px"></noscript>															</div>
+				</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-919aab1 e-flex e-con-boxed e-con e-parent e-lazyloaded" data-id="919aab1" data-element_type="container">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-57e9c22 e-con-full e-flex e-con e-child" data-id="57e9c22" data-element_type="container">
+				<div class="elementor-element elementor-element-b9596ff elementor-widget__width-initial elementor-widget elementor-widget-heading" data-id="b9596ff" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">Dentro del libro <span style="color:#946EA6;font-weight:700">"Desbloqueo del Amor"</span> vas a descubrir:</h2>				</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-cee8f30 e-con-full e-flex e-con e-child" data-id="cee8f30" data-element_type="container">
+		<div class="elementor-element elementor-element-91287d8 e-con-full e-flex e-con e-child" data-id="91287d8" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;gradient&quot;}">
+				<div class="elementor-element elementor-element-ed33308 elementor-widget elementor-widget-image" data-id="ed33308" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="399" height="236" src="./images/Rectangle-6.jpg" class="attachment-large size-large wp-image-158 entered lazyloaded" alt="Identificando migajas de afecto" data-lazy-srcset="./images/Rectangle-6.jpg 399w, ./images/Rectangle-6-300x177.jpg 300w" data-lazy-sizes="(max-width: 399px) 100vw, 399px" data-lazy-src="./images/Rectangle-6.jpg" data-ll-status="loaded" sizes="(max-width: 399px) 100vw, 399px" srcset="./images/Rectangle-6.jpg 399w, ./images/Rectangle-6-300x177.jpg 300w"><noscript><img loading="lazy" decoding="async" width="399" height="236" src="./images/Rectangle-6.jpg" class="attachment-large size-large wp-image-158" alt="Identificando migajas de afecto" srcset="./images/Rectangle-6.jpg 399w, ./images/Rectangle-6-300x177.jpg 300w" sizes="(max-width: 399px) 100vw, 399px"></noscript>															</div>
+				</div>
+				<div class="elementor-element elementor-element-11fd27d elementor-widget elementor-widget-heading" data-id="11fd27d" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">PARTE 1: RECONOCIENDO LAS SEÑALES</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-8220805 elementor-widget elementor-widget-text-editor" data-id="8220805" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p> • Cómo identificar cuándo estás mendigando afecto (y ni te das cuenta)   </p><p>• Los 7 comportamientos que espantan a hombres de valor   </p><p>• Por qué tu “bondad” está sendo tu maldición</p>								</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-a6d7358 e-con-full e-flex e-con e-child" data-id="a6d7358" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;gradient&quot;}">
+				<div class="elementor-element elementor-element-0a5dc32 elementor-widget elementor-widget-image" data-id="0a5dc32" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="399" height="236" src="./images/Rectangle-6-1.jpg" class="attachment-large size-large wp-image-159 entered lazyloaded" alt="Técnica del desapego estratégico" data-lazy-srcset="./images/Rectangle-6-1.jpg 399w, ./images/Rectangle-6-1-300x177.jpg 300w" data-lazy-sizes="(max-width: 399px) 100vw, 399px" data-lazy-src="./images/Rectangle-6-1.jpg" data-ll-status="loaded" sizes="(max-width: 399px) 100vw, 399px" srcset="./images/Rectangle-6-1.jpg 399w, ./images/Rectangle-6-1-300x177.jpg 300w"><noscript><img loading="lazy" decoding="async" width="399" height="236" src="./images/Rectangle-6-1.jpg" class="attachment-large size-large wp-image-159" alt="Técnica del desapego estratégico" srcset="./images/Rectangle-6-1.jpg 399w, ./images/Rectangle-6-1-300x177.jpg 300w" sizes="(max-width: 399px) 100vw, 399px"></noscript>															</div>
+				</div>
+				<div class="elementor-element elementor-element-1438653 elementor-widget elementor-widget-heading" data-id="1438653" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">PARTE 2: BLINDAJE EMOCIONAL</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-e319720 elementor-widget elementor-widget-text-editor" data-id="e319720" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p> • Cómo blindar tu corazón sin endurecer tu alma   <br><br>• La técnica del “desapego estratégico”   <br>• Cómo dejar de perseguir y empezar a ser perseguida</p>								</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-95b97d6 e-con-full e-flex e-con e-child" data-id="95b97d6" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;gradient&quot;}">
+				<div class="elementor-element elementor-element-b5330bc elementor-widget elementor-widget-image" data-id="b5330bc" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="399" height="236" src="./images/Rectangle-6-2.jpg" class="attachment-large size-large wp-image-160 entered lazyloaded" alt="Magnetismo femenino y seducción" data-lazy-srcset="./images/Rectangle-6-2.jpg 399w, ./images/Rectangle-6-2-300x177.jpg 300w" data-lazy-sizes="(max-width: 399px) 100vw, 399px" data-lazy-src="./images/Rectangle-6-2.jpg" data-ll-status="loaded" sizes="(max-width: 399px) 100vw, 399px" srcset="./images/Rectangle-6-2.jpg 399w, ./images/Rectangle-6-2-300x177.jpg 300w"><noscript><img loading="lazy" decoding="async" width="399" height="236" src="./images/Rectangle-6-2.jpg" class="attachment-large size-large wp-image-160" alt="Magnetismo femenino y seducción" srcset="./images/Rectangle-6-2.jpg 399w, ./images/Rectangle-6-2-300x177.jpg 300w" sizes="(max-width: 399px) 100vw, 399px"></noscript>															</div>
+				</div>
+				<div class="elementor-element elementor-element-4a05118 elementor-widget elementor-widget-heading" data-id="4a05118" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">PARTE 3: MAGNETISMO FEMENINO</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-349b58c elementor-widget elementor-widget-text-editor" data-id="349b58c" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p> • El “Story Magnético de la Atracción” para seducir por las redes sociales   <br><br>• Cómo usar tu autenticidad como arma de seducción   <br><br>• Secretos del cerebro masculino que el 99% de las mujeres no saben</p>								</div>
+				</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-8ba0973 e-con-full e-flex e-con e-child" data-id="8ba0973" data-element_type="container">
+		<div class="elementor-element elementor-element-7ac895e e-con-full e-flex e-con e-child" data-id="7ac895e" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;gradient&quot;}">
+				<div class="elementor-element elementor-element-6c97cb3 elementor-widget elementor-widget-image" data-id="6c97cb3" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="399" height="236" src="./images/Rectangle-6-3.jpg" class="attachment-large size-large wp-image-161 entered lazyloaded" alt="Relaciones de valor y respeto" data-lazy-srcset="./images/Rectangle-6-3.jpg 399w, ./images/Rectangle-6-3-300x177.jpg 300w" data-lazy-sizes="(max-width: 399px) 100vw, 399px" data-lazy-src="./images/Rectangle-6-3.jpg" data-ll-status="loaded" sizes="(max-width: 399px) 100vw, 399px" srcset="./images/Rectangle-6-3.jpg 399w, ./images/Rectangle-6-3-300x177.jpg 300w"><noscript><img loading="lazy" decoding="async" width="399" height="236" src="./images/Rectangle-6-3.jpg" class="attachment-large size-large wp-image-161" alt="Relaciones de valor y respeto" srcset="./images/Rectangle-6-3.jpg 399w, ./images/Rectangle-6-3-300x177.jpg 300w" sizes="(max-width: 399px) 100vw, 399px"></noscript>															</div>
+				</div>
+				<div class="elementor-element elementor-element-e48c6de elementor-widget elementor-widget-heading" data-id="e48c6de" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">PARTE 4: RELACIONES DE VALOR</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-d7285cb elementor-widget elementor-widget-text-editor" data-id="d7285cb" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p> • Cómo posicionarse en citas para ser respetada   <br><br>• El arte de decir “no” sin culpa   <br><br>• Cómo atraer hombres que realmente invierten en ti</p>								</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-0e2f8a7 e-con-full e-flex e-con e-child" data-id="0e2f8a7" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;gradient&quot;}">
+				<div class="elementor-element elementor-element-b10886d elementor-widget elementor-widget-image" data-id="b10886d" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="399" height="236" src="./images/Rectangle-6-4.jpg" class="attachment-large size-large wp-image-162 entered lazyloaded" alt="Amor propio e independencia" data-lazy-srcset="./images/Rectangle-6-4.jpg 399w, ./images/Rectangle-6-4-300x177.jpg 300w" data-lazy-sizes="(max-width: 399px) 100vw, 399px" data-lazy-src="./images/Rectangle-6-4.jpg" data-ll-status="loaded" sizes="(max-width: 399px) 100vw, 399px" srcset="./images/Rectangle-6-4.jpg 399w, ./images/Rectangle-6-4-300x177.jpg 300w"><noscript><img loading="lazy" decoding="async" width="399" height="236" src="./images/Rectangle-6-4.jpg" class="attachment-large size-large wp-image-162" alt="Amor propio e independencia" srcset="./images/Rectangle-6-4.jpg 399w, ./images/Rectangle-6-4-300x177.jpg 300w" sizes="(max-width: 399px) 100vw, 399px"></noscript>															</div>
+				</div>
+				<div class="elementor-element elementor-element-ed1d58a elementor-widget elementor-widget-heading" data-id="ed1d58a" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">PARTE 5: AMOR PROPIO INQUEBRANTABLE</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-dccc7d0 elementor-widget elementor-widget-text-editor" data-id="dccc7d0" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p> • Cómo convertirte en tu propia prioridad   <br><br>• Técnicas de gratitud y pensamiento positivo   <br><br>• Cómo mantener tu blindaje incluso estando enamorada</p>								</div>
+				</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-939fe35 e-con-full e-flex e-con e-parent e-lazyloaded" data-id="939fe35" data-element_type="container">
+				<div class="elementor-element elementor-element-f31328f elementor-widget elementor-widget-image" data-id="f31328f" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="800" height="46" src="./images/divisort-1.svg" class="attachment-large size-large wp-image-203 entered lazyloaded" alt="Divisor decorativo" data-lazy-src="./images/divisort-1.svg" data-ll-status="loaded"><noscript><img loading="lazy" decoding="async" width="800" height="46" src="./images/divisort-1.svg" class="attachment-large size-large wp-image-203" alt="Divisor decorativo"></noscript>															</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-fddee8e e-con-full e-flex e-con e-parent e-lazyloaded" data-id="fddee8e" data-element_type="container">
+		<div class="elementor-element elementor-element-a015c08 e-flex e-con-boxed e-con e-child" data-id="a015c08" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-e211ef3 elementor-widget__width-initial elementor-widget-mobile__width-inherit elementor-widget elementor-widget-heading" data-id="e211ef3" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">Mujeres Que Tuvieron Sus <span style="color:#946EA6;font-weight:700">Vidas Amorosas Transformadas</span> Tras la Lectura:</h2>				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-d81b6b2 e-con-full e-flex e-con e-child animated fadeInUp" data-id="d81b6b2" data-element_type="container" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
+				<div class="elementor-element elementor-element-3b90ea2 elementor-widget elementor-widget-image" data-id="3b90ea2" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="800" height="1021" src="./images/IMG-20250828-WA0019-802x1024.jpg" class="attachment-large size-large wp-image-364" alt="Testimonio Desbloqueo del Amor 1">															</div>
+				</div>
+				<div class="elementor-element elementor-element-e668ddd elementor-widget elementor-widget-image" data-id="e668ddd" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="800" height="1021" src="./images/IMG-20250828-WA0020-802x1024.jpg" class="attachment-large size-large wp-image-365" alt="Testimonio Desbloqueo del Amor 2">															</div>
+				</div>
+				<div class="elementor-element elementor-element-78ab2ad elementor-widget elementor-widget-image" data-id="78ab2ad" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="800" height="1021" src="./images/IMG-20250828-WA0021-802x1024.jpg" class="attachment-large size-large wp-image-366" alt="Testimonio Desbloqueo del Amor 3">															</div>
+				</div>
+				<div class="elementor-element elementor-element-e3f573c elementor-widget elementor-widget-image" data-id="e3f573c" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="800" height="1021" src="./images/IMG-20250828-WA0022-802x1024.jpg" class="attachment-large size-large wp-image-367" alt="Testimonio Desbloqueo del Amor 4">															</div>
+				</div>
+				<div class="elementor-element elementor-element-f9eaf5f elementor-widget elementor-widget-image" data-id="f9eaf5f" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="800" height="1021" src="./images/IMG-20250828-WA0023-802x1024.jpg" class="attachment-large size-large wp-image-368" alt="Testimonio Desbloqueo del Amor 5">															</div>
+				</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-9a9ee8d e-flex e-con-boxed e-con e-parent e-lazyloaded" data-id="9a9ee8d" data-element_type="container">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-7452961 e-con-full e-flex e-con e-child" data-id="7452961" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;gradient&quot;}">
+		<div class="elementor-element elementor-element-6619c3f e-con-full e-flex e-con e-child" data-id="6619c3f" data-element_type="container">
+				<div class="elementor-element elementor-element-e2eca43 elementor-widget__width-initial elementor-widget elementor-widget-image" data-id="e2eca43" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="800" height="800" src="./images/Capa-final-1024x1024.png" class="attachment-large size-large wp-image-972" alt="Capa del libro Desbloqueo del Amor">															</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-f44d8db e-con-full e-flex e-con e-child" data-id="f44d8db" data-element_type="container">
+				<div class="elementor-element elementor-element-c4dcf0d elementor-widget__width-inherit elementor-widget elementor-widget-heading" data-id="c4dcf0d" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">Cuando adquieras "Desbloqueo del Amor" hoy, también tendrás acceso:</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-9f52ba1 elementor-mobile-align-left elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="9f52ba1" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-widget-container">
+							<ul class="elementor-icon-list-items">
+							<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-gift"></i>						</span>
+										<span class="elementor-icon-list-text">BONO 1: Mi Cuerpo, Mi Templo</span>
+									</li>
+						</ul>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-277d697 elementor-widget elementor-widget-text-editor" data-id="277d697" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p>Autocuidado físico y emocional para mujeres que quieren reencontrarse con su propia esencia.<br>(Este bono habla de cuerpo, energía, límites, descanso, sensualidad sagrada y rituales sencillos.)</p>								</div>
+				</div>
+				<div class="elementor-element elementor-element-6917d19 elementor-mobile-align-left elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="6917d19" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-widget-container">
+							<ul class="elementor-icon-list-items">
+							<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-gift"></i>						</span>
+										<span class="elementor-icon-list-text">BONO 2: Rituales de la Mujer Desbloqueada</span>
+									</li>
+						</ul>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-849db13 elementor-widget elementor-widget-text-editor" data-id="849db13" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p>Prácticas diarias para fortalecer tu mente, tu presencia y tu valor.<br>(Excelente para lectura ligera: mañana, noche, protección emocional y postura femenina.)</p>								</div>
+				</div>
+				<div class="elementor-element elementor-element-9e8f206 elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="9e8f206" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-widget-container">
+							<ul class="elementor-icon-list-items">
+							<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-gift"></i>						</span>
+										<span class="elementor-icon-list-text">      BONO 3: Energía Femenina Inquebrantable</span>
+									</li>
+						</ul>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-7edd909 elementor-widget elementor-widget-text-editor" data-id="7edd909" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p>Cómo mantener tu vibración alta y tu fuerza interna intacta, incluso cuando el mundo intenta derribarte.<br>(Aquí entra magnetismo, ley de atracción, postura y autoconfianza energética.)</p>								</div>
+				</div>
+				<div class="elementor-element elementor-element-b343a31 elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="b343a31" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-widget-container">
+							<ul class="elementor-icon-list-items">
+							<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-gift"></i>						</span>
+										<span class="elementor-icon-list-text">BONO 4: Manual de la Mujer Inolvidable</span>
+									</li>
+						</ul>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-6f8877c elementor-widget elementor-widget-text-editor" data-id="6f8877c" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p>Magnetismo, presencia y comportamiento que te hacen ser recordada y respetada.<br>(Me encanta este: es seducción emocional, energía, autoestima elevada y postura.)</p>								</div>
+				</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-507a1f4 e-con-full e-flex e-con e-child" data-id="507a1f4" data-element_type="container">
+				<div class="elementor-element elementor-element-1c37424 elementor-align-justify elementor-widget__width-initial elementor-widget elementor-widget-button" data-id="1c37424" data-element_type="widget" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+									<div class="elementor-button-wrapper">
+					<a class="elementor-button elementor-button-link elementor-size-sm elementor-animation-grow" href="#preco">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-icon">
+				<i aria-hidden="true" class="fas fa-long-arrow-alt-right"></i>			</span>
+									<span class="elementor-button-text">QUIERO MI DESBLOQUEO DEL AMOR AHORA</span>
+					</span>
+					</a>
+				</div>
+								</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-6241069 elementor-hidden-desktop elementor-hidden-tablet elementor-hidden-mobile e-flex e-con-boxed e-con e-parent" data-id="6241069" data-element_type="container">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-2641843 e-con-full e-flex e-con e-child" data-id="2641843" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;gradient&quot;}">
+		<div class="elementor-element elementor-element-dde1d33 e-con-full e-flex e-con e-child" data-id="dde1d33" data-element_type="container">
+				<div class="elementor-element elementor-element-6b6cb32 elementor-widget elementor-widget-image" data-id="6b6cb32" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="594" height="510" src="./images/bonus.png" class="attachment-large size-large wp-image-151" alt="Paquete de Bonos Exclusivos" data-lazy-srcset="./images/bonus.png 594w, ./images/bonus-300x258.png 300w" data-lazy-sizes="(max-width: 594px) 100vw, 594px" data-lazy-src="./images/bonus.png"><noscript><img loading="lazy" decoding="async" width="594" height="510" src="./images/bonus.png" class="attachment-large size-large wp-image-151" alt="Paquete de Bonos Exclusivos" srcset="./images/bonus.png 594w, ./images/bonus-300x258.png 300w" sizes="(max-width: 594px) 100vw, 594px"></noscript>															</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-cb36d4f e-con-full e-flex e-con e-child" data-id="cb36d4f" data-element_type="container">
+				<div class="elementor-element elementor-element-9403ea6 elementor-widget__width-inherit elementor-widget elementor-widget-heading" data-id="9403ea6" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">Quando você adquirir o "Coração Blindado" hoje, também terá acesso:</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-ea69d56 elementor-mobile-align-left elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="ea69d56" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-widget-container">
+							<ul class="elementor-icon-list-items">
+							<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-gift"></i>						</span>
+										<span class="elementor-icon-list-text">BÔNUS 1: Planner Vitalício Anual</span>
+									</li>
+						</ul>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-69bee02 elementor-widget elementor-widget-text-editor" data-id="69bee02" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p>Organize sua vida e seus objetivos para se manter focada em seus propósitos.</p>								</div>
+				</div>
+				<div class="elementor-element elementor-element-719c61e elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="719c61e" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-widget-container">
+							<ul class="elementor-icon-list-items">
+							<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-gift"></i>						</span>
+										<span class="elementor-icon-list-text">      BONO 2: Planner Vitalicio Anual Financiero</span>
+									</li>
+						</ul>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-9f93c50 elementor-widget elementor-widget-text-editor" data-id="9f93c50" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p>Controla tus finanzas y conquista tu independencia financiera (¡una mujer poderosa se mantiene sola!).</p>								</div>
+				</div>
+				<div class="elementor-element elementor-element-e8a7440 elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="e8a7440" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-widget-container">
+							<ul class="elementor-icon-list-items">
+							<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-gift"></i>						</span>
+										<span class="elementor-icon-list-text">BONO 3: E-book "Los Mejores Consejos Sobre Citas Para Mujeres"</span>
+									</li>
+						</ul>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-a9cfe5b elementor-widget elementor-widget-text-editor" data-id="a9cfe5b" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p>Sabe exactamente cómo comportarte en citas para que te tomen en serio desde el primer momento.</p>								</div>
+				</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-33eefee e-con-full e-flex e-con e-child" data-id="33eefee" data-element_type="container">
+				<div class="elementor-element elementor-element-a96bb86 elementor-align-justify elementor-widget__width-initial elementor-widget elementor-widget-button" data-id="a96bb86" data-element_type="widget" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+									<div class="elementor-button-wrapper">
+					<a class="elementor-button elementor-button-link elementor-size-sm elementor-animation-grow" href="#preco">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-icon">
+				<i aria-hidden="true" class="fas fa-long-arrow-alt-right"></i>			</span>
+									<span class="elementor-button-text">QUIERO MI DESBLOQUEO DEL AMOR AHORA</span>
+					</span>
+					</a>
+				</div>
+								</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-cceb7d1 e-flex e-con-boxed e-con e-parent e-lazyloaded" data-id="cceb7d1" data-element_type="container">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-1ebd128 e-con-full e-flex e-con e-child" data-id="1ebd128" data-element_type="container">
+				<div class="elementor-element elementor-element-4039a4d elementor-widget__width-inherit elementor-widget elementor-widget-heading" data-id="4039a4d" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">Quiero Que Te Detengas Por Un <span style="color:#946EA6;font-weight:700">Momento E Imagines...</span></h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-b2206e6 elementor-widget elementor-widget-text-editor" data-id="b2206e6" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p>Si te despertaras cada día sabiendo tu valor y no aceptando menos de lo que mereces. Si hombres de verdad comenzaran a correr tras de ti, a disputar tu atención, a hacer planes para conquistarte. Esa mujer poderosa ya existe dentro de ti – solo está escondida detrás de un corazón desprotegido. </p><p>La pregunta no es si te lo mereces, porque ya sabes que sí. </p><p>La pregunta es: ¿cuándo vas a empezar a actuar como alguien que se lo merece? “Desbloqueo del Amor” puede ser el primer paso para que dejes de aceptar migajas y empieces a exigir el banquete completo. Tu transformación comienza hoy.</p>								</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-fd708e5 e-con-full e-flex e-con e-child" data-id="fd708e5" data-element_type="container">
+				<div class="elementor-element elementor-element-7cbc150 elementor-widget elementor-widget-image" data-id="7cbc150" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="572" height="665" src="./images/foto.png" class="attachment-large size-large wp-image-756" alt="María Calderini - Autora de Desbloqueo del Amor">															</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-0a5e379 e-flex e-con-boxed e-con e-parent e-lazyloaded" data-id="0a5e379" data-element_type="container">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-2ef3b55 e-con-full e-flex e-con e-child" data-id="2ef3b55" data-element_type="container">
+				<div class="elementor-element elementor-element-45f748f elementor-widget elementor-widget-heading" data-id="45f748f" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">OFERTA<span style="color:#946EA6;font-weight:700"> ESPECIAL:</span></h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-b82103a elementor-widget elementor-widget-text-editor" data-id="b82103a" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p><strong>DESBLOQUEO DEL AMOR + TODOS LOS BONOS</strong></p>								</div>
+				</div>
+				<div class="elementor-element elementor-element-d5200fe elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="d5200fe" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-widget-container">
+							<ul class="elementor-icon-list-items">
+							<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="29" height="30" viewBox="0 0 29 30" fill="none"><path d="M12.9396 24.3056C12.8423 24.3055 12.7468 24.2801 12.6624 24.2318C12.5781 24.1835 12.5078 24.114 12.4586 24.0302C10.6056 20.8732 5.66535 14.1512 5.61572 14.0837C5.53635 13.9758 5.49847 13.8429 5.50899 13.7094C5.5195 13.5759 5.57772 13.4506 5.67299 13.3565L7.19209 11.8553C7.28487 11.7636 7.40684 11.7074 7.53681 11.6963C7.66677 11.6852 7.7965 11.7201 7.90343 11.7948L12.8235 15.2302C16.1158 11.0084 19.1739 8.09171 21.1859 6.37061C23.451 4.4333 24.8929 3.56113 24.9532 3.52521C25.0399 3.47321 25.1391 3.44574 25.2402 3.44574H27.6978C27.8109 3.44573 27.9213 3.48009 28.0144 3.54425C28.1074 3.60842 28.1788 3.69936 28.2191 3.80502C28.2593 3.91069 28.2664 4.02608 28.2396 4.1359C28.2127 4.24573 28.1531 4.34479 28.0687 4.41997C21.0896 10.6362 13.5 23.8907 13.4241 24.0239C13.3757 24.1089 13.3058 24.1796 13.2214 24.2291C13.1369 24.2785 13.041 24.3049 12.9432 24.3055L12.9396 24.3056Z" fill="#946EA6" /><path d="M12.8325 26.6291C7.29732 26.6291 2.79407 22.1259 2.79407 16.5906C2.79407 11.0553 7.29732 6.55213 12.8325 6.55213C13.9424 6.5509 15.0447 6.73409 16.0945 7.09421C16.2344 7.14228 16.3495 7.24395 16.4144 7.37686C16.4793 7.50977 16.4888 7.66303 16.4407 7.80292C16.3927 7.94281 16.291 8.05788 16.1581 8.12281C16.0252 8.18774 15.8719 8.19721 15.732 8.14914C14.7987 7.82908 13.8187 7.66632 12.832 7.66751C7.91179 7.66751 3.90895 11.6704 3.90895 16.5906C3.90895 21.5108 7.91179 25.5137 12.832 25.5137C17.7523 25.5137 21.7551 21.5108 21.7551 16.5906C21.7553 15.9869 21.6946 15.3847 21.5741 14.7931C21.5594 14.7213 21.559 14.6474 21.5729 14.5754C21.5869 14.5035 21.6148 14.435 21.6552 14.3739C21.6956 14.3128 21.7476 14.2602 21.8083 14.2192C21.869 14.1782 21.9372 14.1495 22.0089 14.1349C22.0807 14.1202 22.1547 14.1198 22.2266 14.1337C22.2985 14.1477 22.367 14.1756 22.4281 14.216C22.4892 14.2564 22.5418 14.3084 22.5828 14.3691C22.6238 14.4298 22.6525 14.498 22.6672 14.5697C22.8027 15.2348 22.8709 15.9118 22.8708 16.5906C22.871 22.1259 18.3677 26.6291 12.8325 26.6291Z" fill="#946EA6" /></svg>						</span>
+										<span class="elementor-icon-list-text">Libro Digital "Desbloqueo del Amor"</span>
+									</li>
+								<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="29" height="30" viewBox="0 0 29 30" fill="none"><path d="M12.9396 24.3056C12.8423 24.3055 12.7468 24.2801 12.6624 24.2318C12.5781 24.1835 12.5078 24.114 12.4586 24.0302C10.6056 20.8732 5.66535 14.1512 5.61572 14.0837C5.53635 13.9758 5.49847 13.8429 5.50899 13.7094C5.5195 13.5759 5.57772 13.4506 5.67299 13.3565L7.19209 11.8553C7.28487 11.7636 7.40684 11.7074 7.53681 11.6963C7.66677 11.6852 7.7965 11.7201 7.90343 11.7948L12.8235 15.2302C16.1158 11.0084 19.1739 8.09171 21.1859 6.37061C23.451 4.4333 24.8929 3.56113 24.9532 3.52521C25.0399 3.47321 25.1391 3.44574 25.2402 3.44574H27.6978C27.8109 3.44573 27.9213 3.48009 28.0144 3.54425C28.1074 3.60842 28.1788 3.69936 28.2191 3.80502C28.2593 3.91069 28.2664 4.02608 28.2396 4.1359C28.2127 4.24573 28.1531 4.34479 28.0687 4.41997C21.0896 10.6362 13.5 23.8907 13.4241 24.0239C13.3757 24.1089 13.3058 24.1796 13.2214 24.2291C13.1369 24.2785 13.041 24.3049 12.9432 24.3055L12.9396 24.3056Z" fill="#946EA6" /><path d="M12.8325 26.6291C7.29732 26.6291 2.79407 22.1259 2.79407 16.5906C2.79407 11.0553 7.29732 6.55213 12.8325 6.55213C13.9424 6.5509 15.0447 6.73409 16.0945 7.09421C16.2344 7.14228 16.3495 7.24395 16.4144 7.37686C16.4793 7.50977 16.4888 7.66303 16.4407 7.80292C16.3927 7.94281 16.291 8.05788 16.1581 8.12281C16.0252 8.18774 15.8719 8.19721 15.732 8.14914C14.7987 7.82908 13.8187 7.66632 12.832 7.66751C7.91179 7.66751 3.90895 11.6704 3.90895 16.5906C3.90895 21.5108 7.91179 25.5137 12.832 25.5137C17.7523 25.5137 21.7551 21.5108 21.7551 16.5906C21.7553 15.9869 21.6946 15.3847 21.5741 14.7931C21.5594 14.7213 21.559 14.6474 21.5729 14.5754C21.5869 14.5035 21.6148 14.435 21.6552 14.3739C21.6956 14.3128 21.7476 14.2602 21.8083 14.2192C21.869 14.1782 21.9372 14.1495 22.0089 14.1349C22.0807 14.1202 22.1547 14.1198 22.2266 14.1337C22.2985 14.1477 22.367 14.1756 22.4281 14.216C22.4892 14.2564 22.5418 14.3084 22.5828 14.3691C22.6238 14.4298 22.6525 14.498 22.6672 14.5697C22.8027 15.2348 22.8709 15.9118 22.8708 16.5906C22.871 22.1259 18.3677 26.6291 12.8325 26.6291Z" fill="#946EA6" /></svg>						</span>
+										<span class="elementor-icon-list-text">BONO 1: Mi Cuerpo, Mi Templo​</span>
+									</li>
+								<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="29" height="30" viewBox="0 0 29 30" fill="none"><path d="M12.9396 24.3056C12.8423 24.3055 12.7468 24.2801 12.6624 24.2318C12.5781 24.1835 12.5078 24.114 12.4586 24.0302C10.6056 20.8732 5.66535 14.1512 5.61572 14.0837C5.53635 13.9758 5.49847 13.8429 5.50899 13.7094C5.5195 13.5759 5.57772 13.4506 5.67299 13.3565L7.19209 11.8553C7.28487 11.7636 7.40684 11.7074 7.53681 11.6963C7.66677 11.6852 7.7965 11.7201 7.90343 11.7948L12.8235 15.2302C16.1158 11.0084 19.1739 8.09171 21.1859 6.37061C23.451 4.4333 24.8929 3.56113 24.9532 3.52521C25.0399 3.47321 25.1391 3.44574 25.2402 3.44574H27.6978C27.8109 3.44573 27.9213 3.48009 28.0144 3.54425C28.1074 3.60842 28.1788 3.69936 28.2191 3.80502C28.2593 3.91069 28.2664 4.02608 28.2396 4.1359C28.2127 4.24573 28.1531 4.34479 28.0687 4.41997C21.0896 10.6362 13.5 23.8907 13.4241 24.0239C13.3757 24.1089 13.3058 24.1796 13.2214 24.2291C13.1369 24.2785 13.041 24.3049 12.9432 24.3055L12.9396 24.3056Z" fill="#946EA6" /><path d="M12.8325 26.6291C7.29732 26.6291 2.79407 22.1259 2.79407 16.5906C2.79407 11.0553 7.29732 6.55213 12.8325 6.55213C13.9424 6.5509 15.0447 6.73409 16.0945 7.09421C16.2344 7.14228 16.3495 7.24395 16.4144 7.37686C16.4793 7.50977 16.4888 7.66303 16.4407 7.80292C16.3927 7.94281 16.291 8.05788 16.1581 8.12281C16.0252 8.18774 15.8719 8.19721 15.732 8.14914C14.7987 7.82908 13.8187 7.66632 12.832 7.66751C7.91179 7.66751 3.90895 11.6704 3.90895 16.5906C3.90895 21.5108 7.91179 25.5137 12.832 25.5137C17.7523 25.5137 21.7551 21.5108 21.7551 16.5906C21.7553 15.9869 21.6946 15.3847 21.5741 14.7931C21.5594 14.7213 21.559 14.6474 21.5729 14.5754C21.5869 14.5035 21.6148 14.435 21.6552 14.3739C21.6956 14.3128 21.7476 14.2602 21.8083 14.2192C21.869 14.1782 21.9372 14.1495 22.0089 14.1349C22.0807 14.1202 22.1547 14.1198 22.2266 14.1337C22.2985 14.1477 22.367 14.1756 22.4281 14.216C22.4892 14.2564 22.5418 14.3084 22.5828 14.3691C22.6238 14.4298 22.6525 14.498 22.6672 14.5697C22.8027 15.2348 22.8709 15.9118 22.8708 16.5906C22.871 22.1259 18.3677 26.6291 12.8325 26.6291Z" fill="#946EA6" /></svg>						</span>
+										<span class="elementor-icon-list-text">BONO 2: Rituales de la Mujer Desbloqueada​</span>
+									</li>
+								<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="29" height="30" viewBox="0 0 29 30" fill="none"><path d="M12.9396 24.3056C12.8423 24.3055 12.7468 24.2801 12.6624 24.2318C12.5781 24.1835 12.5078 24.114 12.4586 24.0302C10.6056 20.8732 5.66535 14.1512 5.61572 14.0837C5.53635 13.9758 5.49847 13.8429 5.50899 13.7094C5.5195 13.5759 5.57772 13.4506 5.67299 13.3565L7.19209 11.8553C7.28487 11.7636 7.40684 11.7074 7.53681 11.6963C7.66677 11.6852 7.7965 11.7201 7.90343 11.7948L12.8235 15.2302C16.1158 11.0084 19.1739 8.09171 21.1859 6.37061C23.451 4.4333 24.8929 3.56113 24.9532 3.52521C25.0399 3.47321 25.1391 3.44574 25.2402 3.44574H27.6978C27.8109 3.44573 27.9213 3.48009 28.0144 3.54425C28.1074 3.60842 28.1788 3.69936 28.2191 3.80502C28.2593 3.91069 28.2664 4.02608 28.2396 4.1359C28.2127 4.24573 28.1531 4.34479 28.0687 4.41997C21.0896 10.6362 13.5 23.8907 13.4241 24.0239C13.3757 24.1089 13.3058 24.1796 13.2214 24.2291C13.1369 24.2785 13.041 24.3049 12.9432 24.3055L12.9396 24.3056Z" fill="#946EA6" /><path d="M12.8325 26.6291C7.29732 26.6291 2.79407 22.1259 2.79407 16.5906C2.79407 11.0553 7.29732 6.55213 12.8325 6.55213C13.9424 6.5509 15.0447 6.73409 16.0945 7.09421C16.2344 7.14228 16.3495 7.24395 16.4144 7.37686C16.4793 7.50977 16.4888 7.66303 16.4407 7.80292C16.3927 7.94281 16.291 8.05788 16.1581 8.12281C16.0252 8.18774 15.8719 8.19721 15.732 8.14914C14.7987 7.82908 13.8187 7.66632 12.832 7.66751C7.91179 7.66751 3.90895 11.6704 3.90895 16.5906C3.90895 21.5108 7.91179 25.5137 12.832 25.5137C17.7523 25.5137 21.7551 21.5108 21.7551 16.5906C21.7553 15.9869 21.6946 15.3847 21.5741 14.7931C21.5594 14.7213 21.559 14.6474 21.5729 14.5754C21.5869 14.5035 21.6148 14.435 21.6552 14.3739C21.6956 14.3128 21.7476 14.2602 21.8083 14.2192C21.869 14.1782 21.9372 14.1495 22.0089 14.1349C22.0807 14.1202 22.1547 14.1198 22.2266 14.1337C22.2985 14.1477 22.367 14.1756 22.4281 14.216C22.4892 14.2564 22.5418 14.3084 22.5828 14.3691C22.6238 14.4298 22.6525 14.498 22.6672 14.5697C22.8027 15.2348 22.8709 15.9118 22.8708 16.5906C22.871 22.1259 18.3677 26.6291 12.8325 26.6291Z" fill="#946EA6" /></svg>						</span>
+										<span class="elementor-icon-list-text">      BONO 3: Energía Femenina Inquebrantable​</span>
+									</li>
+								<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="29" height="30" viewBox="0 0 29 30" fill="none"><path d="M12.9396 24.3056C12.8423 24.3055 12.7468 24.2801 12.6624 24.2318C12.5781 24.1835 12.5078 24.114 12.4586 24.0302C10.6056 20.8732 5.66535 14.1512 5.61572 14.0837C5.53635 13.9758 5.49847 13.8429 5.50899 13.7094C5.5195 13.5759 5.57772 13.4506 5.67299 13.3565L7.19209 11.8553C7.28487 11.7636 7.40684 11.7074 7.53681 11.6963C7.66677 11.6852 7.7965 11.7201 7.90343 11.7948L12.8235 15.2302C16.1158 11.0084 19.1739 8.09171 21.1859 6.37061C23.451 4.4333 24.8929 3.56113 24.9532 3.52521C25.0399 3.47321 25.1391 3.44574 25.2402 3.44574H27.6978C27.8109 3.44573 27.9213 3.48009 28.0144 3.54425C28.1074 3.60842 28.1788 3.69936 28.2191 3.80502C28.2593 3.91069 28.2664 4.02608 28.2396 4.1359C28.2127 4.24573 28.1531 4.34479 28.0687 4.41997C21.0896 10.6362 13.5 23.8907 13.4241 24.0239C13.3757 24.1089 13.3058 24.1796 13.2214 24.2291C13.1369 24.2785 13.041 24.3049 12.9432 24.3055L12.9396 24.3056Z" fill="#946EA6" /><path d="M12.8325 26.6291C7.29732 26.6291 2.79407 22.1259 2.79407 16.5906C2.79407 11.0553 7.29732 6.55213 12.8325 6.55213C13.9424 6.5509 15.0447 6.73409 16.0945 7.09421C16.2344 7.14228 16.3495 7.24395 16.4144 7.37686C16.4793 7.50977 16.4888 7.66303 16.4407 7.80292C16.3927 7.94281 16.291 8.05788 16.1581 8.12281C16.0252 8.18774 15.8719 8.19721 15.732 8.14914C14.7987 7.82908 13.8187 7.66632 12.832 7.66751C7.91179 7.66751 3.90895 11.6704 3.90895 16.5906C3.90895 21.5108 7.91179 25.5137 12.832 25.5137C17.7523 25.5137 21.7551 21.5108 21.7551 16.5906C21.7553 15.9869 21.6946 15.3847 21.5741 14.7931C21.5594 14.7213 21.559 14.6474 21.5729 14.5754C21.5869 14.5035 21.6148 14.435 21.6552 14.3739C21.6956 14.3128 21.7476 14.2602 21.8083 14.2192C21.869 14.1782 21.9372 14.1495 22.0089 14.1349C22.0807 14.1202 22.1547 14.1198 22.2266 14.1337C22.2985 14.1477 22.367 14.1756 22.4281 14.216C22.4892 14.2564 22.5418 14.3084 22.5828 14.3691C22.6238 14.4298 22.6525 14.498 22.6672 14.5697C22.8027 15.2348 22.8709 15.9118 22.8708 16.5906C22.871 22.1259 18.3677 26.6291 12.8325 26.6291Z" fill="#946EA6" /></svg>						</span>
+										<span class="elementor-icon-list-text">BONO 4: Manual de la Mujer Inolvidable​</span>
+									</li>
+								<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="29" height="30" viewBox="0 0 29 30" fill="none"><path d="M12.9396 24.3056C12.8423 24.3055 12.7468 24.2801 12.6624 24.2318C12.5781 24.1835 12.5078 24.114 12.4586 24.0302C10.6056 20.8732 5.66535 14.1512 5.61572 14.0837C5.53635 13.9758 5.49847 13.8429 5.50899 13.7094C5.5195 13.5759 5.57772 13.4506 5.67299 13.3565L7.19209 11.8553C7.28487 11.7636 7.40684 11.7074 7.53681 11.6963C7.66677 11.6852 7.7965 11.7201 7.90343 11.7948L12.8235 15.2302C16.1158 11.0084 19.1739 8.09171 21.1859 6.37061C23.451 4.4333 24.8929 3.56113 24.9532 3.52521C25.0399 3.47321 25.1391 3.44574 25.2402 3.44574H27.6978C27.8109 3.44573 27.9213 3.48009 28.0144 3.54425C28.1074 3.60842 28.1788 3.69936 28.2191 3.80502C28.2593 3.91069 28.2664 4.02608 28.2396 4.1359C28.2127 4.24573 28.1531 4.34479 28.0687 4.41997C21.0896 10.6362 13.5 23.8907 13.4241 24.0239C13.3757 24.1089 13.3058 24.1796 13.2214 24.2291C13.1369 24.2785 13.041 24.3049 12.9432 24.3055L12.9396 24.3056Z" fill="#946EA6" /><path d="M12.8325 26.6291C7.29732 26.6291 2.79407 22.1259 2.79407 16.5906C2.79407 11.0553 7.29732 6.55213 12.8325 6.55213C13.9424 6.5509 15.0447 6.73409 16.0945 7.09421C16.2344 7.14228 16.3495 7.24395 16.4144 7.37686C16.4793 7.50977 16.4888 7.66303 16.4407 7.80292C16.3927 7.94281 16.291 8.05788 16.1581 8.12281C16.0252 8.18774 15.8719 8.19721 15.732 8.14914C14.7987 7.82908 13.8187 7.66632 12.832 7.66751C7.91179 7.66751 3.90895 11.6704 3.90895 16.5906C3.90895 21.5108 7.91179 25.5137 12.832 25.5137C17.7523 25.5137 21.7551 21.5108 21.7551 16.5906C21.7553 15.9869 21.6946 15.3847 21.5741 14.7931C21.5594 14.7213 21.559 14.6474 21.5729 14.5754C21.5869 14.5035 21.6148 14.435 21.6552 14.3739C21.6956 14.3128 21.7476 14.2602 21.8083 14.2192C21.869 14.1782 21.9372 14.1495 22.0089 14.1349C22.0807 14.1202 22.1547 14.1198 22.2266 14.1337C22.2985 14.1477 22.367 14.1756 22.4281 14.216C22.4892 14.2564 22.5418 14.3084 22.5828 14.3691C22.6238 14.4298 22.6525 14.498 22.6672 14.5697C22.8027 15.2348 22.8709 15.9118 22.8708 16.5906C22.871 22.1259 18.3677 26.6291 12.8325 26.6291Z" fill="#946EA6" /></svg>						</span>
+										<span class="elementor-icon-list-text">Acceso inmediato tras el pago</span>
+									</li>
+						</ul>
+						</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-afc7ac0 e-con-full e-flex e-con e-child" data-id="afc7ac0" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;gradient&quot;}">
+				<div class="elementor-element elementor-element-d4c115f elementor-widget elementor-widget-image" data-id="d4c115f" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="686" height="422" src="./images/ee8-1.png" class="attachment-large size-large wp-image-463" alt="Garantía y Oferta Especial">															</div>
+				</div>
+				<div class="elementor-element elementor-element-77e61f9 elementor-widget elementor-widget-menu-anchor" data-id="77e61f9" data-element_type="widget" data-widget_type="menu-anchor.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-menu-anchor" id="preco"></div>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-5703779 elementor-widget elementor-widget-text-editor" data-id="5703779" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p>De <del>R$ 290,97</del></p>								</div>
+				</div>
+				<div class="elementor-element elementor-element-458d386 elementor-widget elementor-widget-text-editor" data-id="458d386" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p>POR SOLO:</p>								</div>
+				</div>
+				<div class="elementor-element elementor-element-dd3ce55 elementor-widget elementor-widget-heading" data-id="dd3ce55" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">R$ 49,97</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-3f43578 elementor-widget elementor-widget-text-editor" data-id="3f43578" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p>Hasta en 12 cuotas de R$ 4,16</p>								</div>
+				</div>
+				<div class="elementor-element elementor-element-a24de45 elementor-align-justify elementor-widget__width-initial elementor-widget elementor-widget-button" data-id="a24de45" data-element_type="widget" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+									<div class="elementor-button-wrapper">
+					<a class="elementor-button elementor-button-link elementor-size-sm elementor-animation-grow" href="./html/N57987740R.html">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-icon">
+				<i aria-hidden="true" class="fas fa-long-arrow-alt-right"></i>			</span>
+									<span class="elementor-button-text">QUIERO MI DESBLOQUEO DEL AMOR AHORA</span>
+					</span>
+					</a>
+				</div>
+								</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-f5fd26f e-flex e-con-boxed e-con e-parent e-lazyloaded" data-id="f5fd26f" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-24af5ae e-con-full e-flex e-con e-child" data-id="24af5ae" data-element_type="container">
+				<div class="elementor-element elementor-element-09499bf elementor-hidden-mobile elementor-widget elementor-widget-image" data-id="09499bf" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="432" height="731" src="./images/Camada-7.png" class="attachment-large size-large wp-image-152" alt="Libro Digital Desbloqueo del Amor">															</div>
+				</div>
+				<div class="elementor-element elementor-element-07e05d1 elementor-hidden-desktop elementor-hidden-tablet elementor-widget elementor-widget-image" data-id="07e05d1" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="432" height="720" src="./images/Camada-7.png" class="attachment-large size-large wp-image-752" alt="Libro Desbloqueo del Amor Mobile">															</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-b8cb2b0 e-con-full e-flex e-con e-child" data-id="b8cb2b0" data-element_type="container">
+				<div class="elementor-element elementor-element-b4d7c32 elementor-widget elementor-widget-heading" data-id="b4d7c32" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">Sobre María Calderini</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-d2bbf9a elementor-widget elementor-widget-text-editor" data-id="d2bbf9a" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p>Especialista en Empoderamiento Femenino y Relaciones </p>								</div>
+				</div>
+				<div class="elementor-element elementor-element-c94ecbd elementor-widget elementor-widget-text-editor" data-id="c94ecbd" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p>Mi nombre es María Calderini y a lo largo de mi trayectoria profesional, he escuchado innumerables historias de mujeres increíbles que, sin darse cuenta, pasaron años mendigando afecto. <br><br>Fue estudiando profundamente sobre autoestima y empoderamiento femenino que creé la metodología “Desbloqueo del Amor”. <br><br>Hoy soy escritora, infoproductora y especialista en autoestima femenina. Mi misión es ayudar a las mujeres a liberarse de relaciones tóxicas y entender que no tienen que aceptar menos de lo que merecen. Escribí “Desbloqueo del Amor” para ser una guía práctica en esta jornada de transformación.<br> <br>¿Vamos juntas en este viaje?</p>								</div>
+				</div>
+				<div class="elementor-element elementor-element-b90035a elementor-align-justify elementor-widget__width-inherit elementor-widget elementor-widget-button" data-id="b90035a" data-element_type="widget" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+									<div class="elementor-button-wrapper">
+					<a class="elementor-button elementor-button-link elementor-size-sm elementor-animation-grow" href="#preco">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-icon">
+				<i aria-hidden="true" class="fas fa-long-arrow-alt-right"></i>			</span>
+									<span class="elementor-button-text">QUIERO MI DESBLOQUEO DEL AMOR AHORA</span>
+					</span>
+					</a>
+				</div>
+								</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-6c81e00 e-flex e-con-boxed e-con e-parent e-lazyloaded" data-id="6c81e00" data-element_type="container">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-1b81571 e-con-full e-flex e-con e-child" data-id="1b81571" data-element_type="container">
+				<div class="elementor-element elementor-element-0613f65 elementor-widget elementor-widget-heading" data-id="0613f65" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">Preguntas <span style="color:#946EA6;font-weight:700"> Frecuentes:</span></h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-2ed58f4 elementor-widget elementor-widget-eael-adv-accordion" data-id="2ed58f4" data-element_type="widget" data-widget_type="eael-adv-accordion.default">
+				<div class="elementor-widget-container">
+					        <div class="eael-adv-accordion" id="eael-adv-accordion-2ed58f4" data-scroll-on-click="no" data-scroll-speed="300" data-accordion-id="2ed58f4" data-accordion-type="accordion" data-toogle-speed="300">
+    <div class="eael-accordion-list">
+                <div id="o-livro-fsico-ou-digital" class="elementor-tab-title eael-accordion-header" tabindex="0" data-tab="1" aria-controls="elementor-tab-content-4911"><span class="eael-advanced-accordion-icon-closed"><i aria-hidden="true" class="fa-accordion-icon fas fa-plus"></i></span><span class="eael-advanced-accordion-icon-opened"><i aria-hidden="true" class="fa-accordion-icon fas fa-minus"></i></span><span class="eael-accordion-tab-title">¿El libro es físico o digital?</span></div><div id="elementor-tab-content-4911" class="eael-accordion-content clearfix" data-tab="1" aria-labelledby="o-livro-fsico-ou-digital"><p><span style="font-weight: 400;">Es un libro digital (e-book). Lo recibes en tu correo electrónico inmediatamente después de la compra y puedes leerlo en tu celular, tablet o computadora.</span></p></div>
+                </div><div class="eael-accordion-list">
+                <div id="funciona-mesmo-no-s-teoria" class="elementor-tab-title eael-accordion-header" tabindex="0" data-tab="2" aria-controls="elementor-tab-content-4912"><span class="eael-advanced-accordion-icon-closed"><i aria-hidden="true" class="fa-accordion-icon fas fa-plus"></i></span><span class="eael-advanced-accordion-icon-opened"><i aria-hidden="true" class="fa-accordion-icon fas fa-minus"></i></span><span class="eael-accordion-tab-title">¿Realmente funciona? ¿No es solo teoría?</span></div><div id="elementor-tab-content-4912" class="eael-accordion-content clearfix" data-tab="2" aria-labelledby="funciona-mesmo-no-s-teoria"><p><span style="font-weight: 400;">Funciona porque está basado en mi experiencia real y en lo que estudié sobre psicología de las relaciones. Todo lo que enseño lo he vivido en la práctica.</span></p></div>
+                </div><div class="eael-accordion-list">
+                <div id="serve-para-mulheres-solteiras-e-casadas" class="elementor-tab-title eael-accordion-header" tabindex="0" data-tab="3" aria-controls="elementor-tab-content-4913"><span class="eael-advanced-accordion-icon-closed"><i aria-hidden="true" class="fa-accordion-icon fas fa-plus"></i></span><span class="eael-advanced-accordion-icon-opened"><i aria-hidden="true" class="fa-accordion-icon fas fa-minus"></i></span><span class="eael-accordion-tab-title">¿Sirve para mujeres solteras y casadas?</span></div><div id="elementor-tab-content-4913" class="eael-accordion-content clearfix" data-tab="3" aria-labelledby="serve-para-mulheres-solteiras-e-casadas"><p><span style="font-weight: 400;">Sirve para cualquier mujer que quiera dejar de mendigar afecto, ya sea soltera, de novia o casada. Los principios funcionan en cualquier situación.</span></p></div>
+                </div><div class="eael-accordion-list">
+                <div id="vou-receber-os-bnus-tambm" class="elementor-tab-title eael-accordion-header" tabindex="0" data-tab="4" aria-controls="elementor-tab-content-4914"><span class="eael-advanced-accordion-icon-closed"><i aria-hidden="true" class="fa-accordion-icon fas fa-plus"></i></span><span class="eael-advanced-accordion-icon-opened"><i aria-hidden="true" class="fa-accordion-icon fas fa-minus"></i></span><span class="eael-accordion-tab-title">¿Recibiré los bonos también?</span></div><div id="elementor-tab-content-4914" class="eael-accordion-content clearfix" data-tab="4" aria-labelledby="vou-receber-os-bnus-tambm"><p><span style="font-weight: 400;">¡Sí! Los bonos se entregan junto con el libro en el mismo correo electrónico.</span></p></div>
+                </div><div class="eael-accordion-list">
+                <div id="posso-parcelar" class="elementor-tab-title eael-accordion-header" tabindex="0" data-tab="5" aria-controls="elementor-tab-content-4915"><span class="eael-advanced-accordion-icon-closed"><i aria-hidden="true" class="fa-accordion-icon fas fa-plus"></i></span><span class="eael-advanced-accordion-icon-opened"><i aria-hidden="true" class="fa-accordion-icon fas fa-minus"></i></span><span class="eael-accordion-tab-title">¿Puedo pagar en cuotas?</span></div><div id="elementor-tab-content-4915" class="eael-accordion-content clearfix" data-tab="5" aria-labelledby="posso-parcelar"><p><span style="font-weight: 400;">Sí, hasta en 12 cuotas de R$ 4,16 con tarjeta de crédito.</span></p></div>
+                </div><div class="eael-accordion-list">
+                <div id="por-que-to-barato" class="elementor-tab-title eael-accordion-header" tabindex="0" data-tab="6" aria-controls="elementor-tab-content-4916"><span class="eael-advanced-accordion-icon-closed"><i aria-hidden="true" class="fa-accordion-icon fas fa-plus"></i></span><span class="eael-advanced-accordion-icon-opened"><i aria-hidden="true" class="fa-accordion-icon fas fa-minus"></i></span><span class="eael-accordion-tab-title">¿Por qué es tan barato?</span></div><div id="elementor-tab-content-4916" class="eael-accordion-content clearfix" data-tab="6" aria-labelledby="por-que-to-barato"><p><span style="font-weight: 400;">Porque quiero que el máximo de mujeres posible tenga acceso. Es mi misión ayudar a las mujeres a liberarse de relaciones que las minimizan.</span></p></div>
+                </div></div>				</div>
+				</div>
+				<div class="elementor-element elementor-element-27d2e48 elementor-align-justify elementor-widget__width-initial elementor-widget elementor-widget-button" data-id="27d2e48" data-element_type="widget" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+									<div class="elementor-button-wrapper">
+					<a class="elementor-button elementor-button-link elementor-size-sm elementor-animation-grow" href="#preco">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-icon">
+				<i aria-hidden="true" class="fas fa-long-arrow-alt-right"></i>			</span>
+									<span class="elementor-button-text">QUIERO MI DESBLOQUEO DEL AMOR AHORA</span>
+					</span>
+					</a>
+				</div>
+								</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-1a709e4 elementor-widget elementor-widget-html" data-id="1a709e4" data-element_type="widget" data-widget_type="html.default">
+				<div class="elementor-widget-container">
+					<style>
+
+html, body {
+   max-width: 100%;
+   overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #fffff;
+}
+  
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background: linear-gradient(180deg, #946EA6, #D4BFFF);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background: linear-gradient(0deg, #946EA6, #D4BFFF);
+}
+
+</style>
+				</div>
+				</div>
+			<noscript><img height="1" width="1" style="display: none;" src="/tr" alt=""></noscript>
+<script src="./scripts/general.min.js" id="eael-general-js" defer></script>
+<script data-minify="1" src="./scripts/eael-763.js" id="eael-763-js" defer></script>
+<script src="./scripts/webpack.runtime.min.js" id="elementor-webpack-runtime-js" defer></script>
+<script src="./scripts/frontend-modules.min.js" id="elementor-frontend-modules-js" defer></script>
+<script id="elementor-frontend-js-extra">
+var EAELImageMaskingConfig = {"svg_dir_url":"https:\/\/vontogy.com\/desbloqueodelamor\/wp-content\/plugins\/essential-addons-for-elementor-lite\/assets\/front-end\/img\/image-masking\/svg-shapes\/"};
+</script>
+<script id="elementor-frontend-js-before">
+var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"Partilhar no Facebook","shareOnTwitter":"Partilhar no Twitter","pinIt":"Fix\u00e1-lo","download":"Download","downloadImage":"Descarregar Imagem","fullscreen":"\u00c9cr\u00e3 Inteiro","zoom":"Zoom","share":"Partilhar","playVideo":"Reproduzir v\u00eddeo","previous":"Anterior","next":"Seguinte","close":"Fechar","a11yCarouselPrevSlideMessage":"Previous slide","a11yCarouselNextSlideMessage":"Next slide","a11yCarouselFirstSlideMessage":"This is the first slide","a11yCarouselLastSlideMessage":"This is the last slide","a11yCarouselPaginationBulletMessage":"Go to slide"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"Mobile ao alto","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Mobile ao baixo","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet Portrait","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet Landscape","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Port\u00e1til","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Widescreen","value":2400,"default_value":2400,"direction":"min","is_enabled":false}},"hasCustomBreakpoints":false},"version":"3.33.2","is_static":false,"experimentalFeatures":{"additional_custom_breakpoints":true,"container":true,"hello-theme-header-footer":true,"nested-elements":true,"home_screen":true,"global_classes_should_enforce_capabilities":true,"e_variables":true,"cloud-library":true,"e_opt_in_v4_page":true,"import-export-customization":true},"urls":{"assets":"https:\/\/vontogy.com\/desbloqueodelamor\/wp-content\/plugins\/elementor\/assets\/","ajaxurl":"https:\/\/vontogy.com\/desbloqueodelamor\/wp-admin\/admin-ajax.php","uploadUrl":"https:\/\/vontogy.com\/desbloqueodelamor\/wp-content\/uploads"},"nonces":{"floatingButtonsClickTracking":"37363d45be"},"swiperClass":"swiper","settings":{"page":[],"editorPreferences":[]},"kit":{"active_breakpoints":["viewport_mobile","viewport_tablet"],"global_image_lightbox":"yes","lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description","hello_header_logo_type":"title","hello_footer_logo_type":"logo"},"post":{"id":763,"title":"Desbloqueo%20del%20Amor%20%E2%80%93%20Mar%C3%ADa%20Calderini","excerpt":"","featuredImage":false}};
+</script>
+<script src="./scripts/frontend.min.js" id="elementor-frontend-js" defer></script>

@@ -1,0 +1,147 @@
+/* ============================================
+   MOBILE FIX - Correções de Estilização Mobile
+   ============================================ */
+
+/* Fix Character Encoding Display Issues */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Mobile Breakpoint Fixes  - Apply only for screens 767px and below */
+@media screen and (max-width: 767px) {
+    
+    /* Reduce excessive vertical spacing between sections */
+    .elementor-element.e-con.e-parent {
+        padding-top: 20px !important;
+        padding-bottom: 20px !important;
+        margin-bottom: 0 !important;
+    }
+    
+    /* Fix hero section spacing  */
+    .elementor-element.e-con-boxed .e-con-inner {
+        padding: 20px 15px !important;
+    }
+    
+    /* Fix overlapping button  + image issue in hero */
+    .elementor-element. e-flex.e-con.e-child {
+        position: relative !important;
+        z-index: auto !important;
+    }
+    
+    /* Ensure buttons don't overlap content */
+    .elementor-widget-button {
+        margin-top: 15px !important;
+        margin-bottom: 15px !important;
+        position: relative !important;
+        z-index: 1 !important;
+    }
+    
+    /* Fix image containers to prevent overlap */
+    .elementor-widget-image {
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
+        position: relative !important;
+        z-index: auto !important;
+    }
+    
+    /* Reduce padding on inner containers */
+    .e-con-inner {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+    
+    /* Fix icon list spacing */
+    .elementor-icon-list-items {
+        padding: 0 !important;
+        margin: 10px 0 !important;
+    }
+    
+    .elementor-icon-list-item {
+        margin-bottom: 10px !important;
+    }
+    
+    /* Ensure headings have reasonable spacing */
+    .elementor-heading-title {
+        margin-bottom: 15px !important;
+        line-height: 1.4 !important;
+    }
+    
+    /* Fix text editor widgets spacing */
+    .elementor-widget-text-editor {
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+    }
+    
+    /* Remove excessive background effects that push content */
+    [data-settings*="background_background"] {
+        background-size: cover !important;
+        padding: 20px 10px !important;
+    }
+    
+    /* Compact spacing for flexbox containers */
+    .e-flex {
+        gap: 15px !important;
+    }
+    
+    /* Fix minimum height issues that create white space */
+    .e-con {
+        min-height: auto !important;
+    }
+    
+    /* Ensure proper stacking of elements */
+    .elementor-widget {
+        margin-bottom: 15px !important;
+    }
+    
+    /* Fix specific problematic containers with excessive height */
+    [data-id] {
+        min-height: unset !important;
+    }
+    
+    /* Prevent absolute positioning issues */
+    .elementor-element[data-element_type="container"] {
+        position: relative !important;
+    }
+}
+
+/* Extra small screens (phones in portrait, less than 480px) */
+@media screen and (max-width: 480px) {
+    
+    /* Even more compact spacing for very small screens */
+    .elementor-element.e-con.e-parent {
+        padding-top: 15px !important;
+        padding-bottom: 15px !important;
+    }
+    
+    .e-con-inner {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+    
+    /* Make buttons full width for better usability */
+    .elementor-button {
+        width: 100% !important;
+        text-align: center !important;
+    }
+    
+    /* Reduce font sizes slightly for readability */
+    .elementor-heading-title {
+        font-size: clamp(1.2rem, 4vw, 1.8rem) !important;
+    }
+}
+
+/* Tablet Portrait (768px - 1024px) - Minor adjustments */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    
+    .elementor-element.e-con.e-parent {
+        padding-top: 30px !important;
+        padding-bottom: 30px !important;
+    }
+    
+    .e-con-inner {
+        padding-left: 25px !important;
+        padding-right: 25px !important;
+    }
+}
